@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>StarTrack</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>StarTrack</h1>
+        <p>Star Wars 콘텐츠 정보·최신 소식 큐레이션 서비스</p>
+        <nav>
+            <a href="/">최신 소식</a>
+            <a href="/works">작품 정보</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>최신 소식</h2>
+
+        <div class="card-container">
+            {% for article in articles %}
+            <div class="card">
+                <span class="badge">{{ article[5] }}</span>
+                <h3>{{ article[1] }}</h3>
+                <p class="meta">{{ article[2] }} · {{ article[3] }}</p>
+                <p>{{ article[4] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
