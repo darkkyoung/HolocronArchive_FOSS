@@ -77,21 +77,57 @@ def import_csv_data():
 
 @app.route("/")
 def index():
+    keyword = request.args.get("keyword", "")
+    category = request.args.get("category", "")
+
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur.execute("""
+    query = """
         SELECT article_id, title, source_name, published_at, summary, category
         FROM articles
-        ORDER BY published_at DESC;
-    """)
+        WHERE 1=1
+    """
+    params = []
 
+    if keyword:
+        query += """
+            AND (
+                title ILIKE %s
+                OR summary ILIKE %s
+                OR source_name ILIKE %s
+            )
+        """
+        search_keyword = f"%{keyword}%"
+        params.extend([search_keyword, search_keyword, search_keyword])
+
+    if category:
+        query += " AND category = %s"
+        params.append(category)
+
+    query += " ORDER BY published_at DESC;"
+
+    cur.execute(query, params)
     articles = cur.fetchall()
+
+    cur.execute("""
+        SELECT DISTINCT category
+        FROM articles
+        WHERE category IS NOT NULL
+        ORDER BY category;
+    """)
+    categories = cur.fetchall()
 
     cur.close()
     conn.close()
 
-    return render_template("index.html", articles=articles)
+    return render_template(
+        "index.html",
+        articles=articles,
+        categories=categories,
+        keyword=keyword,
+        selected_category=category
+    )
 
 
 @app.route("/works")

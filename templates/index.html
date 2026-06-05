@@ -18,6 +18,28 @@
     <main>
         <h2>최신 소식</h2>
 
+        <form class="search-box" method="get" action="/">
+            <input 
+                type="text" 
+                name="keyword" 
+                placeholder="검색어를 입력하세요"
+                value="{{ keyword }}"
+            >
+
+            <select name="category">
+                <option value="">전체 카테고리</option>
+                {% for category in categories %}
+                    <option value="{{ category[0] }}"
+                        {% if selected_category == category[0] %}selected{% endif %}
+                    >
+                        {{ category[0] }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">검색</button>
+        </form>
+
         <div class="card-container">
             {% for article in articles %}
             <div class="card">

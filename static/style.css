@@ -67,3 +67,37 @@ h2 {
     border-radius: 999px;
     font-size: 12px;
 }
+
+.search-box {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    align-items: center;
+}
+
+.search-box input,
+.search-box select {
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    background: white;
+}
+
+.search-box input {
+    width: 320px;
+}
+
+.search-box button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #1d4ed8;
+}
