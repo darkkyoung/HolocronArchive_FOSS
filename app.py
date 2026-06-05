@@ -1,3 +1,5 @@
+#python -m venv venv → 가상환경 만들기
+#Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser → 파워쉘에서 실행 권한 설정
 #.\venv\Scripts\Activate.ps1
 #python app.py
 #위 두 개 실행하면 다시 로컬 브라우저 볼 수 있음
@@ -8,13 +10,27 @@ import pandas as pd
 
 app = Flask(__name__)
 
-DB_CONFIG = {
-    "host": "localhost",
-    "database": "db_project",
-    "user": "postgres",
-    "password": "...",
-    "port": 5432
-}
+import os
+from flask import Flask, render_template, request
+import psycopg2
+import pandas as pd
+
+app = Flask(__name__)
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+def get_db_connection():
+    if DATABASE_URL:
+        conn = psycopg2.connect(DATABASE_URL)
+    else:
+        conn = psycopg2.connect(
+            host="localhost",
+            database="db_project",
+            user="postgres",
+            password="네_로컬_PostgreSQL_비밀번호",
+            port=5432
+        )
+    return conn
 
 
 def get_db_connection():
