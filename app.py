@@ -27,7 +27,7 @@ def get_db_connection():
             host="localhost",
             database="db_project",
             user="postgres",
-            password="네_로컬_PostgreSQL_비밀번호",
+            password="darkk0729",
             port=5432
         )
     return conn

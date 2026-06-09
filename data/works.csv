@@ -1,6 +1,30 @@
 title,type,release_date,status,description,source_url
-The Mandalorian and Grogu,Movie,2026-05-22,Upcoming,Din Djarin and Grogu return in an upcoming Star Wars film,https://www.starwars.com/
-Ahsoka,Series,2023-08-22,Released,Ahsoka Tano investigates a new threat after the fall of the Empire,https://www.starwars.com/
-Andor,Series,2022-09-21,Released,A series following Cassian Andor before Rogue One,https://www.starwars.com/
-Skeleton Crew,Series,2024-12-02,Released,A group of children become lost in the Star Wars galaxy,https://www.starwars.com/
-Star Wars Visions,Animation,2021-09-22,Released,Animated anthology series by various studios,https://www.starwars.com/
+Star Wars: A New Hope (Episode IV),Movie,1977-05-25,Released,"The first released Star Wars film and the beginning of the Skywalker saga in release order.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Empire Strikes Back (Episode V),Movie,1980-05-21,Released,"The second released Star Wars film and the continuation of the original trilogy.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Return of the Jedi (Episode VI),Movie,1983-05-25,Released,"The final film of the original trilogy and a major conclusion to the Galactic Civil War storyline.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Phantom Menace (Episode I),Movie,1999-05-19,Released,"The first film of the prequel trilogy and the beginning of Anakin Skywalker's story.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Attack of the Clones (Episode II),Movie,2002-05-16,Released,"The second prequel film depicting the growing conflict that leads toward the Clone Wars.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Revenge of the Sith (Episode III),Movie,2005-05-19,Released,"The final prequel film showing the fall of Anakin Skywalker and the rise of Darth Vader.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Clone Wars,Movie,2008-08-15,Released,"The animated theatrical film that launched the wider Clone Wars animated storyline.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Clone Wars,Animation,2008-10-03,Released,"An animated series exploring the Clone Wars era between Attack of the Clones and Revenge of the Sith.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars Rebels,Animation,2014-10-03,Released,"An animated series following a rebel cell during the rise of the Galactic Empire.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Force Awakens (Episode VII),Movie,2015-12-18,Released,"The first film of the sequel trilogy introducing a new generation of heroes and villains.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Rogue One: A Star Wars Story,Movie,2016-12-16,Released,"A standalone film about the mission to steal the Death Star plans before A New Hope.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Last Jedi (Episode VIII),Movie,2017-12-15,Released,"The second film of the sequel trilogy continuing Rey and Kylo Ren's conflict.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Solo: A Star Wars Story,Movie,2018-05-25,Released,"A standalone film exploring Han Solo's early adventures before the original trilogy.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars Resistance,Animation,2018-10-07,Released,"An animated series set around the era of the sequel trilogy and the Resistance.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+The Mandalorian,Series,2019-11-12,Released,"A live-action series following Din Djarin and Grogu in the New Republic era.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Rise of Skywalker (Episode IX),Movie,2019-12-20,Released,"The final film of the sequel trilogy and the conclusion of the Skywalker saga.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+The Book of Boba Fett,Series,2021-12-29,Released,"A live-action Disney Plus series focused on Boba Fett and Fennec Shand after The Mandalorian Season 2.","https://www.starwars.com/news/the-book-of-boba-fett-premiere"
+Star Wars: The Bad Batch,Animation,2021-05-04,Released,"An animated series following Clone Force 99 after the events of the Clone Wars.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Obi-Wan Kenobi,Series,2022-05-27,Released,"A live-action series following Obi-Wan Kenobi between Revenge of the Sith and A New Hope.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Andor,Series,2022-09-21,Released,"A live-action series following Cassian Andor before the events of Rogue One.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Tales of the Jedi,Animation,2022-10-26,Released,"An animated anthology series telling stories of Jedi characters across different periods.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Ahsoka,Series,2023-08-22,Released,"A live-action series following Ahsoka Tano after the fall of the Empire.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Tales of the Empire,Animation,2024-05-04,Released,"An animated anthology series focused on stories connected to the Galactic Empire.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+The Acolyte,Series,2024-06-04,Released,"A live-action series set before the Skywalker saga during the final days of the High Republic era.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Skeleton Crew,Series,2024-12-02,Released,"A live-action series about a group of children lost in the Star Wars galaxy.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Tales of the Underworld,Animation,2025-05-04,Released,"An animated anthology series listed in the StarWars.com viewing guide as part of the expanding Disney Plus catalog.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Maul - Shadow Lord,Animation,2026-04-06,Upcoming,"An upcoming animated Star Wars series listed in the StarWars.com viewing guide. Exact release date should be updated later.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: The Mandalorian and Grogu,Movie,2026-05-22,Upcoming,"An upcoming theatrical Star Wars film centered on Din Djarin and Grogu.","https://www.starwars.com/news/star-wars-movies-and-series-guide"
+Star Wars: Starfighter,Movie,2027-05-28,Upcoming,"An upcoming theatrical Star Wars film directed by Shawn Levy and scheduled for release in 2027.","https://www.starwars.com/news/star-wars-starfighter-cast"
