@@ -42,11 +42,15 @@
 
         <div class="card-container">
             {% for article in articles %}
-            <div class="card">
+           <div class="card">
                 <span class="badge">{{ article[5] }}</span>
                 <h3>{{ article[1] }}</h3>
                 <p class="meta">{{ article[2] }} · {{ article[3] }}</p>
                 <p>{{ article[4] }}</p>
+
+                <a class="source-button" href="{{ article[6] }}" target="_blank">
+                    원문 보기
+                </a>
             </div>
             {% endfor %}
         </div>
