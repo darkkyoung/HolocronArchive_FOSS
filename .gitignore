@@ -1,0 +1,35 @@
+venv/
+__pycache__/
+*.pyc
+.env
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Flask / DB
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Large media
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.rar
+*.7z
