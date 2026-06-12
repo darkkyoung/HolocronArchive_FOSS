@@ -6,6 +6,8 @@
 
 #qwen2.5:3b (ollama 모델 이름)
 
+#git 에러 발생 시 : git pull foss main --allow-unrelated-histories
+
 import json
 import os
 import re
