@@ -1,6 +1,2 @@
 Flask
-psycopg2-binary
-pandas
 gunicorn
-requests
-beautifulsoup4
