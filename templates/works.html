@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holocron Archive - 작품 정보</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <h1>Holocron Archive</h1>
+                <p>Star Wars 콘텐츠 정보와 최신 소식을 모아보는 큐레이션 아카이브</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+
+            <div class="franchise-shell">
+                <div class="chapter-tabs">
+                    <a class="{% if selected_franchise == 'starwars' %}active{% endif %}"
+                       href="{{ url_for('works', franchise='starwars') }}">
+                        스타워즈
+                    </a>
+
+                    <a class="{% if selected_franchise == 'marvel' %}active{% endif %}"
+                       href="{{ url_for('works', franchise='marvel') }}">
+                        마블
+                    </a>
+                </div>
+
+                <div class="chapter-panel">
+                    <nav class="main-nav sub-nav">
+                        <a class="{% if request.endpoint == 'index' %}active{% endif %}"
+                           href="{{ url_for('index', franchise=selected_franchise) }}">
+                            <span class="nav-icon">💫</span>
+                            최신 소식
+                        </a>
+
+                        <a class="{% if request.endpoint == 'works' %}active{% endif %}"
+                           href="{{ url_for('works', franchise=selected_franchise) }}">
+                            <span class="nav-icon">🔎</span>
+                            작품 정보
+                        </a>
+                    </nav>
+
+                    <h2 class="section-title">작품 정보</h2>
+
+                    {% if upcoming_work or featured_work or other_works %}
+
+                        {% if upcoming_work %}
+                            <section class="upcoming-strip">
+                                <div class="upcoming-left">
+                                    <span class="upcoming-label">개봉 예정</span>
+                                    <strong>{{ upcoming_work.title }}</strong>
+                                </div>
+
+                                <div class="upcoming-right">
+                                    <span>{{ upcoming_work.release_date }}</span>
+
+                                    {% if upcoming_work.source_url %}
+                                        <a href="{{ upcoming_work.source_url }}" target="_blank">정보 보기</a>
+                                    {% endif %}
+
+                                    <a href="{{ url_for('index', franchise=selected_franchise, keyword=upcoming_work.news_keyword, category='') }}">
+                                        관련 소식
+                                    </a>
+                                </div>
+                            </section>
+                        {% endif %}
+
+                        {% if featured_work %}
+                            <section class="featured-work card spotlight-work">
+                                <div class="spotlight-label">화제작</div>
+
+                                {% if featured_work.image_url %}
+                                    <img class="featured-work-image"
+                                        src="{{ featured_work.image_url }}"
+                                        alt="{{ featured_work.title }}">
+                                {% endif %}
+
+                                <div class="featured-work-content">
+                                    <span class="work-type">{{ featured_work.type }}</span>
+
+                                    <h3>{{ featured_work.title }}</h3>
+
+                                    <div class="meta">개봉/공개일: {{ featured_work.release_date }}</div>
+
+                                    {% if featured_work.is_theater_release %}
+                                        <span class="status now-showing">상영 중</span>
+                                    {% elif featured_work.status == 'Released' %}
+                                        <span class="status released">공개 완료</span>
+                                    {% else %}
+                                        <span class="status upcoming">공개 예정</span>
+                                    {% endif %}
+
+                                    <p class="work-desc">{{ featured_work.description }}</p>
+
+                                    <div class="work-actions">
+                                        {% if featured_work.is_theater_release %}
+                                            <button class="button-link watch-toggle" type="button">
+                                                보러 가기
+                                            </button>
+                                        {% elif featured_work.source_url %}
+                                            <a class="button-link" href="https://www.disneyplus.com/home" target="_blank">
+                                                보러 가기
+                                            </a>
+                                        {% endif %}
+
+                                        <a class="button-link secondary-link"
+                                           href="{{ url_for('index', franchise=selected_franchise, keyword=featured_work.news_keyword, category='') }}">
+                                            관련 소식
+                                        </a>
+                                    </div>
+
+                                    {% if featured_work.is_theater_release %}
+                                        <div class="theater-choice">
+                                            <span class="theater-title">예매 사이트 선택</span>
+
+                                            <div class="theater-links">
+                                                {% for theater_name, theater_url in featured_work.theater_urls.items() %}
+                                                    <a href="{{ theater_url }}" target="_blank">
+                                                        {{ theater_name }}
+                                                    </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </section>
+                        {% endif %}
+
+                        {% if other_works and other_works|length > 0 %}
+                            <section class="works-grid">
+                                {% for work in other_works %}
+                                    <article class="work-card card">
+                                        {% if work.image_url %}
+                                            <img class="work-image"
+                                                src="{{ work.image_url }}"
+                                                alt="{{ work.title }}">
+                                        {% endif %}
+
+                                        <div class="work-top">
+                                            <div>
+                                                <span class="work-type">{{ work.type }}</span>
+                                                <h3>{{ work.title }}</h3>
+                                                <div class="meta">개봉/공개일: {{ work.release_date }}</div>
+
+                                                {% if work.is_theater_release %}
+                                                    <span class="status now-showing">상영 중</span>
+                                                {% elif work.status == 'Released' %}
+                                                    <span class="status released">공개 완료</span>
+                                                {% else %}
+                                                    <span class="status upcoming">공개 예정</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <p class="work-desc">{{ work.description }}</p>
+
+                                        <div class="work-actions">
+                                            {% if work.is_theater_release %}
+                                                <button class="button-link watch-toggle" type="button">
+                                                    보러 가기
+                                                </button>
+                                            {% elif work.source_url %}
+                                                <a class="button-link" href="https://www.disneyplus.com/home" target="_blank">
+                                                    보러 가기
+                                                </a>
+                                            {% endif %}
+
+                                            <a class="button-link secondary-link"
+                                               href="{{ url_for('index', franchise=selected_franchise, keyword=work.news_keyword, category='') }}">
+                                                관련 소식
+                                            </a>
+                                        </div>
+
+                                        {% if work.is_theater_release %}
+                                            <div class="theater-choice">
+                                                <span class="theater-title">예매 사이트 선택</span>
+
+                                                <div class="theater-links">
+                                                    {% for theater_name, theater_url in work.theater_urls.items() %}
+                                                        <a href="{{ theater_url }}" target="_blank">
+                                                            {{ theater_name }}
+                                                        </a>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </article>
+                                {% endfor %}
+                            </section>
+                        {% endif %}
+
+                    {% else %}
+                        <p class="empty-text">
+                            {% if selected_franchise == 'marvel' %}
+                                아직 마블 작품 데이터가 등록되지 않았습니다.
+                            {% else %}
+                                등록된 작품 정보가 없습니다.
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            Holocron Archive · 프랜차이즈 콘텐츠 정보/뉴스 아카이브 프로젝트
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const watchButtons = document.querySelectorAll(".watch-toggle");
+
+            watchButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const card = button.closest(".featured-work, .work-card");
+
+                    if (!card) {
+                        return;
+                    }
+
+                    const theaterChoice = card.querySelector(".theater-choice");
+
+                    if (theaterChoice) {
+                        theaterChoice.classList.toggle("show");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holocron Archive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <h1>Holocron Archive</h1>
+                <p>Star Wars 콘텐츠 정보와 최신 소식을 모아보는 큐레이션 아카이브</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+
+            <div class="franchise-shell">
+                <div class="chapter-tabs">
+                    <a class="{% if selected_franchise == 'starwars' %}active{% endif %}"
+                    href="{{ url_for('index', franchise='starwars') }}">
+                        스타워즈
+                    </a>
+
+                    <a class="{% if selected_franchise == 'marvel' %}active{% endif %}"
+                    href="{{ url_for('index', franchise='marvel') }}">
+                        마블
+                    </a>
+                </div>
+
+                <div class="chapter-panel">
+                    <nav class="main-nav sub-nav">
+                        <a class="{% if request.endpoint == 'index' %}active{% endif %}"
+                        href="{{ url_for('index', franchise=selected_franchise) }}">
+                            <span class="nav-icon">💫</span>
+                            최신 소식
+                        </a>
+
+                        <a class="{% if request.endpoint == 'works' %}active{% endif %}"
+                        href="{{ url_for('works', franchise=selected_franchise) }}">
+                            <span class="nav-icon">🔎</span>
+                            작품 정보
+                        </a>
+                    </nav>
+
+                    <h2 class="section-title">최신 소식</h2>
+
+                    <form method="GET" action="{{ url_for('index') }}" class="search-panel">
+                        <input type="hidden" name="franchise" value="{{ selected_franchise }}">
+
+                        <input
+                            type="text"
+                            name="keyword"
+                            placeholder="검색어를 입력하세요"
+                            value="{{ keyword }}"
+                        >
+
+                        <select name="category">
+                            <option value="">전체 카테고리</option>
+                            <option value="영화" {% if selected_category == '영화' %}selected{% endif %}>영화</option>
+                            <option value="드라마" {% if selected_category == '드라마' %}selected{% endif %}>드라마</option>
+                            <option value="애니메이션" {% if selected_category == '애니메이션' %}selected{% endif %}>애니메이션</option>
+                            <option value="게임" {% if selected_category == '게임' %}selected{% endif %}>게임</option>
+                            <option value="도서" {% if selected_category == '도서' %}selected{% endif %}>도서</option>
+                            <option value="기타" {% if selected_category == '기타' %}selected{% endif %}>기타</option>
+                        </select>
+
+                        <button type="submit">검색</button>
+                    </form>
+
+                    {% if articles and articles|length > 0 %}
+                        {% set featured = articles[0] %}
+
+                        <section class="featured-article card">
+                            {% if featured.image_url %}
+                                <img class="featured-image" src="{{ featured.image_url }}" alt="{{ featured.title_ko or featured.title }}">
+                            {% endif %}
+
+                            <span class="badge">{{ featured.category }}</span>
+                            <h3>{{ featured.title_ko or featured.title }}</h3>
+                            <div class="meta">{{ featured.source_name }} · {{ featured.published_at }}</div>
+                            <p class="summary">{{ featured.summary_ko or featured.summary }}</p>
+                            <a class="button-link" href="{{ featured.source_url }}" target="_blank">원문 보기</a>
+                        </section>
+
+                        {% if articles|length > 1 %}
+                            <section class="article-grid">
+                                {% for article in articles[1:] %}
+                                    <article class="article-card card">
+                                        {% if article.image_url %}
+                                            <img class="article-image" src="{{ article.image_url }}" alt="{{ article.title_ko or article.title }}">
+                                        {% endif %}
+
+                                        <span class="badge">{{ article.category }}</span>
+                                        <h4>{{ article.title_ko or article.title }}</h4>
+                                        <div class="meta">{{ article.source_name }} · {{ article.published_at }}</div>
+                                        <p class="summary">{{ article.summary_ko or article.summary }}</p>
+                                        <a class="button-link" href="{{ article.source_url }}" target="_blank">원문 보기</a>
+                                    </article>
+                                {% endfor %}
+                            </section>
+                        {% endif %}
+                    {% else %}
+                        <p class="empty-text">
+                            {% if selected_franchise == 'marvel' %}
+                                아직 마블 관련 데이터가 등록되지 않았습니다.
+                            {% else %}
+                                검색 결과가 없습니다.
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            Holocron Archive · 프랜차이즈 콘텐츠 정보/뉴스 아카이브 프로젝트
+        </div>
+    </footer>
+</body>
+</html>
