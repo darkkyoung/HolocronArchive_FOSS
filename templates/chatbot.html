@@ -1,0 +1,167 @@
+<div class="ai-assistant">
+    <button class="ai-toggle" type="button">
+        AI 도우미
+    </button>
+
+    <div class="ai-panel" id="aiPanel">
+        <div class="ai-header">
+            <strong>Holocron AI 도우미</strong>
+            <button class="ai-close" type="button">×</button>
+        </div>
+
+        <div class="ai-body">
+            <p class="ai-guide">
+                작품 추천, 최신 소식, 감상 순서를 질문해 보세요.
+            </p>
+
+            <div class="ai-messages" id="aiMessages">
+                <div class="ai-message bot">
+                    예: “만달로리안과 그로구 소식 있어?”, “스타워즈 처음 보면 뭐부터 봐야 해?”
+                </div>
+            </div>
+        </div>
+
+        <form class="ai-form" id="aiForm">
+            <input
+                type="text"
+                id="aiQuestion"
+                placeholder="질문을 입력하세요"
+                autocomplete="off"
+            >
+            <button type="submit">전송</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const aiToggle = document.querySelector(".ai-toggle");
+        const aiPanel = document.getElementById("aiPanel");
+        const aiClose = document.querySelector(".ai-close");
+        const aiForm = document.getElementById("aiForm");
+        const aiQuestion = document.getElementById("aiQuestion");
+        const aiMessages = document.getElementById("aiMessages");
+
+        function addMessage(text, type) {
+            const message = document.createElement("div");
+            message.className = "ai-message " + type;
+            message.innerText = text;
+            aiMessages.appendChild(message);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+            return message;
+        }
+
+        function addLinks(data) {
+            if ((!data.articles || data.articles.length === 0) &&
+                (!data.works || data.works.length === 0)) {
+                return;
+            }
+
+            const box = document.createElement("div");
+            box.className = "ai-links";
+
+            if (data.articles && data.articles.length > 0) {
+                const title = document.createElement("strong");
+                title.innerText = "관련 기사";
+                box.appendChild(title);
+
+                data.articles.forEach(function (article) {
+                    if (!article.url) {
+                        return;
+                    }
+
+                    const link = document.createElement("a");
+                    link.href = article.url;
+                    link.target = "_blank";
+                    link.innerText = article.title || "기사 보기";
+                    box.appendChild(link);
+                });
+            }
+
+            if (data.works && data.works.length > 0) {
+                const title = document.createElement("strong");
+                title.innerText = "관련 작품";
+                box.appendChild(title);
+
+                data.works.forEach(function (work) {
+                    const item = document.createElement("div");
+                    item.className = "ai-work-link";
+
+                    let text = work.title || "작품 정보";
+                    if (work.release_date) {
+                        text += " · " + work.release_date;
+                    }
+
+                    item.innerText = text;
+                    box.appendChild(item);
+
+                    if (work.is_theater_release && work.theater_urls) {
+                        Object.keys(work.theater_urls).forEach(function (name) {
+                            const theaterLink = document.createElement("a");
+                            theaterLink.href = work.theater_urls[name];
+                            theaterLink.target = "_blank";
+                            theaterLink.innerText = name + " 예매";
+                            box.appendChild(theaterLink);
+                        });
+                    } else if (work.source_url) {
+                        const link = document.createElement("a");
+                        link.href = work.source_url;
+                        link.target = "_blank";
+                        link.innerText = "작품 정보 보기";
+                        box.appendChild(link);
+                    }
+                });
+            }
+
+            aiMessages.appendChild(box);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+
+        aiToggle.addEventListener("click", function () {
+            aiPanel.classList.toggle("show");
+        });
+
+        aiClose.addEventListener("click", function () {
+            aiPanel.classList.remove("show");
+        });
+
+        aiForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const question = aiQuestion.value.trim();
+
+            if (!question) {
+                return;
+            }
+
+            addMessage(question, "user");
+            aiQuestion.value = "";
+
+            const loadingMessage = addMessage("답변을 생성하는 중입니다...", "bot");
+
+            const params = new URLSearchParams(window.location.search);
+            const franchise = params.get("franchise") || "starwars";
+
+            try {
+                const response = await fetch("/api/assistant", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        question: question,
+                        franchise: franchise
+                    })
+                });
+
+                const data = await response.json();
+
+                loadingMessage.innerText = data.answer || "답변을 생성하지 못했습니다.";
+                addLinks(data);
+
+            } catch (error) {
+                loadingMessage.innerText = "AI 도우미 요청 중 오류가 발생했습니다.";
+            }
+        });
+    });
+</script>
