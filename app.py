@@ -1,8 +1,4 @@
-# python -m venv venv
-# .\venv\Scripts\Activate.ps1
-# pip install -r requirements.txt
-# python app.py
-# http://localhost:5000
+# .\run.bat
 
 #qwen2.5:3b (ollama 모델 이름)
 
