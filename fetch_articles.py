@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
@@ -12,6 +13,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 SWNN_FEED_URL = "https://www.starwarsnewsnet.com/feed/"
+STARWARS_NEWS_URL = "https://www.starwars.com/news"
 
 
 def format_date(entry):
@@ -26,6 +28,22 @@ def format_date(entry):
 
     try:
         dt = parsedate_to_datetime(published)
+        return dt.strftime("%Y-%m-%d")
+    except Exception:
+        return ""
+    
+def parse_starwars_date(text):
+    """
+    StarWars.com의 날짜 문자열을 YYYY-MM-DD 형식으로 변환한다.
+    예: July 3, 2026 -> 2026-07-03
+    """
+    if not text:
+        return ""
+
+    text = text.strip()
+
+    try:
+        dt = datetime.strptime(text, "%B %d, %Y")
         return dt.strftime("%Y-%m-%d")
     except Exception:
         return ""
@@ -194,6 +212,109 @@ def fetch_swnn_articles(limit=20):
 
     return articles
 
+def fetch_starwars_official_articles(limit=20):
+    """
+    StarWars.com/news 페이지에서 공식 뉴스 메타데이터를 수집한다.
+    기사 본문 전체를 저장하지 않고 제목, 링크, 요약, 날짜, 이미지 URL만 가져온다.
+    """
+    articles = []
+
+    try:
+        response = requests.get(
+            STARWARS_NEWS_URL,
+            timeout=15,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"StarWars.com 수집 실패: {e}")
+        return articles
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    links = soup.find_all("a", href=True)
+
+    seen_urls = set()
+
+    for link in links:
+        if len(articles) >= limit:
+            break
+
+        title = link.get_text(" ", strip=True)
+        href = link.get("href", "").strip()
+
+        if not title or not href:
+            continue
+
+        # StarWars.com 뉴스 링크만 허용
+        if href.startswith("https://www.starwars.com/news/"):
+            url = href
+        elif href.startswith("/news/"):
+            url = "https://www.starwars.com" + href
+        else:
+            continue
+
+        # 카테고리 페이지는 제외
+        if "/news/category/" in url:
+            continue
+
+        if "/news/tag/" in url:
+            continue
+
+        # 뉴스 메인 페이지 자체는 제외
+        if url.rstrip("/") == "https://www.starwars.com/news":
+            continue
+
+        if len(title) < 10:
+            continue
+
+        if url in seen_urls:
+            continue
+
+        seen_urls.add(url)
+
+        # 링크 주변 부모 요소에서 요약/날짜 후보를 찾는다.
+        parent = link.find_parent()
+        parent_text = parent.get_text(" ", strip=True) if parent else ""
+
+        summary = ""
+        published_at = ""
+
+        # StarWars.com 페이지에는 날짜가 "July 3, 2026" 형식으로 들어간다.
+        date_match = re.search(
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}",
+            parent_text
+        )
+
+        if date_match:
+            published_at = parse_starwars_date(date_match.group(0))
+
+        # 요약은 title을 제외한 주변 텍스트에서 너무 길지 않게 추출
+        summary = ""
+
+        image_url = fetch_image_from_article_page(url)
+
+        article = {
+            "article_id": 0,
+            "title": title,
+            "title_ko": "",
+            "source_name": "StarWars.com",
+            "source_url": url,
+            "image_url": image_url,
+            "published_at": published_at,
+            "summary": summary,
+            "summary_ko": "",
+            "category": guess_category(title),
+            "franchise": "Star Wars",
+            "label": "공식"
+        }
+
+        articles.append(article)
+
+    return articles
+
 
 def save_articles(articles):
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -208,15 +329,27 @@ def save_articles(articles):
 
 
 def main():
-    print("Star Wars News Net RSS 기사 수집 시작")
-    articles = fetch_swnn_articles(limit=20)
+    all_articles = []
 
-    if not articles:
-        print("수집된 기사가 없습니다. RSS 주소나 네트워크 상태를 확인하세요.")
+    print("Star Wars News Net RSS 기사 수집 시작")
+    swnn_articles = fetch_swnn_articles(limit=20)
+    print(f"SWNN 수집 기사 수: {len(swnn_articles)}")
+    all_articles.extend(swnn_articles)
+
+    print("StarWars.com 공식 뉴스 수집 시작")
+    official_articles = fetch_starwars_official_articles(limit=20)
+    print(f"StarWars.com 수집 기사 수: {len(official_articles)}")
+    all_articles.extend(official_articles)
+
+    if not all_articles:
+        print("수집된 기사가 없습니다. 네트워크 상태나 수집 대상 사이트 구조를 확인하세요.")
         return
 
-    save_articles(articles)
+    # article_id 재부여
+    for idx, article in enumerate(all_articles, start=1):
+        article["article_id"] = idx
 
+    save_articles(all_articles)
 
 if __name__ == "__main__":
     main()
