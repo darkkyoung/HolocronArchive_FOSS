@@ -77,6 +77,59 @@ def filter_articles(articles, franchise, keyword="", category=""):
 
     return filtered
 
+def filter_topics(topics, franchise="starwars", keyword="", category=""):
+    filtered_topics = []
+
+    for topic in topics:
+        articles = topic.get("articles", [])
+
+        # 프랜차이즈 필터
+        if franchise:
+            franchise_matched = any(
+                article.get("franchise", "").lower().replace(" ", "") == franchise.lower().replace(" ", "")
+                for article in articles
+            )
+            if not franchise_matched:
+                continue
+
+        # 카테고리 필터
+        if category:
+            category_matched = any(
+                article.get("category") == category
+                for article in articles
+            )
+            if not category_matched:
+                continue
+
+        # 검색어 필터
+        if keyword:
+            keyword_lower = keyword.lower()
+
+            topic_text = " ".join([
+                topic.get("topic_title", ""),
+                topic.get("topic_summary", "")
+            ]).lower()
+
+            article_text = " ".join(
+                [
+                    " ".join([
+                        article.get("title", ""),
+                        article.get("title_ko", ""),
+                        article.get("summary", ""),
+                        article.get("summary_ko", ""),
+                        article.get("source_name", "")
+                    ])
+                    for article in articles
+                ]
+            ).lower()
+
+            if keyword_lower not in topic_text and keyword_lower not in article_text:
+                continue
+
+        filtered_topics.append(topic)
+
+    return filtered_topics
+
 
 def prepare_work(work):
     work = dict(work)
@@ -409,9 +462,18 @@ def index():
         category=category
     )
 
+    topics = load_json("topics.json")
+    topics = filter_topics(
+        topics=topics,
+        franchise=franchise,
+        keyword=keyword,
+        category=category
+    )
+
     return render_template(
         "index.html",
         articles=articles,
+        topics=topics,
         keyword=keyword,
         selected_category=category,
         selected_franchise=franchise

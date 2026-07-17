@@ -49,6 +49,69 @@
 
                     <h2 class="section-title">최신 소식</h2>
 
+                    {% if topics %}
+                        <section class="top-topics-section">
+                            <div class="section-heading-row">
+                                <h3>🔥 주목할 핵심 이슈 TOP 3</h3>
+                                <span>복수 출처와 관련 기사 수를 기준으로 선정한 주요 이슈입니다</span>
+                            </div>
+
+                            <div class="topic-grid">
+                                {% for topic in topics %}
+                                    {% if topic.is_top %}
+                                        <article class="topic-card card">
+                                            {% if topic.representative_article %}
+                                                {% set rep = topic.representative_article %}
+
+                                                {% if rep.image_url %}
+                                                    <img class="topic-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                                {% endif %}
+                                            {% endif %}
+
+                                            <div class="topic-body">
+                                                <div class="topic-card-header">
+                                                    <span class="topic-label-gold">{{ topic.label }}</span>
+                                                    <span class="topic-source-count">출처 {{ topic.source_count }}개</span>
+                                                </div>
+
+                                                <h4>{{ topic.topic_title }}</h4>
+
+                                                <div class="meta">
+                                                    관련 기사 {{ topic.article_count }}개
+                                                    {% if topic.latest_published_at %}
+                                                        · 최신일 {{ topic.latest_published_at }}
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="topic-sources">
+                                                    {% for source in topic.sources %}
+                                                        <span>{{ source }}</span>
+                                                    {% endfor %}
+                                                </div>
+
+                                                {% if topic.representative_article %}
+                                                    {% set rep = topic.representative_article %}
+
+                                                    <div class="topic-representative">
+                                                        <span>대표 기사</span>
+                                                        <strong>{{ rep.source_name }}</strong>
+                                                        {% if rep.published_at %}
+                                                            <em>{{ rep.published_at }}</em>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <a class="topic-main-link" href="{{ rep.source_url }}" target="_blank">
+                                                        {{ rep.title_ko or rep.title }}
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </article>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+                    {% endif %}
+
                     <form method="GET" action="{{ url_for('index') }}" class="search-panel">
                         <input type="hidden" name="franchise" value="{{ selected_franchise }}">
 
@@ -72,44 +135,68 @@
                         <button type="submit">검색</button>
                     </form>
 
-                    {% if articles and articles|length > 0 %}
-                        {% set featured = articles[0] %}
+                    {% if topics and topics|length > 0 %}
+                        <section class="all-topics-section">
+                            <div class="section-heading-row">
+                                <h3>🗂 전체 이슈</h3>
+                                <span>자동 수집된 기사들을 주제별로 분류해 최신순으로 보여줍니다</span>
+                            </div>
 
-                        <section class="featured-article card">
-                            {% if featured.image_url %}
-                                <img class="featured-image" src="{{ featured.image_url }}" alt="{{ featured.title_ko or featured.title }}">
-                            {% endif %}
-
-                            <span class="badge">{{ featured.category }}</span>
-                            <h3>{{ featured.title_ko or featured.title }}</h3>
-                            <div class="meta">{{ featured.source_name }} · {{ featured.published_at }}</div>
-                            <p class="summary">{{ featured.summary_ko or featured.summary }}</p>
-                            <a class="button-link" href="{{ featured.source_url }}" target="_blank">원문 보기</a>
-                        </section>
-
-                        {% if articles|length > 1 %}
-                            <section class="article-grid">
-                                {% for article in articles[1:] %}
+                            <div class="article-grid">
+                                {% for topic in topics %}
                                     <article class="article-card card">
-                                        {% if article.image_url %}
-                                            <img class="article-image" src="{{ article.image_url }}" alt="{{ article.title_ko or article.title }}">
+                                        {% if topic.representative_article %}
+                                            {% set rep = topic.representative_article %}
+
+                                            {% if rep.image_url %}
+                                                <img class="article-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                            {% endif %}
                                         {% endif %}
 
-                                        <span class="badge">{{ article.category }}</span>
-                                        <h4>{{ article.title_ko or article.title }}</h4>
-                                        <div class="meta">{{ article.source_name }} · {{ article.published_at }}</div>
-                                        <p class="summary">{{ article.summary_ko or article.summary }}</p>
-                                        <a class="button-link" href="{{ article.source_url }}" target="_blank">원문 보기</a>
+                                        <span class="badge">{{ topic.label }}</span>
+
+                                        <h4>{{ topic.topic_title }}</h4>
+
+                                        <div class="meta">
+                                            관련 기사 {{ topic.article_count }}개 · 출처 {{ topic.source_count }}개
+                                            {% if topic.latest_published_at %}
+                                                · {{ topic.latest_published_at }}
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="topic-sources">
+                                            {% for source in topic.sources %}
+                                                <span>{{ source }}</span>
+                                            {% endfor %}
+                                        </div>
+
+                                        {% if topic.articles and topic.articles|length > 1 %}
+                                            <details class="related-articles">
+                                                <summary>관련 기사 {{ topic.article_count }}개 보기</summary>
+
+                                                <div class="related-article-list">
+                                                    {% for article in topic.articles %}
+                                                        <a href="{{ article.source_url }}" target="_blank">
+                                                            <span>{{ article.source_name }}</span>
+                                                            <strong>{{ article.title_ko or article.title }}</strong>
+                                                            {% if article.published_at %}
+                                                                <em>{{ article.published_at }}</em>
+                                                            {% endif %}
+                                                        </a>
+                                                    {% endfor %}
+                                                </div>
+                                            </details>
+                                        {% endif %}
                                     </article>
                                 {% endfor %}
-                            </section>
-                        {% endif %}
+                            </div>
+                        </section>
                     {% else %}
                         <p class="empty-text">
                             {% if selected_franchise == 'marvel' %}
                                 아직 마블 관련 데이터가 등록되지 않았습니다.
                             {% else %}
-                                검색 결과가 없습니다.
+                                표시할 이슈가 없습니다.
                             {% endif %}
                         </p>
                     {% endif %}

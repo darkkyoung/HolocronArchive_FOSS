@@ -1,6 +1,358 @@
 [
   {
     "topic_id": 1,
+    "topic_title": "Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-15",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 1,
+      "title": "Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/review-the-bad-batch-rogue-agents-4-a-basic-finale-still-remains-charming-to-the-last.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Untitled-design-1024x576.png",
+      "published_at": "2026-07-15",
+      "summary": "The final issue of Star Wars: Hyperspace Stories: The Bad Batch – Rogue Agents was released today. Issue #4 brings The post Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 1,
+        "title": "Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/review-the-bad-batch-rogue-agents-4-a-basic-finale-still-remains-charming-to-the-last.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Untitled-design-1024x576.png",
+        "published_at": "2026-07-15",
+        "summary": "The final issue of Star Wars: Hyperspace Stories: The Bad Batch – Rogue Agents was released today. Issue #4 brings The post Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 2,
+    "topic_title": "‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-14",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 2,
+      "title": "‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/lego-star-wars-the-mandalorian-special-officially-announced-releasing-september-2.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/lego-star-wars-the-mandalorian-poster-banner-e1784053769779.jpeg",
+      "published_at": "2026-07-14",
+      "summary": "In a fun way to celebrate the Mandalorian and Grogu pairing, a new post from StarWars.com has announced that a The post ‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2 appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 2,
+        "title": "‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/lego-star-wars-the-mandalorian-special-officially-announced-releasing-september-2.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/lego-star-wars-the-mandalorian-poster-banner-e1784053769779.jpeg",
+        "published_at": "2026-07-14",
+        "summary": "In a fun way to celebrate the Mandalorian and Grogu pairing, a new post from StarWars.com has announced that a The post ‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2 appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 3,
+    "topic_title": "Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-14",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 3,
+      "title": "Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/review-star-wars-legacy-charts-a-new-jedi-path-in-one-of-rey-and-leias-most-personal-stories-yet.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/legacy_header.jpg",
+      "published_at": "2026-07-14",
+      "summary": "When The Rise of Skywalker introduced us to the idea of Leia training Rey in the Force as our new The post Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 3,
+        "title": "Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/review-star-wars-legacy-charts-a-new-jedi-path-in-one-of-rey-and-leias-most-personal-stories-yet.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/legacy_header.jpg",
+        "published_at": "2026-07-14",
+        "summary": "When The Rise of Skywalker introduced us to the idea of Leia training Rey in the Force as our new The post Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 4,
+    "topic_title": "‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-14",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 4,
+      "title": "‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
+      "published_at": "2026-07-14",
+      "summary": "Only two months after its theatrical debut, The Mandalorian and Grogu will be available to purchase digitally next week on The post ‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 4,
+        "title": "‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
+        "published_at": "2026-07-14",
+        "summary": "Only two months after its theatrical debut, The Mandalorian and Grogu will be available to purchase digitally next week on The post ‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 5,
+    "topic_title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-13",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 5,
+      "title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/new-lego-star-wars-animated-special-to-screen-at-d23.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/09/LEGO-Star-Wars-Rebuild-The-Galaxy-Pieces-Of-The-Past-Promo-Art-1024x576.png",
+      "published_at": "2026-07-13",
+      "summary": "UPDATE: More details regarding the new LEGO Star Wars special were revealed via the D23 app. Though we don’t have The post Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23 appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 5,
+        "title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/new-lego-star-wars-animated-special-to-screen-at-d23.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/09/LEGO-Star-Wars-Rebuild-The-Galaxy-Pieces-Of-The-Past-Promo-Art-1024x576.png",
+        "published_at": "2026-07-13",
+        "summary": "UPDATE: More details regarding the new LEGO Star Wars special were revealed via the D23 app. Though we don’t have The post Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23 appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 6,
+    "topic_title": "This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-12",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 6,
+      "title": "This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-the-ninth-jedi-gets-august-release-date-the-road-to-star-wars-50th-and-more.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/TheNinthJedi_5-scaled.jpg",
+      "published_at": "2026-07-12",
+      "summary": "Happy Sunday, and welcome to a new edition of “This Week, In a Galaxy Far, Far Away“. I missed last The post This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 6,
+        "title": "This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-the-ninth-jedi-gets-august-release-date-the-road-to-star-wars-50th-and-more.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/TheNinthJedi_5-scaled.jpg",
+        "published_at": "2026-07-12",
+        "summary": "Happy Sunday, and welcome to a new edition of “This Week, In a Galaxy Far, Far Away“. I missed last The post This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 7,
+    "topic_title": "Lom Pyke – ‘Star Wars’ Character Spotlight",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-10",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 7,
+      "title": "Lom Pyke – ‘Star Wars’ Character Spotlight",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/lom-pyke-star-wars-character-spotlight.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Lom-Pyke-holding-a-glass.jpeg",
+      "published_at": "2026-07-10",
+      "summary": "This Star Wars Character Spotlight will cover Lom Pyke, leader of the Pyke Syndicate for most of the prequel era The post Lom Pyke – ‘Star Wars’ Character Spotlight appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 7,
+        "title": "Lom Pyke – ‘Star Wars’ Character Spotlight",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/lom-pyke-star-wars-character-spotlight.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Lom-Pyke-holding-a-glass.jpeg",
+        "published_at": "2026-07-10",
+        "summary": "This Star Wars Character Spotlight will cover Lom Pyke, leader of the Pyke Syndicate for most of the prequel era The post Lom Pyke – ‘Star Wars’ Character Spotlight appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 8,
+    "topic_title": "Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 120,
+    "latest_published_at": "2026-07-09",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 8,
+      "title": "Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/exclusive-star-wars-legacy-book-jacket-coming-to-san-diego-comic-con.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Screenshot-2026-07-09-3.39.21-PM-e1783629613527.png",
+      "published_at": "2026-07-09",
+      "summary": "Any Star Wars fans heading to this year’s San Diego Comic-Con can get their hands on an exclusive book jacket for The post Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "도서",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체"
+    },
+    "articles": [
+      {
+        "article_id": 8,
+        "title": "Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/exclusive-star-wars-legacy-book-jacket-coming-to-san-diego-comic-con.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Screenshot-2026-07-09-3.39.21-PM-e1783629613527.png",
+        "published_at": "2026-07-09",
+        "summary": "Any Star Wars fans heading to this year’s San Diego Comic-Con can get their hands on an exclusive book jacket for The post Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "도서",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체"
+      }
+    ]
+  },
+  {
+    "topic_id": 9,
     "topic_title": "Star Wars: Visions Presents - The Ninth Jedi Creators Talk About Heroes and Villains",
     "topic_summary": "",
     "article_count": 3,
@@ -10,9 +362,23 @@
     ],
     "source_count": 2,
     "label": "공식 포함",
-    "importance": 100,
+    "importance": 290,
     "latest_published_at": "2026-07-09",
     "is_top": true,
+    "representative_article": {
+      "article_id": 16,
+      "title": "Star Wars: Visions Presents - The Ninth Jedi Creators Talk About Heroes and Villains",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/anime-expo-the-ninth-jedi-filmmaker-interview",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/anime-expo-the-ninth-jedi-filmmaker-interview-feature_7ac30326.jpeg?region=0%2C0%2C1599%2C899",
+      "published_at": "2026-07-03",
+      "summary": "",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
     "articles": [
       {
         "article_id": 9,
@@ -59,7 +425,491 @@
     ]
   },
   {
-    "topic_id": 2,
+    "topic_id": 10,
+    "topic_title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-30",
+    "is_top": true,
+    "representative_article": {
+      "article_id": 17,
+      "title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-celebration-la-2027-celebrity-guests",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/swcla-celebration-guests-feature_f17be384.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-06-30",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 17,
+        "title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-celebration-la-2027-celebrity-guests",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/swcla-celebration-guests-feature_f17be384.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-06-30",
+        "summary": "",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 11,
+    "topic_title": "Who is Zeb?",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-23",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 18,
+      "title": "Who is Zeb?",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/who-is-zeb",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/who-is-zeb-the-mandalorian-and-grogu-feature_ff800d15.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-06-23",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 18,
+        "title": "Who is Zeb?",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/who-is-zeb",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/who-is-zeb-the-mandalorian-and-grogu-feature_ff800d15.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-06-23",
+        "summary": "",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 12,
+    "topic_title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-17",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 19,
+      "title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-father-figure",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-father-figure-featu_d51033ac.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-06-17",
+      "summary": "",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 19,
+        "title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-father-figure",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-father-figure-featu_d51033ac.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-06-17",
+        "summary": "",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 13,
+    "topic_title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-16",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 20,
+      "title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-razor-crest",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-razor-crest-feature_e8600419.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-06-16",
+      "summary": "",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 20,
+        "title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-razor-crest",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-razor-crest-feature_e8600419.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-06-16",
+        "summary": "",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 14,
+    "topic_title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-10",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 21,
+      "title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-fathers-day-gift-guide",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-fathers-day-gift-guide-2026_2adc6dfe.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-06-10",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 21,
+        "title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-fathers-day-gift-guide",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-fathers-day-gift-guide-2026_2adc6dfe.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-06-10",
+        "summary": "",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 15,
+    "topic_title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-06",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 22,
+      "title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-zero-company-gameplay-trailer",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-zero-company-gameplay-trailer-feature_70a08209.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-06-06",
+      "summary": "",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 22,
+        "title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-zero-company-gameplay-trailer",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-zero-company-gameplay-trailer-feature_70a08209.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-06-06",
+        "summary": "",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 16,
+    "topic_title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-05",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 23,
+      "title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-galactic-racer-story-trailer",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galactic-racer-story-trailer-feature_b1633950.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-06-05",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 23,
+        "title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-galactic-racer-story-trailer",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galactic-racer-story-trailer-feature_b1633950.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-06-05",
+        "summary": "",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 17,
+    "topic_title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-04",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 24,
+      "title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-set-visit",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-set-visit-feature_7ef7b034.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-06-04",
+      "summary": "",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 24,
+        "title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-set-visit",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-set-visit-feature_7ef7b034.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-06-04",
+        "summary": "",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 18,
+    "topic_title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-02",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 25,
+      "title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-size-matters-not",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-size-matters-not-gr_748f91fa.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-06-02",
+      "summary": "",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 25,
+        "title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-size-matters-not",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-size-matters-not-gr_748f91fa.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-06-02",
+        "summary": "",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 19,
+    "topic_title": "Who is Embo?",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-06-01",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 26,
+      "title": "Who is Embo?",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/who-is-embo",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/who-is-embo-feature_c28344d9.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-06-01",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 26,
+        "title": "Who is Embo?",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/who-is-embo",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/who-is-embo-feature_c28344d9.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-06-01",
+        "summary": "",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 20,
+    "topic_title": "Marcia Lucas: 1945-2026",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-05-30",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 27,
+      "title": "Marcia Lucas: 1945-2026",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/marcia-lucas",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/starwarcom-marcia-lucas-feature_9072212a.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-30",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
+    "articles": [
+      {
+        "article_id": 27,
+        "title": "Marcia Lucas: 1945-2026",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/marcia-lucas",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/starwarcom-marcia-lucas-feature_9072212a.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-30",
+        "summary": "",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식"
+      }
+    ]
+  },
+  {
+    "topic_id": 21,
     "topic_title": "A Closer Look at Grogu - Star of Star Wars: The Mandalorian and Grogu",
     "topic_summary": "",
     "article_count": 3,
@@ -68,9 +918,23 @@
     ],
     "source_count": 1,
     "label": "공식 포함",
-    "importance": 80,
+    "importance": 190,
     "latest_published_at": "2026-05-28",
     "is_top": true,
+    "representative_article": {
+      "article_id": 28,
+      "title": "A Closer Look at Grogu - Star of Star Wars: The Mandalorian and Grogu",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-interview",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-interview-feature_575fe860.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-05-28",
+      "summary": "",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
     "articles": [
       {
         "article_id": 11,
@@ -117,337 +981,7 @@
     ]
   },
   {
-    "topic_id": 3,
-    "topic_title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-30",
-    "is_top": true,
-    "articles": [
-      {
-        "article_id": 17,
-        "title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-celebration-la-2027-celebrity-guests",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/swcla-celebration-guests-feature_f17be384.jpeg?region=0%2C0%2C1600%2C900",
-        "published_at": "2026-06-30",
-        "summary": "",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 4,
-    "topic_title": "Who is Zeb?",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-23",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 18,
-        "title": "Who is Zeb?",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/who-is-zeb",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/who-is-zeb-the-mandalorian-and-grogu-feature_ff800d15.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-06-23",
-        "summary": "",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 5,
-    "topic_title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-17",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 19,
-        "title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-father-figure",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-father-figure-featu_d51033ac.jpeg?region=0%2C0%2C1600%2C900",
-        "published_at": "2026-06-17",
-        "summary": "",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 6,
-    "topic_title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-16",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 20,
-        "title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-razor-crest",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-razor-crest-feature_e8600419.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-06-16",
-        "summary": "",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 7,
-    "topic_title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-10",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 21,
-        "title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-fathers-day-gift-guide",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-fathers-day-gift-guide-2026_2adc6dfe.jpeg?region=0%2C0%2C1600%2C900",
-        "published_at": "2026-06-10",
-        "summary": "",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 8,
-    "topic_title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-06",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 22,
-        "title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-zero-company-gameplay-trailer",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-zero-company-gameplay-trailer-feature_70a08209.jpeg?region=0%2C0%2C1600%2C900",
-        "published_at": "2026-06-06",
-        "summary": "",
-        "summary_ko": "",
-        "category": "게임",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 9,
-    "topic_title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-05",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 23,
-        "title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-galactic-racer-story-trailer",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galactic-racer-story-trailer-feature_b1633950.jpeg?region=0%2C0%2C1600%2C900",
-        "published_at": "2026-06-05",
-        "summary": "",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 10,
-    "topic_title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-04",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 24,
-        "title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-set-visit",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-set-visit-feature_7ef7b034.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-06-04",
-        "summary": "",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 11,
-    "topic_title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-02",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 25,
-        "title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-size-matters-not",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-size-matters-not-gr_748f91fa.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-06-02",
-        "summary": "",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 12,
-    "topic_title": "Who is Embo?",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-06-01",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 26,
-        "title": "Who is Embo?",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/who-is-embo",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/who-is-embo-feature_c28344d9.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-06-01",
-        "summary": "",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 13,
-    "topic_title": "Marcia Lucas: 1945-2026",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "StarWars.com"
-    ],
-    "source_count": 1,
-    "label": "공식 포함",
-    "importance": 60,
-    "latest_published_at": "2026-05-30",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 27,
-        "title": "Marcia Lucas: 1945-2026",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/marcia-lucas",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/starwarcom-marcia-lucas-feature_9072212a.jpeg?region=0%2C0%2C1600%2C900",
-        "published_at": "2026-05-30",
-        "summary": "",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 14,
+    "topic_id": 22,
     "topic_title": "Composing the Magical Score for Star Wars: The Mandalorian and Grogu",
     "topic_summary": "",
     "article_count": 1,
@@ -456,9 +990,23 @@
     ],
     "source_count": 1,
     "label": "공식 포함",
-    "importance": 60,
+    "importance": 150,
     "latest_published_at": "2026-05-26",
     "is_top": false,
+    "representative_article": {
+      "article_id": 29,
+      "title": "Composing the Magical Score for Star Wars: The Mandalorian and Grogu",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-soundtrack-feature",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/film-score-the-mandalorian-and-grogu-feature-_3678bbb4.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-05-26",
+      "summary": "",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
     "articles": [
       {
         "article_id": 29,
@@ -477,7 +1025,7 @@
     ]
   },
   {
-    "topic_id": 15,
+    "topic_id": 23,
     "topic_title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
     "topic_summary": "",
     "article_count": 1,
@@ -486,9 +1034,23 @@
     ],
     "source_count": 1,
     "label": "공식 포함",
-    "importance": 60,
+    "importance": 150,
     "latest_published_at": "",
     "is_top": false,
+    "representative_article": {
+      "article_id": 12,
+      "title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/powerwash-simulator-2-star-wars-pack",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/powerwash-simulator-2-star-wars-pack-feature_e53a9032.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
     "articles": [
       {
         "article_id": 12,
@@ -507,7 +1069,7 @@
     ]
   },
   {
-    "topic_id": 16,
+    "topic_id": 24,
     "topic_title": "Mando and Grogu Take Flight in LEGO Star Wars: The Mandalorian",
     "topic_summary": "",
     "article_count": 1,
@@ -516,9 +1078,23 @@
     ],
     "source_count": 1,
     "label": "공식 포함",
-    "importance": 60,
+    "importance": 150,
     "latest_published_at": "",
     "is_top": false,
+    "representative_article": {
+      "article_id": 13,
+      "title": "Mando and Grogu Take Flight in LEGO Star Wars: The Mandalorian",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/lego-star-wars-the-mandalorian",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/lego-star-wars-the-mandalorian-teaser-poster-feature_45672667.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "",
+      "summary": "",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
     "articles": [
       {
         "article_id": 13,
@@ -537,7 +1113,7 @@
     ]
   },
   {
-    "topic_id": 17,
+    "topic_id": 25,
     "topic_title": "New Star Wars: The Experience Museum Exhibition Announced",
     "topic_summary": "",
     "article_count": 1,
@@ -546,9 +1122,23 @@
     ],
     "source_count": 1,
     "label": "공식 포함",
-    "importance": 60,
+    "importance": 150,
     "latest_published_at": "",
     "is_top": false,
+    "representative_article": {
+      "article_id": 15,
+      "title": "New Star Wars: The Experience Museum Exhibition Announced",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-experience",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-experience-feature_4811ef85.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식"
+    },
     "articles": [
       {
         "article_id": 15,
@@ -563,246 +1153,6 @@
         "category": "기타",
         "franchise": "Star Wars",
         "label": "공식"
-      }
-    ]
-  },
-  {
-    "topic_id": 18,
-    "topic_title": "Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-15",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 1,
-        "title": "Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/review-the-bad-batch-rogue-agents-4-a-basic-finale-still-remains-charming-to-the-last.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Untitled-design-1024x576.png",
-        "published_at": "2026-07-15",
-        "summary": "The final issue of Star Wars: Hyperspace Stories: The Bad Batch – Rogue Agents was released today. Issue #4 brings The post Review: ‘The Bad Batch: Rogue Agents’ #4 – A Basic Finale Still Remains Charming to the Last appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
-      }
-    ]
-  },
-  {
-    "topic_id": 19,
-    "topic_title": "‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-14",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 2,
-        "title": "‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/lego-star-wars-the-mandalorian-special-officially-announced-releasing-september-2.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/lego-star-wars-the-mandalorian-poster-banner-e1784053769779.jpeg",
-        "published_at": "2026-07-14",
-        "summary": "In a fun way to celebrate the Mandalorian and Grogu pairing, a new post from StarWars.com has announced that a The post ‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2 appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
-      }
-    ]
-  },
-  {
-    "topic_id": 20,
-    "topic_title": "Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-14",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 3,
-        "title": "Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/review-star-wars-legacy-charts-a-new-jedi-path-in-one-of-rey-and-leias-most-personal-stories-yet.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/legacy_header.jpg",
-        "published_at": "2026-07-14",
-        "summary": "When The Rise of Skywalker introduced us to the idea of Leia training Rey in the Force as our new The post Review – ‘Star Wars: Legacy’ Charts a New Jedi Path in One of Rey and Leia’s Most Personal Stories Yet appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "게임",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
-      }
-    ]
-  },
-  {
-    "topic_id": 21,
-    "topic_title": "‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-14",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 4,
-        "title": "‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
-        "published_at": "2026-07-14",
-        "summary": "Only two months after its theatrical debut, The Mandalorian and Grogu will be available to purchase digitally next week on The post ‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
-      }
-    ]
-  },
-  {
-    "topic_id": 22,
-    "topic_title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-13",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 5,
-        "title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/new-lego-star-wars-animated-special-to-screen-at-d23.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/09/LEGO-Star-Wars-Rebuild-The-Galaxy-Pieces-Of-The-Past-Promo-Art-1024x576.png",
-        "published_at": "2026-07-13",
-        "summary": "UPDATE: More details regarding the new LEGO Star Wars special were revealed via the D23 app. Though we don’t have The post Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23 appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
-      }
-    ]
-  },
-  {
-    "topic_id": 23,
-    "topic_title": "This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-12",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 6,
-        "title": "This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-the-ninth-jedi-gets-august-release-date-the-road-to-star-wars-50th-and-more.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/TheNinthJedi_5-scaled.jpg",
-        "published_at": "2026-07-12",
-        "summary": "Happy Sunday, and welcome to a new edition of “This Week, In a Galaxy Far, Far Away“. I missed last The post This Week, In a Galaxy Far, Far Away: ‘The Ninth Jedi’ Gets August Release Date, the Road to ‘Star Wars’ 50th, and More appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "게임",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
-      }
-    ]
-  },
-  {
-    "topic_id": 24,
-    "topic_title": "Lom Pyke – ‘Star Wars’ Character Spotlight",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-10",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 7,
-        "title": "Lom Pyke – ‘Star Wars’ Character Spotlight",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/lom-pyke-star-wars-character-spotlight.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Lom-Pyke-holding-a-glass.jpeg",
-        "published_at": "2026-07-10",
-        "summary": "This Star Wars Character Spotlight will cover Lom Pyke, leader of the Pyke Syndicate for most of the prequel era The post Lom Pyke – ‘Star Wars’ Character Spotlight appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
-      }
-    ]
-  },
-  {
-    "topic_id": 25,
-    "topic_title": "Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 30,
-    "latest_published_at": "2026-07-09",
-    "is_top": false,
-    "articles": [
-      {
-        "article_id": 8,
-        "title": "Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/exclusive-star-wars-legacy-book-jacket-coming-to-san-diego-comic-con.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Screenshot-2026-07-09-3.39.21-PM-e1783629613527.png",
-        "published_at": "2026-07-09",
-        "summary": "Any Star Wars fans heading to this year’s San Diego Comic-Con can get their hands on an exclusive book jacket for The post Exclusive ‘Star Wars: Legacy’ Book Jacket Coming to San Diego Comic-Con appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "도서",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체"
       }
     ]
   }

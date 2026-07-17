@@ -176,7 +176,7 @@ def choose_topic_label(articles):
 def calculate_importance(articles):
     """
     TOP 3 선정용 중요도 점수.
-    여러 출처에서 다룬 주제일수록 점수를 높게 준다.
+    조회수 데이터가 없으므로, 여러 출처에서 동시에 다룬 주제를 더 중요하게 본다.
     """
     source_count = len(set(article.get("source_name", "") for article in articles))
     article_count = len(articles)
@@ -187,13 +187,46 @@ def calculate_importance(articles):
     )
 
     score = 0
-    score += article_count * 10
-    score += source_count * 20
 
+    # 여러 출처가 다룬 주제를 가장 중요하게 평가
+    score += source_count * 100
+
+    # 같은 주제에 묶인 기사 수
+    score += article_count * 20
+
+    # 공식 출처 포함 시 가산점
     if has_official:
         score += 30
 
     return score
+
+
+def choose_representative_article(articles):
+    """
+    topic 카드에 대표로 보여줄 기사 1개를 선택한다.
+    조회수 데이터가 없으므로, 발행일이 가장 빠른 기사를 우선 선택한다.
+    날짜가 없으면 이미지가 있는 기사를 우선 선택한다.
+    """
+    dated_articles = [
+        article for article in articles
+        if article.get("published_at")
+    ]
+
+    if dated_articles:
+        dated_articles.sort(
+            key=lambda article: article.get("published_at", "")
+        )
+        return dated_articles[0]
+
+    image_articles = [
+        article for article in articles
+        if article.get("image_url")
+    ]
+
+    if image_articles:
+        return image_articles[0]
+
+    return articles[0]
 
 
 def build_topic(topic_id, articles):
@@ -204,6 +237,8 @@ def build_topic(topic_id, articles):
         published_at = article.get("published_at", "")
         if published_at > latest_date:
             latest_date = published_at
+
+    representative_article = choose_representative_article(articles)
 
     topic = {
         "topic_id": topic_id,
@@ -216,6 +251,7 @@ def build_topic(topic_id, articles):
         "importance": calculate_importance(articles),
         "latest_published_at": latest_date,
         "is_top": False,
+        "representative_article": representative_article,
         "articles": articles
     }
 
@@ -265,7 +301,11 @@ def group_articles(articles, threshold=0.38):
         topic = build_topic(idx, topic_articles)
         topics.append(topic)
 
-    topics.sort(
+    # TOP 3는 importance 기준으로 따로 선정
+    top_topic_ids = set()
+
+    topics_by_importance = sorted(
+        topics,
         key=lambda topic: (
             topic["importance"],
             topic["latest_published_at"]
@@ -273,9 +313,17 @@ def group_articles(articles, threshold=0.38):
         reverse=True
     )
 
-    # TOP 3 지정
-    for idx, topic in enumerate(topics):
-        topic["is_top"] = idx < 3
+    for topic in topics_by_importance[:3]:
+        top_topic_ids.add(id(topic))
+
+    for topic in topics:
+        topic["is_top"] = id(topic) in top_topic_ids
+
+    # 전체 이슈 목록은 최신 날짜순으로 정렬
+    topics.sort(
+        key=lambda topic: topic.get("latest_published_at", ""),
+        reverse=True
+    )
 
     # 정렬 이후 topic_id 재부여
     for idx, topic in enumerate(topics, start=1):
