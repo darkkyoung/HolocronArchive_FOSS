@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from datetime import datetime
 from collections import Counter
 
 
@@ -131,6 +132,96 @@ def similarity(keywords_a, keywords_b):
 
     return len(intersection) / len(union)
 
+def article_similarity(article_a, article_b):
+    """
+    키워드 유사도에 사건 유형과 날짜 차이를 반영한다.
+    같은 사건 유형이고 날짜가 2일 이내면 같은 이슈일 가능성을 높게 본다.
+    """
+    if is_same_news_issue(article_a, article_b):
+        return 1.0
+
+    keywords_a = set(article_a.get("_keywords", []))
+    keywords_b = set(article_b.get("_keywords", []))
+
+    base_score = similarity(keywords_a, keywords_b)
+
+    event_a = article_a.get("event_type", "general")
+    event_b = article_b.get("event_type", "general")
+
+    days = date_diff_days(article_a, article_b)
+
+    # 사건 유형이 같으면 가산점
+    if event_a == event_b and event_a != "general":
+        base_score += 0.18
+
+    # 날짜가 2일 이내면 가산점
+    if days is not None and days <= 2:
+        base_score += 0.12
+
+    # 사건 유형이 다르면 너무 쉽게 묶이지 않게 감점
+    if event_a != event_b and event_a != "general" and event_b != "general":
+        base_score -= 0.18
+
+    # 리뷰/분석/칼럼은 일반 뉴스와 섞이지 않게 감점
+    content_a = article_a.get("content_type", "news")
+    content_b = article_b.get("content_type", "news")
+
+    if content_a != content_b:
+        if "review" in [content_a, content_b] or "analysis" in [content_a, content_b] or "column" in [content_a, content_b]:
+            base_score -= 0.20
+
+    return max(base_score, 0)
+
+def is_same_news_issue(article_a, article_b):
+    """
+    제목 표현은 다르지만 같은 뉴스 이슈인 경우를 보정한다.
+    조건:
+    - main_entity가 같음
+    - 날짜 차이가 0~2일
+    - 둘 다 뉴스성 기사
+    - 적어도 하나는 공식 출처 또는 발표/출시 계열
+    """
+    entity_a = article_a.get("main_entity", "")
+    entity_b = article_b.get("main_entity", "")
+
+    if not entity_a or not entity_b:
+        return False
+
+    if entity_a != entity_b:
+        return False
+
+    days = date_diff_days(article_a, article_b)
+
+    if days is None or days > 2:
+        return False
+
+    content_a = article_a.get("content_type", "news")
+    content_b = article_b.get("content_type", "news")
+
+    # 리뷰/분석/칼럼은 같은 작품이어도 뉴스와 섞지 않음
+    non_news_types = ["review", "analysis", "column", "interview"]
+
+    if content_a in non_news_types or content_b in non_news_types:
+        return False
+
+    event_a = article_a.get("event_type", "general")
+    event_b = article_b.get("event_type", "general")
+
+    source_a = article_a.get("source_name", "")
+    source_b = article_b.get("source_name", "")
+
+    has_official = source_a == "StarWars.com" or source_b == "StarWars.com"
+
+    has_news_event = (
+        event_a in ["announcement", "release", "trailer", "event"]
+        or event_b in ["announcement", "release", "trailer", "event"]
+    )
+
+    if has_official and has_news_event:
+        return True
+
+    return False
+
 
 def choose_topic_title(articles):
     """
@@ -172,11 +263,142 @@ def choose_topic_label(articles):
 
     return "일반 보도"
 
+def detect_content_type(article):
+    """
+    기사 제목을 기준으로 뉴스/리뷰/분석/칼럼/인터뷰를 구분한다.
+    """
+    title = article.get("title", "").lower()
+
+    if any(keyword in title for keyword in [
+        "review",
+    ]):
+        return "review"
+
+    if any(keyword in title for keyword in [
+        "breakdown", "explained", "analysis"
+    ]):
+        return "analysis"
+
+    if any(keyword in title for keyword in [
+        "character spotlight", "this week", "who is", "gift guide", "father figures"
+    ]):
+        return "column"
+
+    if any(keyword in title for keyword in [
+        "interview", "talk", "creators talk", "filmmaker interview"
+    ]):
+        return "interview"
+
+    return "news"
+
+
+def detect_event_type(article):
+    """
+    기사 제목을 기준으로 사건 유형을 분류한다.
+    같은 작품명이라도 trailer/release/review/interview 등은 다른 topic으로 분리하기 위함.
+    """
+    title = article.get("title", "").lower()
+
+    if any(keyword in title for keyword in [
+        "trailer", "teaser", "preview", "gameplay trailer", "story trailer"
+    ]):
+        return "trailer"
+
+    if any(keyword in title for keyword in [
+        "announced", "officially announced", "confirmed", "revealed", "debut"
+    ]):
+        return "announcement"
+
+    if any(keyword in title for keyword in [
+        "release date", "releasing", "available", "buy on digital", "blu-ray", "4k ultra hd", "launch"
+    ]):
+        return "release"
+
+    if any(keyword in title for keyword in [
+        "review"
+    ]):
+        return "review"
+
+    if any(keyword in title for keyword in [
+        "breakdown", "explained", "analysis"
+    ]):
+        return "analysis"
+
+    if any(keyword in title for keyword in [
+        "interview", "talk", "creators talk", "filmmaker interview"
+    ]):
+        return "interview"
+
+    if any(keyword in title for keyword in [
+        "celebration", "d23", "comic-con", "anime expo"
+    ]):
+        return "event"
+
+    return "general"
+
+def detect_main_entity(article):
+    """
+    기사 제목에서 핵심 대상/작품명을 감지한다.
+    같은 작품이어도 사건 유형이 다르면 나중에 event_type으로 분리한다.
+    """
+    title = article.get("title", "").lower()
+
+    if "lego star wars" in title and "mandalorian" in title:
+        return "lego_star_wars_the_mandalorian"
+
+    if "mando and grogu" in title and "lego star wars" in title:
+        return "lego_star_wars_the_mandalorian"
+
+    if "the mandalorian and grogu" in title:
+        return "the_mandalorian_and_grogu"
+
+    if "ninth jedi" in title:
+        return "the_ninth_jedi"
+
+    if "galactic racer" in title:
+        return "galactic_racer"
+
+    if "zero company" in title:
+        return "zero_company"
+
+    if "powerwash simulator" in title and "star wars" in title:
+        return "powerwash_simulator_star_wars"
+
+    return ""
+
+
+def parse_date(date_text):
+    """
+    YYYY-MM-DD 문자열을 datetime으로 변환한다.
+    날짜가 없거나 잘못된 경우 None 반환.
+    """
+    if not date_text:
+        return None
+
+    try:
+        return datetime.strptime(date_text, "%Y-%m-%d")
+    except Exception:
+        return None
+
+
+def date_diff_days(article_a, article_b):
+    """
+    두 기사 발행일 차이를 일 단위로 계산한다.
+    둘 중 하나라도 날짜가 없으면 None 반환.
+    """
+    date_a = parse_date(article_a.get("published_at", ""))
+    date_b = parse_date(article_b.get("published_at", ""))
+
+    if not date_a or not date_b:
+        return None
+
+    return abs((date_a - date_b).days)
 
 def calculate_importance(articles):
     """
     TOP 3 선정용 중요도 점수.
-    조회수 데이터가 없으므로, 여러 출처에서 동시에 다룬 주제를 더 중요하게 본다.
+    조회수 데이터가 없으므로 복수 출처, 관련 기사 수, 공식 출처 포함 여부를 기준으로 계산한다.
+    단, 리뷰/분석/칼럼성 글은 TOP 3에서 불리하게 처리한다.
     """
     source_count = len(set(article.get("source_name", "") for article in articles))
     article_count = len(articles)
@@ -186,17 +408,27 @@ def calculate_importance(articles):
         for article in articles
     )
 
+    content_types = [article.get("content_type", "news") for article in articles]
+
     score = 0
 
     # 여러 출처가 다룬 주제를 가장 중요하게 평가
     score += source_count * 100
 
-    # 같은 주제에 묶인 기사 수
+    # 같은 주제 관련 기사 수
     score += article_count * 20
 
     # 공식 출처 포함 시 가산점
     if has_official:
         score += 30
+
+    # 리뷰/분석/칼럼성 글은 TOP 3에서 후순위
+    if all(content_type in ["review", "analysis", "column"] for content_type in content_types):
+        score -= 80
+
+    # 일반 뉴스가 하나라도 있으면 유지
+    if any(content_type == "news" for content_type in content_types):
+        score += 20
 
     return score
 
@@ -258,7 +490,7 @@ def build_topic(topic_id, articles):
     return topic
 
 
-def group_articles(articles, threshold=0.38):
+def group_articles(articles, threshold=0.42):
     """
     기사들을 키워드 유사도 기반으로 자동 묶는다.
     threshold가 낮을수록 더 많이 묶이고, 높을수록 더 엄격하게 묶인다.
@@ -267,14 +499,26 @@ def group_articles(articles, threshold=0.38):
 
     for article in articles:
         article_keywords = extract_keywords(article)
+
+        article["content_type"] = detect_content_type(article)
+        article["event_type"] = detect_event_type(article)
+        article["main_entity"] = detect_main_entity(article)
         article["_keywords"] = list(article_keywords)
 
         best_group = None
         best_score = 0
 
         for group in groups:
-            group_keywords = group["keywords"]
-            score = similarity(article_keywords, group_keywords)
+            scores = []
+
+            for grouped_article in group["articles"]:
+                score = article_similarity(article, grouped_article)
+                scores.append(score)
+
+            if scores:
+                score = max(scores)
+            else:
+                score = 0
 
             if score > best_score:
                 best_score = score

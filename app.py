@@ -77,6 +77,55 @@ def filter_articles(articles, franchise, keyword="", category=""):
 
     return filtered
 
+def expand_korean_keyword(keyword):
+    """
+    한국어 검색어를 영어 키워드 후보로 확장한다.
+    영어 기사 제목만 있어도 기본적인 한국어 검색이 가능하게 한다.
+    """
+    if not keyword:
+        return []
+
+    keyword = keyword.lower().strip()
+
+    keyword_map = {
+        "게임": ["game", "games", "gaming", "gameplay", "interactive", "zero company", "galactic racer"],
+        "영화": ["movie", "film", "films", "the mandalorian and grogu"],
+        "드라마": ["series", "season", "show", "episode"],
+        "애니": ["animation", "anime", "visions", "ninth jedi"],
+        "애니메이션": ["animation", "anime", "visions", "ninth jedi"],
+        "도서": ["book", "novel", "comic", "legacy"],
+        "코믹스": ["comic", "comics"],
+        "만달로리안": ["mandalorian", "mando"],
+        "만도": ["mando", "mandalorian"],
+        "그로구": ["grogu"],
+        "제다이": ["jedi"],
+        "나인스": ["ninth jedi"],
+        "나인스 제다이": ["ninth jedi"],
+        "비전스": ["visions"],
+        "시스": ["sith"],
+        "아소카": ["ahsoka"],
+        "안도르": ["andor"],
+        "쓰론": ["thrawn"],
+        "보바": ["boba"],
+        "몰": ["maul"],
+        "레거시": ["legacy"],
+        "제로": ["zero company"],
+        "제로 컴퍼니": ["zero company"],
+        "갤럭틱": ["galactic racer"],
+        "갤럭틱 레이서": ["galactic racer"],
+        "셀러브레이션": ["celebration"],
+        "공식": ["official", "starwars.com"],
+        "루머": ["rumor", "reportedly", "reported"],
+    }
+
+    expanded = [keyword]
+
+    for korean_word, english_words in keyword_map.items():
+        if korean_word in keyword:
+            expanded.extend(english_words)
+
+    return expanded
+
 def filter_topics(topics, franchise="starwars", keyword="", category=""):
     filtered_topics = []
 
@@ -103,11 +152,13 @@ def filter_topics(topics, franchise="starwars", keyword="", category=""):
 
         # 검색어 필터
         if keyword:
-            keyword_lower = keyword.lower()
+            search_keywords = expand_korean_keyword(keyword)
 
             topic_text = " ".join([
                 topic.get("topic_title", ""),
-                topic.get("topic_summary", "")
+                topic.get("topic_summary", ""),
+                topic.get("label", ""),
+                " ".join(topic.get("sources", []))
             ]).lower()
 
             article_text = " ".join(
@@ -117,13 +168,16 @@ def filter_topics(topics, franchise="starwars", keyword="", category=""):
                         article.get("title_ko", ""),
                         article.get("summary", ""),
                         article.get("summary_ko", ""),
-                        article.get("source_name", "")
+                        article.get("source_name", ""),
+                        article.get("category", "")
                     ])
                     for article in articles
                 ]
             ).lower()
 
-            if keyword_lower not in topic_text and keyword_lower not in article_text:
+            combined_text = topic_text + " " + article_text
+
+            if not any(search_word in combined_text for search_word in search_keywords):
                 continue
 
         filtered_topics.append(topic)

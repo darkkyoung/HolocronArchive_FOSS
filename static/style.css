@@ -1498,3 +1498,32 @@ select option:checked {
     font-size: 11px;
     font-style: normal;
 }
+
+/* ===============================
+   Card Clickable Links
+================================ */
+
+.card-image-link {
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.card-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-title-link:hover {
+    color: #facc15;
+    text-decoration: underline;
+}
+
+.card-image-link .article-image {
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.card-image-link:hover .article-image {
+    transform: scale(1.015);
+    filter: brightness(1.08);
+}

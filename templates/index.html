@@ -49,7 +49,7 @@
 
                     <h2 class="section-title">최신 소식</h2>
 
-                    {% if topics %}
+                    {% if topics and not keyword and not selected_category %}
                         <section class="top-topics-section">
                             <div class="section-heading-row">
                                 <h3>🔥 주목할 핵심 이슈 TOP 3</h3>
@@ -149,13 +149,24 @@
                                             {% set rep = topic.representative_article %}
 
                                             {% if rep.image_url %}
-                                                <img class="article-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                                <a class="card-image-link" href="{{ rep.source_url }}" target="_blank">
+                                                    <img class="article-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                                </a>
                                             {% endif %}
                                         {% endif %}
 
                                         <span class="badge">{{ topic.label }}</span>
 
-                                        <h4>{{ topic.topic_title }}</h4>
+                                        {% if topic.representative_article %}
+                                            {% set rep = topic.representative_article %}
+                                            <h4>
+                                                <a class="card-title-link" href="{{ rep.source_url }}" target="_blank">
+                                                    {{ topic.topic_title }}
+                                                </a>
+                                            </h4>
+                                        {% else %}
+                                            <h4>{{ topic.topic_title }}</h4>
+                                        {% endif %}
 
                                         <div class="meta">
                                             관련 기사 {{ topic.article_count }}개 · 출처 {{ topic.source_count }}개
@@ -170,17 +181,21 @@
                                             {% endfor %}
                                         </div>
 
-                                        {% if topic.articles and topic.articles|length > 1 %}
+                                        {% if topic.articles %}
                                             <details class="related-articles">
-                                                <summary>관련 기사 {{ topic.article_count }}개 보기</summary>
+                                                {% if topic.articles|length == 1 %}
+                                                    <summary>기사 링크 보기 ▲</summary>
+                                                {% else %}
+                                                    <summary>관련 기사 {{ topic.articles|length }}개 보기 ▲</summary>
+                                                {% endif %}
 
                                                 <div class="related-article-list">
                                                     {% for article in topic.articles %}
-                                                        <a href="{{ article.source_url }}" target="_blank">
-                                                            <span>{{ article.source_name }}</span>
-                                                            <strong>{{ article.title_ko or article.title }}</strong>
+                                                        <a class="related-article-item" href="{{ article.source_url }}" target="_blank">
+                                                            <span class="related-source">{{ article.source_name }}</span>
+                                                            <span class="related-title">{{ article.title_ko or article.title }}</span>
                                                             {% if article.published_at %}
-                                                                <em>{{ article.published_at }}</em>
+                                                                <span class="related-date">{{ article.published_at }}</span>
                                                             {% endif %}
                                                         </a>
                                                     {% endfor %}
