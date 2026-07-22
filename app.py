@@ -7,9 +7,11 @@
 import json
 import os
 import re
+import subprocess
+import sys
 import requests
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 
 
 app = Flask(__name__)
@@ -26,6 +28,112 @@ def load_json(filename):
 
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+def load_json_or_default(filename, default_value):
+    path = os.path.join(DATA_DIR, filename)
+
+    if not os.path.exists(path):
+        return default_value
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default_value
+
+
+def save_json(filename, data):
+    os.makedirs(DATA_DIR, exist_ok=True)
+
+    path = os.path.join(DATA_DIR, filename)
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def normalize_url_for_admin(url):
+    """
+    관리자 제외/복구 비교용 URL 정규화 함수.
+    """
+    if not url:
+        return ""
+
+    url = url.strip()
+    url = url.split("?")[0]
+    url = url.split("#")[0]
+    url = url.rstrip("/")
+
+    return url
+
+
+def load_article_overrides():
+    overrides = load_json_or_default(
+        "article_overrides.json",
+        {
+            "excluded_article_urls": [],
+            "manual_topic_merges": []
+        }
+    )
+
+    if "excluded_article_urls" not in overrides:
+        overrides["excluded_article_urls"] = []
+
+    if "manual_topic_merges" not in overrides:
+        overrides["manual_topic_merges"] = []
+
+    return overrides
+
+
+def save_article_overrides(overrides):
+    save_json("article_overrides.json", overrides)
+
+
+def collect_article_urls_from_topic(topic):
+    """
+    topic 안에 포함된 모든 기사 URL을 정규화해서 반환한다.
+    수동 병합 기록 저장에 사용한다.
+    """
+    article_urls = []
+
+    for article in topic.get("articles", []):
+        article_url = normalize_url_for_admin(
+            article.get("source_url") or article.get("url")
+        )
+
+        if article_url:
+            article_urls.append(article_url)
+
+    return article_urls
+
+
+def regenerate_topics():
+    """
+    현재 fetched_articles.json과 article_overrides.json을 기준으로 topics.json을 다시 생성한다.
+    """
+    result = subprocess.run(
+        [sys.executable, "group_topics.py"],
+        cwd=BASE_DIR,
+        check=False
+    )
+
+    return result.returncode == 0
+
+
+def update_news_data():
+    """
+    기사 수집 후 topic 재생성.
+    관리자 페이지의 '뉴스 갱신' 버튼에서 사용한다.
+    """
+    fetch_result = subprocess.run(
+        [sys.executable, "fetch_articles.py", "--fast"],
+        cwd=BASE_DIR,
+        check=False
+    )
+
+    if fetch_result.returncode != 0:
+        return False
+
+    return regenerate_topics()
 
 
 def get_selected_franchise_name(franchise):
@@ -76,6 +184,113 @@ def filter_articles(articles, franchise, keyword="", category=""):
     )
 
     return filtered
+
+def expand_korean_keyword(keyword):
+    """
+    한국어 검색어를 영어 키워드 후보로 확장한다.
+    영어 기사 제목만 있어도 기본적인 한국어 검색이 가능하게 한다.
+    """
+    if not keyword:
+        return []
+
+    keyword = keyword.lower().strip()
+
+    keyword_map = {
+        "게임": ["game", "games", "gaming", "gameplay", "interactive", "zero company", "galactic racer"],
+        "영화": ["movie", "film", "films", "the mandalorian and grogu"],
+        "드라마": ["series", "season", "show", "episode"],
+        "애니": ["animation", "anime", "visions", "ninth jedi"],
+        "애니메이션": ["animation", "anime", "visions", "ninth jedi"],
+        "도서": ["book", "novel", "comic", "legacy"],
+        "코믹스": ["comic", "comics"],
+        "만달로리안": ["mandalorian", "mando"],
+        "만도": ["mando", "mandalorian"],
+        "그로구": ["grogu"],
+        "제다이": ["jedi"],
+        "나인스": ["ninth jedi"],
+        "나인스 제다이": ["ninth jedi"],
+        "비전스": ["visions"],
+        "시스": ["sith"],
+        "아소카": ["ahsoka"],
+        "안도르": ["andor"],
+        "쓰론": ["thrawn"],
+        "보바": ["boba"],
+        "몰": ["maul"],
+        "레거시": ["legacy"],
+        "제로": ["zero company"],
+        "제로 컴퍼니": ["zero company"],
+        "갤럭틱": ["galactic racer"],
+        "갤럭틱 레이서": ["galactic racer"],
+        "셀러브레이션": ["celebration"],
+        "공식": ["official", "starwars.com"],
+        "루머": ["rumor", "reportedly", "reported"],
+    }
+
+    expanded = [keyword]
+
+    for korean_word, english_words in keyword_map.items():
+        if korean_word in keyword:
+            expanded.extend(english_words)
+
+    return expanded
+
+def filter_topics(topics, franchise="starwars", keyword="", category=""):
+    filtered_topics = []
+
+    for topic in topics:
+        articles = topic.get("articles", [])
+
+        # 프랜차이즈 필터
+        if franchise:
+            franchise_matched = any(
+                article.get("franchise", "").lower().replace(" ", "") == franchise.lower().replace(" ", "")
+                for article in articles
+            )
+            if not franchise_matched:
+                continue
+
+        # 카테고리 필터
+        if category:
+            category_matched = any(
+                article.get("category") == category
+                for article in articles
+            )
+            if not category_matched:
+                continue
+
+        # 검색어 필터
+        if keyword:
+            search_keywords = expand_korean_keyword(keyword)
+
+            topic_text = " ".join([
+                topic.get("topic_title", ""),
+                topic.get("topic_summary", ""),
+                topic.get("label", ""),
+                " ".join(topic.get("sources", []))
+            ]).lower()
+
+            article_text = " ".join(
+                [
+                    " ".join([
+                        article.get("title", ""),
+                        article.get("title_ko", ""),
+                        article.get("summary", ""),
+                        article.get("summary_ko", ""),
+                        article.get("source_name", ""),
+                        article.get("category", "")
+                    ])
+                    for article in articles
+                ]
+            ).lower()
+
+            combined_text = topic_text + " " + article_text
+
+            if not any(search_word in combined_text for search_word in search_keywords):
+                continue
+
+        filtered_topics.append(topic)
+
+    return filtered_topics
 
 
 def prepare_work(work):
@@ -400,6 +615,7 @@ def index():
     keyword = request.args.get("keyword", "")
     category = request.args.get("category", "")
     franchise = request.args.get("franchise", "starwars")
+    admin_mode = request.args.get("admin") == "1"
 
     articles = load_json("articles.json")
     articles = filter_articles(
@@ -409,12 +625,48 @@ def index():
         category=category
     )
 
+    topics = load_json("topics.json")
+    topics = filter_topics(
+        topics=topics,
+        franchise=franchise,
+        keyword=keyword,
+        category=category
+    )
+
+    excluded_articles = []
+
+    if admin_mode:
+        fetched_articles = load_json_or_default("fetched_articles.json", [])
+        overrides = load_article_overrides()
+
+        excluded_urls = set(
+            normalize_url_for_admin(url)
+            for url in overrides.get("excluded_article_urls", [])
+        )
+
+        for article in fetched_articles:
+            article_url = normalize_url_for_admin(
+                article.get("source_url") or article.get("url")
+            )
+
+            if article_url in excluded_urls:
+                excluded_articles.append(article)
+
+        excluded_articles.sort(
+            key=lambda article: article.get("published_at", ""),
+            reverse=True
+        )
+
     return render_template(
         "index.html",
         articles=articles,
+        topics=topics,
         keyword=keyword,
         selected_category=category,
-        selected_franchise=franchise
+        selected_franchise=franchise,
+        admin_mode=admin_mode,
+        excluded_articles=[],
+        excluded_count=0
     )
 
 
@@ -467,6 +719,158 @@ def works():
         other_works=other_works,
         selected_franchise=franchise
     )
+
+@app.route("/admin")
+def admin():
+    articles = load_json_or_default("fetched_articles.json", [])
+    overrides = load_article_overrides()
+
+    excluded_urls = set(
+        normalize_url_for_admin(url)
+        for url in overrides.get("excluded_article_urls", [])
+    )
+
+    visible_articles = []
+    excluded_articles = []
+
+    for article in articles:
+        article_url = normalize_url_for_admin(
+            article.get("source_url") or article.get("url")
+        )
+
+        if article_url in excluded_urls:
+            excluded_articles.append(article)
+        else:
+            visible_articles.append(article)
+
+    visible_articles.sort(
+        key=lambda article: article.get("published_at", ""),
+        reverse=True
+    )
+
+    excluded_articles.sort(
+        key=lambda article: article.get("published_at", ""),
+        reverse=True
+    )
+
+    return render_template(
+        "admin.html",
+        visible_articles=visible_articles,
+        excluded_articles=excluded_articles,
+        visible_count=len(visible_articles),
+        excluded_count=len(excluded_articles),
+        total_count=len(articles)
+    )
+
+
+@app.route("/admin/update", methods=["POST"])
+def admin_update():
+    return_url = request.form.get("return_url") or url_for("admin")
+
+    update_news_data()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/exclude", methods=["POST"])
+def admin_exclude_article():
+    article_url = normalize_url_for_admin(request.form.get("url", ""))
+
+    if not article_url:
+        return redirect(url_for("admin"))
+
+    overrides = load_article_overrides()
+
+    excluded_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("excluded_article_urls", [])
+    ]
+
+    if article_url not in excluded_urls:
+        excluded_urls.append(article_url)
+
+    overrides["excluded_article_urls"] = excluded_urls
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return_url = request.form.get("return_url") or url_for("admin")
+    return redirect(return_url)
+
+
+@app.route("/admin/restore", methods=["POST"])
+def admin_restore_article():
+    article_url = normalize_url_for_admin(request.form.get("url", ""))
+
+    if not article_url:
+        return redirect(url_for("admin"))
+
+    overrides = load_article_overrides()
+
+    excluded_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("excluded_article_urls", [])
+    ]
+
+    excluded_urls = [
+        url for url in excluded_urls
+        if url != article_url
+    ]
+
+    overrides["excluded_article_urls"] = excluded_urls
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return_url = request.form.get("return_url") or url_for("admin")
+    return redirect(return_url)
+
+
+@app.route("/admin/merge-topics", methods=["POST"])
+def admin_merge_topics():
+    return_url = request.form.get("return_url") or url_for("index")
+    selected_topic_ids = request.form.getlist("topic_ids")
+
+    if len(selected_topic_ids) < 2:
+        return redirect(return_url)
+
+    selected_topic_ids = set(
+        int(topic_id)
+        for topic_id in selected_topic_ids
+        if topic_id.isdigit()
+    )
+
+    topics = load_json_or_default("topics.json", [])
+
+    article_urls_to_merge = []
+
+    for topic in topics:
+        if int(topic.get("topic_id", 0)) in selected_topic_ids:
+            article_urls_to_merge.extend(
+                collect_article_urls_from_topic(topic)
+            )
+
+    article_urls_to_merge = list(dict.fromkeys(article_urls_to_merge))
+
+    if len(article_urls_to_merge) < 2:
+        return redirect(return_url)
+
+    overrides = load_article_overrides()
+
+    manual_merges = overrides.get("manual_topic_merges", [])
+
+    manual_merges.append({
+        "merge_id": f"merge_{len(manual_merges) + 1}",
+        "article_urls": article_urls_to_merge
+    })
+
+    overrides["manual_topic_merges"] = manual_merges
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return redirect(return_url)
+
 
 @app.route("/api/assistant", methods=["POST"])
 def ai_assistant():

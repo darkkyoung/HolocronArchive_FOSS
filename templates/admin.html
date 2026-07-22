@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holocron Archive Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <h1>Admin Mode</h1>
+                <p>Holocron Archive 기사 관리 페이지</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <div class="admin-shell card">
+                <div class="admin-header-row">
+                    <div>
+                        <h2>기사 관리</h2>
+                        <p>
+                            전체 {{ total_count }}개 · 공개 {{ visible_count }}개 · 제외 {{ excluded_count }}개
+                        </p>
+                    </div>
+
+                    <div class="admin-actions">
+                        <a class="admin-link-button" href="{{ url_for('index') }}">
+                            사이트로 돌아가기
+                        </a>
+
+                        <form method="POST" action="{{ url_for('admin_update') }}">
+                            <button class="admin-primary-button" type="submit">
+                                뉴스 갱신
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <section class="admin-section">
+                    <h3>공개 중인 기사</h3>
+
+                    {% if visible_articles %}
+                        <div class="admin-article-list">
+                            {% for article in visible_articles %}
+                                <article class="admin-article-item">
+                                    <div class="admin-article-main">
+                                        <span class="admin-source">{{ article.source_name }}</span>
+
+                                        <h4>
+                                            <a href="{{ article.source_url }}" target="_blank">
+                                                {{ article.title_ko or article.title }}
+                                            </a>
+                                        </h4>
+
+                                        <div class="admin-meta">
+                                            {% if article.published_at %}
+                                                {{ article.published_at }}
+                                            {% else %}
+                                                날짜 없음
+                                            {% endif %}
+                                            · {{ article.category }}
+                                            · {{ article.label }}
+                                        </div>
+                                    </div>
+
+                                    <form method="POST" action="{{ url_for('admin_exclude_article') }}">
+                                        <input type="hidden" name="url" value="{{ article.source_url }}">
+                                        <button class="admin-danger-button" type="submit">
+                                            제외
+                                        </button>
+                                    </form>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="empty-text">공개 중인 기사가 없습니다.</p>
+                    {% endif %}
+                </section>
+
+                <section class="admin-section">
+                    <h3>제외된 기사</h3>
+
+                    {% if excluded_articles %}
+                        <div class="admin-article-list">
+                            {% for article in excluded_articles %}
+                                <article class="admin-article-item excluded">
+                                    <div class="admin-article-main">
+                                        <span class="admin-source">{{ article.source_name }}</span>
+
+                                        <h4>
+                                            <a href="{{ article.source_url }}" target="_blank">
+                                                {{ article.title_ko or article.title }}
+                                            </a>
+                                        </h4>
+
+                                        <div class="admin-meta">
+                                            {% if article.published_at %}
+                                                {{ article.published_at }}
+                                            {% else %}
+                                                날짜 없음
+                                            {% endif %}
+                                            · {{ article.category }}
+                                            · {{ article.label }}
+                                        </div>
+                                    </div>
+
+                                    <form method="POST" action="{{ url_for('admin_restore_article') }}">
+                                        <input type="hidden" name="url" value="{{ article.source_url }}">
+                                        <button class="admin-restore-button" type="submit">
+                                            복구
+                                        </button>
+                                    </form>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="empty-text">제외된 기사가 없습니다.</p>
+                    {% endif %}
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            Holocron Archive · 관리자 모드
+        </div>
+    </footer>
+</body>
+</html>

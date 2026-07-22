@@ -1,0 +1,22 @@
+{
+  "excluded_article_urls": [
+    "https://www.starwarsnewsnet.com/2026/07/from-galactic-games-to-digital-rewards-why-fandoms-love-interactive-online-play.html",
+    "https://www.starwarsnewsnet.com/2026/07/star-wars-starfighter-writer-jonathan-tropper-wants-the-movie-to-feel-like-a-stepping-into-a-new-world.html"
+  ],
+  "manual_topic_merges": [
+    {
+      "merge_id": "merge_1",
+      "article_urls": [
+        "https://www.starwarsnewsnet.com/2026/07/george-lucas-claims-that-future-filmmakers-will-inevitably-use-ai-tools.html",
+        "https://www.starwarsnewsnet.com/2026/07/star-wars-starfighter-writer-jonathan-tropper-wants-the-movie-to-feel-like-a-stepping-into-a-new-world.html"
+      ]
+    },
+    {
+      "merge_id": "merge_2",
+      "article_urls": [
+        "https://www.starwarsnewsnet.com/2026/07/star-wars-twin-crossroads-and-jedi-fallen-order-manga-vol-3-to-be-announced-at-sdcc.html",
+        "https://www.starwarsnewsnet.com/2026/07/from-galactic-games-to-digital-rewards-why-fandoms-love-interactive-online-play.html"
+      ]
+    }
+  ]
+}

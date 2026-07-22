@@ -8,10 +8,37 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="container">
+        <div class="container header-layout">
             <div class="brand">
                 <h1>Holocron Archive</h1>
                 <p>Star Wars 콘텐츠 정보와 최신 소식을 모아보는 큐레이션 아카이브</p>
+            </div>
+
+            <div class="header-admin-area">
+                {% if admin_mode %}
+                    <div class="header-admin-status">
+                        관리자 모드 ON · 제외 {{ excluded_count }}개
+                    </div>
+
+                    <form method="POST" action="{{ url_for('admin_update') }}">
+                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                        <button class="header-admin-button primary" type="submit">
+                            빠른 갱신
+                        </button>
+                    </form>
+
+                    <a class="header-admin-button" href="{{ url_for('admin') }}">
+                        전체 관리
+                    </a>
+
+                    <a class="header-admin-button danger" href="{{ url_for('index', franchise=selected_franchise, keyword=keyword, category=selected_category) }}">
+                        관리자 끄기
+                    </a>
+                {% else %}
+                    <a class="header-admin-button admin-toggle" href="{{ url_for('index', franchise=selected_franchise, keyword=keyword, category=selected_category, admin=1) }}">
+                        관리자 모드
+                    </a>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -32,7 +59,7 @@
                     </a>
                 </div>
 
-                <div class="chapter-panel">
+                <div class="chapter-panel">                    
                     <nav class="main-nav sub-nav">
                         <a class="{% if request.endpoint == 'index' %}active{% endif %}"
                         href="{{ url_for('index', franchise=selected_franchise) }}">
@@ -48,6 +75,69 @@
                     </nav>
 
                     <h2 class="section-title">최신 소식</h2>
+
+                    {% if topics and not keyword and not selected_category %}
+                        <section class="top-topics-section">
+                            <div class="section-heading-row">
+                                <h3>🔥 주목할 핵심 이슈 TOP 3</h3>
+                                <span>복수 출처와 관련 기사 수를 기준으로 선정한 주요 이슈입니다</span>
+                            </div>
+
+                            <div class="topic-grid">
+                                {% for topic in topics %}
+                                    {% if topic.is_top %}
+                                        <article class="topic-card card">
+                                            {% if topic.representative_article %}
+                                                {% set rep = topic.representative_article %}
+
+                                                {% if rep.image_url %}
+                                                    <img class="topic-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                                {% endif %}
+                                            {% endif %}
+
+                                            <div class="topic-body">
+                                                <div class="topic-card-header">
+                                                    <span class="topic-label-gold">{{ topic.label }}</span>
+                                                    <span class="topic-source-count">출처 {{ topic.source_count }}개</span>
+                                                </div>
+
+                                                <h4>{{ topic.topic_title }}</h4>
+
+                                                <div class="meta">
+                                                    관련 기사 {{ topic.article_count }}개
+                                                    {% if topic.latest_published_at %}
+                                                        · 최신일 {{ topic.latest_published_at }}
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="topic-sources">
+                                                    {% for source in topic.sources %}
+                                                        <span>{{ source }}</span>
+                                                    {% endfor %}
+                                                </div>
+
+                                                {% if topic.representative_article %}
+                                                    {% set rep = topic.representative_article %}
+
+                                                    <div class="topic-representative">
+                                                        <span>대표 기사</span>
+                                                        <strong>{{ rep.source_name }}</strong>
+                                                        {% if rep.published_at %}
+                                                            <em>{{ rep.published_at }}</em>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <a class="topic-main-link" href="{{ rep.source_url }}" target="_blank">
+                                                        {{ rep.title_ko or rep.title }}
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </article>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+                    {% endif %}
 
                     <form method="GET" action="{{ url_for('index') }}" class="search-panel">
                         <input type="hidden" name="franchise" value="{{ selected_franchise }}">
@@ -72,46 +162,174 @@
                         <button type="submit">검색</button>
                     </form>
 
-                    {% if articles and articles|length > 0 %}
-                        {% set featured = articles[0] %}
+                    {% if topics and topics|length > 0 %}
+                        <section class="all-topics-section">
+                            <div class="section-heading-row">
+                                <h3>🗂 전체 이슈</h3>
+                                <span>자동 수집된 기사들을 주제별로 분류해 최신순으로 보여줍니다</span>
+                            </div>
 
-                        <section class="featured-article card">
-                            {% if featured.image_url %}
-                                <img class="featured-image" src="{{ featured.image_url }}" alt="{{ featured.title_ko or featured.title }}">
+                            {% if admin_mode %}
+                                <form
+                                    id="merge-topics-form"
+                                    method="POST"
+                                    action="{{ url_for('admin_merge_topics') }}"
+                                    class="topic-merge-toolbar"
+                                >
+                                    <input type="hidden" name="return_url" value="{{ request.full_path }}">
+
+                                    <button type="submit">
+                                        선택 이슈 병합
+                                    </button>
+
+                                    <span>
+                                        병합할 이슈 카드 2개 이상을 선택하세요.
+                                    </span>
+                                </form>
                             {% endif %}
 
-                            <span class="badge">{{ featured.category }}</span>
-                            <h3>{{ featured.title_ko or featured.title }}</h3>
-                            <div class="meta">{{ featured.source_name }} · {{ featured.published_at }}</div>
-                            <p class="summary">{{ featured.summary_ko or featured.summary }}</p>
-                            <a class="button-link" href="{{ featured.source_url }}" target="_blank">원문 보기</a>
-                        </section>
-
-                        {% if articles|length > 1 %}
-                            <section class="article-grid">
-                                {% for article in articles[1:] %}
+                            <div class="article-grid">
+                                {% for topic in topics %}
                                     <article class="article-card card">
-                                        {% if article.image_url %}
-                                            <img class="article-image" src="{{ article.image_url }}" alt="{{ article.title_ko or article.title }}">
+                                        {% if admin_mode %}
+                                            <label class="topic-merge-check">
+                                                <input
+                                                    type="checkbox"
+                                                    name="topic_ids"
+                                                    value="{{ topic.topic_id }}"
+                                                    form="merge-topics-form"
+                                                >
+                                                병합 선택
+                                            </label>
+                                        {% endif %}
+                                        {% if topic.representative_article %}
+                                            {% set rep = topic.representative_article %}
+
+                                            {% if rep.image_url %}
+                                                <a class="card-image-link" href="{{ rep.source_url }}" target="_blank">
+                                                    <img class="article-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                                </a>
+                                            {% endif %}
                                         {% endif %}
 
-                                        <span class="badge">{{ article.category }}</span>
-                                        <h4>{{ article.title_ko or article.title }}</h4>
-                                        <div class="meta">{{ article.source_name }} · {{ article.published_at }}</div>
-                                        <p class="summary">{{ article.summary_ko or article.summary }}</p>
-                                        <a class="button-link" href="{{ article.source_url }}" target="_blank">원문 보기</a>
+                                        <span class="badge">{{ topic.label }}</span>
+
+                                        {% if topic.representative_article %}
+                                            {% set rep = topic.representative_article %}
+                                            <h4>
+                                                <a class="card-title-link" href="{{ rep.source_url }}" target="_blank">
+                                                    {{ topic.topic_title }}
+                                                </a>
+                                            </h4>
+                                        {% else %}
+                                            <h4>{{ topic.topic_title }}</h4>
+                                        {% endif %}
+
+                                        <div class="meta">
+                                            관련 기사 {{ topic.article_count }}개 · 출처 {{ topic.source_count }}개
+                                            {% if topic.latest_published_at %}
+                                                · {{ topic.latest_published_at }}
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="topic-sources">
+                                            {% for source in topic.sources %}
+                                                <span>{{ source }}</span>
+                                            {% endfor %}
+                                        </div>
+
+                                        {% if topic.articles %}
+                                            <details class="related-articles">
+                                                {% if topic.articles|length == 1 %}
+                                                    <summary>기사 링크 보기 ▲</summary>
+                                                {% else %}
+                                                    <summary>관련 기사 {{ topic.articles|length }}개 보기 ▲</summary>
+                                                {% endif %}
+
+                                                <div class="related-article-list">
+                                                    {% for article in topic.articles %}
+                                                        {% if admin_mode %}
+                                                            <div class="related-article-admin-item">
+                                                                <a class="related-article-item" href="{{ article.source_url }}" target="_blank">
+                                                                    <span class="related-source">{{ article.source_name }}</span>
+                                                                    <span class="related-title">{{ article.title_ko or article.title }}</span>
+                                                                    {% if article.published_at %}
+                                                                        <span class="related-date">{{ article.published_at }}</span>
+                                                                    {% endif %}
+                                                                </a>
+
+                                                                <form method="POST" action="{{ url_for('admin_exclude_article') }}">
+                                                                    <input type="hidden" name="url" value="{{ article.source_url }}">
+                                                                    <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                                    <button class="inline-admin-danger" type="submit">제외</button>
+                                                                </form>
+                                                            </div>
+                                                        {% else %}
+                                                            <a class="related-article-item" href="{{ article.source_url }}" target="_blank">
+                                                                <span class="related-source">{{ article.source_name }}</span>
+                                                                <span class="related-title">{{ article.title_ko or article.title }}</span>
+                                                                {% if article.published_at %}
+                                                                    <span class="related-date">{{ article.published_at }}</span>
+                                                                {% endif %}
+                                                            </a>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </details>
+                                        {% endif %}
                                     </article>
                                 {% endfor %}
-                            </section>
-                        {% endif %}
+                            </div>
+                        </section>
                     {% else %}
                         <p class="empty-text">
                             {% if selected_franchise == 'marvel' %}
                                 아직 마블 관련 데이터가 등록되지 않았습니다.
                             {% else %}
-                                검색 결과가 없습니다.
+                                표시할 이슈가 없습니다.
                             {% endif %}
                         </p>
+                    {% endif %}
+                    {% if admin_mode %}
+                        <section class="inline-excluded-section card">
+                            <div class="section-heading-row">
+                                <h3>관리자 제외 기사</h3>
+                                <span>제외된 기사를 다시 공개 목록에 복구할 수 있습니다</span>
+                            </div>
+
+                            {% if excluded_articles %}
+                                <div class="inline-excluded-list">
+                                    {% for article in excluded_articles %}
+                                        <div class="inline-excluded-item">
+                                            <div>
+                                                <span class="admin-source">{{ article.source_name }}</span>
+                                                <strong>
+                                                    <a href="{{ article.source_url }}" target="_blank">
+                                                        {{ article.title_ko or article.title }}
+                                                    </a>
+                                                </strong>
+                                                <em>
+                                                    {% if article.published_at %}
+                                                        {{ article.published_at }}
+                                                    {% else %}
+                                                        날짜 없음
+                                                    {% endif %}
+                                                    · {{ article.category }}
+                                                </em>
+                                            </div>
+
+                                            <form method="POST" action="{{ url_for('admin_restore_article') }}">
+                                                <input type="hidden" name="url" value="{{ article.source_url }}">
+                                                <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                <button class="inline-admin-restore" type="submit">복구</button>
+                                            </form>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <p class="empty-text">제외된 기사가 없습니다.</p>
+                            {% endif %}
+                        </section>
                     {% endif %}
                 </div>
             </div>
