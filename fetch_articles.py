@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import sys
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
@@ -624,6 +625,258 @@ def fetch_starwars_official_articles(limit=20):
     return articles
 
 
+def load_existing_articles():
+    """
+    기존 fetched_articles.json을 불러온다.
+    빠른 갱신에서 이미 수집한 기사를 다시 상세 수집하지 않기 위해 사용한다.
+    """
+    input_path = os.path.join(DATA_DIR, "fetched_articles.json")
+
+    if not os.path.exists(input_path):
+        return []
+
+    try:
+        with open(input_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+
+def get_existing_url_set(articles):
+    """
+    기존 기사들의 URL set을 만든다.
+    URL 정규화를 적용해 중복 판단 정확도를 높인다.
+    """
+    existing_urls = set()
+
+    for article in articles:
+        url = article.get("source_url") or article.get("url")
+        normalized_url = normalize_url(url)
+
+        if normalized_url:
+            existing_urls.add(normalized_url)
+
+    return existing_urls
+
+
+def deduplicate_articles(articles):
+    """
+    기존 기사와 새 기사를 합친 뒤 URL 기준으로 중복 제거한다.
+    """
+    seen_urls = set()
+    unique_articles = []
+
+    for article in articles:
+        url = article.get("source_url") or article.get("url")
+        normalized_url = normalize_url(url)
+
+        if not normalized_url:
+            continue
+
+        if normalized_url in seen_urls:
+            continue
+
+        seen_urls.add(normalized_url)
+
+        article["source_url"] = normalized_url
+        article["url"] = normalized_url
+
+        unique_articles.append(article)
+
+    return unique_articles
+
+
+def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, max_pages=3):
+    """
+    SWNN 빠른 갱신.
+    기존에 수집한 URL은 건너뛰고, 새 URL만 상세 수집한다.
+    """
+    print("Star Wars News Net 빠른 갱신 시작")
+
+    new_articles = []
+    seen_candidate_urls = set()
+
+    # 1. RSS에서 새 기사 확인
+    feed = feedparser.parse(SWNN_FEED_URL)
+
+    for entry in feed.entries[:rss_limit]:
+        title = entry.get("title", "").strip()
+        url = normalize_url(entry.get("link", "").strip())
+
+        if not title or not url:
+            continue
+
+        if url in existing_urls:
+            continue
+
+        if url in seen_candidate_urls:
+            continue
+
+        seen_candidate_urls.add(url)
+
+        if is_excluded_article(title, "Star Wars News Net"):
+            print(f"제외됨: {title}")
+            continue
+
+        image_url = extract_image_url(entry)
+
+        if not image_url:
+            image_url = fetch_image_from_article_page(url)
+
+        article = {
+            "article_id": 0,
+            "title": title,
+            "title_ko": "",
+            "source_name": "Star Wars News Net",
+            "source_url": url,
+            "url": url,
+            "image_url": image_url,
+            "published_at": format_date(entry),
+            "summary": clean_summary(entry),
+            "summary_ko": "",
+            "category": guess_category(title),
+            "franchise": "Star Wars",
+            "label": guess_label(title, "Star Wars News Net")
+        }
+
+        new_articles.append(article)
+
+    # 2. SWNN 웹페이지에서 새 기사 확인
+    article_urls = []
+
+    for page_number in range(1, max_pages + 1):
+        links = get_swnn_article_links_from_page(page_number)
+
+        for link in links:
+            normalized_link = normalize_url(link)
+
+            if not normalized_link:
+                continue
+
+            if normalized_link in existing_urls:
+                continue
+
+            if normalized_link in seen_candidate_urls:
+                continue
+
+            seen_candidate_urls.add(normalized_link)
+            article_urls.append(normalized_link)
+
+    print(f"SWNN 웹페이지 신규 후보 기사 수: {len(article_urls)}")
+
+    for url in article_urls:
+        if len(new_articles) >= page_limit:
+            break
+
+        article = fetch_swnn_article_from_page(url)
+
+        if article:
+            new_articles.append(article)
+
+    print(f"SWNN 빠른 갱신 신규 기사 수: {len(new_articles)}")
+
+    return new_articles
+
+def fetch_starwars_official_articles_incremental(existing_urls, limit=20):
+    """
+    StarWars.com 빠른 갱신.
+    목록 페이지에서 URL만 먼저 확인하고,
+    기존 URL이면 상세 페이지 접근을 생략한다.
+    """
+    print("StarWars.com 빠른 갱신 시작")
+
+    articles = []
+
+    try:
+        response = requests.get(
+            STARWARS_NEWS_URL,
+            timeout=15,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"StarWars.com 수집 실패: {e}")
+        return articles
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    links = soup.find_all("a", href=True)
+
+    seen_urls = set()
+
+    for link in links:
+        if len(articles) >= limit:
+            break
+
+        title = link.get_text(" ", strip=True)
+        href = link.get("href", "").strip()
+
+        if not title or not href:
+            continue
+
+        if href.startswith("https://www.starwars.com/news/"):
+            url = href
+        elif href.startswith("/news/"):
+            url = "https://www.starwars.com" + href
+        else:
+            continue
+
+        url = normalize_url(url)
+
+        if "/news/category/" in url:
+            continue
+
+        if "/news/tag/" in url:
+            continue
+
+        if url.rstrip("/") == "https://www.starwars.com/news":
+            continue
+
+        if len(title) < 10:
+            continue
+
+        if url in existing_urls:
+            continue
+
+        if url in seen_urls:
+            continue
+
+        seen_urls.add(url)
+
+        # 새 기사일 때만 상세 페이지에 들어가 메타데이터 보정
+        metadata = fetch_starwars_article_metadata(url)
+
+        published_at = metadata.get("published_at", "")
+        summary = metadata.get("summary", "")
+        image_url = metadata.get("image_url", "")
+
+        if not image_url:
+            image_url = fetch_image_from_article_page(url)
+
+        article = {
+            "article_id": 0,
+            "title": title,
+            "title_ko": "",
+            "source_name": "StarWars.com",
+            "source_url": url,
+            "url": url,
+            "image_url": image_url,
+            "published_at": published_at,
+            "summary": summary,
+            "summary_ko": "",
+            "category": guess_category(title),
+            "franchise": "Star Wars",
+            "label": "공식"
+        }
+
+        articles.append(article)
+
+    print(f"StarWars.com 빠른 갱신 신규 기사 수: {len(articles)}")
+
+    return articles
+
+
 def save_articles(articles):
     os.makedirs(DATA_DIR, exist_ok=True)
 
@@ -634,6 +887,55 @@ def save_articles(articles):
 
     print(f"저장 완료: {output_path}")
     print(f"수집 기사 수: {len(articles)}")
+
+
+def incremental_update():
+    """
+    빠른 갱신.
+    기존 fetched_articles.json을 유지하면서 새 기사만 추가한다.
+    """
+    print("빠른 뉴스 갱신 시작")
+
+    existing_articles = load_existing_articles()
+    existing_urls = get_existing_url_set(existing_articles)
+
+    print(f"기존 기사 수: {len(existing_articles)}")
+    print(f"기존 URL 수: {len(existing_urls)}")
+
+    new_swnn_articles = fetch_swnn_articles_incremental(
+        existing_urls=existing_urls,
+        rss_limit=20,
+        page_limit=20,
+        max_pages=3
+    )
+
+    # SWNN에서 새로 추가된 URL도 StarWars.com 중복 판단에 반영
+    for article in new_swnn_articles:
+        url = normalize_url(article.get("source_url") or article.get("url"))
+        if url:
+            existing_urls.add(url)
+
+    new_official_articles = fetch_starwars_official_articles_incremental(
+        existing_urls=existing_urls,
+        limit=20
+    )
+
+    all_articles = existing_articles + new_swnn_articles + new_official_articles
+    all_articles = deduplicate_articles(all_articles)
+
+    all_articles.sort(
+        key=lambda article: article.get("published_at", ""),
+        reverse=True
+    )
+
+    for idx, article in enumerate(all_articles, start=1):
+        article["article_id"] = idx
+
+    print(f"신규 SWNN 기사 수: {len(new_swnn_articles)}")
+    print(f"신규 StarWars.com 기사 수: {len(new_official_articles)}")
+    print(f"갱신 후 전체 기사 수: {len(all_articles)}")
+
+    save_articles(all_articles)
 
 
 def main():
@@ -684,4 +986,7 @@ def main():
     save_articles(all_articles)
 
 if __name__ == "__main__":
-    main()
+    if "--fast" in sys.argv:
+        incremental_update()
+    else:
+        main()

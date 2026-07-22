@@ -7,9 +7,11 @@
 import json
 import os
 import re
+import subprocess
+import sys
 import requests
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 
 
 app = Flask(__name__)
@@ -26,6 +28,112 @@ def load_json(filename):
 
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+def load_json_or_default(filename, default_value):
+    path = os.path.join(DATA_DIR, filename)
+
+    if not os.path.exists(path):
+        return default_value
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default_value
+
+
+def save_json(filename, data):
+    os.makedirs(DATA_DIR, exist_ok=True)
+
+    path = os.path.join(DATA_DIR, filename)
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def normalize_url_for_admin(url):
+    """
+    관리자 제외/복구 비교용 URL 정규화 함수.
+    """
+    if not url:
+        return ""
+
+    url = url.strip()
+    url = url.split("?")[0]
+    url = url.split("#")[0]
+    url = url.rstrip("/")
+
+    return url
+
+
+def load_article_overrides():
+    overrides = load_json_or_default(
+        "article_overrides.json",
+        {
+            "excluded_article_urls": [],
+            "manual_topic_merges": []
+        }
+    )
+
+    if "excluded_article_urls" not in overrides:
+        overrides["excluded_article_urls"] = []
+
+    if "manual_topic_merges" not in overrides:
+        overrides["manual_topic_merges"] = []
+
+    return overrides
+
+
+def save_article_overrides(overrides):
+    save_json("article_overrides.json", overrides)
+
+
+def collect_article_urls_from_topic(topic):
+    """
+    topic 안에 포함된 모든 기사 URL을 정규화해서 반환한다.
+    수동 병합 기록 저장에 사용한다.
+    """
+    article_urls = []
+
+    for article in topic.get("articles", []):
+        article_url = normalize_url_for_admin(
+            article.get("source_url") or article.get("url")
+        )
+
+        if article_url:
+            article_urls.append(article_url)
+
+    return article_urls
+
+
+def regenerate_topics():
+    """
+    현재 fetched_articles.json과 article_overrides.json을 기준으로 topics.json을 다시 생성한다.
+    """
+    result = subprocess.run(
+        [sys.executable, "group_topics.py"],
+        cwd=BASE_DIR,
+        check=False
+    )
+
+    return result.returncode == 0
+
+
+def update_news_data():
+    """
+    기사 수집 후 topic 재생성.
+    관리자 페이지의 '뉴스 갱신' 버튼에서 사용한다.
+    """
+    fetch_result = subprocess.run(
+        [sys.executable, "fetch_articles.py", "--fast"],
+        cwd=BASE_DIR,
+        check=False
+    )
+
+    if fetch_result.returncode != 0:
+        return False
+
+    return regenerate_topics()
 
 
 def get_selected_franchise_name(franchise):
@@ -507,6 +615,7 @@ def index():
     keyword = request.args.get("keyword", "")
     category = request.args.get("category", "")
     franchise = request.args.get("franchise", "starwars")
+    admin_mode = request.args.get("admin") == "1"
 
     articles = load_json("articles.json")
     articles = filter_articles(
@@ -524,13 +633,40 @@ def index():
         category=category
     )
 
+    excluded_articles = []
+
+    if admin_mode:
+        fetched_articles = load_json_or_default("fetched_articles.json", [])
+        overrides = load_article_overrides()
+
+        excluded_urls = set(
+            normalize_url_for_admin(url)
+            for url in overrides.get("excluded_article_urls", [])
+        )
+
+        for article in fetched_articles:
+            article_url = normalize_url_for_admin(
+                article.get("source_url") or article.get("url")
+            )
+
+            if article_url in excluded_urls:
+                excluded_articles.append(article)
+
+        excluded_articles.sort(
+            key=lambda article: article.get("published_at", ""),
+            reverse=True
+        )
+
     return render_template(
         "index.html",
         articles=articles,
         topics=topics,
         keyword=keyword,
         selected_category=category,
-        selected_franchise=franchise
+        selected_franchise=franchise,
+        admin_mode=admin_mode,
+        excluded_articles=[],
+        excluded_count=0
     )
 
 
@@ -583,6 +719,158 @@ def works():
         other_works=other_works,
         selected_franchise=franchise
     )
+
+@app.route("/admin")
+def admin():
+    articles = load_json_or_default("fetched_articles.json", [])
+    overrides = load_article_overrides()
+
+    excluded_urls = set(
+        normalize_url_for_admin(url)
+        for url in overrides.get("excluded_article_urls", [])
+    )
+
+    visible_articles = []
+    excluded_articles = []
+
+    for article in articles:
+        article_url = normalize_url_for_admin(
+            article.get("source_url") or article.get("url")
+        )
+
+        if article_url in excluded_urls:
+            excluded_articles.append(article)
+        else:
+            visible_articles.append(article)
+
+    visible_articles.sort(
+        key=lambda article: article.get("published_at", ""),
+        reverse=True
+    )
+
+    excluded_articles.sort(
+        key=lambda article: article.get("published_at", ""),
+        reverse=True
+    )
+
+    return render_template(
+        "admin.html",
+        visible_articles=visible_articles,
+        excluded_articles=excluded_articles,
+        visible_count=len(visible_articles),
+        excluded_count=len(excluded_articles),
+        total_count=len(articles)
+    )
+
+
+@app.route("/admin/update", methods=["POST"])
+def admin_update():
+    return_url = request.form.get("return_url") or url_for("admin")
+
+    update_news_data()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/exclude", methods=["POST"])
+def admin_exclude_article():
+    article_url = normalize_url_for_admin(request.form.get("url", ""))
+
+    if not article_url:
+        return redirect(url_for("admin"))
+
+    overrides = load_article_overrides()
+
+    excluded_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("excluded_article_urls", [])
+    ]
+
+    if article_url not in excluded_urls:
+        excluded_urls.append(article_url)
+
+    overrides["excluded_article_urls"] = excluded_urls
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return_url = request.form.get("return_url") or url_for("admin")
+    return redirect(return_url)
+
+
+@app.route("/admin/restore", methods=["POST"])
+def admin_restore_article():
+    article_url = normalize_url_for_admin(request.form.get("url", ""))
+
+    if not article_url:
+        return redirect(url_for("admin"))
+
+    overrides = load_article_overrides()
+
+    excluded_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("excluded_article_urls", [])
+    ]
+
+    excluded_urls = [
+        url for url in excluded_urls
+        if url != article_url
+    ]
+
+    overrides["excluded_article_urls"] = excluded_urls
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return_url = request.form.get("return_url") or url_for("admin")
+    return redirect(return_url)
+
+
+@app.route("/admin/merge-topics", methods=["POST"])
+def admin_merge_topics():
+    return_url = request.form.get("return_url") or url_for("index")
+    selected_topic_ids = request.form.getlist("topic_ids")
+
+    if len(selected_topic_ids) < 2:
+        return redirect(return_url)
+
+    selected_topic_ids = set(
+        int(topic_id)
+        for topic_id in selected_topic_ids
+        if topic_id.isdigit()
+    )
+
+    topics = load_json_or_default("topics.json", [])
+
+    article_urls_to_merge = []
+
+    for topic in topics:
+        if int(topic.get("topic_id", 0)) in selected_topic_ids:
+            article_urls_to_merge.extend(
+                collect_article_urls_from_topic(topic)
+            )
+
+    article_urls_to_merge = list(dict.fromkeys(article_urls_to_merge))
+
+    if len(article_urls_to_merge) < 2:
+        return redirect(return_url)
+
+    overrides = load_article_overrides()
+
+    manual_merges = overrides.get("manual_topic_merges", [])
+
+    manual_merges.append({
+        "merge_id": f"merge_{len(manual_merges) + 1}",
+        "article_urls": article_urls_to_merge
+    })
+
+    overrides["manual_topic_merges"] = manual_merges
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return redirect(return_url)
+
 
 @app.route("/api/assistant", methods=["POST"])
 def ai_assistant():

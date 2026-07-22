@@ -1,6 +1,214 @@
 [
   {
     "topic_id": 1,
+    "topic_title": "'The Mandalorian and Grogu' Home Release Announced, 'Star Wars: Legacy' Review",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 40,
+    "latest_published_at": "2026-07-20",
+    "is_top": false,
+    "representative_article": {
+      "title": "'The Mandalorian and Grogu' Home Release Announced, 'Star Wars: Legacy' Review",
+      "title_ko": "",
+      "url": "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-the-mandalorian-home-release-announced-star-wars-legacy-review.html",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-the-mandalorian-home-release-announced-star-wars-legacy-review.html",
+      "source_name": "Star Wars News Net",
+      "published_at": "2026-07-20",
+      "summary": "In our latest recap of Star Wars news, we include the home release details for The Mandalorian and Grogu, among other topics",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "starwars",
+      "label": "일반 보도",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/The-Mandalorian-And-Grogu-Speeder-Chase.png",
+      "article_id": 5,
+      "content_type": "review",
+      "event_type": "announcement",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "title": "'The Mandalorian and Grogu' Home Release Announced, 'Star Wars: Legacy' Review",
+        "title_ko": "",
+        "url": "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-the-mandalorian-home-release-announced-star-wars-legacy-review.html",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-the-mandalorian-home-release-announced-star-wars-legacy-review.html",
+        "source_name": "Star Wars News Net",
+        "published_at": "2026-07-20",
+        "summary": "In our latest recap of Star Wars news, we include the home release details for The Mandalorian and Grogu, among other topics",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "starwars",
+        "label": "일반 보도",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/The-Mandalorian-And-Grogu-Speeder-Chase.png",
+        "article_id": 5,
+        "content_type": "review",
+        "event_type": "announcement",
+        "main_entity": "the_mandalorian_and_grogu"
+      }
+    ]
+  },
+  {
+    "topic_id": 2,
+    "topic_title": "George Lucas Claims That Future Filmmakers Will Inevitably Use AI Tools",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-20",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 1,
+      "title": "George Lucas Claims That Future Filmmakers Will Inevitably Use AI Tools",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/george-lucas-claims-that-future-filmmakers-will-inevitably-use-ai-tools.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/George-Lucas-Digital-Editing.png",
+      "published_at": "2026-07-20",
+      "summary": "George Lucas has recently come under fire for recent statements suggesting that he is in favor of the use of The post George Lucas Claims That Future Filmmakers Will Inevitably Use AI Tools appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체",
+      "url": "https://www.starwarsnewsnet.com/2026/07/george-lucas-claims-that-future-filmmakers-will-inevitably-use-ai-tools.html",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 1,
+        "title": "George Lucas Claims That Future Filmmakers Will Inevitably Use AI Tools",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/george-lucas-claims-that-future-filmmakers-will-inevitably-use-ai-tools.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/George-Lucas-Digital-Editing.png",
+        "published_at": "2026-07-20",
+        "summary": "George Lucas has recently come under fire for recent statements suggesting that he is in favor of the use of The post George Lucas Claims That Future Filmmakers Will Inevitably Use AI Tools appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체",
+        "url": "https://www.starwarsnewsnet.com/2026/07/george-lucas-claims-that-future-filmmakers-will-inevitably-use-ai-tools.html",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 3,
+    "topic_title": "‘Star Wars: Twin Crossroads’ Book and ‘Jedi: Fallen Order’ Manga Vol. 3 To Be Announced At SDCC",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-20",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 3,
+      "title": "‘Star Wars: Twin Crossroads’ Book and ‘Jedi: Fallen Order’ Manga Vol. 3 To Be Announced At SDCC",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/star-wars-twin-crossroads-and-jedi-fallen-order-manga-vol-3-to-be-announced-at-sdcc.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/10/GmCvRkbWMAA-3Nn.jpeg",
+      "published_at": "2026-07-20",
+      "summary": "Star Wars publishing will be present through three panels at San Diego Comic-Con next Friday, July 24. The biggest will The post ‘Star Wars: Twin Crossroads’ Book and ‘Jedi: Fallen Order’ Manga Vol. 3 To Be Announced At SDCC appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체",
+      "url": "https://www.starwarsnewsnet.com/2026/07/star-wars-twin-crossroads-and-jedi-fallen-order-manga-vol-3-to-be-announced-at-sdcc.html",
+      "content_type": "news",
+      "event_type": "announcement",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 3,
+        "title": "‘Star Wars: Twin Crossroads’ Book and ‘Jedi: Fallen Order’ Manga Vol. 3 To Be Announced At SDCC",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/star-wars-twin-crossroads-and-jedi-fallen-order-manga-vol-3-to-be-announced-at-sdcc.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/10/GmCvRkbWMAA-3Nn.jpeg",
+        "published_at": "2026-07-20",
+        "summary": "Star Wars publishing will be present through three panels at San Diego Comic-Con next Friday, July 24. The biggest will The post ‘Star Wars: Twin Crossroads’ Book and ‘Jedi: Fallen Order’ Manga Vol. 3 To Be Announced At SDCC appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체",
+        "url": "https://www.starwarsnewsnet.com/2026/07/star-wars-twin-crossroads-and-jedi-fallen-order-manga-vol-3-to-be-announced-at-sdcc.html",
+        "content_type": "news",
+        "event_type": "announcement",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 4,
+    "topic_title": "Is The Cinematic Rise Of Dune A Cautionary Creative Tale For Star Wars?",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-19",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 6,
+      "title": "Is The Cinematic Rise Of Dune A Cautionary Creative Tale For Star Wars?",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/07/is-the-cinematic-rise-of-dune-a-cautionary-creative-tale-for-star-wars.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/03/THND-FF-000448.jpg",
+      "published_at": "2026-07-19",
+      "summary": "Ever since Star Wars hit the big screen nearly 50 years ago, the debate surrounding Dune, the origin story, and The post Is The Cinematic Rise Of Dune A Cautionary Creative Tale For Star Wars? appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체",
+      "url": "https://www.starwarsnewsnet.com/2026/07/is-the-cinematic-rise-of-dune-a-cautionary-creative-tale-for-star-wars.html",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 6,
+        "title": "Is The Cinematic Rise Of Dune A Cautionary Creative Tale For Star Wars?",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/is-the-cinematic-rise-of-dune-a-cautionary-creative-tale-for-star-wars.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/03/THND-FF-000448.jpg",
+        "published_at": "2026-07-19",
+        "summary": "Ever since Star Wars hit the big screen nearly 50 years ago, the debate surrounding Dune, the origin story, and The post Is The Cinematic Rise Of Dune A Cautionary Creative Tale For Star Wars? appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체",
+        "url": "https://www.starwarsnewsnet.com/2026/07/is-the-cinematic-rise-of-dune-a-cautionary-creative-tale-for-star-wars.html",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 5,
     "topic_title": "Saber Interactive Exec Mentions 2028 as Possible Release Year for KOTOR Remake",
     "topic_summary": "",
     "article_count": 1,
@@ -13,38 +221,38 @@
     "latest_published_at": "2026-07-17",
     "is_top": false,
     "representative_article": {
-      "article_id": 1,
       "title": "Saber Interactive Exec Mentions 2028 as Possible Release Year for KOTOR Remake",
       "title_ko": "",
-      "source_name": "Star Wars News Net",
+      "url": "https://www.starwarsnewsnet.com/2026/07/saber-interactive-exec-mentions-2028-as-possible-release-year-for-kotor-remake.html",
       "source_url": "https://www.starwarsnewsnet.com/2026/07/saber-interactive-exec-mentions-2028-as-possible-release-year-for-kotor-remake.html",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2020/04/Star-Wars-Knights-of-the-Old-Republic.jpg",
+      "source_name": "Star Wars News Net",
       "published_at": "2026-07-17",
-      "summary": "Well, it’s something. Today we got our most significant update on the progress of the long-desired KOTOR remake in years The post Saber Interactive Exec Mentions 2028 as Possible Release Year for KOTOR Remake appeared first on Star Wars News Net .",
+      "summary": "Saber Interactive newcomer Steve Allison lists the long-awaited \"KOTOR\" remake as one of the games the company intends to release in 2028.",
       "summary_ko": "",
       "category": "기타",
-      "franchise": "Star Wars",
-      "label": "팬 뉴스/전문 매체",
-      "url": "https://www.starwarsnewsnet.com/2026/07/saber-interactive-exec-mentions-2028-as-possible-release-year-for-kotor-remake.html",
+      "franchise": "starwars",
+      "label": "일반 보도",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2020/04/Star-Wars-Knights-of-the-Old-Republic.jpg",
+      "article_id": 7,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
     },
     "articles": [
       {
-        "article_id": 1,
         "title": "Saber Interactive Exec Mentions 2028 as Possible Release Year for KOTOR Remake",
         "title_ko": "",
-        "source_name": "Star Wars News Net",
+        "url": "https://www.starwarsnewsnet.com/2026/07/saber-interactive-exec-mentions-2028-as-possible-release-year-for-kotor-remake.html",
         "source_url": "https://www.starwarsnewsnet.com/2026/07/saber-interactive-exec-mentions-2028-as-possible-release-year-for-kotor-remake.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2020/04/Star-Wars-Knights-of-the-Old-Republic.jpg",
+        "source_name": "Star Wars News Net",
         "published_at": "2026-07-17",
-        "summary": "Well, it’s something. Today we got our most significant update on the progress of the long-desired KOTOR remake in years The post Saber Interactive Exec Mentions 2028 as Possible Release Year for KOTOR Remake appeared first on Star Wars News Net .",
+        "summary": "Saber Interactive newcomer Steve Allison lists the long-awaited \"KOTOR\" remake as one of the games the company intends to release in 2028.",
         "summary_ko": "",
         "category": "기타",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체",
-        "url": "https://www.starwarsnewsnet.com/2026/07/saber-interactive-exec-mentions-2028-as-possible-release-year-for-kotor-remake.html",
+        "franchise": "starwars",
+        "label": "일반 보도",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2020/04/Star-Wars-Knights-of-the-Old-Republic.jpg",
+        "article_id": 7,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -52,7 +260,7 @@
     ]
   },
   {
-    "topic_id": 2,
+    "topic_id": 6,
     "topic_title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
     "topic_summary": "",
     "article_count": 1,
@@ -65,7 +273,7 @@
     "latest_published_at": "2026-07-16",
     "is_top": false,
     "representative_article": {
-      "article_id": 24,
+      "article_id": 8,
       "title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -84,7 +292,7 @@
     },
     "articles": [
       {
-        "article_id": 24,
+        "article_id": 8,
         "title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -104,58 +312,182 @@
     ]
   },
   {
-    "topic_id": 3,
-    "topic_title": "Mando and Grogu Take Flight in LEGO Star Wars: The Mandalorian",
+    "topic_id": 7,
+    "topic_title": "Bring Star Wars: The Mandalorian and Grogu Home",
     "topic_summary": "",
-    "article_count": 2,
+    "article_count": 6,
     "sources": [
       "Star Wars News Net",
       "StarWars.com"
     ],
     "source_count": 2,
     "label": "공식 포함",
-    "importance": 290,
+    "importance": 370,
     "latest_published_at": "2026-07-14",
     "is_top": true,
     "representative_article": {
-      "article_id": 2,
-      "title": "‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2",
+      "article_id": 71,
+      "title": "Watch the Final Trailer for Star Wars: The Mandalorian and Grogu",
       "title_ko": "",
-      "source_name": "Star Wars News Net",
-      "source_url": "https://www.starwarsnewsnet.com/2026/07/lego-star-wars-the-mandalorian-special-officially-announced-releasing-september-2.html",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/lego-star-wars-the-mandalorian-poster-banner-e1784053769779.jpeg",
-      "published_at": "2026-07-14",
-      "summary": "In a fun way to celebrate the Mandalorian and Grogu pairing, a new post from StarWars.com has announced that a The post ‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2 appeared first on Star Wars News Net .",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/the-mandalorian-and-grogu-final-trailer-featured-41626c_98ba2fb1.jpeg?region=0%2C0%2C1536%2C864",
+      "published_at": "2026-04-16",
+      "summary": "We’ve all heard stories of a Mandalorian bounty hunter and a child. Soon, we’ll experience our first adventures with the Clan of Two on the big screen.\r\n\r\nThe final trailer for the Star Wars: The Mandalorian and Grogu feature film has arrived, a captivating sneak peek at the journey of Din Djarin (played by Pedro Pascal) and his young apprentice and son Grogu, which debuted to an enthusiastic crowd at CinemaCon in Las Vegas.",
       "summary_ko": "",
       "category": "영화",
       "franchise": "Star Wars",
-      "label": "팬 뉴스/전문 매체",
-      "url": "https://www.starwarsnewsnet.com/2026/07/lego-star-wars-the-mandalorian-special-officially-announced-releasing-september-2.html",
+      "label": "공식",
+      "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
       "content_type": "news",
-      "event_type": "announcement",
+      "event_type": "trailer",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "title": "'The Mandalorian and Grogu' Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
+        "title_ko": "",
+        "url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
+        "source_url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
+        "source_name": "Star Wars News Net",
+        "published_at": "2026-07-14",
+        "summary": "The Mandalorian and Grogu will be available to purchase digitally on July 21, with its physical editions arriving on August 25, 2026.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "starwars",
+        "label": "일반 보도",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
+        "article_id": 9,
+        "content_type": "news",
+        "event_type": "release",
+        "main_entity": "the_mandalorian_and_grogu"
+      },
+      {
+        "article_id": 11,
+        "title": "Bring Star Wars: The Mandalorian and Grogu Home",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-watch-at-home",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-watch-at-home-featu_5d0b74b6.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-07-14",
+        "summary": "Go behind the scenes with exclusive new featurettes and audio commentary from Director Jon Favreau when the latest adventures of Din Djarin and Grogu come to digital and physical media.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-watch-at-home",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      },
+      {
+        "article_id": 39,
+        "title": "A Closer Look at Grogu - Star of Star Wars: The Mandalorian and Grogu",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-interview",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-interview-feature_575fe860.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-28",
+        "summary": "We’d follow Grogu anywhere. The puppeteers who create the complex illusion already do.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-interview",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      },
+      {
+        "article_id": 40,
+        "title": "Composing the Magical Score for Star Wars: The Mandalorian and Grogu",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-soundtrack-feature",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/film-score-the-mandalorian-and-grogu-feature-_3678bbb4.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-26",
+        "summary": "Academy Award-winning composer Ludwig Göransson breaks down his latest work, expanding on his unforgettable musical themes for the new Star Wars film in theaters now.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-soundtrack-feature",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      },
+      {
+        "article_id": 42,
+        "title": "Meet the Cast of Star Wars: The Mandalorian and Grogu",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-cast",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-cast",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-cast-grogu-feature-_85436e53.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-21",
+        "summary": "Stars Pedro Pascal, Sigourney Weaver, and more discuss the new Star Wars film, only in theaters May 22, 2026.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      },
+      {
+        "article_id": 71,
+        "title": "Watch the Final Trailer for Star Wars: The Mandalorian and Grogu",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/the-mandalorian-and-grogu-final-trailer-featured-41626c_98ba2fb1.jpeg?region=0%2C0%2C1536%2C864",
+        "published_at": "2026-04-16",
+        "summary": "We’ve all heard stories of a Mandalorian bounty hunter and a child. Soon, we’ll experience our first adventures with the Clan of Two on the big screen.\r\n\r\nThe final trailer for the Star Wars: The Mandalorian and Grogu feature film has arrived, a captivating sneak peek at the journey of Din Djarin (played by Pedro Pascal) and his young apprentice and son Grogu, which debuted to an enthusiastic crowd at CinemaCon in Las Vegas.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
+        "content_type": "news",
+        "event_type": "trailer",
+        "main_entity": "the_mandalorian_and_grogu"
+      }
+    ]
+  },
+  {
+    "topic_id": 8,
+    "topic_title": "Mando and Grogu Take Flight in LEGO Star Wars: The Mandalorian",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-07-14",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 10,
+      "title": "Mando and Grogu Take Flight in LEGO Star Wars: The Mandalorian",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/lego-star-wars-the-mandalorian",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/lego-star-wars-the-mandalorian-teaser-poster-feature_45672667.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-07-14",
+      "summary": "The all-new LEGO Star Wars animated adventure is coming to Disney+ on September 2.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "url": "https://www.starwars.com/news/lego-star-wars-the-mandalorian",
+      "content_type": "news",
+      "event_type": "general",
       "main_entity": "lego_star_wars_the_mandalorian"
     },
     "articles": [
       {
-        "article_id": 2,
-        "title": "‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/lego-star-wars-the-mandalorian-special-officially-announced-releasing-september-2.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/lego-star-wars-the-mandalorian-poster-banner-e1784053769779.jpeg",
-        "published_at": "2026-07-14",
-        "summary": "In a fun way to celebrate the Mandalorian and Grogu pairing, a new post from StarWars.com has announced that a The post ‘LEGO Star Wars: The Mandalorian’ Special Officially Announced, Releasing September 2 appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체",
-        "url": "https://www.starwarsnewsnet.com/2026/07/lego-star-wars-the-mandalorian-special-officially-announced-releasing-september-2.html",
-        "content_type": "news",
-        "event_type": "announcement",
-        "main_entity": "lego_star_wars_the_mandalorian"
-      },
-      {
-        "article_id": 25,
+        "article_id": 10,
         "title": "Mando and Grogu Take Flight in LEGO Star Wars: The Mandalorian",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -175,130 +507,7 @@
     ]
   },
   {
-    "topic_id": 4,
-    "topic_title": "Bring Star Wars: The Mandalorian and Grogu Home",
-    "topic_summary": "",
-    "article_count": 2,
-    "sources": [
-      "Star Wars News Net",
-      "StarWars.com"
-    ],
-    "source_count": 2,
-    "label": "공식 포함",
-    "importance": 290,
-    "latest_published_at": "2026-07-14",
-    "is_top": true,
-    "representative_article": {
-      "article_id": 3,
-      "title": "‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
-      "title_ko": "",
-      "source_name": "Star Wars News Net",
-      "source_url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
-      "published_at": "2026-07-14",
-      "summary": "Only two months after its theatrical debut, The Mandalorian and Grogu will be available to purchase digitally next week on The post ‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August appeared first on Star Wars News Net .",
-      "summary_ko": "",
-      "category": "영화",
-      "franchise": "Star Wars",
-      "label": "팬 뉴스/전문 매체",
-      "url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
-      "content_type": "news",
-      "event_type": "release",
-      "main_entity": "the_mandalorian_and_grogu"
-    },
-    "articles": [
-      {
-        "article_id": 3,
-        "title": "‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
-        "published_at": "2026-07-14",
-        "summary": "Only two months after its theatrical debut, The Mandalorian and Grogu will be available to purchase digitally next week on The post ‘The Mandalorian and Grogu’ Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체",
-        "url": "https://www.starwarsnewsnet.com/2026/07/the-mandalorian-and-grogu-available-to-buy-on-digital-next-week-on-4k-ultra-hd-and-blu-ray-in-august.html",
-        "content_type": "news",
-        "event_type": "release",
-        "main_entity": "the_mandalorian_and_grogu"
-      },
-      {
-        "article_id": 26,
-        "title": "Bring Star Wars: The Mandalorian and Grogu Home",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-watch-at-home",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-watch-at-home-featu_5d0b74b6.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-07-14",
-        "summary": "Go behind the scenes with exclusive new featurettes and audio commentary from Director Jon Favreau when the latest adventures of Din Djarin and Grogu come to digital and physical media.",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식",
-        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-watch-at-home",
-        "content_type": "news",
-        "event_type": "general",
-        "main_entity": "the_mandalorian_and_grogu"
-      }
-    ]
-  },
-  {
-    "topic_id": 5,
-    "topic_title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 140,
-    "latest_published_at": "2026-07-13",
-    "is_top": false,
-    "representative_article": {
-      "article_id": 4,
-      "title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
-      "title_ko": "",
-      "source_name": "Star Wars News Net",
-      "source_url": "https://www.starwarsnewsnet.com/2026/07/new-lego-star-wars-animated-special-to-screen-at-d23.html",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/09/LEGO-Star-Wars-Rebuild-The-Galaxy-Pieces-Of-The-Past-Promo-Art-1024x576.png",
-      "published_at": "2026-07-13",
-      "summary": "UPDATE: More details regarding the new LEGO Star Wars special were revealed via the D23 app. Though we don’t have The post Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23 appeared first on Star Wars News Net .",
-      "summary_ko": "",
-      "category": "영화",
-      "franchise": "Star Wars",
-      "label": "팬 뉴스/전문 매체",
-      "url": "https://www.starwarsnewsnet.com/2026/07/new-lego-star-wars-animated-special-to-screen-at-d23.html",
-      "content_type": "news",
-      "event_type": "event",
-      "main_entity": "lego_star_wars_the_mandalorian"
-    },
-    "articles": [
-      {
-        "article_id": 4,
-        "title": "Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23",
-        "title_ko": "",
-        "source_name": "Star Wars News Net",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/new-lego-star-wars-animated-special-to-screen-at-d23.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/09/LEGO-Star-Wars-Rebuild-The-Galaxy-Pieces-Of-The-Past-Promo-Art-1024x576.png",
-        "published_at": "2026-07-13",
-        "summary": "UPDATE: More details regarding the new LEGO Star Wars special were revealed via the D23 app. Though we don’t have The post Update: New ‘LEGO Star Wars: The Mandalorian’ Animated Special To Screen At D23 appeared first on Star Wars News Net .",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체",
-        "url": "https://www.starwarsnewsnet.com/2026/07/new-lego-star-wars-animated-special-to-screen-at-d23.html",
-        "content_type": "news",
-        "event_type": "event",
-        "main_entity": "lego_star_wars_the_mandalorian"
-      }
-    ]
-  },
-  {
-    "topic_id": 6,
+    "topic_id": 9,
     "topic_title": "'Star Wars: Visions' and 'Maul: Shadow Lord' Among List of Nominees for the 2026 Emmys",
     "topic_summary": "",
     "article_count": 1,
@@ -323,7 +532,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Star-Wars-Visions-and-Maul-Emmys-Thumbnail-2.jpg",
-      "article_id": 9,
+      "article_id": 12,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -342,7 +551,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Star-Wars-Visions-and-Maul-Emmys-Thumbnail-2.jpg",
-        "article_id": 9,
+        "article_id": 12,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -350,111 +559,7 @@
     ]
   },
   {
-    "topic_id": 7,
-    "topic_title": "Exclusive 'Star Wars: Legacy' Book Jacket Coming to San Diego Comic-Con",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 140,
-    "latest_published_at": "2026-07-09",
-    "is_top": false,
-    "representative_article": {
-      "title": "Exclusive 'Star Wars: Legacy' Book Jacket Coming to San Diego Comic-Con",
-      "title_ko": "",
-      "url": "https://www.starwarsnewsnet.com/2026/07/exclusive-star-wars-legacy-book-jacket-coming-to-san-diego-comic-con.html",
-      "source_url": "https://www.starwarsnewsnet.com/2026/07/exclusive-star-wars-legacy-book-jacket-coming-to-san-diego-comic-con.html",
-      "source_name": "Star Wars News Net",
-      "published_at": "2026-07-09",
-      "summary": "Visitors to San Diego Comic-Con can get their hands on an exclusive book jacket for the upcoming novel Star Wars: Legacy.",
-      "summary_ko": "",
-      "category": "도서",
-      "franchise": "starwars",
-      "label": "일반 보도",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Screenshot-2026-07-09-3.39.21-PM-e1783629613527.png",
-      "article_id": 17,
-      "content_type": "news",
-      "event_type": "event",
-      "main_entity": ""
-    },
-    "articles": [
-      {
-        "title": "Exclusive 'Star Wars: Legacy' Book Jacket Coming to San Diego Comic-Con",
-        "title_ko": "",
-        "url": "https://www.starwarsnewsnet.com/2026/07/exclusive-star-wars-legacy-book-jacket-coming-to-san-diego-comic-con.html",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/exclusive-star-wars-legacy-book-jacket-coming-to-san-diego-comic-con.html",
-        "source_name": "Star Wars News Net",
-        "published_at": "2026-07-09",
-        "summary": "Visitors to San Diego Comic-Con can get their hands on an exclusive book jacket for the upcoming novel Star Wars: Legacy.",
-        "summary_ko": "",
-        "category": "도서",
-        "franchise": "starwars",
-        "label": "일반 보도",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Screenshot-2026-07-09-3.39.21-PM-e1783629613527.png",
-        "article_id": 17,
-        "content_type": "news",
-        "event_type": "event",
-        "main_entity": ""
-      }
-    ]
-  },
-  {
-    "topic_id": 8,
-    "topic_title": "Leia And Rey Head To Tython In New 'Star Wars: Legacy' Excerpt",
-    "topic_summary": "",
-    "article_count": 1,
-    "sources": [
-      "Star Wars News Net"
-    ],
-    "source_count": 1,
-    "label": "일반 보도",
-    "importance": 140,
-    "latest_published_at": "2026-07-07",
-    "is_top": false,
-    "representative_article": {
-      "title": "Leia And Rey Head To Tython In New 'Star Wars: Legacy' Excerpt",
-      "title_ko": "",
-      "url": "https://www.starwarsnewsnet.com/2026/07/leia-and-rey-head-to-tython-in-new-star-wars-legacy-excerpt.html",
-      "source_url": "https://www.starwarsnewsnet.com/2026/07/leia-and-rey-head-to-tython-in-new-star-wars-legacy-excerpt.html",
-      "source_name": "Star Wars News Net",
-      "published_at": "2026-07-07",
-      "summary": "In a new excerpt for the upcoming novel 'Star Wars: Legacy' Rey and Leia face a test from an ancient Jedi on the planet Tython",
-      "summary_ko": "",
-      "category": "기타",
-      "franchise": "starwars",
-      "label": "일반 보도",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/legacy_header.jpg",
-      "article_id": 18,
-      "content_type": "news",
-      "event_type": "general",
-      "main_entity": ""
-    },
-    "articles": [
-      {
-        "title": "Leia And Rey Head To Tython In New 'Star Wars: Legacy' Excerpt",
-        "title_ko": "",
-        "url": "https://www.starwarsnewsnet.com/2026/07/leia-and-rey-head-to-tython-in-new-star-wars-legacy-excerpt.html",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/leia-and-rey-head-to-tython-in-new-star-wars-legacy-excerpt.html",
-        "source_name": "Star Wars News Net",
-        "published_at": "2026-07-07",
-        "summary": "In a new excerpt for the upcoming novel 'Star Wars: Legacy' Rey and Leia face a test from an ancient Jedi on the planet Tython",
-        "summary_ko": "",
-        "category": "기타",
-        "franchise": "starwars",
-        "label": "일반 보도",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/legacy_header.jpg",
-        "article_id": 18,
-        "content_type": "news",
-        "event_type": "general",
-        "main_entity": ""
-      }
-    ]
-  },
-  {
-    "topic_id": 9,
+    "topic_id": 10,
     "topic_title": "New Star Wars: The Experience Museum Exhibition Announced",
     "topic_summary": "",
     "article_count": 1,
@@ -467,7 +572,7 @@
     "latest_published_at": "2026-07-07",
     "is_top": false,
     "representative_article": {
-      "article_id": 27,
+      "article_id": 13,
       "title": "New Star Wars: The Experience Museum Exhibition Announced",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -486,7 +591,7 @@
     },
     "articles": [
       {
-        "article_id": 27,
+        "article_id": 13,
         "title": "New Star Wars: The Experience Museum Exhibition Announced",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -506,7 +611,7 @@
     ]
   },
   {
-    "topic_id": 10,
+    "topic_id": 11,
     "topic_title": "Star Wars: Galactic Racer Will Receive DLC Post-Launch",
     "topic_summary": "",
     "article_count": 1,
@@ -531,7 +636,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Screenshot-2026-06-23-at-16.47.25-1024x600.png",
-      "article_id": 19,
+      "article_id": 14,
       "content_type": "news",
       "event_type": "release",
       "main_entity": "galactic_racer"
@@ -550,7 +655,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Screenshot-2026-06-23-at-16.47.25-1024x600.png",
-        "article_id": 19,
+        "article_id": 14,
         "content_type": "news",
         "event_type": "release",
         "main_entity": "galactic_racer"
@@ -558,7 +663,7 @@
     ]
   },
   {
-    "topic_id": 11,
+    "topic_id": 12,
     "topic_title": "Star Wars: Visions Presents - The Ninth Jedi Creators Talk About Heroes and Villains",
     "topic_summary": "",
     "article_count": 2,
@@ -569,9 +674,9 @@
     "label": "공식 포함",
     "importance": 190,
     "latest_published_at": "2026-07-03",
-    "is_top": false,
+    "is_top": true,
     "representative_article": {
-      "article_id": 22,
+      "article_id": 16,
       "title": "Star Wars: Visions Presents - The Ninth Jedi Trailer Debut",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -590,25 +695,7 @@
     },
     "articles": [
       {
-        "article_id": 22,
-        "title": "Star Wars: Visions Presents - The Ninth Jedi Trailer Debut",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-visions-presents-the-ninth-jedi-trailer",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-ninth-jedi-teaser-poster-feature_d53eb80d.jpeg?region=0%2C0%2C1600%2C900",
-        "published_at": "2026-07-02",
-        "summary": "Watch the trailer and see the teaser poster for the new Star Wars limited anime series, arriving on Disney+ and Hulu this August!",
-        "summary_ko": "",
-        "category": "게임",
-        "franchise": "Star Wars",
-        "label": "공식",
-        "url": "https://www.starwars.com/news/star-wars-visions-presents-the-ninth-jedi-trailer",
-        "content_type": "news",
-        "event_type": "trailer",
-        "main_entity": "the_ninth_jedi"
-      },
-      {
-        "article_id": 28,
+        "article_id": 15,
         "title": "Star Wars: Visions Presents - The Ninth Jedi Creators Talk About Heroes and Villains",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -624,11 +711,29 @@
         "content_type": "interview",
         "event_type": "interview",
         "main_entity": "the_ninth_jedi"
+      },
+      {
+        "article_id": 16,
+        "title": "Star Wars: Visions Presents - The Ninth Jedi Trailer Debut",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-visions-presents-the-ninth-jedi-trailer",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-ninth-jedi-teaser-poster-feature_d53eb80d.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-07-02",
+        "summary": "Watch the trailer and see the teaser poster for the new Star Wars limited anime series, arriving on Disney+ and Hulu this August!",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "url": "https://www.starwars.com/news/star-wars-visions-presents-the-ninth-jedi-trailer",
+        "content_type": "news",
+        "event_type": "trailer",
+        "main_entity": "the_ninth_jedi"
       }
     ]
   },
   {
-    "topic_id": 12,
+    "topic_id": 13,
     "topic_title": "'Star Wars Eclipse' Developer Has Huge Layoffs, Striking Workers",
     "topic_summary": "",
     "article_count": 1,
@@ -653,7 +758,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2021/12/ECLIPSE-STARSHIPS-TRADE-BLASTER-FIRE-DURING-AN-INTENSE-SPACE-BATTLE.jpeg",
-      "article_id": 20,
+      "article_id": 17,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -672,7 +777,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2021/12/ECLIPSE-STARSHIPS-TRADE-BLASTER-FIRE-DURING-AN-INTENSE-SPACE-BATTLE.jpeg",
-        "article_id": 20,
+        "article_id": 17,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -680,7 +785,7 @@
     ]
   },
   {
-    "topic_id": 13,
+    "topic_id": 14,
     "topic_title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
     "topic_summary": "",
     "article_count": 1,
@@ -693,7 +798,7 @@
     "latest_published_at": "2026-06-30",
     "is_top": false,
     "representative_article": {
-      "article_id": 29,
+      "article_id": 18,
       "title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -712,7 +817,7 @@
     },
     "articles": [
       {
-        "article_id": 29,
+        "article_id": 18,
         "title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -732,7 +837,7 @@
     ]
   },
   {
-    "topic_id": 14,
+    "topic_id": 15,
     "topic_title": "New Galaxy's Edge Update to Bring Floating Droid Vendors Inspired By 'The Mandalorian and Grogu'",
     "topic_summary": "",
     "article_count": 1,
@@ -757,7 +862,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/1800x945.webp",
-      "article_id": 5,
+      "article_id": 19,
       "content_type": "news",
       "event_type": "general",
       "main_entity": "the_mandalorian_and_grogu"
@@ -776,7 +881,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/1800x945.webp",
-        "article_id": 5,
+        "article_id": 19,
         "content_type": "news",
         "event_type": "general",
         "main_entity": "the_mandalorian_and_grogu"
@@ -784,7 +889,7 @@
     ]
   },
   {
-    "topic_id": 15,
+    "topic_id": 16,
     "topic_title": "Amy Adams Says 'Star Wars: Starfighter' Role Is Small",
     "topic_summary": "",
     "article_count": 1,
@@ -809,7 +914,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Amy-Adams-Star-Wars.jpg",
-      "article_id": 11,
+      "article_id": 20,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -828,7 +933,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Amy-Adams-Star-Wars.jpg",
-        "article_id": 11,
+        "article_id": 20,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -836,7 +941,7 @@
     ]
   },
   {
-    "topic_id": 16,
+    "topic_id": 17,
     "topic_title": "'Star Wars: Starfighter' Teaser Shown At CineEurope Along With 'Infinity Vision' Screen Details",
     "topic_summary": "",
     "article_count": 1,
@@ -861,7 +966,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/06/GsChK4XXAAMMhY5.jpeg",
-      "article_id": 12,
+      "article_id": 21,
       "content_type": "news",
       "event_type": "trailer",
       "main_entity": ""
@@ -880,7 +985,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/06/GsChK4XXAAMMhY5.jpeg",
-        "article_id": 12,
+        "article_id": 21,
         "content_type": "news",
         "event_type": "trailer",
         "main_entity": ""
@@ -888,7 +993,7 @@
     ]
   },
   {
-    "topic_id": 17,
+    "topic_id": 18,
     "topic_title": "'Star Wars Galaxies' Documentary Retrospective",
     "topic_summary": "",
     "article_count": 1,
@@ -913,7 +1018,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/11/Star-Wars-Galaxies-MMO-Screenshot.jpg",
-      "article_id": 21,
+      "article_id": 22,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -932,7 +1037,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/11/Star-Wars-Galaxies-MMO-Screenshot.jpg",
-        "article_id": 21,
+        "article_id": 22,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -940,7 +1045,7 @@
     ]
   },
   {
-    "topic_id": 18,
+    "topic_id": 19,
     "topic_title": "Sam Witwer Says 'Star Wars' Creators Need To Take Risks",
     "topic_summary": "",
     "article_count": 1,
@@ -965,7 +1070,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/05/Sam-Witwer-Darth-Maul.jpg",
-      "article_id": 10,
+      "article_id": 23,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -984,7 +1089,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/05/Sam-Witwer-Darth-Maul.jpg",
-        "article_id": 10,
+        "article_id": 23,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -992,7 +1097,7 @@
     ]
   },
   {
-    "topic_id": 19,
+    "topic_id": 20,
     "topic_title": "Who is Zeb?",
     "topic_summary": "",
     "article_count": 1,
@@ -1005,7 +1110,7 @@
     "latest_published_at": "2026-06-23",
     "is_top": false,
     "representative_article": {
-      "article_id": 30,
+      "article_id": 24,
       "title": "Who is Zeb?",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1024,7 +1129,7 @@
     },
     "articles": [
       {
-        "article_id": 30,
+        "article_id": 24,
         "title": "Who is Zeb?",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1044,7 +1149,7 @@
     ]
   },
   {
-    "topic_id": 20,
+    "topic_id": 21,
     "topic_title": "Matt Smith Praises 'Star Wars: Starfighter' Team, Plays Coy About Villainous Role",
     "topic_summary": "",
     "article_count": 1,
@@ -1069,7 +1174,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/smith-matt.webp",
-      "article_id": 13,
+      "article_id": 25,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -1088,7 +1193,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/smith-matt.webp",
-        "article_id": 13,
+        "article_id": 25,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -1096,7 +1201,7 @@
     ]
   },
   {
-    "topic_id": 21,
+    "topic_id": 22,
     "topic_title": "'Ahsoka' Star Eman Esfandi Hypes Up Ezra's Journey in Season 2",
     "topic_summary": "",
     "article_count": 1,
@@ -1121,7 +1226,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2024/10/Ezra-Bridger-Ahsoka-Banner-e1728504368587.jpg",
-      "article_id": 14,
+      "article_id": 26,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -1140,7 +1245,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2024/10/Ezra-Bridger-Ahsoka-Banner-e1728504368587.jpg",
-        "article_id": 14,
+        "article_id": 26,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -1148,7 +1253,7 @@
     ]
   },
   {
-    "topic_id": 22,
+    "topic_id": 23,
     "topic_title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
     "topic_summary": "",
     "article_count": 1,
@@ -1161,7 +1266,7 @@
     "latest_published_at": "2026-06-17",
     "is_top": false,
     "representative_article": {
-      "article_id": 31,
+      "article_id": 27,
       "title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1180,7 +1285,7 @@
     },
     "articles": [
       {
-        "article_id": 31,
+        "article_id": 27,
         "title": "The Mandalorian and Other Favorite Father Figures in the Galaxy",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1200,7 +1305,7 @@
     ]
   },
   {
-    "topic_id": 23,
+    "topic_id": 24,
     "topic_title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
     "topic_summary": "",
     "article_count": 1,
@@ -1213,7 +1318,7 @@
     "latest_published_at": "2026-06-16",
     "is_top": false,
     "representative_article": {
-      "article_id": 32,
+      "article_id": 28,
       "title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1232,7 +1337,7 @@
     },
     "articles": [
       {
-        "article_id": 32,
+        "article_id": 28,
         "title": "How Star Wars: The Mandalorian and Grogu Made the Razor Crest Soar",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1252,7 +1357,7 @@
     ]
   },
   {
-    "topic_id": 24,
+    "topic_id": 25,
     "topic_title": "Jon Favreau Provides Behind the Scenes Details In 'The Mandalorian and Grogu' Commentary",
     "topic_summary": "",
     "article_count": 1,
@@ -1277,7 +1382,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/Screenshot-2026-04-17-at-4.26.32-PM.png",
-      "article_id": 6,
+      "article_id": 29,
       "content_type": "news",
       "event_type": "general",
       "main_entity": "the_mandalorian_and_grogu"
@@ -1296,7 +1401,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/Screenshot-2026-04-17-at-4.26.32-PM.png",
-        "article_id": 6,
+        "article_id": 29,
         "content_type": "news",
         "event_type": "general",
         "main_entity": "the_mandalorian_and_grogu"
@@ -1304,7 +1409,7 @@
     ]
   },
   {
-    "topic_id": 25,
+    "topic_id": 26,
     "topic_title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
     "topic_summary": "",
     "article_count": 1,
@@ -1317,7 +1422,7 @@
     "latest_published_at": "2026-06-10",
     "is_top": false,
     "representative_article": {
-      "article_id": 33,
+      "article_id": 30,
       "title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1336,7 +1441,7 @@
     },
     "articles": [
       {
-        "article_id": 33,
+        "article_id": 30,
         "title": "Star Wars (I Am Your) Father’s Day Gift Guide 2026",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1356,7 +1461,7 @@
     ]
   },
   {
-    "topic_id": 26,
+    "topic_id": 27,
     "topic_title": "'The Mandalorian and Grogu' Falls Out of Top 5 at the Box Office In Week 3",
     "topic_summary": "",
     "article_count": 1,
@@ -1381,7 +1486,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/THND-FF-000469-scaled.jpg",
-      "article_id": 7,
+      "article_id": 31,
       "content_type": "news",
       "event_type": "general",
       "main_entity": "the_mandalorian_and_grogu"
@@ -1400,7 +1505,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/THND-FF-000469-scaled.jpg",
-        "article_id": 7,
+        "article_id": 31,
         "content_type": "news",
         "event_type": "general",
         "main_entity": "the_mandalorian_and_grogu"
@@ -1408,7 +1513,7 @@
     ]
   },
   {
-    "topic_id": 27,
+    "topic_id": 28,
     "topic_title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
     "topic_summary": "",
     "article_count": 1,
@@ -1421,7 +1526,7 @@
     "latest_published_at": "2026-06-06",
     "is_top": false,
     "representative_article": {
-      "article_id": 34,
+      "article_id": 32,
       "title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1440,7 +1545,7 @@
     },
     "articles": [
       {
-        "article_id": 34,
+        "article_id": 32,
         "title": "Catch Star Wars Zero Company in Action in New Gameplay Trailer",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1460,7 +1565,7 @@
     ]
   },
   {
-    "topic_id": 28,
+    "topic_id": 29,
     "topic_title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
     "topic_summary": "",
     "article_count": 1,
@@ -1473,7 +1578,7 @@
     "latest_published_at": "2026-06-05",
     "is_top": false,
     "representative_article": {
-      "article_id": 35,
+      "article_id": 33,
       "title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1492,7 +1597,7 @@
     },
     "articles": [
       {
-        "article_id": 35,
+        "article_id": 33,
         "title": "Rivalries Heat Up in the New Trailer for Star Wars: Galactic Racer",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1512,57 +1617,39 @@
     ]
   },
   {
-    "topic_id": 29,
+    "topic_id": 30,
     "topic_title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
     "topic_summary": "",
-    "article_count": 4,
+    "article_count": 1,
     "sources": [
       "StarWars.com"
     ],
     "source_count": 1,
     "label": "공식 포함",
-    "importance": 230,
+    "importance": 170,
     "latest_published_at": "2026-06-04",
-    "is_top": true,
+    "is_top": false,
     "representative_article": {
-      "article_id": 23,
-      "title": "Watch the Final Trailer for Star Wars: The Mandalorian and Grogu",
+      "article_id": 34,
+      "title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
       "title_ko": "",
       "source_name": "StarWars.com",
-      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
-      "image_url": "https://lumiere-a.akamaihd.net/v1/images/the-mandalorian-and-grogu-final-trailer-featured-41626c_98ba2fb1.jpeg?region=0%2C0%2C1536%2C864",
-      "published_at": "2026-04-16",
-      "summary": "We’ve all heard stories of a Mandalorian bounty hunter and a child. Soon, we’ll experience our first adventures with the Clan of Two on the big screen.\r\n\r\nThe final trailer for the Star Wars: The Mandalorian and Grogu feature film has arrived, a captivating sneak peek at the journey of Din Djarin (played by Pedro Pascal) and his young apprentice and son Grogu, which debuted to an enthusiastic crowd at CinemaCon in Las Vegas.",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-set-visit",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-set-visit-feature_7ef7b034.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-06-04",
+      "summary": "Come along as we take a hands-on look at the New Republic hangout, alongside the crew who built it.",
       "summary_ko": "",
       "category": "영화",
       "franchise": "Star Wars",
       "label": "공식",
-      "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
+      "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-set-visit",
       "content_type": "news",
-      "event_type": "trailer",
+      "event_type": "general",
       "main_entity": "the_mandalorian_and_grogu"
     },
     "articles": [
       {
-        "article_id": 23,
-        "title": "Watch the Final Trailer for Star Wars: The Mandalorian and Grogu",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/the-mandalorian-and-grogu-final-trailer-featured-41626c_98ba2fb1.jpeg?region=0%2C0%2C1536%2C864",
-        "published_at": "2026-04-16",
-        "summary": "We’ve all heard stories of a Mandalorian bounty hunter and a child. Soon, we’ll experience our first adventures with the Clan of Two on the big screen.\r\n\r\nThe final trailer for the Star Wars: The Mandalorian and Grogu feature film has arrived, a captivating sneak peek at the journey of Din Djarin (played by Pedro Pascal) and his young apprentice and son Grogu, which debuted to an enthusiastic crowd at CinemaCon in Las Vegas.",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식",
-        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-final-trailer",
-        "content_type": "news",
-        "event_type": "trailer",
-        "main_entity": "the_mandalorian_and_grogu"
-      },
-      {
-        "article_id": 36,
+        "article_id": 34,
         "title": "Join the New Republic at Star Wars: The Mandalorian and Grogu ’s Adelphi Base",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1578,47 +1665,11 @@
         "content_type": "news",
         "event_type": "general",
         "main_entity": "the_mandalorian_and_grogu"
-      },
-      {
-        "article_id": 40,
-        "title": "A Closer Look at Grogu - Star of Star Wars: The Mandalorian and Grogu",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-interview",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-interview-feature_575fe860.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-05-28",
-        "summary": "We’d follow Grogu anywhere. The puppeteers who create the complex illusion already do.",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식",
-        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-interview",
-        "content_type": "news",
-        "event_type": "general",
-        "main_entity": "the_mandalorian_and_grogu"
-      },
-      {
-        "article_id": 41,
-        "title": "Composing the Magical Score for Star Wars: The Mandalorian and Grogu",
-        "title_ko": "",
-        "source_name": "StarWars.com",
-        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-soundtrack-feature",
-        "image_url": "https://lumiere-a.akamaihd.net/v1/images/film-score-the-mandalorian-and-grogu-feature-_3678bbb4.jpeg?region=0%2C0%2C1280%2C720",
-        "published_at": "2026-05-26",
-        "summary": "Academy Award-winning composer Ludwig Göransson breaks down his latest work, expanding on his unforgettable musical themes for the new Star Wars film in theaters now.",
-        "summary_ko": "",
-        "category": "영화",
-        "franchise": "Star Wars",
-        "label": "공식",
-        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-soundtrack-feature",
-        "content_type": "news",
-        "event_type": "general",
-        "main_entity": "the_mandalorian_and_grogu"
       }
     ]
   },
   {
-    "topic_id": 30,
+    "topic_id": 31,
     "topic_title": "'The Mandalorian And Grogu' Easter Eggs And Connections Guide",
     "topic_summary": "",
     "article_count": 1,
@@ -1643,7 +1694,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/03/THND-FF-000193-scaled.jpg",
-      "article_id": 8,
+      "article_id": 35,
       "content_type": "news",
       "event_type": "general",
       "main_entity": "the_mandalorian_and_grogu"
@@ -1662,7 +1713,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/03/THND-FF-000193-scaled.jpg",
-        "article_id": 8,
+        "article_id": 35,
         "content_type": "news",
         "event_type": "general",
         "main_entity": "the_mandalorian_and_grogu"
@@ -1670,7 +1721,7 @@
     ]
   },
   {
-    "topic_id": 31,
+    "topic_id": 32,
     "topic_title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
     "topic_summary": "",
     "article_count": 1,
@@ -1683,7 +1734,7 @@
     "latest_published_at": "2026-06-02",
     "is_top": false,
     "representative_article": {
-      "article_id": 37,
+      "article_id": 36,
       "title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1702,7 +1753,7 @@
     },
     "articles": [
       {
-        "article_id": 37,
+        "article_id": 36,
         "title": "How Star Wars: The Mandalorian and Grogu Carries on One of Yoda’s Most Important Lessons",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1722,7 +1773,7 @@
     ]
   },
   {
-    "topic_id": 32,
+    "topic_id": 33,
     "topic_title": "Who is Embo?",
     "topic_summary": "",
     "article_count": 1,
@@ -1735,7 +1786,7 @@
     "latest_published_at": "2026-06-01",
     "is_top": false,
     "representative_article": {
-      "article_id": 38,
+      "article_id": 37,
       "title": "Who is Embo?",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1754,7 +1805,7 @@
     },
     "articles": [
       {
-        "article_id": 38,
+        "article_id": 37,
         "title": "Who is Embo?",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1774,7 +1825,7 @@
     ]
   },
   {
-    "topic_id": 33,
+    "topic_id": 34,
     "topic_title": "Marcia Lucas: 1945-2026",
     "topic_summary": "",
     "article_count": 1,
@@ -1787,7 +1838,7 @@
     "latest_published_at": "2026-05-30",
     "is_top": false,
     "representative_article": {
-      "article_id": 39,
+      "article_id": 38,
       "title": "Marcia Lucas: 1945-2026",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1806,7 +1857,7 @@
     },
     "articles": [
       {
-        "article_id": 39,
+        "article_id": 38,
         "title": "Marcia Lucas: 1945-2026",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1826,7 +1877,319 @@
     ]
   },
   {
-    "topic_id": 34,
+    "topic_id": 35,
+    "topic_title": "Star Wars: The Mandalorian and Grogu Behind-the-Scenes Facts and Trivia - Update",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-22",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 41,
+      "title": "Star Wars: The Mandalorian and Grogu Behind-the-Scenes Facts and Trivia - Update",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-trivia",
+      "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-trivia",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-trivia-feature_76544941.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-05-22",
+      "summary": "How a Y-wing connects The Mandalorian and Grogu to Star Wars: A New Hope, the Hutt family legacy, and much more!",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "article_id": 41,
+        "title": "Star Wars: The Mandalorian and Grogu Behind-the-Scenes Facts and Trivia - Update",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-trivia",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-trivia",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-trivia-feature_76544941.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-22",
+        "summary": "How a Y-wing connects The Mandalorian and Grogu to Star Wars: A New Hope, the Hutt family legacy, and much more!",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      }
+    ]
+  },
+  {
+    "topic_id": 36,
+    "topic_title": "Join the Mandalorian and Grogu on a New Millennium Falcon: Smugglers Run Mission",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-20",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 43,
+      "title": "Join the Mandalorian and Grogu on a New Millennium Falcon: Smugglers Run Mission",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/millennium-falcon-smugglers-run-update-mandalorian-and-grogu",
+      "url": "https://www.starwars.com/news/millennium-falcon-smugglers-run-update-mandalorian-and-grogu",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/millennium-falcon-smugglers-run-update-mandalorian-and-_9bfa6d19.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-20",
+      "summary": "Journey across the galaxy to Tatooine, Bespin, Coruscant, and more on an all-new adventure coming to Star Wars: Galaxy’s Edge.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "article_id": 43,
+        "title": "Join the Mandalorian and Grogu on a New Millennium Falcon: Smugglers Run Mission",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/millennium-falcon-smugglers-run-update-mandalorian-and-grogu",
+        "url": "https://www.starwars.com/news/millennium-falcon-smugglers-run-update-mandalorian-and-grogu",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/millennium-falcon-smugglers-run-update-mandalorian-and-_9bfa6d19.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-20",
+        "summary": "Journey across the galaxy to Tatooine, Bespin, Coruscant, and more on an all-new adventure coming to Star Wars: Galaxy’s Edge.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      }
+    ]
+  },
+  {
+    "topic_id": 37,
+    "topic_title": "Quiz: Is it Yoda or Grogu?",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-20",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 44,
+      "title": "Quiz: Is it Yoda or Grogu?",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/quiz-yoda-or-grogu",
+      "url": "https://www.starwars.com/news/quiz-yoda-or-grogu",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/quiz-yoda-or-grogu-feature_176c6617.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-20",
+      "summary": "How well do you know the venerable Jedi Master and the mischievous Mandalorian?",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 44,
+        "title": "Quiz: Is it Yoda or Grogu?",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/quiz-yoda-or-grogu",
+        "url": "https://www.starwars.com/news/quiz-yoda-or-grogu",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/quiz-yoda-or-grogu-feature_176c6617.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-20",
+        "summary": "How well do you know the venerable Jedi Master and the mischievous Mandalorian?",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 38,
+    "topic_title": "In Memoriam: Tom Kane, Voice of Star Wars: The Clone Wars",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-18",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 45,
+      "title": "In Memoriam: Tom Kane, Voice of Star Wars: The Clone Wars",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/tom-kane",
+      "url": "https://www.starwars.com/news/tom-kane",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/tom-kane-feature_8ac8cbe6.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-18",
+      "summary": "The prolific voice actor who narrated every episode of Star Wars: The Clone Wars and voiced Yoda and Admiral Ackbar among countless others has died.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 45,
+        "title": "In Memoriam: Tom Kane, Voice of Star Wars: The Clone Wars",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/tom-kane",
+        "url": "https://www.starwars.com/news/tom-kane",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/tom-kane-feature_8ac8cbe6.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-18",
+        "summary": "The prolific voice actor who narrated every episode of Star Wars: The Clone Wars and voiced Yoda and Admiral Ackbar among countless others has died.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 39,
+    "topic_title": "Take Virtual Calls from A Galaxy Far, Far Away with These Star Wars Backgrounds",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-15",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 46,
+      "title": "Take Virtual Calls from A Galaxy Far, Far Away with These Star Wars Backgrounds",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-backgrounds",
+      "url": "https://www.starwars.com/news/star-wars-backgrounds",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-backgrounds-star-wars-the-mandalorian-and-gro_e238eee6.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-15",
+      "summary": "Take your video conferences anywhere from Tatooine to the Resistance base.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 46,
+        "title": "Take Virtual Calls from A Galaxy Far, Far Away with These Star Wars Backgrounds",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-backgrounds",
+        "url": "https://www.starwars.com/news/star-wars-backgrounds",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-backgrounds-star-wars-the-mandalorian-and-gro_e238eee6.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-15",
+        "summary": "Take your video conferences anywhere from Tatooine to the Resistance base.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 40,
+    "topic_title": "Everything We Know About the Mandalorian and Grogu (So Far)",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-14",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 47,
+      "title": "Everything We Know About the Mandalorian and Grogu (So Far)",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/the-mandalorian-and-grogu-everything-we-know",
+      "url": "https://www.starwars.com/news/the-mandalorian-and-grogu-everything-we-know",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/everything-we-know-mando-and-grogu-feature_2fbf7bb8.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-14",
+      "summary": "The man, the myth, the Mando meets the baby, the foundling, the Jedi.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "article_id": 47,
+        "title": "Everything We Know About the Mandalorian and Grogu (So Far)",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/the-mandalorian-and-grogu-everything-we-know",
+        "url": "https://www.starwars.com/news/the-mandalorian-and-grogu-everything-we-know",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/everything-we-know-mando-and-grogu-feature_2fbf7bb8.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-14",
+        "summary": "The man, the myth, the Mando meets the baby, the foundling, the Jedi.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      }
+    ]
+  },
+  {
+    "topic_id": 41,
     "topic_title": "'Ahsoka' Season 2 Not Coming Out Until Early 2027",
     "topic_summary": "",
     "article_count": 1,
@@ -1851,7 +2214,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/10/Ahsoka-Poster-Header-e1696996420472.jpeg",
-      "article_id": 15,
+      "article_id": 48,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -1870,7 +2233,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/10/Ahsoka-Poster-Header-e1696996420472.jpeg",
-        "article_id": 15,
+        "article_id": 48,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -1878,7 +2241,1067 @@
     ]
   },
   {
-    "topic_id": 35,
+    "topic_id": 42,
+    "topic_title": "Essential Ahsoka Tano Episodes",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-12",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 49,
+      "title": "Essential Ahsoka Tano Episodes",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/essential-ahsoka-tano-episodes",
+      "url": "https://www.starwars.com/news/essential-ahsoka-tano-episodes",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/ahsoka-essential-episodes_article-feature_59499ba0.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-12",
+      "summary": "Explore Ahsoka Tano’s journey so far with these tales from animation and live-action.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 49,
+        "title": "Essential Ahsoka Tano Episodes",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/essential-ahsoka-tano-episodes",
+        "url": "https://www.starwars.com/news/essential-ahsoka-tano-episodes",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/ahsoka-essential-episodes_article-feature_59499ba0.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-12",
+        "summary": "Explore Ahsoka Tano’s journey so far with these tales from animation and live-action.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 43,
+    "topic_title": "Star Wars: Ahsoka Star Rosario Dawson Announces Season 2 Releasing in 2027",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-12",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 50,
+      "title": "Star Wars: Ahsoka Star Rosario Dawson Announces Season 2 Releasing in 2027",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-ahsoka-season-2-premiere",
+      "url": "https://www.starwars.com/news/star-wars-ahsoka-season-2-premiere",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-ahsoka-season-2-premiere-feature-logo_1b3bc393.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-12",
+      "summary": "New episodes from creator Dave Filoni will premiere on Disney+ early next year!",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "release",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 50,
+        "title": "Star Wars: Ahsoka Star Rosario Dawson Announces Season 2 Releasing in 2027",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-ahsoka-season-2-premiere",
+        "url": "https://www.starwars.com/news/star-wars-ahsoka-season-2-premiere",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-ahsoka-season-2-premiere-feature-logo_1b3bc393.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-12",
+        "summary": "New episodes from creator Dave Filoni will premiere on Disney+ early next year!",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "release",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 44,
+    "topic_title": "Finding the Perfect Notes for Star Wars: Maul – Shadow Lord",
+    "topic_summary": "",
+    "article_count": 2,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 190,
+    "latest_published_at": "2026-05-07",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 83,
+      "title": "Watch the Official Trailer for Star Wars: Maul – Shadow Lord - Updated",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-trailer",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-trailer",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-payoff-keyart-sw-hero-featur_59f23cb0.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-03-16",
+      "summary": "Take a closer look at the new poster art for the series and prepare for a two-episode premiere on Disney+ April 6, 2026.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "trailer",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 51,
+        "title": "Finding the Perfect Notes for Star Wars: Maul – Shadow Lord",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-soundtrack",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-soundtrack",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/maul-shadow-lord-soundtrack-feature_5373927d.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-07",
+        "summary": "StarWars.com talks with the Kiner family about scoring Maul, Devon, and Lawson in the latest animated series, with all episodes now on Disney+.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      },
+      {
+        "article_id": 83,
+        "title": "Watch the Official Trailer for Star Wars: Maul – Shadow Lord - Updated",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-trailer",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-trailer",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-payoff-keyart-sw-hero-featur_59f23cb0.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-03-16",
+        "summary": "Take a closer look at the new poster art for the series and prepare for a two-episode premiere on Disney+ April 6, 2026.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "trailer",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 45,
+    "topic_title": "Star Wars Celebration Goes Hollywood with New 2027 Key Art - Update",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-06",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 52,
+      "title": "Star Wars Celebration Goes Hollywood with New 2027 Key Art - Update",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-celebration-2027-key-art-tickets",
+      "url": "https://www.starwars.com/news/star-wars-celebration-2027-key-art-tickets",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-celebration-2027-key-art-tickets-poster-featu_df6d9d93.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-06",
+      "summary": "Tickets will soon be available to celebrate the 50th anniversary of the original film at Star Wars Celebration Los Angeles.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "event",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 52,
+        "title": "Star Wars Celebration Goes Hollywood with New 2027 Key Art - Update",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-celebration-2027-key-art-tickets",
+        "url": "https://www.starwars.com/news/star-wars-celebration-2027-key-art-tickets",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-celebration-2027-key-art-tickets-poster-featu_df6d9d93.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-06",
+        "summary": "Tickets will soon be available to celebrate the 50th anniversary of the original film at Star Wars Celebration Los Angeles.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "event",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 46,
+    "topic_title": "Scene Breakdown: Darth Vader Duels Maul in Star Wars: Maul – Shadow Lord",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 70,
+    "latest_published_at": "2026-05-06",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 53,
+      "title": "Scene Breakdown: Darth Vader Duels Maul in Star Wars: Maul – Shadow Lord",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/maul-shadow-lord-season-1-finale",
+      "url": "https://www.starwars.com/news/maul-shadow-lord-season-1-finale",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/maul-shadow-lord-season-1-finale-feature_c0e80fe2.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-05-06",
+      "summary": "Creator Dave Filoni, Supervising Director Brad Rau, and Head Writer Matthew Michnovetz take us back to the drawing board on how the creative team crafted the season finale.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "analysis",
+      "event_type": "analysis",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 53,
+        "title": "Scene Breakdown: Darth Vader Duels Maul in Star Wars: Maul – Shadow Lord",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/maul-shadow-lord-season-1-finale",
+        "url": "https://www.starwars.com/news/maul-shadow-lord-season-1-finale",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/maul-shadow-lord-season-1-finale-feature_c0e80fe2.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-06",
+        "summary": "Creator Dave Filoni, Supervising Director Brad Rau, and Head Writer Matthew Michnovetz take us back to the drawing board on how the creative team crafted the season finale.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "analysis",
+        "event_type": "analysis",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 47,
+    "topic_title": "How Lucasfilm Animation Built a Practical Miniature for Star Wars: Maul – Shadow Lord",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-05",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 54,
+      "title": "How Lucasfilm Animation Built a Practical Miniature for Star Wars: Maul – Shadow Lord",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-ship-model",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-ship-model",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-ship-model-adapting-feature_c2a31e92.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-05-05",
+      "summary": "Director of Lighting, Cinematography, and Visual Effects Joel Aron takes us behind the scenes of his scratch-built cargo ship created for Rheena Sul.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 54,
+        "title": "How Lucasfilm Animation Built a Practical Miniature for Star Wars: Maul – Shadow Lord",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-ship-model",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-ship-model",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-ship-model-adapting-feature_c2a31e92.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-05",
+        "summary": "Director of Lighting, Cinematography, and Visual Effects Joel Aron takes us behind the scenes of his scratch-built cargo ship created for Rheena Sul.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 48,
+    "topic_title": "Inside the Making of Star Wars: Maul – Shadow Lord - Update",
+    "topic_summary": "",
+    "article_count": 4,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 230,
+    "latest_published_at": "2026-05-04",
+    "is_top": true,
+    "representative_article": {
+      "article_id": 76,
+      "title": "Maul’s Story Continues in Star Wars: Maul – Shadow Lord Season 2 - Announce",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-season-2",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-season-2",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/season-2-maul-shadow-lord-featured-a_77eddc9a.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-04-02",
+      "summary": "The next chapter in the animated series from Lucasfilm Animation has just been announced by Lucasfilm President & Chief Creative Officer Dave Filoni.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 55,
+        "title": "Inside the Making of Star Wars: Maul – Shadow Lord - Update",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-trivia",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-trivia",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-109-110-trivia-feature_e5fdac8d.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-04",
+        "summary": "Learn behind-the-scenes stories, trivia, and fascinating facts from the team behind the new animated series.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      },
+      {
+        "article_id": 56,
+        "title": "Meet the Cast of Star Wars: Maul – Shadow Lord - Season 1",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-cast",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-cast",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/meet-the-cast-040620026-maul-shadow-lord-featured_0e2e2f3b.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-04",
+        "summary": "The creators and talent behind the latest Star Wars animated series invite you to join the former Sith Lord on Janix with all episodes now on Disney+.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      },
+      {
+        "article_id": 74,
+        "title": "Inside Maul’s Mind with Star Wars: Maul - Shadow Lord Star Sam Witwer",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-sam-witwer",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-sam-witwer",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/maul-shadow-lord-featured-sam-witwer-interview_c1da0447.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-04-08",
+        "summary": "“This version of Maul is the most psychologically satisfying version of the character that we've ever done,” the actor says of the new animated series.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      },
+      {
+        "article_id": 76,
+        "title": "Maul’s Story Continues in Star Wars: Maul – Shadow Lord Season 2 - Announce",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-season-2",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-season-2",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/season-2-maul-shadow-lord-featured-a_77eddc9a.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-04-02",
+        "summary": "The next chapter in the animated series from Lucasfilm Animation has just been announced by Lucasfilm President & Chief Creative Officer Dave Filoni.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 49,
+    "topic_title": "Star Wars: Maul – Shadow Lord' s Gideon Adlon Breaks Down Devon Izara’s Biggest Moments",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-04",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 57,
+      "title": "Star Wars: Maul – Shadow Lord' s Gideon Adlon Breaks Down Devon Izara’s Biggest Moments",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-gideon-adlon-interview",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-gideon-adlon-interview",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-gideon-adlon-interview-featu_a8683f6c.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-05-04",
+      "summary": "The actor behind the Jedi Padawan talks to StarWars.com about Devon’s journey.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 57,
+        "title": "Star Wars: Maul – Shadow Lord' s Gideon Adlon Breaks Down Devon Izara’s Biggest Moments",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-gideon-adlon-interview",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-gideon-adlon-interview",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-gideon-adlon-interview-featu_a8683f6c.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-05-04",
+        "summary": "The actor behind the Jedi Padawan talks to StarWars.com about Devon’s journey.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 50,
+    "topic_title": "Step Inside the Star Wars Galaxy in Fortnite This May",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-05-01",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 58,
+      "title": "Step Inside the Star Wars Galaxy in Fortnite This May",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/fortnite-star-wars-may",
+      "url": "https://www.starwars.com/news/fortnite-star-wars-may",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/fortnite-star-wars-may-2026-feature_0020be13.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-05-01",
+      "summary": "Learn about new ways to explore the Star Wars galaxy in Fortnite.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 58,
+        "title": "Step Inside the Star Wars Galaxy in Fortnite This May",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/fortnite-star-wars-may",
+        "url": "https://www.starwars.com/news/fortnite-star-wars-may",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/fortnite-star-wars-may-2026-feature_0020be13.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-05-01",
+        "summary": "Learn about new ways to explore the Star Wars galaxy in Fortnite.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 51,
+    "topic_title": "Star Wars: Galactic Racer Releases October 6, Plus Gaming News and Deals for Star Wars Day 2026",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-30",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 59,
+      "title": "Star Wars: Galactic Racer Releases October 6, Plus Gaming News and Deals for Star Wars Day 2026",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-day-video-game-deals",
+      "url": "https://www.starwars.com/news/star-wars-day-video-game-deals",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-day-video-game-deals-2026-feature_dde7c1b3.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-30",
+      "summary": "Check out next-level savings on classics and modern favorites.",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": "galactic_racer"
+    },
+    "articles": [
+      {
+        "article_id": 59,
+        "title": "Star Wars: Galactic Racer Releases October 6, Plus Gaming News and Deals for Star Wars Day 2026",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-day-video-game-deals",
+        "url": "https://www.starwars.com/news/star-wars-day-video-game-deals",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-day-video-game-deals-2026-feature_dde7c1b3.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-30",
+        "summary": "Check out next-level savings on classics and modern favorites.",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "galactic_racer"
+      }
+    ]
+  },
+  {
+    "topic_id": 52,
+    "topic_title": "We’re Going Back to Jakku this October in Star Wars: Galactic Racer - Exclusive Interview",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 150,
+    "latest_published_at": "2026-04-30",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 60,
+      "title": "We’re Going Back to Jakku this October in Star Wars: Galactic Racer - Exclusive Interview",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-galactic-racer-reveal-trailer",
+      "url": "https://www.starwars.com/news/star-wars-galactic-racer-reveal-trailer",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galactic-racer-reveal-preorder-feature_d3645d37.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-30",
+      "summary": "An epic new Star Wars racing game was just announced at the 2025 Game Awards and we have everything you need to know directly from Fuse and Lucasfilm Games.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "interview",
+      "event_type": "interview",
+      "main_entity": "galactic_racer"
+    },
+    "articles": [
+      {
+        "article_id": 60,
+        "title": "We’re Going Back to Jakku this October in Star Wars: Galactic Racer - Exclusive Interview",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-galactic-racer-reveal-trailer",
+        "url": "https://www.starwars.com/news/star-wars-galactic-racer-reveal-trailer",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galactic-racer-reveal-preorder-feature_d3645d37.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-30",
+        "summary": "An epic new Star Wars racing game was just announced at the 2025 Game Awards and we have everything you need to know directly from Fuse and Lucasfilm Games.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "interview",
+        "event_type": "interview",
+        "main_entity": "galactic_racer"
+      }
+    ]
+  },
+  {
+    "topic_id": 53,
+    "topic_title": "Director Jon Favreau on Grogu’s Coming of Age in Star Wars: The Mandalorian and Grogu",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-29",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 61,
+      "title": "Director Jon Favreau on Grogu’s Coming of Age in Star Wars: The Mandalorian and Grogu",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-jon-favreau-interview",
+      "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-jon-favreau-interview",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-jon-favreau-intervi_76fa556f.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-29",
+      "summary": "Learn more about the new Star Wars movie from the director and creator of The Mandalorian then get ready to snag your tickets for the film's theatrical release on May 22, 2026!",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "article_id": 61,
+        "title": "Director Jon Favreau on Grogu’s Coming of Age in Star Wars: The Mandalorian and Grogu",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-jon-favreau-interview",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-jon-favreau-interview",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-jon-favreau-intervi_76fa556f.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-29",
+        "summary": "Learn more about the new Star Wars movie from the director and creator of The Mandalorian then get ready to snag your tickets for the film's theatrical release on May 22, 2026!",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      }
+    ]
+  },
+  {
+    "topic_id": 54,
+    "topic_title": "First Star Wars Celebration LA Merchandise Revealed",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-28",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 62,
+      "title": "First Star Wars Celebration LA Merchandise Revealed",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-celebration-la-2027-merchandise-exclusives",
+      "url": "https://www.starwars.com/news/star-wars-celebration-la-2027-merchandise-exclusives",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-celebration-la-2027-merchandise-feature_154887b9.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-28",
+      "summary": "From t-shirts to hats to pins and patches, this exclusive event collection also includes some of the first official items to celebrate the 50th anniversary of the original Star Wars film!",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "announcement",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 62,
+        "title": "First Star Wars Celebration LA Merchandise Revealed",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-celebration-la-2027-merchandise-exclusives",
+        "url": "https://www.starwars.com/news/star-wars-celebration-la-2027-merchandise-exclusives",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-celebration-la-2027-merchandise-feature_154887b9.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-28",
+        "summary": "From t-shirts to hats to pins and patches, this exclusive event collection also includes some of the first official items to celebrate the 50th anniversary of the original Star Wars film!",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "announcement",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 55,
+    "topic_title": "Andor Props and Other New Updates to See Inside Star Wars: Galaxy’s Edge at Disneyland",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-28",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 63,
+      "title": "Andor Props and Other New Updates to See Inside Star Wars: Galaxy’s Edge at Disneyland",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/disneyland-galaxys-edge-update-details",
+      "url": "https://www.starwars.com/news/disneyland-galaxys-edge-update-details",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/disneyland-galaxys-edge-update-details-feature_15db0973.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-28",
+      "summary": "",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 63,
+        "title": "Andor Props and Other New Updates to See Inside Star Wars: Galaxy’s Edge at Disneyland",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/disneyland-galaxys-edge-update-details",
+        "url": "https://www.starwars.com/news/disneyland-galaxys-edge-update-details",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/disneyland-galaxys-edge-update-details-feature_15db0973.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-28",
+        "summary": "",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 56,
+    "topic_title": "Booshkeedoo! Sounds, Style, and Spybot in Star Wars: Maul – Shadow Lord",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-28",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 64,
+      "title": "Booshkeedoo! Sounds, Style, and Spybot in Star Wars: Maul – Shadow Lord",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-sound-design-and-spybot",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-sound-design-and-spybot",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-sound-design-and-spybot-feat_bc937e17.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-04-28",
+      "summary": "Even bad guys need good boys. Sound Supervisor David W. Collins takes us behind-the-mic on the making of sweet, sweet Spybot and other sounds in the new Disney+ animated series.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 64,
+        "title": "Booshkeedoo! Sounds, Style, and Spybot in Star Wars: Maul – Shadow Lord",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-sound-design-and-spybot",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-sound-design-and-spybot",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-sound-design-and-spybot-feat_bc937e17.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-04-28",
+        "summary": "Even bad guys need good boys. Sound Supervisor David W. Collins takes us behind-the-mic on the making of sweet, sweet Spybot and other sounds in the new Disney+ animated series.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 57,
+    "topic_title": "Get Ready for Star Wars Day 2026 With New Merchandise",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-27",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 65,
+      "title": "Get Ready for Star Wars Day 2026 With New Merchandise",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-day-deals",
+      "url": "https://www.starwars.com/news/star-wars-day-deals",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-day-deals-2026-feature_50b4da7a.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-27",
+      "summary": "May the 4th be with you with these special sales and discounts on items from around the galaxy.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 65,
+        "title": "Get Ready for Star Wars Day 2026 With New Merchandise",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-day-deals",
+        "url": "https://www.starwars.com/news/star-wars-day-deals",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-day-deals-2026-feature_50b4da7a.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-27",
+        "summary": "May the 4th be with you with these special sales and discounts on items from around the galaxy.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 58,
+    "topic_title": "Go Undercover with the New Boushh Helmet from the Galactic Archives Series — Exclusive",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-24",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 66,
+      "title": "Go Undercover with the New Boushh Helmet from the Galactic Archives Series — Exclusive",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-princess-leia-boushh-helmet-reveal",
+      "url": "https://www.starwars.com/news/star-wars-princess-leia-boushh-helmet-reveal",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galactic-archives-series-boussh-helmet-featur_4159684e.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-24",
+      "summary": "Make like Princess Leia Organa in a bounty hunter disguise with a wearable version of her Boushh Helmet from Star Wars: Return of the Jedi debuting at Disney Store this May the 4th.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 66,
+        "title": "Go Undercover with the New Boushh Helmet from the Galactic Archives Series — Exclusive",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-princess-leia-boushh-helmet-reveal",
+        "url": "https://www.starwars.com/news/star-wars-princess-leia-boushh-helmet-reveal",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galactic-archives-series-boussh-helmet-featur_4159684e.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-24",
+        "summary": "Make like Princess Leia Organa in a bounty hunter disguise with a wearable version of her Boushh Helmet from Star Wars: Return of the Jedi debuting at Disney Store this May the 4th.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 59,
+    "topic_title": "The History of the Mandalorians",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-23",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 67,
+      "title": "The History of the Mandalorians",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/mandalorian-history",
+      "url": "https://www.starwars.com/news/mandalorian-history",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/mandalorian-history-the-armorer-feature_a7314f79.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-23",
+      "summary": "Legendary stories and other Manda-lore to savor while we count down the days to The Mandalorian and Grogu in theaters this May!",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 67,
+        "title": "The History of the Mandalorians",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/mandalorian-history",
+        "url": "https://www.starwars.com/news/mandalorian-history",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/mandalorian-history-the-armorer-feature_a7314f79.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-23",
+        "summary": "Legendary stories and other Manda-lore to savor while we count down the days to The Mandalorian and Grogu in theaters this May!",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 60,
+    "topic_title": "A Pair of Crafts for Your Clan Inspired by Star Wars: The Mandalorian and Grogu",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-22",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 68,
+      "title": "A Pair of Crafts for Your Clan Inspired by Star Wars: The Mandalorian and Grogu",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-diy-rondel",
+      "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-diy-rondel",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-diy-rondel-rondel-f_24342a18.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-04-22",
+      "summary": "Before going into harm's way, check your armor with these Grogu-inspired crafts.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "article_id": 68,
+        "title": "A Pair of Crafts for Your Clan Inspired by Star Wars: The Mandalorian and Grogu",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-diy-rondel",
+        "url": "https://www.starwars.com/news/star-wars-the-mandalorian-and-grogu-diy-rondel",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-mandalorian-and-grogu-diy-rondel-rondel-f_24342a18.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-04-22",
+        "summary": "Before going into harm's way, check your armor with these Grogu-inspired crafts.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": "the_mandalorian_and_grogu"
+      }
+    ]
+  },
+  {
+    "topic_id": 61,
     "topic_title": "Jon Favreau Reveals that 'The Mandalorian' Season 4 Would Have Connected to 'Ahsoka' Season 2, and Kathleen Kennedy Role's in Martin Scorcese Cameo",
     "topic_summary": "",
     "article_count": 1,
@@ -1903,7 +3326,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/The-Mandalorian-and-Grogu-Poster-Banner-e1776671838138.jpeg",
-      "article_id": 16,
+      "article_id": 69,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -1922,7 +3345,579 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/The-Mandalorian-and-Grogu-Poster-Banner-e1776671838138.jpeg",
-        "article_id": 16,
+        "article_id": 69,
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 62,
+    "topic_title": "We Absolutely Adore This Star Wars: Maul – Shadow Lord Duo",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-20",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 70,
+      "title": "We Absolutely Adore This Star Wars: Maul – Shadow Lord Duo",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-wagner-moura-interview",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-wagner-moura-interview",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-wagner-moura-interview-featu_a8f2eb87.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-04-20",
+      "summary": "Maintaining order in the galaxy far, far away is no easy feat, but Brander Lawson and Two-Boots are partners in (preventing) crime giving it their all.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 70,
+        "title": "We Absolutely Adore This Star Wars: Maul – Shadow Lord Duo",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-wagner-moura-interview",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-wagner-moura-interview",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-wagner-moura-interview-featu_a8f2eb87.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-04-20",
+        "summary": "Maintaining order in the galaxy far, far away is no easy feat, but Brander Lawson and Two-Boots are partners in (preventing) crime giving it their all.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 63,
+    "topic_title": "Darth Vader and Other Original Trilogy Updates Coming to Star Wars: Galaxy’s Edge at Disneyland",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-16",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 72,
+      "title": "Darth Vader and Other Original Trilogy Updates Coming to Star Wars: Galaxy’s Edge at Disneyland",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-galaxys-edge-disneyland-update",
+      "url": "https://www.starwars.com/news/star-wars-galaxys-edge-disneyland-update",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galaxys-edge-disneyland-update-01-feature_a930845e.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-16",
+      "summary": "Galaxy's Edge at Disneyland is entering a new timeline, bringing original trilogy favorites Darth Vader, Han Solo, Luke Skywalker, and Leia Organa to Batuu.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 72,
+        "title": "Darth Vader and Other Original Trilogy Updates Coming to Star Wars: Galaxy’s Edge at Disneyland",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-galaxys-edge-disneyland-update",
+        "url": "https://www.starwars.com/news/star-wars-galaxys-edge-disneyland-update",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-galaxys-edge-disneyland-update-01-feature_a930845e.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-16",
+        "summary": "Galaxy's Edge at Disneyland is entering a new timeline, bringing original trilogy favorites Darth Vader, Han Solo, Luke Skywalker, and Leia Organa to Batuu.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 64,
+    "topic_title": "Star Wars: Maul - Shadow Lord Hits 4.1M Views Globally After 7 Days Streaming on Disney+",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-15",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 73,
+      "title": "Star Wars: Maul - Shadow Lord Hits 4.1M Views Globally After 7 Days Streaming on Disney+",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-rotten-tomatoes",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-rotten-tomatoes",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/b_starwarsmaulshadowlord_videothumbnail_tablet_fallback_34bea0e7.jpeg?region=0%2C95%2C2048%2C1152",
+      "published_at": "2026-04-15",
+      "summary": "The latest Lucasfilm Animation series on Disney+ is officially Certified Fresh on Rotten Tomatoes",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 73,
+        "title": "Star Wars: Maul - Shadow Lord Hits 4.1M Views Globally After 7 Days Streaming on Disney+",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-rotten-tomatoes",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-rotten-tomatoes",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/b_starwarsmaulshadowlord_videothumbnail_tablet_fallback_34bea0e7.jpeg?region=0%2C95%2C2048%2C1152",
+        "published_at": "2026-04-15",
+        "summary": "The latest Lucasfilm Animation series on Disney+ is officially Certified Fresh on Rotten Tomatoes",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 65,
+    "topic_title": "Welcome to Janix: Building Lucasfilm Animation’s New World for Star Wars: Maul – Shadow Lord",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-07",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 75,
+      "title": "Welcome to Janix: Building Lucasfilm Animation’s New World for Star Wars: Maul – Shadow Lord",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-making-of-janix",
+      "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-making-of-janix",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-making-of-janix-feature_a21426a8.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-04-07",
+      "summary": "Go behind the scenes of the world building and animation that went into developing the cityscape on this new Star Wars planet from the animated series on Disney+.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 75,
+        "title": "Welcome to Janix: Building Lucasfilm Animation’s New World for Star Wars: Maul – Shadow Lord",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-making-of-janix",
+        "url": "https://www.starwars.com/news/star-wars-maul-shadow-lord-making-of-janix",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-maul-shadow-lord-making-of-janix-feature_a21426a8.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-04-07",
+        "summary": "Go behind the scenes of the world building and animation that went into developing the cityscape on this new Star Wars planet from the animated series on Disney+.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 66,
+    "topic_title": "Disneyland After Dark: Star Wars Nite Returns in 2026",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-04-02",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 77,
+      "title": "Disneyland After Dark: Star Wars Nite Returns in 2026",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/disneyland-after-dark-star-wars-nite-2026",
+      "url": "https://www.starwars.com/news/disneyland-after-dark-star-wars-nite-2026",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/disneyland-after-dark-star-wars-nite-2026-feature_a874656d.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-04-02",
+      "summary": "Meet Darth Maul, try new cosmic treats, and prepare for an unforgettable Star Wars adventure with Disneyland After Dark.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 77,
+        "title": "Disneyland After Dark: Star Wars Nite Returns in 2026",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/disneyland-after-dark-star-wars-nite-2026",
+        "url": "https://www.starwars.com/news/disneyland-after-dark-star-wars-nite-2026",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/disneyland-after-dark-star-wars-nite-2026-feature_a874656d.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-04-02",
+        "summary": "Meet Darth Maul, try new cosmic treats, and prepare for an unforgettable Star Wars adventure with Disneyland After Dark.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 67,
+    "topic_title": "The Quotable Zabrak - Maul’s Best Lines (So Far)",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-03-31",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 78,
+      "title": "The Quotable Zabrak - Maul’s Best Lines (So Far)",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/darth-maul-quotes",
+      "url": "https://www.starwars.com/news/darth-maul-quotes",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/darth-maul-quotes-feature_5aeb75ce.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-03-31",
+      "summary": "What fun! What fun! Our favorite lines from the former Sith Lord ahead of the premiere of Star Wars: Maul - Shadow Lord.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 78,
+        "title": "The Quotable Zabrak - Maul’s Best Lines (So Far)",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/darth-maul-quotes",
+        "url": "https://www.starwars.com/news/darth-maul-quotes",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/darth-maul-quotes-feature_5aeb75ce.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-03-31",
+        "summary": "What fun! What fun! Our favorite lines from the former Sith Lord ahead of the premiere of Star Wars: Maul - Shadow Lord.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 68,
+    "topic_title": "Embrace your Inner Jedi with Devon Izara’s Legacy Lightsaber - Reveal",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-03-26",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 79,
+      "title": "Embrace your Inner Jedi with Devon Izara’s Legacy Lightsaber - Reveal",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-legacy-lightsaber-devon-izara",
+      "url": "https://www.starwars.com/news/star-wars-legacy-lightsaber-devon-izara",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/legacy-lightsaber-devon-izara-announce-feature_fa4a060d.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-03-26",
+      "summary": "Add this limited edition hilt to your collection to celebrate the new Jedi Padawan from the animated series Star Wars: Maul – Shadow Lord!",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 79,
+        "title": "Embrace your Inner Jedi with Devon Izara’s Legacy Lightsaber - Reveal",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-legacy-lightsaber-devon-izara",
+        "url": "https://www.starwars.com/news/star-wars-legacy-lightsaber-devon-izara",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/legacy-lightsaber-devon-izara-announce-feature_fa4a060d.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-03-26",
+        "summary": "Add this limited edition hilt to your collection to celebrate the new Jedi Padawan from the animated series Star Wars: Maul – Shadow Lord!",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 69,
+    "topic_title": "Behind the Scenes at Star Wars Night with the Pittsburgh Pirates",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-03-25",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 80,
+      "title": "Behind the Scenes at Star Wars Night with the Pittsburgh Pirates",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-night-mlb",
+      "url": "https://www.starwars.com/news/star-wars-night-mlb",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-mlb-night-pittsburgh-pirates-darth-vader-feat_d077d7d7.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-03-25",
+      "summary": "Major League Baseball players and staff talk about this popular annual tradition to celebrate Opening Day March 25, 2026 and this year’s Star Wars Night games.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 80,
+        "title": "Behind the Scenes at Star Wars Night with the Pittsburgh Pirates",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-night-mlb",
+        "url": "https://www.starwars.com/news/star-wars-night-mlb",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/star-wars-mlb-night-pittsburgh-pirates-darth-vader-feat_d077d7d7.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-03-25",
+        "summary": "Major League Baseball players and staff talk about this popular annual tradition to celebrate Opening Day March 25, 2026 and this year’s Star Wars Night games.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 70,
+    "topic_title": "On This Day: Star Wars: A New Hope Began Filming 50 Years Ago",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-03-22",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 81,
+      "title": "On This Day: Star Wars: A New Hope Began Filming 50 Years Ago",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/star-wars-50-filming-begins",
+      "url": "https://www.starwars.com/news/star-wars-50-filming-begins",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/50-years-ago-today-star-wars-feature_4a0bbcc4.jpeg?region=0%2C0%2C1600%2C900",
+      "published_at": "2026-03-22",
+      "summary": "On March 22, 1976, one of the most iconic films in history commenced principal photography in the deserts of Tunisia. It was a long road to reach that day, and there was an even longer one ahead.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 81,
+        "title": "On This Day: Star Wars: A New Hope Began Filming 50 Years Ago",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/star-wars-50-filming-begins",
+        "url": "https://www.starwars.com/news/star-wars-50-filming-begins",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/50-years-ago-today-star-wars-feature_4a0bbcc4.jpeg?region=0%2C0%2C1600%2C900",
+        "published_at": "2026-03-22",
+        "summary": "On March 22, 1976, one of the most iconic films in history commenced principal photography in the deserts of Tunisia. It was a long road to reach that day, and there was an even longer one ahead.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 71,
+    "topic_title": "Maul’s Most Devious Moments",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "StarWars.com"
+    ],
+    "source_count": 1,
+    "label": "공식 포함",
+    "importance": 170,
+    "latest_published_at": "2026-03-18",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 82,
+      "title": "Maul’s Most Devious Moments",
+      "title_ko": "",
+      "source_name": "StarWars.com",
+      "source_url": "https://www.starwars.com/news/maul-best-moments-and-essential-battles",
+      "url": "https://www.starwars.com/news/maul-best-moments-and-essential-battles",
+      "image_url": "https://lumiere-a.akamaihd.net/v1/images/maul-best-moments-and-essential-battles-feature_612f37e9.jpeg?region=0%2C0%2C1280%2C720",
+      "published_at": "2026-03-18",
+      "summary": "Before diving into the new animated series, revisit some of his most impactful appearances in Star Wars films, animation, and comic books.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "공식",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 82,
+        "title": "Maul’s Most Devious Moments",
+        "title_ko": "",
+        "source_name": "StarWars.com",
+        "source_url": "https://www.starwars.com/news/maul-best-moments-and-essential-battles",
+        "url": "https://www.starwars.com/news/maul-best-moments-and-essential-battles",
+        "image_url": "https://lumiere-a.akamaihd.net/v1/images/maul-best-moments-and-essential-battles-feature_612f37e9.jpeg?region=0%2C0%2C1280%2C720",
+        "published_at": "2026-03-18",
+        "summary": "Before diving into the new animated series, revisit some of his most impactful appearances in Star Wars films, animation, and comic books.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "공식",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 72,
+    "topic_title": "A 'Star Wars' Marvel Comics Reading Guide",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2024-01-19",
+    "is_top": false,
+    "representative_article": {
+      "title": "A 'Star Wars' Marvel Comics Reading Guide",
+      "title_ko": "",
+      "url": "https://www.starwarsnewsnet.com/2024/01/a-star-wars-marvel-comics-reading-guide.html",
+      "source_url": "https://www.starwarsnewsnet.com/2024/01/a-star-wars-marvel-comics-reading-guide.html",
+      "source_name": "Star Wars News Net",
+      "published_at": "2024-01-19",
+      "summary": "Marvel's 2015 relaunch of Star Wars titles have spawn hundreds of great stories. Here's a guide on how to begin tackling it.",
+      "summary_ko": "",
+      "category": "도서",
+      "franchise": "starwars",
+      "label": "일반 보도",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/06/Marvel-Star-Wars-Comic-Guide-1024x576.png",
+      "article_id": 84,
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "title": "A 'Star Wars' Marvel Comics Reading Guide",
+        "title_ko": "",
+        "url": "https://www.starwarsnewsnet.com/2024/01/a-star-wars-marvel-comics-reading-guide.html",
+        "source_url": "https://www.starwarsnewsnet.com/2024/01/a-star-wars-marvel-comics-reading-guide.html",
+        "source_name": "Star Wars News Net",
+        "published_at": "2024-01-19",
+        "summary": "Marvel's 2015 relaunch of Star Wars titles have spawn hundreds of great stories. Here's a guide on how to begin tackling it.",
+        "summary_ko": "",
+        "category": "도서",
+        "franchise": "starwars",
+        "label": "일반 보도",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/06/Marvel-Star-Wars-Comic-Guide-1024x576.png",
+        "article_id": 84,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""

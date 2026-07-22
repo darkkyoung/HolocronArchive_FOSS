@@ -10,6 +10,7 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 
 INPUT_FILE = os.path.join(DATA_DIR, "fetched_articles.json")
 OUTPUT_FILE = os.path.join(DATA_DIR, "topics.json")
+OVERRIDES_FILE = os.path.join(DATA_DIR, "article_overrides.json")
 
 
 STOPWORDS = {
@@ -61,6 +62,80 @@ IMPORTANT_PHRASES = [
 def load_articles():
     with open(INPUT_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
+
+def normalize_url(url):
+    """
+    관리자 제외/복구 비교용 URL 정규화 함수.
+    쿼리스트링, 앵커, 끝 슬래시 차이를 제거한다.
+    """
+    if not url:
+        return ""
+
+    url = url.strip()
+    url = url.split("?")[0]
+    url = url.split("#")[0]
+    url = url.rstrip("/")
+
+    return url
+
+
+def load_overrides():
+    """
+    관리자 수동 수정 기록을 불러온다.
+    파일이 없으면 기본 구조를 반환한다.
+    """
+    default_overrides = {
+        "excluded_article_urls": [],
+        "manual_topic_merges": []
+    }
+
+    if not os.path.exists(OVERRIDES_FILE):
+        return default_overrides
+
+    try:
+        with open(OVERRIDES_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if "excluded_article_urls" not in data:
+            data["excluded_article_urls"] = []
+        
+        if "manual_topic_merges" not in data:
+            data["manual_topic_merges"] = []
+
+        return data
+
+    except Exception:
+        return default_overrides
+
+
+def apply_article_overrides(articles):
+    """
+    관리자 모드에서 제외한 기사를 topic 생성 대상에서 제거한다.
+    """
+    overrides = load_overrides()
+
+    excluded_urls = set(
+        normalize_url(url)
+        for url in overrides.get("excluded_article_urls", [])
+    )
+
+    if not excluded_urls:
+        return articles
+
+    filtered_articles = []
+
+    for article in articles:
+        article_url = normalize_url(
+            article.get("source_url") or article.get("url")
+        )
+
+        if article_url in excluded_urls:
+            print(f"관리자 제외 기사 건너뜀: {article.get('title', '')}")
+            continue
+
+        filtered_articles.append(article)
+
+    return filtered_articles
 
 
 def save_topics(topics):
@@ -489,6 +564,142 @@ def build_topic(topic_id, articles):
 
     return topic
 
+def get_article_url(article):
+    """
+    기사 URL을 비교용으로 정규화해서 반환한다.
+    """
+    return normalize_url(
+        article.get("source_url") or article.get("url")
+    )
+
+
+def deduplicate_articles(articles):
+    """
+    병합 과정에서 같은 기사가 중복으로 들어가는 것을 막는다.
+    """
+    seen_urls = set()
+    unique_articles = []
+
+    for article in articles:
+        article_url = get_article_url(article)
+
+        if not article_url:
+            continue
+
+        if article_url in seen_urls:
+            continue
+
+        seen_urls.add(article_url)
+        unique_articles.append(article)
+
+    return unique_articles
+
+
+def recalculate_topic_flags(topics):
+    """
+    수동 병합 이후 TOP 3, 정렬, topic_id를 다시 계산한다.
+    """
+    for topic in topics:
+        topic["is_top"] = False
+        topic["article_count"] = len(topic.get("articles", []))
+        topic["sources"] = sorted(
+            set(article.get("source_name", "") for article in topic.get("articles", []))
+        )
+        topic["source_count"] = len(topic["sources"])
+        topic["label"] = choose_topic_label(topic.get("articles", []))
+        topic["importance"] = calculate_importance(topic.get("articles", []))
+
+        latest_date = ""
+        for article in topic.get("articles", []):
+            published_at = article.get("published_at", "")
+            if published_at > latest_date:
+                latest_date = published_at
+
+        topic["latest_published_at"] = latest_date
+        topic["representative_article"] = choose_representative_article(topic.get("articles", []))
+        topic["topic_title"] = choose_topic_title(topic.get("articles", []))
+
+    topics_by_importance = sorted(
+        topics,
+        key=lambda topic: (
+            topic.get("importance", 0),
+            topic.get("latest_published_at", "")
+        ),
+        reverse=True
+    )
+
+    top_topic_ids = set(id(topic) for topic in topics_by_importance[:3])
+
+    for topic in topics:
+        topic["is_top"] = id(topic) in top_topic_ids
+
+    topics.sort(
+        key=lambda topic: topic.get("latest_published_at", ""),
+        reverse=True
+    )
+
+    for idx, topic in enumerate(topics, start=1):
+        topic["topic_id"] = idx
+
+    return topics
+
+
+def apply_manual_topic_merges(topics):
+    """
+    관리자 모드에서 수동 병합한 topic 기록을 적용한다.
+    article_overrides.json의 manual_topic_merges를 기준으로
+    해당 기사들이 포함된 topic들을 하나로 합친다.
+    """
+    overrides = load_overrides()
+    manual_merges = overrides.get("manual_topic_merges", [])
+
+    if not manual_merges:
+        return topics
+
+    for merge in manual_merges:
+        merge_urls = set(
+            normalize_url(url)
+            for url in merge.get("article_urls", [])
+        )
+
+        if not merge_urls:
+            continue
+
+        merged_articles = []
+        remaining_topics = []
+
+        for topic in topics:
+            topic_articles = topic.get("articles", [])
+
+            topic_urls = set(
+                get_article_url(article)
+                for article in topic_articles
+            )
+
+            # 이 topic 안의 기사 중 하나라도 병합 대상 URL과 겹치면 병합 대상
+            if topic_urls.intersection(merge_urls):
+                merged_articles.extend(topic_articles)
+            else:
+                remaining_topics.append(topic)
+
+        if not merged_articles:
+            topics = remaining_topics
+            continue
+
+        merged_articles = deduplicate_articles(merged_articles)
+
+        merged_topic = build_topic(
+            topic_id=0,
+            articles=merged_articles
+        )
+
+        remaining_topics.append(merged_topic)
+        topics = remaining_topics
+
+    topics = recalculate_topic_flags(topics)
+
+    return topics
+
 
 def group_articles(articles, threshold=0.42):
     """
@@ -598,7 +809,16 @@ def main():
         print("fetched_articles.json에 기사가 없습니다.")
         return
 
+    articles = apply_article_overrides(articles)
+
+    if not articles:
+        print("관리자 제외 설정 적용 후 남은 기사가 없습니다.")
+        save_topics([])
+        return
+
     topics = group_articles(articles)
+
+    topics = apply_manual_topic_merges(topics)
 
     save_topics(topics)
     print_topic_preview(topics)
