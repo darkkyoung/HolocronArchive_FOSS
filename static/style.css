@@ -1981,3 +1981,218 @@ select option:checked {
     height: 15px;
     accent-color: #facc15;
 }
+
+/* ===============================
+   Manual Merge List
+================================ */
+
+.inline-merge-section {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 22px;
+    border-color: rgba(218, 165, 32, 0.28);
+    background: rgba(18, 28, 45, 0.42);
+}
+
+.manual-merge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.manual-merge-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(8, 18, 35, 0.48);
+    border: 1px solid rgba(218, 165, 32, 0.22);
+}
+
+.manual-merge-main {
+    min-width: 0;
+    flex: 1;
+}
+
+.manual-merge-title {
+    margin-bottom: 10px;
+    color: #fde68a;
+    font-weight: 900;
+    font-size: 0.95rem;
+}
+
+.manual-merge-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.manual-merge-articles a {
+    display: block;
+    padding: 10px 11px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.manual-merge-articles a:hover {
+    color: #facc15;
+    border-color: rgba(250, 204, 21, 0.35);
+}
+
+.manual-merge-articles span {
+    display: inline-block;
+    margin-right: 8px;
+    color: #93c5fd;
+    font-weight: 800;
+}
+
+.manual-unmerge-button {
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    color: #fecaca;
+    background: rgba(248, 113, 113, 0.16);
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    font-weight: 900;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.manual-unmerge-button:hover {
+    background: rgba(248, 113, 113, 0.24);
+}
+
+@media (max-width: 760px) {
+    .manual-merge-item {
+        flex-direction: column;
+    }
+
+    .manual-unmerge-button {
+        width: 100%;
+    }
+}
+
+.inline-admin-unmerge {
+    height: 100%;
+    min-width: 86px;
+    padding: 0 11px;
+    border-radius: 12px;
+    color: #dbeafe;
+    background: rgba(59, 130, 246, 0.16);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    font-weight: 900;
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.inline-admin-unmerge:hover {
+    background: rgba(59, 130, 246, 0.24);
+}
+
+/* ===============================
+   Representative Article Select
+================================ */
+
+.related-admin-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.related-admin-button-group form {
+    margin: 0;
+}
+
+.inline-admin-representative {
+    height: 100%;
+    min-width: 86px;
+    min-height: 34px;
+    padding: 0 11px;
+    border-radius: 12px;
+    color: #fde68a;
+    background: rgba(218, 165, 32, 0.16);
+    border: 1px solid rgba(218, 165, 32, 0.45);
+    font-weight: 900;
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.inline-admin-representative:hover {
+    background: rgba(218, 165, 32, 0.24);
+}
+
+@media (max-width: 760px) {
+    .related-admin-button-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .inline-admin-representative {
+        min-height: 38px;
+    }
+}
+
+/* ===============================
+   TOP 3 Manual Control
+================================ */
+
+.topic-top-admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -4px 0 14px;
+}
+
+.topic-top-admin-actions form {
+    margin: 0;
+}
+
+.topic-top-button {
+    min-height: 34px;
+    padding: 0 11px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 900;
+    font-family: inherit;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.14);
+}
+
+.topic-top-button.pin {
+    color: #fde68a;
+    background: rgba(218, 165, 32, 0.16);
+    border-color: rgba(218, 165, 32, 0.45);
+}
+
+.topic-top-button.pin:hover {
+    background: rgba(218, 165, 32, 0.24);
+}
+
+.topic-top-button.hide {
+    color: #fecaca;
+    background: rgba(248, 113, 113, 0.14);
+    border-color: rgba(248, 113, 113, 0.42);
+}
+
+.topic-top-button.hide:hover {
+    background: rgba(248, 113, 113, 0.22);
+}
+
+.topic-top-button.clear {
+    color: #dbeafe;
+    background: rgba(59, 130, 246, 0.14);
+    border-color: rgba(96, 165, 250, 0.42);
+}
+
+.topic-top-button.clear:hover {
+    background: rgba(59, 130, 246, 0.22);
+}

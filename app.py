@@ -71,9 +71,16 @@ def load_article_overrides():
         "article_overrides.json",
         {
             "excluded_article_urls": [],
-            "manual_topic_merges": []
+            "manual_topic_merges": [],
+            "representative_article_urls": {},
+            "pinned_top_article_urls": [],
+            "hidden_top_article_urls": [],
+            "restored_auto_excluded_urls": []
         }
     )
+
+    if "restored_auto_excluded_urls" not in overrides:
+        overrides["restored_auto_excluded_urls"] = []
 
     if "excluded_article_urls" not in overrides:
         overrides["excluded_article_urls"] = []
@@ -81,11 +88,32 @@ def load_article_overrides():
     if "manual_topic_merges" not in overrides:
         overrides["manual_topic_merges"] = []
 
+    if "representative_article_urls" not in overrides:
+        overrides["representative_article_urls"] = {}
+
+    if "pinned_top_article_urls" not in overrides:
+        overrides["pinned_top_article_urls"] = []
+
+    if "hidden_top_article_urls" not in overrides:
+        overrides["hidden_top_article_urls"] = []
+
     return overrides
 
 
 def save_article_overrides(overrides):
     save_json("article_overrides.json", overrides)
+
+
+def load_auto_excluded_articles():
+    return load_json_or_default("auto_excluded_articles.json", [])
+
+
+def save_auto_excluded_articles(articles):
+    save_json("auto_excluded_articles.json", articles)
+
+
+def save_fetched_articles(articles):
+    save_json("fetched_articles.json", articles)
 
 
 def collect_article_urls_from_topic(topic):
@@ -104,6 +132,118 @@ def collect_article_urls_from_topic(topic):
             article_urls.append(article_url)
 
     return article_urls
+
+
+def annotate_topics_with_top_override_info(topics):
+    """
+    관리자 화면에서 topic별 TOP 고정/제외 상태를 보여주기 위해
+    topic에 admin_is_pinned_top, admin_is_hidden_top 값을 붙인다.
+    """
+    overrides = load_article_overrides()
+
+    pinned_urls = set(
+        normalize_url_for_admin(url)
+        for url in overrides.get("pinned_top_article_urls", [])
+    )
+
+    hidden_urls = set(
+        normalize_url_for_admin(url)
+        for url in overrides.get("hidden_top_article_urls", [])
+    )
+
+    for topic in topics:
+        topic_urls = set(collect_article_urls_from_topic(topic))
+
+        topic["admin_is_pinned_top"] = bool(topic_urls.intersection(pinned_urls))
+        topic["admin_is_hidden_top"] = bool(topic_urls.intersection(hidden_urls))
+
+    return topics
+
+
+def build_manual_merge_list():
+    """
+    article_overrides.json에 저장된 수동 병합 목록을
+    관리자 화면에서 보기 좋게 정리한다.
+    """
+    overrides = load_article_overrides()
+    manual_merges = overrides.get("manual_topic_merges", [])
+
+    articles = load_json_or_default("fetched_articles.json", [])
+
+    article_map = {}
+
+    for article in articles:
+        article_url = normalize_url_for_admin(
+            article.get("source_url") or article.get("url")
+        )
+
+        if article_url:
+            article_map[article_url] = article
+
+    merge_list = []
+
+    for merge in manual_merges:
+        merge_id = merge.get("merge_id", "")
+        article_urls = merge.get("article_urls", [])
+
+        merge_articles = []
+
+        for url in article_urls:
+            normalized_url = normalize_url_for_admin(url)
+
+            if normalized_url in article_map:
+                merge_articles.append(article_map[normalized_url])
+
+        merge_list.append({
+            "merge_id": merge_id,
+            "article_count": len(merge_articles),
+            "articles": merge_articles
+        })
+
+    return merge_list
+
+def build_manual_merge_url_map():
+    """
+    수동 병합에 포함된 기사 URL이 어떤 merge_id에 속하는지 맵으로 만든다.
+    index.html에서 기사별로 '병합에서 빼기' 버튼을 보여주기 위해 사용한다.
+    """
+    overrides = load_article_overrides()
+    manual_merges = overrides.get("manual_topic_merges", [])
+
+    merge_url_map = {}
+
+    for merge in manual_merges:
+        merge_id = merge.get("merge_id", "")
+
+        for url in merge.get("article_urls", []):
+            normalized_url = normalize_url_for_admin(url)
+
+            if normalized_url:
+                merge_url_map[normalized_url] = merge_id
+
+    return merge_url_map
+
+
+def annotate_topics_with_manual_merge_info(topics):
+    """
+    topic 안의 각 article에 수동 병합 정보(_manual_merge_id)를 임시로 붙인다.
+    템플릿에서 수동 병합 기사인지 판단하는 용도다.
+    """
+    merge_url_map = build_manual_merge_url_map()
+
+    if not merge_url_map:
+        return topics
+
+    for topic in topics:
+        for article in topic.get("articles", []):
+            article_url = normalize_url_for_admin(
+                article.get("source_url") or article.get("url")
+            )
+
+            if article_url in merge_url_map:
+                article["_manual_merge_id"] = merge_url_map[article_url]
+
+    return topics
 
 
 def regenerate_topics():
@@ -633,7 +773,14 @@ def index():
         category=category
     )
 
+    if admin_mode:
+        topics = annotate_topics_with_manual_merge_info(topics)
+        topics = annotate_topics_with_top_override_info(topics)
+    
+
     excluded_articles = []
+    manual_topic_merges = []
+    auto_excluded_articles = []
 
     if admin_mode:
         fetched_articles = load_json_or_default("fetched_articles.json", [])
@@ -657,6 +804,14 @@ def index():
             reverse=True
         )
 
+        manual_topic_merges = build_manual_merge_list()
+
+        auto_excluded_articles = load_auto_excluded_articles()
+        auto_excluded_articles.sort(
+            key=lambda article: article.get("published_at", ""),
+            reverse=True
+        )
+
     return render_template(
         "index.html",
         articles=articles,
@@ -665,8 +820,11 @@ def index():
         selected_category=category,
         selected_franchise=franchise,
         admin_mode=admin_mode,
-        excluded_articles=[],
-        excluded_count=0
+        excluded_articles=excluded_articles,
+        excluded_count=len(excluded_articles),
+        manual_topic_merges=manual_topic_merges,
+        auto_excluded_articles=auto_excluded_articles,
+        auto_excluded_count=len(auto_excluded_articles)
     )
 
 
@@ -826,6 +984,78 @@ def admin_restore_article():
     return redirect(return_url)
 
 
+@app.route("/admin/restore-auto-excluded", methods=["POST"])
+def admin_restore_auto_excluded_article():
+    """
+    자동 제외된 기사를 수동으로 복구한다.
+    - auto_excluded_articles.json에서 제거
+    - fetched_articles.json에 추가
+    - restored_auto_excluded_urls에 기록
+    - topics.json 재생성
+    """
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+    article_url = normalize_url_for_admin(request.form.get("url", ""))
+
+    if not article_url:
+        return redirect(return_url)
+
+    auto_excluded_articles = load_auto_excluded_articles()
+    fetched_articles = load_json_or_default("fetched_articles.json", [])
+
+    target_article = None
+    remaining_auto_excluded = []
+
+    for article in auto_excluded_articles:
+        current_url = normalize_url_for_admin(
+            article.get("source_url") or article.get("url")
+        )
+
+        if current_url == article_url:
+            target_article = article
+        else:
+            remaining_auto_excluded.append(article)
+
+    if not target_article:
+        return redirect(return_url)
+
+    # 자동 제외 라벨을 일반 표시용으로 보정
+    target_article["label"] = "수동 복구"
+    target_article["source_url"] = article_url
+    target_article["url"] = article_url
+
+    existing_urls = set(
+        normalize_url_for_admin(article.get("source_url") or article.get("url"))
+        for article in fetched_articles
+    )
+
+    if article_url not in existing_urls:
+        fetched_articles.append(target_article)
+
+    # article_id 재부여
+    for idx, article in enumerate(fetched_articles, start=1):
+        article["article_id"] = idx
+
+    save_fetched_articles(fetched_articles)
+    save_auto_excluded_articles(remaining_auto_excluded)
+
+    overrides = load_article_overrides()
+
+    restored_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("restored_auto_excluded_urls", [])
+    ]
+
+    if article_url not in restored_urls:
+        restored_urls.append(article_url)
+
+    overrides["restored_auto_excluded_urls"] = restored_urls
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
 @app.route("/admin/merge-topics", methods=["POST"])
 def admin_merge_topics():
     return_url = request.form.get("return_url") or url_for("index")
@@ -867,6 +1097,302 @@ def admin_merge_topics():
     overrides["manual_topic_merges"] = manual_merges
     save_article_overrides(overrides)
 
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/unmerge-topic", methods=["POST"])
+def admin_unmerge_topic():
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+    merge_id = request.form.get("merge_id", "").strip()
+
+    if not merge_id:
+        return redirect(return_url)
+
+    overrides = load_article_overrides()
+
+    manual_merges = overrides.get("manual_topic_merges", [])
+    excluded_urls = overrides.get("excluded_article_urls", [])
+
+    # 해제할 병합 기록에 포함된 기사 URL들을 먼저 찾는다.
+    merge_article_urls = []
+
+    for merge in manual_merges:
+        if merge.get("merge_id") == merge_id:
+            merge_article_urls = [
+                normalize_url_for_admin(url)
+                for url in merge.get("article_urls", [])
+            ]
+            break
+
+    merge_article_url_set = set(merge_article_urls)
+
+    # 1. 병합 기록 삭제
+    manual_merges = [
+        merge for merge in manual_merges
+        if merge.get("merge_id") != merge_id
+    ]
+
+    # 2. 해당 병합에 포함됐던 기사들이 제외 목록에 들어가 있다면 복구
+    excluded_urls = [
+        normalize_url_for_admin(url)
+        for url in excluded_urls
+    ]
+
+    excluded_urls = [
+        url for url in excluded_urls
+        if url not in merge_article_url_set
+    ]
+
+    overrides["manual_topic_merges"] = manual_merges
+    overrides["excluded_article_urls"] = excluded_urls
+
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/remove-article-from-merge", methods=["POST"])
+def admin_remove_article_from_merge():
+    """
+    수동 병합된 topic에서 특정 기사 1개만 병합 목록에서 제거한다.
+    기사를 숨기는 것이 아니라, 자동 분류 대상으로 다시 돌려보내는 기능이다.
+    """
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+
+    merge_id = request.form.get("merge_id", "").strip()
+    article_url = normalize_url_for_admin(request.form.get("url", ""))
+
+    if not merge_id or not article_url:
+        return redirect(return_url)
+
+    overrides = load_article_overrides()
+    manual_merges = overrides.get("manual_topic_merges", [])
+
+    updated_merges = []
+
+    for merge in manual_merges:
+        if merge.get("merge_id") != merge_id:
+            updated_merges.append(merge)
+            continue
+
+        article_urls = [
+            normalize_url_for_admin(url)
+            for url in merge.get("article_urls", [])
+        ]
+
+        article_urls = [
+            url for url in article_urls
+            if url != article_url
+        ]
+
+        # 병합 그룹은 최소 2개 이상의 기사가 있을 때만 유지한다.
+        # 1개 이하가 되면 수동 병합 기록 자체를 삭제한다.
+        if len(article_urls) >= 2:
+            merge["article_urls"] = article_urls
+            updated_merges.append(merge)
+
+    overrides["manual_topic_merges"] = updated_merges
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/set-representative", methods=["POST"])
+def admin_set_representative_article():
+    """
+    특정 기사를 topic의 대표 기사로 지정한다.
+    실제 적용은 group_topics.py가 topics.json을 재생성할 때 반영한다.
+    """
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+    article_url = normalize_url_for_admin(request.form.get("url", ""))
+
+    if not article_url:
+        return redirect(return_url)
+
+    overrides = load_article_overrides()
+
+    representative_article_urls = overrides.get("representative_article_urls", {})
+
+    # 현재는 URL 기반으로 대표 기사 지정 여부를 저장한다.
+    representative_article_urls[article_url] = True
+
+    overrides["representative_article_urls"] = representative_article_urls
+    save_article_overrides(overrides)
+
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/pin-top-topic", methods=["POST"])
+def admin_pin_top_topic():
+    """
+    특정 topic을 TOP 3에 고정한다.
+    topic_id는 재생성될 수 있으므로, topic 안의 기사 URL들을 저장한다.
+    """
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+    topic_id = request.form.get("topic_id", "").strip()
+
+    if not topic_id.isdigit():
+        return redirect(return_url)
+
+    topics = load_json_or_default("topics.json", [])
+    target_topic = None
+
+    for topic in topics:
+        if int(topic.get("topic_id", 0)) == int(topic_id):
+            target_topic = topic
+            break
+
+    if not target_topic:
+        return redirect(return_url)
+
+    topic_urls = collect_article_urls_from_topic(target_topic)
+
+    overrides = load_article_overrides()
+
+    pinned_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("pinned_top_article_urls", [])
+    ]
+
+    hidden_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("hidden_top_article_urls", [])
+    ]
+
+    for url in topic_urls:
+        if url not in pinned_urls:
+            pinned_urls.append(url)
+
+    # TOP 고정한 topic은 TOP 제외 목록에서는 제거
+    hidden_urls = [
+        url for url in hidden_urls
+        if url not in topic_urls
+    ]
+
+    overrides["pinned_top_article_urls"] = pinned_urls
+    overrides["hidden_top_article_urls"] = hidden_urls
+
+    save_article_overrides(overrides)
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/hide-top-topic", methods=["POST"])
+def admin_hide_top_topic():
+    """
+    특정 topic을 TOP 3 후보에서 제외한다.
+    전체 이슈 목록에서는 계속 보인다.
+    """
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+    topic_id = request.form.get("topic_id", "").strip()
+
+    if not topic_id.isdigit():
+        return redirect(return_url)
+
+    topics = load_json_or_default("topics.json", [])
+    target_topic = None
+
+    for topic in topics:
+        if int(topic.get("topic_id", 0)) == int(topic_id):
+            target_topic = topic
+            break
+
+    if not target_topic:
+        return redirect(return_url)
+
+    topic_urls = collect_article_urls_from_topic(target_topic)
+
+    overrides = load_article_overrides()
+
+    pinned_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("pinned_top_article_urls", [])
+    ]
+
+    hidden_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("hidden_top_article_urls", [])
+    ]
+
+    for url in topic_urls:
+        if url not in hidden_urls:
+            hidden_urls.append(url)
+
+    # TOP 제외한 topic은 TOP 고정 목록에서는 제거
+    pinned_urls = [
+        url for url in pinned_urls
+        if url not in topic_urls
+    ]
+
+    overrides["pinned_top_article_urls"] = pinned_urls
+    overrides["hidden_top_article_urls"] = hidden_urls
+
+    save_article_overrides(overrides)
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
+@app.route("/admin/clear-top-topic", methods=["POST"])
+def admin_clear_top_topic():
+    """
+    특정 topic의 TOP 고정/제외 설정을 모두 해제한다.
+    이후 자동 TOP 3 선정 기준으로 돌아간다.
+    """
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+    topic_id = request.form.get("topic_id", "").strip()
+
+    if not topic_id.isdigit():
+        return redirect(return_url)
+
+    topics = load_json_or_default("topics.json", [])
+    target_topic = None
+
+    for topic in topics:
+        if int(topic.get("topic_id", 0)) == int(topic_id):
+            target_topic = topic
+            break
+
+    if not target_topic:
+        return redirect(return_url)
+
+    topic_urls = collect_article_urls_from_topic(target_topic)
+
+    overrides = load_article_overrides()
+
+    pinned_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("pinned_top_article_urls", [])
+    ]
+
+    hidden_urls = [
+        normalize_url_for_admin(url)
+        for url in overrides.get("hidden_top_article_urls", [])
+    ]
+
+    pinned_urls = [
+        url for url in pinned_urls
+        if url not in topic_urls
+    ]
+
+    hidden_urls = [
+        url for url in hidden_urls
+        if url not in topic_urls
+    ]
+
+    overrides["pinned_top_article_urls"] = pinned_urls
+    overrides["hidden_top_article_urls"] = hidden_urls
+
+    save_article_overrides(overrides)
     regenerate_topics()
 
     return redirect(return_url)

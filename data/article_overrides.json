@@ -1,7 +1,7 @@
 {
   "excluded_article_urls": [
     "https://www.starwarsnewsnet.com/2026/07/from-galactic-games-to-digital-rewards-why-fandoms-love-interactive-online-play.html",
-    "https://www.starwarsnewsnet.com/2026/07/star-wars-starfighter-writer-jonathan-tropper-wants-the-movie-to-feel-like-a-stepping-into-a-new-world.html"
+    "https://www.starwarsnewsnet.com/2026/07/second-sister-star-wars-character-spotlight.html"
   ],
   "manual_topic_merges": [
     {
@@ -17,6 +17,43 @@
         "https://www.starwarsnewsnet.com/2026/07/star-wars-twin-crossroads-and-jedi-fallen-order-manga-vol-3-to-be-announced-at-sdcc.html",
         "https://www.starwarsnewsnet.com/2026/07/from-galactic-games-to-digital-rewards-why-fandoms-love-interactive-online-play.html"
       ]
+    },
+    {
+      "merge_id": "merge_3",
+      "article_urls": [
+        "https://www.starwarsnewsnet.com/2026/07/new-details-about-star-wars-the-ninth-jedi-characters-revealed-including-sith-villain.html",
+        "https://www.starwars.com/news/star-wars-the-ninth-jedi-character-guide"
+      ]
+    },
+    {
+      "merge_id": "merge_4",
+      "article_urls": [
+        "https://www.starwarsnewsnet.com/2026/07/new-details-about-star-wars-the-ninth-jedi-characters-revealed-including-sith-villain.html",
+        "https://www.starwars.com/news/star-wars-the-ninth-jedi-character-guide"
+      ]
     }
+  ],
+  "representative_article_urls": {
+    "https://www.starwars.com/news/star-wars-visions-presents-the-ninth-jedi-trailer": true,
+    "https://www.starwarsnewsnet.com/2026/07/star-wars-galactic-racer-shows-off-15-minutes-of-gameplay-footage.html": true,
+    "https://www.starwars.com/news/sdcc-star-wars-the-mandalorian-and-grogu-display": true
+  },
+  "pinned_top_article_urls": [
+    "https://www.starwars.com/news/star-wars-visions-presents-the-ninth-jedi-trailer",
+    "https://www.starwarsnewsnet.com/2026/07/star-wars-galactic-racer-shows-off-15-minutes-of-gameplay-footage.html",
+    "https://www.starwars.com/news/sdcc-star-wars-the-mandalorian-and-grogu-display",
+    "https://www.starwarsnewsnet.com/2026/07/this-week-in-a-galaxy-far-far-away-star-wars-starfighter-team-reunites-for-marvel-new-luke-and-leia-novel-and-more.html"
+  ],
+  "hidden_top_article_urls": [
+    "https://www.starwarsnewsnet.com/2026/07/star-wars-zero-company-collectors-edition-revealed-at-san-diego-comic-con-first-single-from-soundtrack-available-now.html",
+    "https://www.starwars.com/news/sdcc-star-wars-zero-company-cast-announce",
+    "https://www.starwars.com/news/sdcc-hasbro-exclusive-at-rt-and-panel-recap",
+    "https://www.starwarsnewsnet.com/2026/07/new-details-about-star-wars-the-ninth-jedi-characters-revealed-including-sith-villain.html",
+    "https://www.starwars.com/news/star-wars-the-ninth-jedi-character-guide",
+    "https://www.starwarsnewsnet.com/2026/07/star-wars-visions-presents-the-ninth-jedi-creators-discuss-jedi-lightsabers-and-hope.html",
+    "https://www.starwars.com/news/anime-expo-the-ninth-jedi-filmmaker-interview"
+  ],
+  "restored_auto_excluded_urls": [
+    "https://www.starwarsnewsnet.com/2026/07/second-sister-star-wars-character-spotlight.html"
   ]
 }

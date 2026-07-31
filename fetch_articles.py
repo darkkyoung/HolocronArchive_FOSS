@@ -18,6 +18,15 @@ STARWARS_NEWS_URL = "https://www.starwars.com/news"
 SWNN_HOME_URL = "https://www.starwarsnewsnet.com/"
 SWNN_PAGE_URL = "https://www.starwarsnewsnet.com/page/{page_number}/"
 
+AUTO_EXCLUDED_FILE = os.path.join(DATA_DIR, "auto_excluded_articles.json")
+ARTICLE_OVERRIDES_FILE = os.path.join(DATA_DIR, "article_overrides.json")
+
+AUTO_EXCLUDED_ARTICLES = []
+
+# 빠른 갱신 최적화 기준
+# 기존 기사 URL이 연속으로 이 횟수 이상 나오면 더 오래된 목록 탐색을 중단한다.
+FAST_UPDATE_EXISTING_STOP_COUNT = 10
+
 
 def format_date(entry):
     """
@@ -248,34 +257,46 @@ def guess_label(title, source_name):
 
     return "일반 보도"
 
-def is_excluded_article(title, source_name=""):
+
+def get_exclusion_reason(title):
     """
-    최신 뉴스와 거리가 먼 리뷰/칼럼/기획성 글을 제외한다.
-    단, 현재는 SWNN 기사에만 강하게 적용한다.
+    제목을 기준으로 자동 제외 사유를 반환한다.
+    제외 대상이 아니면 빈 문자열 반환.
     """
     if not title:
-        return False
+        return ""
 
     title_lower = title.lower()
 
-    excluded_keywords = [
-        "character spotlight",
-        "review:",
-        "review -",
-        "review ",
-        "this week",
-        "who is",
-        "gift guide",
-        "father figures",
-        "breakdown",
-        "explained",
-        "analysis",
-        "opinion",
-        "editorial",
-        "recap",
-    ]
+    exclusion_rules = {
+        "character spotlight": "character_spotlight",
+        "review:": "review",
+        "review -": "review",
+        "review ": "review",
+        "this week": "weekly_roundup",
+        "who is": "profile_article",
+        "gift guide": "gift_guide",
+        "father figures": "feature_column",
+        "breakdown": "analysis",
+        "explained": "analysis",
+        "analysis": "analysis",
+        "opinion": "opinion",
+        "editorial": "editorial",
+        "recap": "recap",
+    }
 
-    return any(keyword in title_lower for keyword in excluded_keywords)
+    for keyword, reason in exclusion_rules.items():
+        if keyword in title_lower:
+            return reason
+
+    return ""
+
+
+def is_excluded_article(title, source_name=""):
+    """
+    최신 뉴스와 거리가 먼 리뷰/칼럼/기획성 글을 제외한다.
+    """
+    return bool(get_exclusion_reason(title))
 
 def normalize_url(url):
     """
@@ -298,6 +319,151 @@ def normalize_url(url):
     url = url.rstrip("/")
 
     return url
+
+
+def load_article_overrides_for_fetch():
+    """
+    fetch_articles.py에서 관리자 복구 기록을 확인하기 위한 함수.
+    """
+    if not os.path.exists(ARTICLE_OVERRIDES_FILE):
+        return {
+            "restored_auto_excluded_urls": []
+        }
+
+    try:
+        with open(ARTICLE_OVERRIDES_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if "restored_auto_excluded_urls" not in data:
+            data["restored_auto_excluded_urls"] = []
+
+        return data
+
+    except Exception:
+        return {
+            "restored_auto_excluded_urls": []
+        }
+
+
+def is_restored_auto_excluded_article(url):
+    """
+    관리자가 자동 제외 목록에서 복구한 기사는
+    이후 수집 시 다시 자동 제외하지 않기 위한 함수.
+    """
+    normalized_url = normalize_url(url)
+
+    if not normalized_url:
+        return False
+
+    overrides = load_article_overrides_for_fetch()
+
+    restored_urls = set(
+        normalize_url(url)
+        for url in overrides.get("restored_auto_excluded_urls", [])
+    )
+
+    return normalized_url in restored_urls
+
+
+def load_auto_excluded_articles():
+    """
+    기존 자동 제외 기사 목록을 불러온다.
+    """
+    if not os.path.exists(AUTO_EXCLUDED_FILE):
+        return []
+
+    try:
+        with open(AUTO_EXCLUDED_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+
+def add_auto_excluded_article(
+    title,
+    url,
+    source_name="Star Wars News Net",
+    published_at="",
+    summary="",
+    image_url="",
+    category="",
+    franchise="Star Wars"
+):
+    """
+    자동 제외된 기사를 메모리에 저장한다.
+    나중에 save_auto_excluded_articles()에서 파일로 저장한다.
+    """
+    normalized_url = normalize_url(url)
+
+    if not title or not normalized_url:
+        return
+
+    # 관리자가 복구한 기사는 자동 제외 목록에 다시 넣지 않음
+    if is_restored_auto_excluded_article(normalized_url):
+        return
+
+    reason = get_exclusion_reason(title)
+
+    if not reason:
+        return
+
+    AUTO_EXCLUDED_ARTICLES.append({
+        "title": title,
+        "title_ko": "",
+        "source_name": source_name,
+        "source_url": normalized_url,
+        "url": normalized_url,
+        "image_url": image_url,
+        "published_at": published_at,
+        "summary": summary,
+        "summary_ko": "",
+        "category": category or guess_category(title),
+        "franchise": franchise,
+        "label": "자동 제외",
+        "exclude_reason": reason
+    })
+
+
+def save_auto_excluded_articles(new_excluded_articles):
+    """
+    자동 제외 기사 목록을 저장한다.
+    기존 목록과 새 목록을 URL 기준으로 합친다.
+    """
+    os.makedirs(DATA_DIR, exist_ok=True)
+
+    existing_articles = load_auto_excluded_articles()
+    combined_articles = existing_articles + new_excluded_articles
+
+    seen_urls = set()
+    unique_articles = []
+
+    for article in combined_articles:
+        url = normalize_url(article.get("source_url") or article.get("url"))
+
+        if not url:
+            continue
+
+        if url in seen_urls:
+            continue
+
+        seen_urls.add(url)
+
+        article["source_url"] = url
+        article["url"] = url
+
+        unique_articles.append(article)
+
+    unique_articles.sort(
+        key=lambda article: article.get("published_at", ""),
+        reverse=True
+    )
+
+    with open(AUTO_EXCLUDED_FILE, "w", encoding="utf-8") as f:
+        json.dump(unique_articles, f, ensure_ascii=False, indent=2)
+
+    print(f"자동 제외 기사 저장 완료: {AUTO_EXCLUDED_FILE}")
+    print(f"자동 제외 기사 수: {len(unique_articles)}")
+
 
 def get_swnn_article_links_from_page(page_number=1):
     """
@@ -362,6 +528,106 @@ def get_swnn_article_links_from_page(page_number=1):
 
     return links
 
+
+def clean_swnn_candidate_title(title):
+    """
+    SWNN 목록 페이지에서 가져온 제목 후보를 정리한다.
+    목록 카드의 텍스트에는 공백/줄바꿈/불필요한 사이트명이 섞일 수 있다.
+    """
+    if not title:
+        return ""
+
+    title = re.sub(r"\s+", " ", title).strip()
+    title = title.replace(" - Star Wars News Net", "").strip()
+
+    return title
+
+
+def get_swnn_article_candidates_from_page(page_number=1):
+    """
+    SWNN 웹페이지에서 기사 URL과 제목 후보를 함께 수집한다.
+    빠른 갱신에서 제외 대상 글을 상세 페이지 접속 전에 거르기 위한 함수.
+    """
+    if page_number == 1:
+        page_url = SWNN_HOME_URL
+    else:
+        page_url = SWNN_PAGE_URL.format(page_number=page_number)
+
+    print(f"SWNN 후보 페이지 수집 중: {page_url}")
+
+    try:
+        response = requests.get(
+            page_url,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            },
+            timeout=10
+        )
+        response.raise_for_status()
+    except Exception as e:
+        print(f"SWNN 후보 페이지 수집 실패: {page_url} / {e}")
+        return []
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    candidates = []
+    seen_urls = set()
+
+    for a_tag in soup.find_all("a", href=True):
+        href = a_tag.get("href", "").strip()
+
+        if not href.startswith("https://www.starwarsnewsnet.com/"):
+            continue
+
+        excluded_url_parts = [
+            "/category/",
+            "/tag/",
+            "/author/",
+            "/page/",
+            "#comments",
+            "/feed/",
+            "/about",
+            "/contact",
+            "/privacy",
+        ]
+
+        if any(part in href for part in excluded_url_parts):
+            continue
+
+        # 실제 기사 URL은 보통 날짜 경로를 포함함
+        if not re.search(r"/20\d{2}/\d{2}/", href):
+            continue
+
+        normalized_url = normalize_url(href)
+
+        if not normalized_url:
+            continue
+
+        if normalized_url in seen_urls:
+            continue
+
+        seen_urls.add(normalized_url)
+
+        title_candidate = clean_swnn_candidate_title(
+            a_tag.get_text(" ", strip=True)
+        )
+
+        # a 태그 텍스트가 비어 있으면 이미지 alt도 후보로 확인
+        if not title_candidate:
+            img_tag = a_tag.find("img")
+            if img_tag and img_tag.get("alt"):
+                title_candidate = clean_swnn_candidate_title(
+                    img_tag.get("alt", "")
+                )
+
+        candidates.append({
+            "url": normalized_url,
+            "title_candidate": title_candidate
+        })
+
+    return candidates
+
+
 def fetch_swnn_article_from_page(url):
     """
     SWNN 개별 기사 페이지에서 기사 정보를 수집한다.
@@ -398,8 +664,20 @@ def fetch_swnn_article_from_page(url):
     # 사이트명 같은 불필요한 꼬리 제거
     title = title.replace(" - Star Wars News Net", "").strip()
 
-    if is_excluded_article(title, "Star Wars News Net"):
+    if is_excluded_article(title, "Star Wars News Net") and not is_restored_auto_excluded_article(url):
         print(f"제외됨: {title}")
+
+        add_auto_excluded_article(
+            title=title,
+            url=url,
+            source_name="Star Wars News Net",
+            published_at="",
+            summary="",
+            image_url="",
+            category=guess_category(title),
+            franchise="Star Wars"
+        )
+
         return None
 
     published_at = ""
@@ -482,8 +760,20 @@ def fetch_swnn_articles(limit=20):
         title = entry.get("title", "").strip()
         url = entry.get("link", "").strip()
 
-        if is_excluded_article(title, "Star Wars News Net"):
+        if is_excluded_article(title, "Star Wars News Net") and not is_restored_auto_excluded_article(url):
             print(f"제외됨: {title}")
+
+            add_auto_excluded_article(
+                title=title,
+                url=url,
+                source_name="Star Wars News Net",
+                published_at=format_date(entry),
+                summary=clean_summary(entry),
+                image_url=extract_image_url(entry),
+                category=guess_category(title),
+                franchise="Star Wars"
+            )
+
             continue
 
         if not title or not url:
@@ -690,6 +980,12 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
     """
     SWNN 빠른 갱신.
     기존에 수집한 URL은 건너뛰고, 새 URL만 상세 수집한다.
+
+    최적화:
+    - RSS나 목록 페이지에서 기존 기사 URL이 연속으로 많이 나오면
+      더 오래된 기사라고 판단하고 탐색을 중단한다.
+    - SWNN 목록 페이지에서 제목 후보를 먼저 확인해
+      Review / Character Spotlight / Recap 등은 상세 페이지 접속 전에 제외한다.
     """
     print("Star Wars News Net 빠른 갱신 시작")
 
@@ -699,6 +995,8 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
     # 1. RSS에서 새 기사 확인
     feed = feedparser.parse(SWNN_FEED_URL)
 
+    consecutive_existing_count = 0
+
     for entry in feed.entries[:rss_limit]:
         title = entry.get("title", "").strip()
         url = normalize_url(entry.get("link", "").strip())
@@ -707,7 +1005,15 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
             continue
 
         if url in existing_urls:
+            consecutive_existing_count += 1
+
+            if consecutive_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
+                print("SWNN RSS 기존 기사 연속 발견으로 RSS 탐색 중단")
+                break
+
             continue
+
+        consecutive_existing_count = 0
 
         if url in seen_candidate_urls:
             continue
@@ -742,31 +1048,101 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
         new_articles.append(article)
 
     # 2. SWNN 웹페이지에서 새 기사 확인
-    article_urls = []
+    article_candidates = []
+    should_stop_page_scan = False
+    prefiltered_excluded_count = 0
 
     for page_number in range(1, max_pages + 1):
-        links = get_swnn_article_links_from_page(page_number)
+        if should_stop_page_scan:
+            break
 
-        for link in links:
-            normalized_link = normalize_url(link)
+        candidates = get_swnn_article_candidates_from_page(page_number)
+
+        page_new_count = 0
+        page_existing_count = 0
+        page_prefiltered_excluded_count = 0
+
+        for candidate in candidates:
+            normalized_link = normalize_url(candidate.get("url", ""))
+            title_candidate = candidate.get("title_candidate", "")
 
             if not normalized_link:
                 continue
 
             if normalized_link in existing_urls:
+                page_existing_count += 1
                 continue
 
             if normalized_link in seen_candidate_urls:
                 continue
 
+            # 목록 페이지 제목만으로 제외 가능하면 상세 페이지 접속 전에 제외
+            if (
+                title_candidate
+                and is_excluded_article(title_candidate, "Star Wars News Net")
+                and not is_restored_auto_excluded_article(normalized_link)
+            ):
+                print(f"사전 제외됨: {title_candidate}")
+
+                add_auto_excluded_article(
+                    title=title_candidate,
+                    url=normalized_link,
+                    source_name="Star Wars News Net",
+                    published_at="",
+                    summary="",
+                    image_url="",
+                    category=guess_category(title_candidate),
+                    franchise="Star Wars"
+                )
+
+                page_prefiltered_excluded_count += 1
+                prefiltered_excluded_count += 1
+                seen_candidate_urls.add(normalized_link)
+                continue
+
             seen_candidate_urls.add(normalized_link)
-            article_urls.append(normalized_link)
+            article_candidates.append(candidate)
+            page_new_count += 1
 
-    print(f"SWNN 웹페이지 신규 후보 기사 수: {len(article_urls)}")
+        print(
+            f"SWNN page/{page_number} 신규 후보 {page_new_count}개, "
+            f"기존 기사 {page_existing_count}개, "
+            f"사전 제외 {page_prefiltered_excluded_count}개"
+        )
 
-    for url in article_urls:
+        if page_new_count == 0 and page_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
+            print("SWNN 웹페이지 기존 기사 중심으로 판단되어 이전 페이지 탐색 중단")
+            should_stop_page_scan = True
+
+    print(f"SWNN 웹페이지 신규 후보 기사 수: {len(article_candidates)}")
+    print(f"SWNN 웹페이지 사전 제외 기사 수: {prefiltered_excluded_count}")
+
+    for candidate in article_candidates:
         if len(new_articles) >= page_limit:
             break
+
+        url = candidate.get("url", "")
+        title_candidate = candidate.get("title_candidate", "")
+
+        if (
+            title_candidate
+            and is_excluded_article(title_candidate, "Star Wars News Net")
+            and not is_restored_auto_excluded_article(url)
+        ):
+            print(f"사전 제외됨: {title_candidate}")
+
+            add_auto_excluded_article(
+                title=title_candidate,
+                url=url,
+                source_name="Star Wars News Net",
+                published_at="",
+                summary="",
+                image_url="",
+                category=guess_category(title_candidate),
+                franchise="Star Wars"
+            )
+
+            continue
 
         article = fetch_swnn_article_from_page(url)
 
@@ -776,12 +1152,17 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
     print(f"SWNN 빠른 갱신 신규 기사 수: {len(new_articles)}")
 
     return new_articles
+    
 
 def fetch_starwars_official_articles_incremental(existing_urls, limit=20):
     """
     StarWars.com 빠른 갱신.
     목록 페이지에서 URL만 먼저 확인하고,
     기존 URL이면 상세 페이지 접근을 생략한다.
+
+    최적화:
+    - 기존 기사 URL이 연속으로 많이 나오면
+      더 이상 새 기사가 없다고 보고 탐색을 중단한다.
     """
     print("StarWars.com 빠른 갱신 시작")
 
@@ -804,6 +1185,7 @@ def fetch_starwars_official_articles_incremental(existing_urls, limit=20):
     links = soup.find_all("a", href=True)
 
     seen_urls = set()
+    consecutive_existing_count = 0
 
     for link in links:
         if len(articles) >= limit:
@@ -836,13 +1218,21 @@ def fetch_starwars_official_articles_incremental(existing_urls, limit=20):
         if len(title) < 10:
             continue
 
-        if url in existing_urls:
-            continue
-
         if url in seen_urls:
             continue
 
         seen_urls.add(url)
+
+        if url in existing_urls:
+            consecutive_existing_count += 1
+
+            if consecutive_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
+                print("StarWars.com 기존 기사 연속 발견으로 탐색 중단")
+                break
+
+            continue
+
+        consecutive_existing_count = 0
 
         # 새 기사일 때만 상세 페이지에 들어가 메타데이터 보정
         metadata = fetch_starwars_article_metadata(url)
@@ -896,6 +1286,8 @@ def incremental_update():
     """
     print("빠른 뉴스 갱신 시작")
 
+    AUTO_EXCLUDED_ARTICLES.clear()
+
     existing_articles = load_existing_articles()
     existing_urls = get_existing_url_set(existing_articles)
 
@@ -936,11 +1328,14 @@ def incremental_update():
     print(f"갱신 후 전체 기사 수: {len(all_articles)}")
 
     save_articles(all_articles)
+    save_auto_excluded_articles(AUTO_EXCLUDED_ARTICLES)
 
 
 def main():
     all_articles = []
     seen_urls = set()
+
+    AUTO_EXCLUDED_ARTICLES.clear()
 
     print("Star Wars News Net RSS 기사 수집 시작")
     swnn_rss_articles = fetch_swnn_articles(limit=20)
@@ -984,6 +1379,8 @@ def main():
     print(f"전체 기사 수: {len(all_articles)}")
 
     save_articles(all_articles)
+    save_auto_excluded_articles(AUTO_EXCLUDED_ARTICLES)
+    
 
 if __name__ == "__main__":
     if "--fast" in sys.argv:

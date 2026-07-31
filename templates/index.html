@@ -188,6 +188,93 @@
                                 </form>
                             {% endif %}
 
+                            {% if admin_mode %}
+                                <section class="inline-excluded-section card">
+                                    <div class="section-heading-row">
+                                        <h3>관리자 제외 기사</h3>
+                                        <span>실수로 제외한 기사를 다시 공개 목록에 복구할 수 있습니다</span>
+                                    </div>
+
+                                    {% if excluded_articles %}
+                                        <div class="inline-excluded-list">
+                                            {% for article in excluded_articles %}
+                                                <div class="inline-excluded-item">
+                                                    <div>
+                                                        <span class="admin-source">{{ article.source_name }}</span>
+                                                        <strong>
+                                                            <a href="{{ article.source_url }}" target="_blank">
+                                                                {{ article.title_ko or article.title }}
+                                                            </a>
+                                                        </strong>
+                                                        <em>
+                                                            {% if article.published_at %}
+                                                                {{ article.published_at }}
+                                                            {% else %}
+                                                                날짜 없음
+                                                            {% endif %}
+                                                            · {{ article.category }}
+                                                        </em>
+                                                    </div>
+
+                                                    <form method="POST" action="{{ url_for('admin_restore_article') }}">
+                                                        <input type="hidden" name="url" value="{{ article.source_url }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="inline-admin-restore" type="submit">복구</button>
+                                                    </form>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <p class="empty-text">제외된 기사가 없습니다.</p>
+                                    {% endif %}
+                                </section>
+                            {% endif %}
+
+                            {% if admin_mode %}
+                                <section class="inline-excluded-section card">
+                                    <div class="section-heading-row">
+                                        <h3>자동 제외 기사</h3>
+                                        <span>Review, Character Spotlight, Recap 등으로 자동 제외된 기사입니다. 필요하면 복구할 수 있습니다.</span>
+                                    </div>
+
+                                    {% if auto_excluded_articles %}
+                                        <div class="inline-excluded-list">
+                                            {% for article in auto_excluded_articles %}
+                                                <div class="inline-excluded-item">
+                                                    <div>
+                                                        <span class="admin-source">{{ article.source_name }}</span>
+                                                        <strong>
+                                                            <a href="{{ article.source_url }}" target="_blank">
+                                                                {{ article.title_ko or article.title }}
+                                                            </a>
+                                                        </strong>
+                                                        <em>
+                                                            {% if article.published_at %}
+                                                                {{ article.published_at }}
+                                                            {% else %}
+                                                                날짜 없음
+                                                            {% endif %}
+                                                            · {{ article.category }}
+                                                            {% if article.exclude_reason %}
+                                                                · 제외 사유: {{ article.exclude_reason }}
+                                                            {% endif %}
+                                                        </em>
+                                                    </div>
+
+                                                    <form method="POST" action="{{ url_for('admin_restore_auto_excluded_article') }}">
+                                                        <input type="hidden" name="url" value="{{ article.source_url }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="inline-admin-restore" type="submit">자동 제외 복구</button>
+                                                    </form>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <p class="empty-text">자동 제외된 기사가 없습니다.</p>
+                                    {% endif %}
+                                </section>
+                            {% endif %}
+
                             <div class="article-grid">
                                 {% for topic in topics %}
                                     <article class="article-card card">
@@ -201,6 +288,59 @@
                                                 >
                                                 병합 선택
                                             </label>
+                                        {% endif %}
+                                        {% if admin_mode %}
+                                            <div class="topic-top-admin-actions">
+                                                {% if topic.admin_is_pinned_top %}
+                                                    <form method="POST" action="{{ url_for('admin_clear_top_topic') }}">
+                                                        <input type="hidden" name="topic_id" value="{{ topic.topic_id }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="topic-top-button clear" type="submit">
+                                                            TOP 고정 해제
+                                                        </button>
+                                                    </form>
+
+                                                    <form method="POST" action="{{ url_for('admin_hide_top_topic') }}">
+                                                        <input type="hidden" name="topic_id" value="{{ topic.topic_id }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="topic-top-button hide" type="submit">
+                                                            TOP 제외
+                                                        </button>
+                                                    </form>
+                                                {% elif topic.admin_is_hidden_top %}
+                                                    <form method="POST" action="{{ url_for('admin_clear_top_topic') }}">
+                                                        <input type="hidden" name="topic_id" value="{{ topic.topic_id }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="topic-top-button clear" type="submit">
+                                                            TOP 제외 해제
+                                                        </button>
+                                                    </form>
+
+                                                    <form method="POST" action="{{ url_for('admin_pin_top_topic') }}">
+                                                        <input type="hidden" name="topic_id" value="{{ topic.topic_id }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="topic-top-button pin" type="submit">
+                                                            TOP 고정
+                                                        </button>
+                                                    </form>
+                                                {% else %}
+                                                    <form method="POST" action="{{ url_for('admin_pin_top_topic') }}">
+                                                        <input type="hidden" name="topic_id" value="{{ topic.topic_id }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="topic-top-button pin" type="submit">
+                                                            TOP 고정
+                                                        </button>
+                                                    </form>
+
+                                                    <form method="POST" action="{{ url_for('admin_hide_top_topic') }}">
+                                                        <input type="hidden" name="topic_id" value="{{ topic.topic_id }}">
+                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                        <button class="topic-top-button hide" type="submit">
+                                                            TOP 제외
+                                                        </button>
+                                                    </form>
+                                                {% endif %}
+                                            </div>
                                         {% endif %}
                                         {% if topic.representative_article %}
                                             {% set rep = topic.representative_article %}
@@ -258,11 +398,34 @@
                                                                     {% endif %}
                                                                 </a>
 
-                                                                <form method="POST" action="{{ url_for('admin_exclude_article') }}">
-                                                                    <input type="hidden" name="url" value="{{ article.source_url }}">
-                                                                    <input type="hidden" name="return_url" value="{{ request.full_path }}">
-                                                                    <button class="inline-admin-danger" type="submit">제외</button>
-                                                                </form>
+                                                                <div class="related-admin-button-group">
+                                                                    <form method="POST" action="{{ url_for('admin_set_representative_article') }}">
+                                                                        <input type="hidden" name="url" value="{{ article.source_url }}">
+                                                                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                                        <button class="inline-admin-representative" type="submit">
+                                                                            대표 지정
+                                                                        </button>
+                                                                    </form>
+
+                                                                    {% if article._manual_merge_id %}
+                                                                        <form method="POST" action="{{ url_for('admin_remove_article_from_merge') }}">
+                                                                            <input type="hidden" name="merge_id" value="{{ article._manual_merge_id }}">
+                                                                            <input type="hidden" name="url" value="{{ article.source_url }}">
+                                                                            <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                                            <button class="inline-admin-unmerge" type="submit">
+                                                                                병합에서 빼기
+                                                                            </button>
+                                                                        </form>
+                                                                    {% else %}
+                                                                        <form method="POST" action="{{ url_for('admin_exclude_article') }}">
+                                                                            <input type="hidden" name="url" value="{{ article.source_url }}">
+                                                                            <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                                                                            <button class="inline-admin-danger" type="submit">
+                                                                                이 기사 숨김
+                                                                            </button>
+                                                                        </form>
+                                                                    {% endif %}
+                                                                </div>
                                                             </div>
                                                         {% else %}
                                                             <a class="related-article-item" href="{{ article.source_url }}" target="_blank">
@@ -290,44 +453,45 @@
                             {% endif %}
                         </p>
                     {% endif %}
+
                     {% if admin_mode %}
-                        <section class="inline-excluded-section card">
+                        <section class="inline-merge-section card">
                             <div class="section-heading-row">
-                                <h3>관리자 제외 기사</h3>
-                                <span>제외된 기사를 다시 공개 목록에 복구할 수 있습니다</span>
+                                <h3>수동 병합 목록</h3>
+                                <span>관리자가 직접 병합한 이슈들을 확인하고 해제할 수 있습니다</span>
                             </div>
 
-                            {% if excluded_articles %}
-                                <div class="inline-excluded-list">
-                                    {% for article in excluded_articles %}
-                                        <div class="inline-excluded-item">
-                                            <div>
-                                                <span class="admin-source">{{ article.source_name }}</span>
-                                                <strong>
-                                                    <a href="{{ article.source_url }}" target="_blank">
-                                                        {{ article.title_ko or article.title }}
-                                                    </a>
-                                                </strong>
-                                                <em>
-                                                    {% if article.published_at %}
-                                                        {{ article.published_at }}
-                                                    {% else %}
-                                                        날짜 없음
-                                                    {% endif %}
-                                                    · {{ article.category }}
-                                                </em>
+                            {% if manual_topic_merges %}
+                                <div class="manual-merge-list">
+                                    {% for merge in manual_topic_merges %}
+                                        <div class="manual-merge-item">
+                                            <div class="manual-merge-main">
+                                                <div class="manual-merge-title">
+                                                    {{ merge.merge_id }} · 기사 {{ merge.article_count }}개
+                                                </div>
+
+                                                <div class="manual-merge-articles">
+                                                    {% for article in merge.articles %}
+                                                        <a href="{{ article.source_url }}" target="_blank">
+                                                            <span>{{ article.source_name }}</span>
+                                                            {{ article.title_ko or article.title }}
+                                                        </a>
+                                                    {% endfor %}
+                                                </div>
                                             </div>
 
-                                            <form method="POST" action="{{ url_for('admin_restore_article') }}">
-                                                <input type="hidden" name="url" value="{{ article.source_url }}">
+                                            <form method="POST" action="{{ url_for('admin_unmerge_topic') }}">
+                                                <input type="hidden" name="merge_id" value="{{ merge.merge_id }}">
                                                 <input type="hidden" name="return_url" value="{{ request.full_path }}">
-                                                <button class="inline-admin-restore" type="submit">복구</button>
+                                                <button class="manual-unmerge-button" type="submit">
+                                                    병합 해제
+                                                </button>
                                             </form>
                                         </div>
                                     {% endfor %}
                                 </div>
                             {% else %}
-                                <p class="empty-text">제외된 기사가 없습니다.</p>
+                                <p class="empty-text">수동 병합된 이슈가 없습니다.</p>
                             {% endif %}
                         </section>
                     {% endif %}

@@ -86,7 +86,10 @@ def load_overrides():
     """
     default_overrides = {
         "excluded_article_urls": [],
-        "manual_topic_merges": []
+        "manual_topic_merges": [],
+        "representative_article_urls": {},
+        "pinned_top_article_urls": [],
+        "hidden_top_article_urls": []
     }
 
     if not os.path.exists(OVERRIDES_FILE):
@@ -101,6 +104,15 @@ def load_overrides():
         
         if "manual_topic_merges" not in data:
             data["manual_topic_merges"] = []
+
+        if "representative_article_urls" not in data:
+            data["representative_article_urls"] = {}
+
+        if "pinned_top_article_urls" not in data:
+            data["pinned_top_article_urls"] = []
+
+        if "hidden_top_article_urls" not in data:
+            data["hidden_top_article_urls"] = []
 
         return data
 
@@ -511,9 +523,43 @@ def calculate_importance(articles):
 def choose_representative_article(articles):
     """
     topic 카드에 대표로 보여줄 기사 1개를 선택한다.
-    조회수 데이터가 없으므로, 발행일이 가장 빠른 기사를 우선 선택한다.
-    날짜가 없으면 이미지가 있는 기사를 우선 선택한다.
+
+    우선순위:
+    1. 관리자가 수동 지정한 대표 기사
+    2. 발행일이 가장 빠른 기사
+    3. 이미지가 있는 기사
+    4. 첫 번째 기사
     """
+    if not articles:
+        return {}
+
+    overrides = load_overrides()
+    representative_map = overrides.get("representative_article_urls", {})
+
+    article_urls = [
+        normalize_url(article.get("source_url") or article.get("url"))
+        for article in articles
+    ]
+
+    article_url_set = set(article_urls)
+
+    # representative_article_urls 구조:
+    # {
+    #   "대표기사URL": true
+    # }
+    # 또는 나중에 topic_key 기반으로 확장 가능
+    for representative_url in representative_map.keys():
+        normalized_representative_url = normalize_url(representative_url)
+
+        if normalized_representative_url in article_url_set:
+            for article in articles:
+                article_url = normalize_url(
+                    article.get("source_url") or article.get("url")
+                )
+
+                if article_url == normalized_representative_url:
+                    return article
+
     dated_articles = [
         article for article in articles
         if article.get("published_at")
@@ -549,7 +595,7 @@ def build_topic(topic_id, articles):
 
     topic = {
         "topic_id": topic_id,
-        "topic_title": choose_topic_title(articles),
+        "topic_title": representative_article.get("title", choose_topic_title(articles)),
         "topic_summary": "",
         "article_count": len(articles),
         "sources": sources,
@@ -701,6 +747,104 @@ def apply_manual_topic_merges(topics):
     return topics
 
 
+def get_topic_article_url_set(topic):
+    """
+    topic 안의 기사 URL set을 만든다.
+    TOP 고정/제외 판단에 사용한다.
+    """
+    urls = set()
+
+    for article in topic.get("articles", []):
+        article_url = normalize_url(
+            article.get("source_url") or article.get("url")
+        )
+
+        if article_url:
+            urls.add(article_url)
+
+    return urls
+
+
+def apply_top_topic_overrides(topics):
+    """
+    관리자 모드에서 지정한 TOP 3 고정/제외 설정을 반영한다.
+
+    pinned_top_article_urls:
+    - 이 URL이 포함된 topic은 TOP 3에 우선 포함
+
+    hidden_top_article_urls:
+    - 이 URL이 포함된 topic은 TOP 3 후보에서 제외
+    """
+    overrides = load_overrides()
+
+    pinned_urls = set(
+        normalize_url(url)
+        for url in overrides.get("pinned_top_article_urls", [])
+    )
+
+    hidden_urls = set(
+        normalize_url(url)
+        for url in overrides.get("hidden_top_article_urls", [])
+    )
+
+    # 기존 TOP 상태 초기화
+    for topic in topics:
+        topic["is_top"] = False
+
+    visible_candidates = []
+    pinned_topics = []
+
+    for topic in topics:
+        topic_urls = get_topic_article_url_set(topic)
+
+        # TOP 제외 대상이면 후보에서 제거
+        if topic_urls.intersection(hidden_urls):
+            continue
+
+        # TOP 고정 대상이면 우선 후보로 분리
+        if topic_urls.intersection(pinned_urls):
+            pinned_topics.append(topic)
+        else:
+            visible_candidates.append(topic)
+
+    pinned_topics.sort(
+        key=lambda topic: (
+            topic.get("latest_published_at", ""),
+            topic.get("importance", 0)
+        ),
+        reverse=True
+    )
+
+    visible_candidates.sort(
+        key=lambda topic: (
+            topic.get("importance", 0),
+            topic.get("latest_published_at", "")
+        ),
+        reverse=True
+    )
+
+    final_top_topics = []
+
+    for topic in pinned_topics:
+        if len(final_top_topics) >= 3:
+            break
+
+        final_top_topics.append(topic)
+
+    for topic in visible_candidates:
+        if len(final_top_topics) >= 3:
+            break
+
+        final_top_topics.append(topic)
+
+    final_top_ids = set(id(topic) for topic in final_top_topics)
+
+    for topic in topics:
+        topic["is_top"] = id(topic) in final_top_ids
+
+    return topics
+
+
 def group_articles(articles, threshold=0.42):
     """
     기사들을 키워드 유사도 기반으로 자동 묶는다.
@@ -819,6 +963,8 @@ def main():
     topics = group_articles(articles)
 
     topics = apply_manual_topic_merges(topics)
+
+    topics = apply_top_topic_overrides(topics)
 
     save_topics(topics)
     print_topic_preview(topics)
