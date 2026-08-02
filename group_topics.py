@@ -313,8 +313,7 @@ def is_same_news_issue(article_a, article_b):
 def choose_topic_title(articles):
     """
     topic 대표 제목을 선택한다.
-    우선 공식 출처가 있으면 공식 기사 제목을 사용하고,
-    없으면 가장 최신 기사 제목을 사용한다.
+    제목은 원문 영어 제목을 유지한다.
     """
     official_articles = [
         article for article in articles
@@ -593,10 +592,20 @@ def build_topic(topic_id, articles):
 
     representative_article = choose_representative_article(articles)
 
+    representative_title = (
+        representative_article.get("title")
+        or choose_topic_title(articles)
+    )
+
+    representative_summary = (
+        representative_article.get("summary_ko")
+        or ""
+    )
+
     topic = {
         "topic_id": topic_id,
-        "topic_title": representative_article.get("title", choose_topic_title(articles)),
-        "topic_summary": "",
+        "topic_title": representative_title,
+        "topic_summary": representative_summary,
         "article_count": len(articles),
         "sources": sources,
         "source_count": len(sources),
@@ -662,8 +671,22 @@ def recalculate_topic_flags(topics):
                 latest_date = published_at
 
         topic["latest_published_at"] = latest_date
-        topic["representative_article"] = choose_representative_article(topic.get("articles", []))
-        topic["topic_title"] = choose_topic_title(topic.get("articles", []))
+
+        representative_article = choose_representative_article(topic.get("articles", []))
+
+        representative_title = (
+            representative_article.get("title")
+            or choose_topic_title(topic.get("articles", []))
+        )
+
+        representative_summary = (
+            representative_article.get("summary_ko")
+            or ""
+        )
+
+        topic["representative_article"] = representative_article
+        topic["topic_title"] = representative_title
+        topic["topic_summary"] = representative_summary
 
     topics_by_importance = sorted(
         topics,

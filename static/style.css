@@ -2196,3 +2196,135 @@ select option:checked {
 .topic-top-button.clear:hover {
     background: rgba(59, 130, 246, 0.22);
 }
+
+/* ===============================
+   Admin Login Page
+================================ */
+
+.admin-login-card {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 32px;
+    border-radius: var(--radius-xl);
+}
+
+.admin-login-card h2 {
+    margin: 0 0 10px;
+    font-size: 2rem;
+}
+
+.admin-login-card p {
+    margin: 0 0 24px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.admin-login-error {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    color: #fecaca;
+    background: rgba(248, 113, 113, 0.14);
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    font-weight: 800;
+}
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.admin-login-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-login-form label span {
+    color: #dbeafe;
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+.admin-login-form input {
+    height: 48px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.07);
+    color: var(--text);
+    padding: 0 14px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.admin-login-form input::placeholder {
+    color: #9cadc8;
+}
+
+.admin-login-form button {
+    height: 48px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 14px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+    font-weight: 900;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.admin-login-form button:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+}
+
+.admin-login-back {
+    display: inline-flex;
+    margin-top: 20px;
+    color: #93c5fd;
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+.admin-login-back:hover {
+    color: #facc15;
+    text-decoration: underline;
+}
+
+.header-admin-button.ai {
+    color: #d9f99d;
+    background: rgba(132, 204, 22, 0.16);
+    border-color: rgba(163, 230, 53, 0.42);
+}
+
+.header-admin-button.ai:hover {
+    background: rgba(132, 204, 22, 0.26);
+}
+
+.header-admin-button.translate {
+    color: #bfdbfe;
+    background: rgba(59, 130, 246, 0.14);
+    border-color: rgba(96, 165, 250, 0.42);
+}
+
+.header-admin-button.translate:hover {
+    background: rgba(59, 130, 246, 0.24);
+}
+
+/* ===============================
+   Korean Summary
+================================ */
+
+.topic-summary-ko {
+    margin: 12px 0 0;
+    padding: 12px 13px;
+    border-radius: 14px;
+    color: #dbeafe;
+    background: rgba(15, 23, 42, 0.28);
+    border: 1px solid rgba(147, 197, 253, 0.16);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.55;
+}

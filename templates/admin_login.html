@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holocron Archive Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <h1>Admin Login</h1>
+                <p>Holocron Archive 관리자 로그인</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <div class="admin-login-card card">
+                <h2>관리자 로그인</h2>
+                <p>기사 갱신, 숨김, 병합, TOP 고정 기능은 관리자 로그인 후 사용할 수 있습니다.</p>
+
+                {% if error_message %}
+                    <div class="admin-login-error">
+                        {{ error_message }}
+                    </div>
+                {% endif %}
+
+                <form method="POST" action="{{ url_for('admin_login') }}" class="admin-login-form">
+                    <label>
+                        <span>아이디</span>
+                        <input type="text" name="admin_id" placeholder="관리자 아이디" required>
+                    </label>
+
+                    <label>
+                        <span>비밀번호</span>
+                        <input type="password" name="password" placeholder="비밀번호" required>
+                    </label>
+
+                    <button type="submit">
+                        로그인
+                    </button>
+                </form>
+
+                <a class="admin-login-back" href="{{ url_for('index') }}">
+                    사이트로 돌아가기
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            Holocron Archive · 관리자 로그인
+        </div>
+    </footer>
+</body>
+</html>

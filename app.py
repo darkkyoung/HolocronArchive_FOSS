@@ -11,13 +11,17 @@ import subprocess
 import sys
 import requests
 
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY", "holocron-archive-dev-secret-key")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
+
+ADMIN_ID = os.environ.get("ADMIN_ID", "skywalker0805")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "1234")
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b")
@@ -102,6 +106,17 @@ def load_article_overrides():
 
 def save_article_overrides(overrides):
     save_json("article_overrides.json", overrides)
+
+
+def is_admin_logged_in():
+    return session.get("is_admin") is True
+
+
+def require_admin():
+    if not is_admin_logged_in():
+        return redirect(url_for("admin_login"))
+
+    return None
 
 
 def load_auto_excluded_articles():
@@ -750,12 +765,186 @@ def ask_ollama(question, articles, works):
         )
 
 
+def extract_json_from_ai_response(text):
+    """
+    Ollama 응답에서 JSON 부분만 안전하게 추출한다.
+    모델이 앞뒤 설명을 붙이는 경우를 대비한다.
+    """
+    if not text:
+        return {}
+
+    text = text.strip()
+
+    try:
+        return json.loads(text)
+    except Exception:
+        pass
+
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+
+    if not match:
+        return {}
+
+    try:
+        return json.loads(match.group(0))
+    except Exception:
+        return {}
+
+def clean_ai_summary_text(text):
+    """
+    Ollama가 요약 앞뒤에 붙일 수 있는 불필요한 표현을 정리한다.
+    """
+    if not text:
+        return ""
+
+    text = text.strip()
+    text = text.strip('"').strip("'").strip()
+
+    remove_prefixes = [
+        "요약:",
+        "한국어 요약:",
+        "핵심 요약:",
+        "summary_ko:",
+        "Summary:",
+        "-",
+    ]
+
+    for prefix in remove_prefixes:
+        if text.startswith(prefix):
+            text = text[len(prefix):].strip()
+
+    lines = [
+        line.strip()
+        for line in text.splitlines()
+        if line.strip()
+    ]
+
+    if lines:
+        text = lines[0]
+
+    # 너무 길게 나온 경우 120자 선에서 자름
+    if len(text) > 120:
+        text = text[:120].strip() + "..."
+
+    return text
+
+
+def generate_korean_summary_with_ollama(article):
+    """
+    기사 1개의 제목/원문 요약을 바탕으로
+    한국어 핵심 요약 1문장만 생성한다.
+    제목은 번역하지 않는다.
+    """
+    title = article.get("title", "").strip()
+    summary = article.get("summary", "").strip()
+    source_name = article.get("source_name", "").strip()
+
+    if not title and not summary:
+        return ""
+
+    prompt = f"""
+너는 스타워즈 뉴스 큐레이션 웹사이트의 한국어 요약 에디터다.
+아래 영어 기사 정보를 바탕으로 한국어 핵심 요약 1문장을 작성해라.
+
+중요 규칙:
+1. 반드시 한국어 1문장만 출력한다.
+2. 제목을 번역하지 말고, 기사 내용의 핵심만 요약한다.
+3. 기사에 없는 사실을 추가하지 않는다.
+4. 80자 이내로 쓴다.
+5. 설명, 따옴표, JSON, 마크다운 없이 요약 문장만 출력한다.
+6. 원문 요약이 부족하면 제목에 근거해서만 조심스럽게 요약한다.
+
+[기사 정보]
+제목: {title}
+원문 요약: {summary}
+출처: {source_name}
+"""
+
+    try:
+        response = requests.post(
+            OLLAMA_URL,
+            json={
+                "model": OLLAMA_MODEL,
+                "prompt": prompt,
+                "stream": False
+            },
+            timeout=60
+        )
+
+        response.raise_for_status()
+        data = response.json()
+
+        ai_text = data.get("response", "").strip()
+        return clean_ai_summary_text(ai_text)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Ollama 요약 생성 실패: {title} / {e}")
+        return ""
+
+
+def generate_korean_summaries_for_articles(limit=100, force=False):
+    """
+    fetched_articles.json에서 summary_ko만 생성한다.
+
+    force=False:
+    - summary_ko가 이미 있으면 건너뜀
+
+    force=True:
+    - 기존 summary_ko가 있어도 다시 생성
+    """
+    articles = load_json_or_default("fetched_articles.json", [])
+
+    updated_count = 0
+    skipped_count = 0
+    failed_count = 0
+
+    for article in articles:
+        if updated_count >= limit:
+            break
+
+        has_summary_ko = bool(article.get("summary_ko", "").strip())
+
+        if not force and has_summary_ko:
+            skipped_count += 1
+            continue
+
+        print(f"AI 요약 생성 중: {article.get('title', '')}")
+
+        summary_ko = generate_korean_summary_with_ollama(article)
+
+        if not summary_ko:
+            failed_count += 1
+            continue
+
+        article["summary_ko"] = summary_ko
+        updated_count += 1
+
+    save_fetched_articles(articles)
+
+    print(
+        f"AI 요약 생성 완료: 생성 {updated_count}개, "
+        f"건너뜀 {skipped_count}개, 실패 {failed_count}개"
+    )
+
+    return {
+        "updated_count": updated_count,
+        "skipped_count": skipped_count,
+        "failed_count": failed_count
+    }
+
+
 @app.route("/")
 def index():
     keyword = request.args.get("keyword", "")
     category = request.args.get("category", "")
     franchise = request.args.get("franchise", "starwars")
-    admin_mode = request.args.get("admin") == "1"
+
+    requested_admin_mode = request.args.get("admin") == "1"
+
+    if requested_admin_mode and not is_admin_logged_in():
+        return redirect(url_for("admin_login"))
+
+    admin_mode = requested_admin_mode and is_admin_logged_in()
 
     articles = load_json("articles.json")
     articles = filter_articles(
@@ -878,8 +1067,41 @@ def works():
         selected_franchise=franchise
     )
 
+@app.route("/admin/login", methods=["GET", "POST"])
+def admin_login():
+    error_message = ""
+
+    if request.method == "POST":
+        admin_id = request.form.get("admin_id", "").strip()
+        password = request.form.get("password", "").strip()
+
+        if admin_id == ADMIN_ID and password == ADMIN_PASSWORD:
+            session["is_admin"] = True
+            session["admin_id"] = admin_id
+            return redirect(url_for("index", admin=1))
+
+        error_message = "아이디 또는 비밀번호가 올바르지 않습니다."
+
+    return render_template(
+        "admin_login.html",
+        error_message=error_message
+    )
+
+
+@app.route("/admin/logout")
+def admin_logout():
+    session.pop("is_admin", None)
+    session.pop("admin_id", None)
+
+    return redirect(url_for("index"))
+
+
 @app.route("/admin")
 def admin():
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     articles = load_json_or_default("fetched_articles.json", [])
     overrides = load_article_overrides()
 
@@ -923,6 +1145,10 @@ def admin():
 
 @app.route("/admin/update", methods=["POST"])
 def admin_update():
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("admin")
 
     update_news_data()
@@ -930,8 +1156,49 @@ def admin_update():
     return redirect(return_url)
 
 
+@app.route("/admin/generate-korean", methods=["POST"])
+def admin_generate_korean():
+    """
+    Ollama로 기사 한국어 요약만 생성한다.
+    제목은 원문 영어 제목을 유지한다.
+    """
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
+    return_url = request.form.get("return_url") or url_for("index", admin=1)
+
+    limit_text = request.form.get("limit", "100").strip()
+
+    try:
+        limit = int(limit_text)
+    except ValueError:
+        limit = 100
+
+    if limit < 1:
+        limit = 1
+
+    if limit > 100:
+        limit = 100
+
+    force = request.form.get("force") == "1"
+
+    generate_korean_summaries_for_articles(
+        limit=limit,
+        force=force
+    )
+
+    regenerate_topics()
+
+    return redirect(return_url)
+
+
 @app.route("/admin/exclude", methods=["POST"])
 def admin_exclude_article():
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     article_url = normalize_url_for_admin(request.form.get("url", ""))
 
     if not article_url:
@@ -958,6 +1225,10 @@ def admin_exclude_article():
 
 @app.route("/admin/restore", methods=["POST"])
 def admin_restore_article():
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     article_url = normalize_url_for_admin(request.form.get("url", ""))
 
     if not article_url:
@@ -986,6 +1257,10 @@ def admin_restore_article():
 
 @app.route("/admin/restore-auto-excluded", methods=["POST"])
 def admin_restore_auto_excluded_article():
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     """
     자동 제외된 기사를 수동으로 복구한다.
     - auto_excluded_articles.json에서 제거
@@ -1058,6 +1333,10 @@ def admin_restore_auto_excluded_article():
 
 @app.route("/admin/merge-topics", methods=["POST"])
 def admin_merge_topics():
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("index")
     selected_topic_ids = request.form.getlist("topic_ids")
 
@@ -1104,6 +1383,10 @@ def admin_merge_topics():
 
 @app.route("/admin/unmerge-topic", methods=["POST"])
 def admin_unmerge_topic():
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("index", admin=1)
     merge_id = request.form.get("merge_id", "").strip()
 
@@ -1161,6 +1444,10 @@ def admin_remove_article_from_merge():
     수동 병합된 topic에서 특정 기사 1개만 병합 목록에서 제거한다.
     기사를 숨기는 것이 아니라, 자동 분류 대상으로 다시 돌려보내는 기능이다.
     """
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("index", admin=1)
 
     merge_id = request.form.get("merge_id", "").strip()
@@ -1209,6 +1496,10 @@ def admin_set_representative_article():
     특정 기사를 topic의 대표 기사로 지정한다.
     실제 적용은 group_topics.py가 topics.json을 재생성할 때 반영한다.
     """
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("index", admin=1)
     article_url = normalize_url_for_admin(request.form.get("url", ""))
 
@@ -1236,6 +1527,10 @@ def admin_pin_top_topic():
     특정 topic을 TOP 3에 고정한다.
     topic_id는 재생성될 수 있으므로, topic 안의 기사 URL들을 저장한다.
     """
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("index", admin=1)
     topic_id = request.form.get("topic_id", "").strip()
 
@@ -1292,6 +1587,10 @@ def admin_hide_top_topic():
     특정 topic을 TOP 3 후보에서 제외한다.
     전체 이슈 목록에서는 계속 보인다.
     """
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("index", admin=1)
     topic_id = request.form.get("topic_id", "").strip()
 
@@ -1348,6 +1647,10 @@ def admin_clear_top_topic():
     특정 topic의 TOP 고정/제외 설정을 모두 해제한다.
     이후 자동 TOP 3 선정 기준으로 돌아간다.
     """
+    admin_required = require_admin()
+    if admin_required:
+        return admin_required
+
     return_url = request.form.get("return_url") or url_for("index", admin=1)
     topic_id = request.form.get("topic_id", "").strip()
 

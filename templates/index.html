@@ -27,16 +27,25 @@
                         </button>
                     </form>
 
+                    <form method="POST" action="{{ url_for('admin_generate_korean') }}">
+                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                        <input type="hidden" name="limit" value="100">
+                        <input type="hidden" name="force" value="0">
+                        <button class="header-admin-button ai" type="submit">
+                            AI 요약 생성
+                        </button>
+                    </form>
+
                     <a class="header-admin-button" href="{{ url_for('admin') }}">
                         전체 관리
                     </a>
 
-                    <a class="header-admin-button danger" href="{{ url_for('index', franchise=selected_franchise, keyword=keyword, category=selected_category) }}">
-                        관리자 끄기
+                    <a class="header-admin-button danger" href="{{ url_for('admin_logout') }}">
+                        로그아웃
                     </a>
                 {% else %}
-                    <a class="header-admin-button admin-toggle" href="{{ url_for('index', franchise=selected_franchise, keyword=keyword, category=selected_category, admin=1) }}">
-                        관리자 모드
+                    <a class="header-admin-button admin-toggle" href="{{ url_for('admin_login') }}">
+                        관리자 로그인
                     </a>
                 {% endif %}
             </div>
@@ -91,7 +100,7 @@
                                                 {% set rep = topic.representative_article %}
 
                                                 {% if rep.image_url %}
-                                                    <img class="topic-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                                    <img class="topic-image" src="{{ rep.image_url }}" alt="{{ rep.title }}">
                                                 {% endif %}
                                             {% endif %}
 
@@ -109,6 +118,12 @@
                                                         · 최신일 {{ topic.latest_published_at }}
                                                     {% endif %}
                                                 </div>
+
+                                                {% if topic.topic_summary %}
+                                                    <p class="topic-summary-ko">
+                                                        {{ topic.topic_summary }}
+                                                    </p>
+                                                {% endif %}
 
                                                 <div class="topic-sources">
                                                     {% for source in topic.sources %}
@@ -128,7 +143,7 @@
                                                     </div>
 
                                                     <a class="topic-main-link" href="{{ rep.source_url }}" target="_blank">
-                                                        {{ rep.title_ko or rep.title }}
+                                                        {{ rep.title }}
                                                     </a>
                                                 {% endif %}
                                             </div>
@@ -203,7 +218,7 @@
                                                         <span class="admin-source">{{ article.source_name }}</span>
                                                         <strong>
                                                             <a href="{{ article.source_url }}" target="_blank">
-                                                                {{ article.title_ko or article.title }}
+                                                                {{ article.title }}
                                                             </a>
                                                         </strong>
                                                         <em>
@@ -245,7 +260,7 @@
                                                         <span class="admin-source">{{ article.source_name }}</span>
                                                         <strong>
                                                             <a href="{{ article.source_url }}" target="_blank">
-                                                                {{ article.title_ko or article.title }}
+                                                                {{ article.title }}
                                                             </a>
                                                         </strong>
                                                         <em>
@@ -347,7 +362,7 @@
 
                                             {% if rep.image_url %}
                                                 <a class="card-image-link" href="{{ rep.source_url }}" target="_blank">
-                                                    <img class="article-image" src="{{ rep.image_url }}" alt="{{ rep.title_ko or rep.title }}">
+                                                    <img class="article-image" src="{{ rep.image_url }}" alt="{{ rep.title }}">
                                                 </a>
                                             {% endif %}
                                         {% endif %}
@@ -372,6 +387,12 @@
                                             {% endif %}
                                         </div>
 
+                                        {% if topic.topic_summary %}
+                                            <p class="topic-summary-ko">
+                                                {{ topic.topic_summary }}
+                                            </p>
+                                        {% endif %}
+
                                         <div class="topic-sources">
                                             {% for source in topic.sources %}
                                                 <span>{{ source }}</span>
@@ -392,7 +413,7 @@
                                                             <div class="related-article-admin-item">
                                                                 <a class="related-article-item" href="{{ article.source_url }}" target="_blank">
                                                                     <span class="related-source">{{ article.source_name }}</span>
-                                                                    <span class="related-title">{{ article.title_ko or article.title }}</span>
+                                                                    <span class="related-title">{{ article.title }}</span>
                                                                     {% if article.published_at %}
                                                                         <span class="related-date">{{ article.published_at }}</span>
                                                                     {% endif %}
@@ -430,7 +451,7 @@
                                                         {% else %}
                                                             <a class="related-article-item" href="{{ article.source_url }}" target="_blank">
                                                                 <span class="related-source">{{ article.source_name }}</span>
-                                                                <span class="related-title">{{ article.title_ko or article.title }}</span>
+                                                                <span class="related-title">{{ article.title }}</span>
                                                                 {% if article.published_at %}
                                                                     <span class="related-date">{{ article.published_at }}</span>
                                                                 {% endif %}
@@ -474,7 +495,7 @@
                                                     {% for article in merge.articles %}
                                                         <a href="{{ article.source_url }}" target="_blank">
                                                             <span>{{ article.source_name }}</span>
-                                                            {{ article.title_ko or article.title }}
+                                                            {{ article.title }}
                                                         </a>
                                                     {% endfor %}
                                                 </div>
