@@ -17,6 +17,8 @@ SWNN_FEED_URL = "https://www.starwarsnewsnet.com/feed/"
 STARWARS_NEWS_URL = "https://www.starwars.com/news"
 SWNN_HOME_URL = "https://www.starwarsnewsnet.com/"
 SWNN_PAGE_URL = "https://www.starwarsnewsnet.com/page/{page_number}/"
+THEDIRECT_STARWARS_URL = "https://thedirect.com/StarWars/"
+THEDIRECT_STARWARS_PAGE_URL = "https://thedirect.com/StarWars/?page={page_number}"
 
 AUTO_EXCLUDED_FILE = os.path.join(DATA_DIR, "auto_excluded_articles.json")
 ARTICLE_OVERRIDES_FILE = os.path.join(DATA_DIR, "article_overrides.json")
@@ -283,6 +285,28 @@ def get_exclusion_reason(title):
         "opinion": "opinion",
         "editorial": "editorial",
         "recap": "recap",
+
+        # The Direct / feature성 글 필터
+        "ranked": "ranking_list",
+        "ranking": "ranking_list",
+        "best ": "ranking_list",
+        "worst ": "ranking_list",
+        "every ": "list_article",
+        "all ": "list_article",
+        "all 5": "list_article",
+        "all 10": "list_article",
+        "all 11": "list_article",
+        "all 12": "list_article",
+        "all 14": "list_article",
+        "why ": "essay_column",
+        "where is": "essay_column",
+        "what happened": "essay_column",
+        "could have": "essay_column",
+        "should have": "essay_column",
+        "theory": "theory",
+        "proof": "theory",
+        "most powerful": "ranking_list",
+        "timeline explained": "analysis",
     }
 
     for keyword, reason in exclusion_rules.items():
@@ -1154,6 +1178,414 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
     return new_articles
     
 
+def parse_thedirect_date(date_text):
+    """
+    The Direct 날짜 문자열을 YYYY-MM-DD로 변환한다.
+    예:
+    - August 06, 2026
+    - 5 HOURS AGO
+    """
+    if not date_text:
+        return ""
+
+    date_text = date_text.strip()
+
+    # 5 HOURS AGO, 2 DAYS AGO 같은 상대 시간은 오늘 날짜로 처리
+    if "AGO" in date_text.upper():
+        return datetime.now().strftime("%Y-%m-%d")
+
+    try:
+        dt = datetime.strptime(date_text, "%B %d, %Y")
+        return dt.strftime("%Y-%m-%d")
+    except Exception:
+        return ""
+
+
+def fetch_thedirect_article_metadata(url):
+    """
+    The Direct 개별 기사 페이지에서 이미지/요약/날짜를 보정한다.
+    """
+    metadata = {
+        "published_at": "",
+        "image_url": "",
+        "summary": "",
+    }
+
+    if not url:
+        return metadata
+
+    try:
+        response = requests.get(
+            url,
+            timeout=10,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"The Direct 기사 페이지 수집 실패: {url} / {e}")
+        return metadata
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    og_description = soup.find("meta", property="og:description")
+    if og_description and og_description.get("content"):
+        metadata["summary"] = og_description.get("content").strip()
+
+    og_image = soup.find("meta", property="og:image")
+    if og_image and og_image.get("content"):
+        metadata["image_url"] = og_image.get("content").strip()
+
+    if not metadata["image_url"]:
+        twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
+        if twitter_image and twitter_image.get("content"):
+            metadata["image_url"] = twitter_image.get("content").strip()
+
+    published_meta = soup.find("meta", property="article:published_time")
+    if published_meta and published_meta.get("content"):
+        metadata["published_at"] = published_meta.get("content")[:10]
+
+    if not metadata["published_at"]:
+        page_text = soup.get_text(" ", strip=True)
+
+        date_match = re.search(
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}",
+            page_text
+        )
+
+        if date_match:
+            metadata["published_at"] = parse_thedirect_date(date_match.group(0))
+
+    return metadata
+
+
+def clean_thedirect_title(title):
+    """
+    The Direct 제목에서 사이트명/불필요한 공백을 제거한다.
+    """
+    if not title:
+        return ""
+
+    title = re.sub(r"\s+", " ", title).strip()
+    title = title.replace(" - The Direct", "").strip()
+
+    return title
+
+
+def is_thedirect_article_url(url):
+    """
+    The Direct 실제 기사 URL인지 검사한다.
+    카테고리/태그/페이지/정적 페이지를 제외한다.
+    """
+    if not url:
+        return False
+
+    if url.startswith("/"):
+        url = "https://thedirect.com" + url
+
+    if not url.startswith("https://thedirect.com/article/"):
+        return False
+
+    excluded_parts = [
+        "/tags/",
+        "/StarWars/",
+        "/page/",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/sitemap",
+    ]
+
+    if any(part in url for part in excluded_parts):
+        return False
+
+    return True
+
+
+def get_thedirect_article_candidates_from_page(page_number=1):
+    """
+    The Direct Star Wars 페이지에서 기사 URL과 제목 후보를 수집한다.
+    """
+    if page_number == 1:
+        page_url = THEDIRECT_STARWARS_URL
+    else:
+        page_url = THEDIRECT_STARWARS_PAGE_URL.format(page_number=page_number)
+
+    print(f"The Direct 후보 페이지 수집 중: {page_url}")
+
+    try:
+        response = requests.get(
+            page_url,
+            timeout=10,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"The Direct 페이지 수집 실패: {page_url} / {e}")
+        return []
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    candidates = []
+    seen_urls = set()
+
+    for a_tag in soup.find_all("a", href=True):
+        href = a_tag.get("href", "").strip()
+
+        if href.startswith("/"):
+            href = "https://thedirect.com" + href
+
+        href = normalize_url(href)
+
+        if not is_thedirect_article_url(href):
+            continue
+
+        if href in seen_urls:
+            continue
+
+        seen_urls.add(href)
+
+        title_candidate = clean_thedirect_title(
+            a_tag.get_text(" ", strip=True)
+        )
+
+        if not title_candidate:
+            img_tag = a_tag.find("img")
+            if img_tag and img_tag.get("alt"):
+                title_candidate = clean_thedirect_title(
+                    img_tag.get("alt", "")
+                )
+
+        if len(title_candidate) < 10:
+            continue
+
+        candidates.append({
+            "url": href,
+            "title_candidate": title_candidate
+        })
+
+    print(f"The Direct page/{page_number} 후보 수: {len(candidates)}")
+
+    return candidates
+
+
+def fetch_thedirect_article_from_page(url, title_candidate=""):
+    """
+    The Direct 개별 기사 페이지에서 기사 정보를 수집한다.
+    """
+    metadata = fetch_thedirect_article_metadata(url)
+
+    title = clean_thedirect_title(title_candidate)
+
+    if not title:
+        try:
+            response = requests.get(
+                url,
+                timeout=10,
+                headers={
+                    "User-Agent": "Mozilla/5.0"
+                }
+            )
+            response.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            print(f"The Direct 기사 제목 수집 실패: {url} / {e}")
+            return None
+
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        og_title = soup.find("meta", property="og:title")
+        if og_title and og_title.get("content"):
+            title = clean_thedirect_title(og_title.get("content"))
+
+        if not title:
+            h1 = soup.find("h1")
+            if h1:
+                title = clean_thedirect_title(h1.get_text(" ", strip=True))
+
+    if not title:
+        return None
+
+    if is_excluded_article(title, "The Direct") and not is_restored_auto_excluded_article(url):
+        print(f"The Direct 제외됨: {title}")
+
+        add_auto_excluded_article(
+            title=title,
+            url=url,
+            source_name="The Direct",
+            published_at=metadata.get("published_at", ""),
+            summary=metadata.get("summary", ""),
+            image_url=metadata.get("image_url", ""),
+            category=guess_category(title),
+            franchise="Star Wars"
+        )
+
+        return None
+
+    return {
+        "article_id": 0,
+        "title": title,
+        "title_ko": "",
+        "source_name": "The Direct",
+        "source_url": url,
+        "url": url,
+        "image_url": metadata.get("image_url", ""),
+        "published_at": metadata.get("published_at", ""),
+        "summary": metadata.get("summary", ""),
+        "summary_ko": "",
+        "category": guess_category(title),
+        "franchise": "Star Wars",
+        "label": guess_label(title, "The Direct")
+    }
+
+
+def fetch_thedirect_articles_incremental(existing_urls, limit=20, max_pages=2):
+    """
+    The Direct 빠른 갱신.
+    기존 URL은 건너뛰고, 새 후보만 상세 수집한다.
+    """
+    print("The Direct 빠른 갱신 시작")
+
+    new_articles = []
+    seen_candidate_urls = set()
+
+    for page_number in range(1, max_pages + 1):
+        candidates = get_thedirect_article_candidates_from_page(page_number)
+
+        page_new_count = 0
+        page_existing_count = 0
+        page_excluded_count = 0
+
+        for candidate in candidates:
+            url = normalize_url(candidate.get("url", ""))
+            title_candidate = candidate.get("title_candidate", "")
+
+            if not url:
+                continue
+
+            if url in existing_urls:
+                page_existing_count += 1
+                continue
+
+            if url in seen_candidate_urls:
+                continue
+
+            seen_candidate_urls.add(url)
+
+            if (
+                title_candidate
+                and is_excluded_article(title_candidate, "The Direct")
+                and not is_restored_auto_excluded_article(url)
+            ):
+                print(f"The Direct 사전 제외됨: {title_candidate}")
+
+                add_auto_excluded_article(
+                    title=title_candidate,
+                    url=url,
+                    source_name="The Direct",
+                    published_at="",
+                    summary="",
+                    image_url="",
+                    category=guess_category(title_candidate),
+                    franchise="Star Wars"
+                )
+
+                page_excluded_count += 1
+                continue
+
+            article = fetch_thedirect_article_from_page(
+                url=url,
+                title_candidate=title_candidate
+            )
+
+            if article:
+                new_articles.append(article)
+                page_new_count += 1
+
+            if len(new_articles) >= limit:
+                break
+
+        print(
+            f"The Direct page/{page_number} 신규 {page_new_count}개, "
+            f"기존 {page_existing_count}개, "
+            f"사전 제외 {page_excluded_count}개"
+        )
+
+        if len(new_articles) >= limit:
+            break
+
+        if page_new_count == 0 and page_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
+            print("The Direct 기존 기사 중심으로 판단되어 이전 페이지 탐색 중단")
+            break
+
+    print(f"The Direct 빠른 갱신 신규 기사 수: {len(new_articles)}")
+
+    return new_articles
+
+
+def fetch_thedirect_articles(limit=20, max_pages=2):
+    """
+    The Direct 전체 수집.
+    fetched_articles.json을 새로 만들 때 사용한다.
+    """
+    print("The Direct 기사 수집 시작")
+
+    articles = []
+    seen_urls = set()
+
+    for page_number in range(1, max_pages + 1):
+        candidates = get_thedirect_article_candidates_from_page(page_number)
+
+        for candidate in candidates:
+            if len(articles) >= limit:
+                break
+
+            url = normalize_url(candidate.get("url", ""))
+            title_candidate = candidate.get("title_candidate", "")
+
+            if not url or url in seen_urls:
+                continue
+
+            seen_urls.add(url)
+
+            if (
+                title_candidate
+                and is_excluded_article(title_candidate, "The Direct")
+                and not is_restored_auto_excluded_article(url)
+            ):
+                print(f"The Direct 사전 제외됨: {title_candidate}")
+
+                add_auto_excluded_article(
+                    title=title_candidate,
+                    url=url,
+                    source_name="The Direct",
+                    published_at="",
+                    summary="",
+                    image_url="",
+                    category=guess_category(title_candidate),
+                    franchise="Star Wars"
+                )
+
+                continue
+
+            article = fetch_thedirect_article_from_page(
+                url=url,
+                title_candidate=title_candidate
+            )
+
+            if article:
+                articles.append(article)
+
+        if len(articles) >= limit:
+            break
+
+    print(f"The Direct 수집 기사 수: {len(articles)}")
+
+    return articles
+
+
 def fetch_starwars_official_articles_incremental(existing_urls, limit=20):
     """
     StarWars.com 빠른 갱신.
@@ -1312,7 +1744,25 @@ def incremental_update():
         limit=20
     )
 
-    all_articles = existing_articles + new_swnn_articles + new_official_articles
+    # StarWars.com에서 새로 추가된 URL도 The Direct 중복 판단에 반영
+    for article in new_official_articles:
+        url = normalize_url(article.get("source_url") or article.get("url"))
+        if url:
+            existing_urls.add(url)
+
+    new_thedirect_articles = fetch_thedirect_articles_incremental(
+        existing_urls=existing_urls,
+        limit=20,
+        max_pages=2
+    )
+
+    all_articles = (
+        existing_articles
+        + new_swnn_articles
+        + new_official_articles
+        + new_thedirect_articles
+    )
+
     all_articles = deduplicate_articles(all_articles)
 
     all_articles.sort(
@@ -1325,6 +1775,7 @@ def incremental_update():
 
     print(f"신규 SWNN 기사 수: {len(new_swnn_articles)}")
     print(f"신규 StarWars.com 기사 수: {len(new_official_articles)}")
+    print(f"신규 The Direct 기사 수: {len(new_thedirect_articles)}")
     print(f"갱신 후 전체 기사 수: {len(all_articles)}")
 
     save_articles(all_articles)
@@ -1349,7 +1800,11 @@ def main():
     official_articles = fetch_starwars_official_articles(limit=20)
     print(f"StarWars.com 수집 기사 수: {len(official_articles)}")
 
-    for article in swnn_rss_articles + swnn_page_articles + official_articles:
+    print("The Direct 기사 수집 시작")
+    thedirect_articles = fetch_thedirect_articles(limit=20, max_pages=2)
+    print(f"The Direct 수집 기사 수: {len(thedirect_articles)}")
+
+    for article in swnn_rss_articles + swnn_page_articles + official_articles + thedirect_articles:
         url = article.get("source_url") or article.get("url")
         normalized_url = normalize_url(url)
 

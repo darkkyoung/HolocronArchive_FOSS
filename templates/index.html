@@ -27,14 +27,16 @@
                         </button>
                     </form>
 
-                    <form method="POST" action="{{ url_for('admin_generate_korean') }}">
-                        <input type="hidden" name="return_url" value="{{ request.full_path }}">
-                        <input type="hidden" name="limit" value="100">
-                        <input type="hidden" name="force" value="0">
-                        <button class="header-admin-button ai" type="submit">
-                            AI 요약 생성
-                        </button>
-                    </form>
+                    {% if ai_enabled %}
+                        <form method="POST" action="{{ url_for('admin_generate_korean') }}">
+                            <input type="hidden" name="return_url" value="{{ request.full_path }}">
+                            <input type="hidden" name="limit" value="100">
+                            <input type="hidden" name="force" value="0">
+                            <button class="header-admin-button ai" type="submit">
+                                AI 요약 실험
+                            </button>
+                        </form>
+                    {% endif %}
 
                     <a class="header-admin-button" href="{{ url_for('admin') }}">
                         전체 관리
@@ -119,8 +121,9 @@
                                                     {% endif %}
                                                 </div>
 
-                                                {% if topic.topic_summary %}
+                                                {% if admin_mode and ai_enabled and topic.topic_summary %}
                                                     <p class="topic-summary-ko">
+                                                        <strong>AI 요약 실험:</strong>
                                                         {{ topic.topic_summary }}
                                                     </p>
                                                 {% endif %}
@@ -387,8 +390,9 @@
                                             {% endif %}
                                         </div>
 
-                                        {% if topic.topic_summary %}
+                                        {% if admin_mode and ai_enabled and topic.topic_summary %}
                                             <p class="topic-summary-ko">
+                                                <strong>AI 요약 실험:</strong>
                                                 {{ topic.topic_summary }}
                                             </p>
                                         {% endif %}
@@ -528,6 +532,8 @@
         </div>
     </footer>
 
-{% include "chatbot.html" %}
+{% if admin_mode and ai_enabled %}
+    {% include "chatbot.html" %}
+{% endif %}
 </body>
 </html>

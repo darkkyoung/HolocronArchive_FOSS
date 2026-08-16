@@ -25,6 +25,7 @@ ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "1234")
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b")
+AI_ENABLED = os.environ.get("AI_ENABLED", "false").lower() == "true"
 
 
 def load_json(filename):
@@ -117,6 +118,10 @@ def require_admin():
         return redirect(url_for("admin_login"))
 
     return None
+
+
+def is_ai_enabled():
+    return AI_ENABLED
 
 
 def load_auto_excluded_articles():
@@ -1013,7 +1018,8 @@ def index():
         excluded_count=len(excluded_articles),
         manual_topic_merges=manual_topic_merges,
         auto_excluded_articles=auto_excluded_articles,
-        auto_excluded_count=len(auto_excluded_articles)
+        auto_excluded_count=len(auto_excluded_articles),
+        ai_enabled=is_ai_enabled()
     )
 
 
@@ -1165,6 +1171,9 @@ def admin_generate_korean():
     admin_required = require_admin()
     if admin_required:
         return admin_required
+
+    if not is_ai_enabled():
+        return redirect(request.form.get("return_url") or url_for("index", admin=1))
 
     return_url = request.form.get("return_url") or url_for("index", admin=1)
 
@@ -1703,6 +1712,13 @@ def admin_clear_top_topic():
 
 @app.route("/api/assistant", methods=["POST"])
 def ai_assistant():
+    if not is_ai_enabled():
+        return jsonify({
+            "answer": "현재 AI 기능은 비활성화되어 있습니다.",
+            "articles": [],
+            "works": []
+        }), 403
+
     data = request.get_json(silent=True) or {}
 
     question = data.get("question", "").strip()
