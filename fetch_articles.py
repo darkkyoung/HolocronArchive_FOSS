@@ -19,6 +19,8 @@ SWNN_HOME_URL = "https://www.starwarsnewsnet.com/"
 SWNN_PAGE_URL = "https://www.starwarsnewsnet.com/page/{page_number}/"
 THEDIRECT_STARWARS_URL = "https://thedirect.com/StarWars/"
 THEDIRECT_STARWARS_PAGE_URL = "https://thedirect.com/StarWars/?page={page_number}"
+COLLIDER_LUCASFILM_URL = "https://collider.com/tag/lucasfilm/"
+COLLIDER_LUCASFILM_PAGE_URL = "https://collider.com/tag/lucasfilm/{page_number}/"
 
 AUTO_EXCLUDED_FILE = os.path.join(DATA_DIR, "auto_excluded_articles.json")
 ARTICLE_OVERRIDES_FILE = os.path.join(DATA_DIR, "article_overrides.json")
@@ -321,6 +323,37 @@ def is_excluded_article(title, source_name=""):
     최신 뉴스와 거리가 먼 리뷰/칼럼/기획성 글을 제외한다.
     """
     return bool(get_exclusion_reason(title))
+
+def is_collider_starwars_related(title, summary=""):
+    """
+    Collider의 Lucasfilm 태그에는 Star Wars 외 글도 섞일 수 있으므로,
+    Star Wars 관련 키워드가 있는 기사만 통과시킨다.
+    """
+    text = f"{title} {summary}".lower()
+
+    starwars_keywords = [
+        "star wars",
+        "lucasfilm",
+        "mandalorian",
+        "grogu",
+        "ahsoka",
+        "andor",
+        "jedi",
+        "sith",
+        "skywalker",
+        "rey",
+        "finn",
+        "poe",
+        "kylo",
+        "ben solo",
+        "darth",
+        "taika waititi",
+        "shawn levy",
+        "daisy ridley",
+        "kathleen kennedy",
+    ]
+
+    return any(keyword in text for keyword in starwars_keywords)
 
 def normalize_url(url):
     """
@@ -1260,6 +1293,453 @@ def fetch_thedirect_article_metadata(url):
     return metadata
 
 
+def parse_collider_date(date_text):
+    """
+    Collider 날짜 문자열을 YYYY-MM-DD로 변환한다.
+    상대 시간이나 파싱 실패 시 빈 문자열 반환.
+    """
+    if not date_text:
+        return ""
+
+    date_text = date_text.strip()
+
+    if "AGO" in date_text.upper():
+        return datetime.now().strftime("%Y-%m-%d")
+
+    for date_format in ["%B %d, %Y", "%b %d, %Y"]:
+        try:
+            dt = datetime.strptime(date_text, date_format)
+            return dt.strftime("%Y-%m-%d")
+        except Exception:
+            pass
+
+    return ""
+
+
+def clean_collider_title(title):
+    """
+    Collider 제목에서 사이트명/불필요한 공백을 제거한다.
+    """
+    if not title:
+        return ""
+
+    title = re.sub(r"\s+", " ", title).strip()
+    title = title.replace(" - Collider", "").strip()
+
+    return title
+
+
+def is_collider_article_url(url):
+    """
+    Collider 실제 기사 URL인지 검사한다.
+    tag/category/author/static 페이지는 제외한다.
+    """
+    if not url:
+        return False
+
+    if url.startswith("/"):
+        url = "https://collider.com" + url
+
+    if not url.startswith("https://collider.com/"):
+        return False
+
+    excluded_parts = [
+        "/tag/",
+        "/tags/",
+        "/category/",
+        "/author/",
+        "/page/",
+        "/news/",
+        "/reviews/",
+        "/features/",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/sitemap",
+        "#",
+    ]
+
+    if any(part in url for part in excluded_parts):
+        return False
+
+    # Collider 기사 URL은 보통 https://collider.com/article-slug/ 형태
+    path = url.replace("https://collider.com/", "").strip("/")
+
+    if not path:
+        return False
+
+    if "/" in path:
+        return False
+
+    if len(path) < 8:
+        return False
+
+    return True
+
+
+def fetch_collider_article_metadata(url):
+    """
+    Collider 개별 기사 페이지에서 이미지/요약/날짜/제목을 보정한다.
+    """
+    metadata = {
+        "title": "",
+        "published_at": "",
+        "image_url": "",
+        "summary": "",
+    }
+
+    if not url:
+        return metadata
+
+    try:
+        response = requests.get(
+            url,
+            timeout=10,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Collider 기사 페이지 수집 실패: {url} / {e}")
+        return metadata
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    og_title = soup.find("meta", property="og:title")
+    if og_title and og_title.get("content"):
+        metadata["title"] = clean_collider_title(
+            og_title.get("content").strip()
+        )
+
+    if not metadata["title"]:
+        h1 = soup.find("h1")
+        if h1:
+            metadata["title"] = clean_collider_title(
+                h1.get_text(" ", strip=True)
+            )
+
+    og_description = soup.find("meta", property="og:description")
+    if og_description and og_description.get("content"):
+        metadata["summary"] = og_description.get("content").strip()
+
+    og_image = soup.find("meta", property="og:image")
+    if og_image and og_image.get("content"):
+        metadata["image_url"] = og_image.get("content").strip()
+
+    if not metadata["image_url"]:
+        twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
+        if twitter_image and twitter_image.get("content"):
+            metadata["image_url"] = twitter_image.get("content").strip()
+
+    published_meta = soup.find("meta", property="article:published_time")
+    if published_meta and published_meta.get("content"):
+        metadata["published_at"] = published_meta.get("content")[:10]
+
+    if not metadata["published_at"]:
+        time_tag = soup.find("time")
+        if time_tag:
+            if time_tag.get("datetime"):
+                metadata["published_at"] = time_tag.get("datetime")[:10]
+            else:
+                metadata["published_at"] = parse_collider_date(
+                    time_tag.get_text(" ", strip=True)
+                )
+
+    if not metadata["published_at"]:
+        page_text = soup.get_text(" ", strip=True)
+
+        date_match = re.search(
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}",
+            page_text
+        )
+
+        if date_match:
+            metadata["published_at"] = parse_collider_date(date_match.group(0))
+
+    return metadata
+
+
+def get_collider_article_candidates_from_page(page_number=1):
+    """
+    Collider Lucasfilm 태그 페이지에서 기사 URL과 제목 후보를 수집한다.
+    """
+    if page_number == 1:
+        page_url = COLLIDER_LUCASFILM_URL
+    else:
+        page_url = COLLIDER_LUCASFILM_PAGE_URL.format(page_number=page_number)
+
+    print(f"Collider 후보 페이지 수집 중: {page_url}")
+
+    try:
+        response = requests.get(
+            page_url,
+            timeout=10,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Collider 페이지 수집 실패: {page_url} / {e}")
+        return []
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    candidates = []
+    seen_urls = set()
+
+    for a_tag in soup.find_all("a", href=True):
+        href = a_tag.get("href", "").strip()
+
+        if href.startswith("/"):
+            href = "https://collider.com" + href
+
+        href = normalize_url(href)
+
+        if not is_collider_article_url(href):
+            continue
+
+        if href in seen_urls:
+            continue
+
+        seen_urls.add(href)
+
+        title_candidate = clean_collider_title(
+            a_tag.get_text(" ", strip=True)
+        )
+
+        if not title_candidate:
+            img_tag = a_tag.find("img")
+            if img_tag and img_tag.get("alt"):
+                title_candidate = clean_collider_title(
+                    img_tag.get("alt", "")
+                )
+
+        if len(title_candidate) < 10:
+            continue
+
+        candidates.append({
+            "url": href,
+            "title_candidate": title_candidate
+        })
+
+    print(f"Collider page/{page_number} 후보 수: {len(candidates)}")
+
+    return candidates
+
+
+def fetch_collider_article_from_page(url, title_candidate=""):
+    """
+    Collider 개별 기사 페이지에서 기사 정보를 수집한다.
+    """
+    metadata = fetch_collider_article_metadata(url)
+
+    title = clean_collider_title(title_candidate)
+
+    if not title:
+        title = metadata.get("title", "")
+
+    if not title:
+        return None
+
+    summary = metadata.get("summary", "")
+
+    # Collider는 Lucasfilm 태그 기반이므로 Star Wars 관련성 필터를 반드시 적용
+    if not is_collider_starwars_related(title, summary):
+        print(f"Collider Star Wars 관련성 부족 제외: {title}")
+
+        add_auto_excluded_article(
+            title=title,
+            url=url,
+            source_name="Collider",
+            published_at=metadata.get("published_at", ""),
+            summary=summary,
+            image_url=metadata.get("image_url", ""),
+            category=guess_category(title),
+            franchise="Star Wars"
+        )
+
+        return None
+
+    if is_excluded_article(title, "Collider") and not is_restored_auto_excluded_article(url):
+        print(f"Collider 제외됨: {title}")
+
+        add_auto_excluded_article(
+            title=title,
+            url=url,
+            source_name="Collider",
+            published_at=metadata.get("published_at", ""),
+            summary=summary,
+            image_url=metadata.get("image_url", ""),
+            category=guess_category(title),
+            franchise="Star Wars"
+        )
+
+        return None
+
+    return {
+        "article_id": 0,
+        "title": title,
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": url,
+        "url": url,
+        "image_url": metadata.get("image_url", ""),
+        "published_at": metadata.get("published_at", ""),
+        "summary": summary,
+        "summary_ko": "",
+        "category": guess_category(title),
+        "franchise": "Star Wars",
+        "label": guess_label(title, "Collider")
+    }
+
+
+def fetch_collider_articles_incremental(existing_urls, limit=20, max_pages=2):
+    """
+    Collider 빠른 갱신.
+    기존 URL은 건너뛰고, 새 후보만 상세 수집한다.
+    """
+    print("Collider 빠른 갱신 시작")
+
+    new_articles = []
+    seen_candidate_urls = set()
+
+    for page_number in range(1, max_pages + 1):
+        candidates = get_collider_article_candidates_from_page(page_number)
+
+        page_new_count = 0
+        page_existing_count = 0
+        page_excluded_count = 0
+
+        for candidate in candidates:
+            url = normalize_url(candidate.get("url", ""))
+            title_candidate = candidate.get("title_candidate", "")
+
+            if not url:
+                continue
+
+            if url in existing_urls:
+                page_existing_count += 1
+                continue
+
+            if url in seen_candidate_urls:
+                continue
+
+            seen_candidate_urls.add(url)
+
+            if (
+                title_candidate
+                and is_excluded_article(title_candidate, "Collider")
+                and not is_restored_auto_excluded_article(url)
+            ):
+                print(f"Collider 사전 제외됨: {title_candidate}")
+
+                add_auto_excluded_article(
+                    title=title_candidate,
+                    url=url,
+                    source_name="Collider",
+                    published_at="",
+                    summary="",
+                    image_url="",
+                    category=guess_category(title_candidate),
+                    franchise="Star Wars"
+                )
+
+                page_excluded_count += 1
+                continue
+
+            article = fetch_collider_article_from_page(
+                url=url,
+                title_candidate=title_candidate
+            )
+
+            if article:
+                new_articles.append(article)
+                page_new_count += 1
+
+            if len(new_articles) >= limit:
+                break
+
+        print(
+            f"Collider page/{page_number} 신규 {page_new_count}개, "
+            f"기존 {page_existing_count}개, "
+            f"사전 제외 {page_excluded_count}개"
+        )
+
+        if len(new_articles) >= limit:
+            break
+
+        if page_new_count == 0 and page_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
+            print("Collider 기존 기사 중심으로 판단되어 이전 페이지 탐색 중단")
+            break
+
+    print(f"Collider 빠른 갱신 신규 기사 수: {len(new_articles)}")
+
+    return new_articles
+
+
+def fetch_collider_articles(limit=20, max_pages=2):
+    """
+    Collider 전체 수집.
+    fetched_articles.json을 새로 만들 때 사용한다.
+    """
+    print("Collider 기사 수집 시작")
+
+    articles = []
+    seen_urls = set()
+
+    for page_number in range(1, max_pages + 1):
+        candidates = get_collider_article_candidates_from_page(page_number)
+
+        for candidate in candidates:
+            if len(articles) >= limit:
+                break
+
+            url = normalize_url(candidate.get("url", ""))
+            title_candidate = candidate.get("title_candidate", "")
+
+            if not url or url in seen_urls:
+                continue
+
+            seen_urls.add(url)
+
+            if (
+                title_candidate
+                and is_excluded_article(title_candidate, "Collider")
+                and not is_restored_auto_excluded_article(url)
+            ):
+                print(f"Collider 사전 제외됨: {title_candidate}")
+
+                add_auto_excluded_article(
+                    title=title_candidate,
+                    url=url,
+                    source_name="Collider",
+                    published_at="",
+                    summary="",
+                    image_url="",
+                    category=guess_category(title_candidate),
+                    franchise="Star Wars"
+                )
+
+                continue
+
+            article = fetch_collider_article_from_page(
+                url=url,
+                title_candidate=title_candidate
+            )
+
+            if article:
+                articles.append(article)
+
+        if len(articles) >= limit:
+            break
+
+    print(f"Collider 수집 기사 수: {len(articles)}")
+
+    return articles
+
+
 def clean_thedirect_title(title):
     """
     The Direct 제목에서 사이트명/불필요한 공백을 제거한다.
@@ -1756,11 +2236,24 @@ def incremental_update():
         max_pages=2
     )
 
+    # The Direct에서 새로 추가된 URL도 Collider 중복 판단에 반영
+    for article in new_thedirect_articles:
+        url = normalize_url(article.get("source_url") or article.get("url"))
+        if url:
+            existing_urls.add(url)
+
+    new_collider_articles = fetch_collider_articles_incremental(
+        existing_urls=existing_urls,
+        limit=20,
+        max_pages=2
+    )
+
     all_articles = (
         existing_articles
         + new_swnn_articles
         + new_official_articles
         + new_thedirect_articles
+        + new_collider_articles
     )
 
     all_articles = deduplicate_articles(all_articles)
@@ -1776,6 +2269,7 @@ def incremental_update():
     print(f"신규 SWNN 기사 수: {len(new_swnn_articles)}")
     print(f"신규 StarWars.com 기사 수: {len(new_official_articles)}")
     print(f"신규 The Direct 기사 수: {len(new_thedirect_articles)}")
+    print(f"신규 Collider 기사 수: {len(new_collider_articles)}")
     print(f"갱신 후 전체 기사 수: {len(all_articles)}")
 
     save_articles(all_articles)
@@ -1804,7 +2298,11 @@ def main():
     thedirect_articles = fetch_thedirect_articles(limit=20, max_pages=2)
     print(f"The Direct 수집 기사 수: {len(thedirect_articles)}")
 
-    for article in swnn_rss_articles + swnn_page_articles + official_articles + thedirect_articles:
+    print("Collider 기사 수집 시작")
+    collider_articles = fetch_collider_articles(limit=20, max_pages=2)
+    print(f"Collider 수집 기사 수: {len(collider_articles)}")
+
+    for article in swnn_rss_articles + swnn_page_articles + official_articles + thedirect_articles + collider_articles:
         url = article.get("source_url") or article.get("url")
         normalized_url = normalize_url(url)
 
