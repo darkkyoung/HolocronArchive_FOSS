@@ -1,7 +1,7 @@
 [
   {
     "topic_id": 1,
-    "topic_title": "‘Star Wars: Starfighter’ Teaser Shown at D23, Ryan Gosling’s Character Name Revealed",
+    "topic_title": "‘Star Wars: Smugglers Gambit’ Crosses Galaxy’s Edge Theme Park Over With ‘Fortnite’; Now Available to Play",
     "topic_summary": "",
     "article_count": 1,
     "sources": [
@@ -10,10 +10,115 @@
     "source_count": 1,
     "label": "일반 보도",
     "importance": 140,
-    "latest_published_at": "2026-08-15",
+    "latest_published_at": "2026-08-16",
     "is_top": false,
     "representative_article": {
       "article_id": 1,
+      "title": "‘Star Wars: Smugglers Gambit’ Crosses Galaxy’s Edge Theme Park Over With ‘Fortnite’; Now Available to Play",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/08/star-wars-smugglers-gambit-crosses-galaxys-edge-theme-park-over-with-fortnite-now-available-to-play.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/Star-Wars-Smugglers-Gambit-1024x574.png",
+      "published_at": "2026-08-16",
+      "summary": "In an unexpected multimedia crossover, the Star Wars: Galaxy’s Edge theme park is crossing over with Fortnite as a new The post ‘Star Wars: Smugglers Gambit’ Crosses Galaxy’s Edge Theme Park Over With ‘Fortnite’; Now Available to Play appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체",
+      "url": "https://www.starwarsnewsnet.com/2026/08/star-wars-smugglers-gambit-crosses-galaxys-edge-theme-park-over-with-fortnite-now-available-to-play.html",
+      "content_type": "news",
+      "event_type": "release",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 1,
+        "title": "‘Star Wars: Smugglers Gambit’ Crosses Galaxy’s Edge Theme Park Over With ‘Fortnite’; Now Available to Play",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/08/star-wars-smugglers-gambit-crosses-galaxys-edge-theme-park-over-with-fortnite-now-available-to-play.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/Star-Wars-Smugglers-Gambit-1024x574.png",
+        "published_at": "2026-08-16",
+        "summary": "In an unexpected multimedia crossover, the Star Wars: Galaxy’s Edge theme park is crossing over with Fortnite as a new The post ‘Star Wars: Smugglers Gambit’ Crosses Galaxy’s Edge Theme Park Over With ‘Fortnite’; Now Available to Play appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체",
+        "url": "https://www.starwarsnewsnet.com/2026/08/star-wars-smugglers-gambit-crosses-galaxys-edge-theme-park-over-with-fortnite-now-available-to-play.html",
+        "content_type": "news",
+        "event_type": "release",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 2,
+    "topic_title": "Nick Joseph, Who Played an Extra in ‘A New Hope’, Passes Away at 60",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Star Wars News Net"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-16",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 2,
+      "title": "Nick Joseph, Who Played an Extra in ‘A New Hope’, Passes Away at 60",
+      "title_ko": "",
+      "source_name": "Star Wars News Net",
+      "source_url": "https://www.starwarsnewsnet.com/2026/08/nick-joseph-who-played-an-extra-in-a-new-hope-passes-away-at-60.html",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/Nick-Joseph.png",
+      "published_at": "2026-08-16",
+      "summary": "It has been reported that Nick Joseph, who had a role in Star Wars: A New Hope as a medal-bearer The post Nick Joseph, Who Played an Extra in ‘A New Hope’, Passes Away at 60 appeared first on Star Wars News Net .",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "팬 뉴스/전문 매체",
+      "url": "https://www.starwarsnewsnet.com/2026/08/nick-joseph-who-played-an-extra-in-a-new-hope-passes-away-at-60.html",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 2,
+        "title": "Nick Joseph, Who Played an Extra in ‘A New Hope’, Passes Away at 60",
+        "title_ko": "",
+        "source_name": "Star Wars News Net",
+        "source_url": "https://www.starwarsnewsnet.com/2026/08/nick-joseph-who-played-an-extra-in-a-new-hope-passes-away-at-60.html",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/Nick-Joseph.png",
+        "published_at": "2026-08-16",
+        "summary": "It has been reported that Nick Joseph, who had a role in Star Wars: A New Hope as a medal-bearer The post Nick Joseph, Who Played an Extra in ‘A New Hope’, Passes Away at 60 appeared first on Star Wars News Net .",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "팬 뉴스/전문 매체",
+        "url": "https://www.starwarsnewsnet.com/2026/08/nick-joseph-who-played-an-extra-in-a-new-hope-passes-away-at-60.html",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 3,
+    "topic_title": "‘Star Wars: Starfighter’ Teaser Shown at D23, Ryan Gosling’s Character Name Revealed",
+    "topic_summary": "",
+    "article_count": 2,
+    "sources": [
+      "Collider",
+      "Star Wars News Net"
+    ],
+    "source_count": 2,
+    "label": "일반 보도",
+    "importance": 260,
+    "latest_published_at": "2026-08-15",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 3,
       "title": "‘Star Wars: Starfighter’ Teaser Shown at D23, Ryan Gosling’s Character Name Revealed",
       "title_ko": "",
       "source_name": "Star Wars News Net",
@@ -32,7 +137,7 @@
     },
     "articles": [
       {
-        "article_id": 1,
+        "article_id": 3,
         "title": "‘Star Wars: Starfighter’ Teaser Shown at D23, Ryan Gosling’s Character Name Revealed",
         "title_ko": "",
         "source_name": "Star Wars News Net",
@@ -48,25 +153,44 @@
         "content_type": "news",
         "event_type": "trailer",
         "main_entity": ""
+      },
+      {
+        "article_id": 62,
+        "title": "'Star Wars: Starfighter’ Trailer Officially Reveals Ryan Gosling’s New Galaxy Far, Far Away",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/star-wars-starfighter-first-trailer-ryan-gosling-d23",
+        "url": "https://collider.com/star-wars-starfighter-first-trailer-ryan-gosling-d23",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/04/star-wars-starfighter.jpg?w=1200&h=675&fit=crop",
+        "published_at": "2026-08-15",
+        "summary": "The first Star Wars: Starfighter trailer has finally arrived at D23, revealing Ryan Gosling and Shawn Levy’s new Star Wars adventure.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "trailer",
+        "main_entity": ""
       }
     ]
   },
   {
-    "topic_id": 2,
+    "topic_id": 4,
     "topic_title": "‘Ahsoka’ Season 2 Teaser Trailer Arrives",
     "topic_summary": "",
-    "article_count": 2,
+    "article_count": 3,
     "sources": [
+      "Collider",
       "Star Wars News Net",
       "StarWars.com"
     ],
-    "source_count": 2,
+    "source_count": 3,
     "label": "공식 포함",
-    "importance": 290,
+    "importance": 410,
     "latest_published_at": "2026-08-15",
     "is_top": false,
     "representative_article": {
-      "article_id": 2,
+      "article_id": 4,
       "title": "‘Ahsoka’ Season 2 Teaser Trailer Arrives",
       "title_ko": "",
       "source_name": "Star Wars News Net",
@@ -85,7 +209,7 @@
     },
     "articles": [
       {
-        "article_id": 2,
+        "article_id": 4,
         "title": "‘Ahsoka’ Season 2 Teaser Trailer Arrives",
         "title_ko": "",
         "source_name": "Star Wars News Net",
@@ -103,7 +227,7 @@
         "main_entity": ""
       },
       {
-        "article_id": 21,
+        "article_id": 22,
         "title": "D23 2026: Star Wars: Ahsoka Season 2 Teaser Trailer and Release Date Revealed",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -119,11 +243,29 @@
         "content_type": "news",
         "event_type": "trailer",
         "main_entity": ""
+      },
+      {
+        "article_id": 63,
+        "title": "Anakin Skywalker Officially Returns in First ‘Ahsoka’ Season 2 Trailer",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/ahsoka-season-2-trailer-anakin-skywalker-thrawn",
+        "url": "https://collider.com/ahsoka-season-2-trailer-anakin-skywalker-thrawn",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/06/ahsoka-rosario-dawson.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-15",
+        "summary": "Watch the first Ahsoka Season 2 trailer featuring Anakin Skywalker, Grand Admiral Thrawn and Ezra Bridger ahead of the Disney+ return on January 20.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "trailer",
+        "main_entity": ""
       }
     ]
   },
   {
-    "topic_id": 3,
+    "topic_id": 5,
     "topic_title": "Millennium Falcon: Smugglers Run and Fortnite Join Forces",
     "topic_summary": "",
     "article_count": 1,
@@ -136,7 +278,7 @@
     "latest_published_at": "2026-08-15",
     "is_top": false,
     "representative_article": {
-      "article_id": 23,
+      "article_id": 24,
       "title": "Millennium Falcon: Smugglers Run and Fortnite Join Forces",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -155,7 +297,7 @@
     },
     "articles": [
       {
-        "article_id": 23,
+        "article_id": 24,
         "title": "Millennium Falcon: Smugglers Run and Fortnite Join Forces",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -175,7 +317,7 @@
     ]
   },
   {
-    "topic_id": 4,
+    "topic_id": 6,
     "topic_title": "Everything Star Wars at D23: The Ultimate Disney Fan Event",
     "topic_summary": "",
     "article_count": 2,
@@ -189,7 +331,7 @@
     "latest_published_at": "2026-08-15",
     "is_top": false,
     "representative_article": {
-      "article_id": 24,
+      "article_id": 25,
       "title": "Everything Star Wars at D23: The Ultimate Disney Fan Event",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -208,7 +350,7 @@
     },
     "articles": [
       {
-        "article_id": 24,
+        "article_id": 25,
         "title": "Everything Star Wars at D23: The Ultimate Disney Fan Event",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -226,7 +368,7 @@
         "main_entity": ""
       },
       {
-        "article_id": 48,
+        "article_id": 49,
         "title": "D23 logo, Marvel Studios, Star Wars, Pixar logos, Disney characters",
         "title_ko": "",
         "source_name": "The Direct",
@@ -246,7 +388,7 @@
     ]
   },
   {
-    "topic_id": 5,
+    "topic_id": 7,
     "topic_title": "D23 2026: Ryan Gosling is Kade Auberon in Star Wars: Starfighter",
     "topic_summary": "",
     "article_count": 1,
@@ -259,7 +401,7 @@
     "latest_published_at": "2026-08-15",
     "is_top": false,
     "representative_article": {
-      "article_id": 25,
+      "article_id": 26,
       "title": "D23 2026: Ryan Gosling is Kade Auberon in Star Wars: Starfighter",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -278,7 +420,7 @@
     },
     "articles": [
       {
-        "article_id": 25,
+        "article_id": 26,
         "title": "D23 2026: Ryan Gosling is Kade Auberon in Star Wars: Starfighter",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -298,21 +440,163 @@
     ]
   },
   {
-    "topic_id": 6,
+    "topic_id": 8,
+    "topic_title": "Ewan McGregor’s 6-Episode Sci-Fi Series Is the Most Underrated Space Opera of the Decade",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-15",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 64,
+      "title": "Ewan McGregor’s 6-Episode Sci-Fi Series Is the Most Underrated Space Opera of the Decade",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/ewan-mcgregor-obi-wan-kenobi-series-underrated-space-opera",
+      "url": "https://collider.com/ewan-mcgregor-obi-wan-kenobi-series-underrated-space-opera",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/1_3-jrehnlajn3eqr34izrmg-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-15",
+      "summary": "Ewan McGregor's compelling return to Star Wars for Disney+'s Obi-Wan Kenobi helped deliver a must-watch miniseries.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 64,
+        "title": "Ewan McGregor’s 6-Episode Sci-Fi Series Is the Most Underrated Space Opera of the Decade",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/ewan-mcgregor-obi-wan-kenobi-series-underrated-space-opera",
+        "url": "https://collider.com/ewan-mcgregor-obi-wan-kenobi-series-underrated-space-opera",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/1_3-jrehnlajn3eqr34izrmg-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-15",
+        "summary": "Ewan McGregor's compelling return to Star Wars for Disney+'s Obi-Wan Kenobi helped deliver a must-watch miniseries.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 9,
+    "topic_title": "‘The Mandalorian and Grogu’ Officially Sets Disney+ Streaming Release Date [Exclusive]",
+    "topic_summary": "",
+    "article_count": 3,
+    "sources": [
+      "Collider",
+      "ScreenRant"
+    ],
+    "source_count": 2,
+    "label": "일반 보도",
+    "importance": 280,
+    "latest_published_at": "2026-08-15",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 78,
+      "title": "‘The Mandalorian and Grogu’ Officially Sets Disney+ Streaming Release Date [Exclusive]",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/the-mandalorian-and-grogu-disney-plus-streaming-release-date",
+      "url": "https://collider.com/the-mandalorian-and-grogu-disney-plus-streaming-release-date",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/the-mandalorian-and-grogu-pedro-pascal-din-djarin.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-14",
+      "summary": "Star Wars announced this afternoon that The Mandalorian and Grogu is officially coming to Disney Plus in September. Find out more information here.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "release",
+      "main_entity": "the_mandalorian_and_grogu"
+    },
+    "articles": [
+      {
+        "article_id": 65,
+        "title": "‘Ahsoka’ Season 2 Officially Sets Disney+ Release Date",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/ahsoka-season-2-release-date-january-2027-star-wars-disney-plus",
+        "url": "https://collider.com/ahsoka-season-2-release-date-january-2027-star-wars-disney-plus",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/ahsoka-season-1-rosario-dawson.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-15",
+        "summary": "Ahsoka Season 2 officially sets a release date for Rosario Dawson’s Star Wars series, over 3 years after Season 1 ended.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "release",
+        "main_entity": ""
+      },
+      {
+        "article_id": 78,
+        "title": "‘The Mandalorian and Grogu’ Officially Sets Disney+ Streaming Release Date [Exclusive]",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/the-mandalorian-and-grogu-disney-plus-streaming-release-date",
+        "url": "https://collider.com/the-mandalorian-and-grogu-disney-plus-streaming-release-date",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/the-mandalorian-and-grogu-pedro-pascal-din-djarin.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-14",
+        "summary": "Star Wars announced this afternoon that The Mandalorian and Grogu is officially coming to Disney Plus in September. Find out more information here.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "release",
+        "main_entity": "the_mandalorian_and_grogu"
+      },
+      {
+        "article_id": 84,
+        "title": "Star Wars' The Mandalorian & Grogu Streaming Release Date On Disney+ Officially Revealed",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-the-mandalorian-and-grogu-disney-plus-streaming-release-date",
+        "url": "https://screenrant.com/star-wars-the-mandalorian-and-grogu-disney-plus-streaming-release-date",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/the-mandalorian-and-grogu-promo-art.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-14",
+        "summary": "The Mandalorian and Grogu come to Disney+ soon!",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "announcement",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 10,
     "topic_title": "‘LEGO Star Wars: The Mandalorian’ Trailer Arrives Ahead of September 2 Premiere",
     "topic_summary": "",
-    "article_count": 2,
+    "article_count": 3,
     "sources": [
+      "ScreenRant",
       "Star Wars News Net",
       "StarWars.com"
     ],
-    "source_count": 2,
+    "source_count": 3,
     "label": "공식 포함",
-    "importance": 290,
+    "importance": 410,
     "latest_published_at": "2026-08-14",
     "is_top": false,
     "representative_article": {
-      "article_id": 3,
+      "article_id": 5,
       "title": "‘LEGO Star Wars: The Mandalorian’ Trailer Arrives Ahead of September 2 Premiere",
       "title_ko": "",
       "source_name": "Star Wars News Net",
@@ -331,7 +615,7 @@
     },
     "articles": [
       {
-        "article_id": 3,
+        "article_id": 5,
         "title": "‘LEGO Star Wars: The Mandalorian’ Trailer Arrives Ahead of September 2 Premiere",
         "title_ko": "",
         "source_name": "Star Wars News Net",
@@ -349,7 +633,7 @@
         "main_entity": "lego_star_wars_the_mandalorian"
       },
       {
-        "article_id": 26,
+        "article_id": 27,
         "title": "Mando and Grogu Take Flight in LEGO Star Wars: The Mandalorian Trailer",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -365,11 +649,29 @@
         "content_type": "news",
         "event_type": "trailer",
         "main_entity": "lego_star_wars_the_mandalorian"
+      },
+      {
+        "article_id": 83,
+        "title": "The Mandalorian & Grogu’s New Episode Trailer Reveals Recast Din Djarin",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/lego-star-wars-the-mandalorian-trailer",
+        "url": "https://screenrant.com/lego-star-wars-the-mandalorian-trailer",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/01/din-djarin-and-grogu-in-the-mandalorian.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-14",
+        "summary": "The episode arrives on September 2.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "trailer",
+        "main_entity": ""
       }
     ]
   },
   {
-    "topic_id": 7,
+    "topic_id": 11,
     "topic_title": "‘The Mandalorian and Grogu’ Confirmed to Hit Disney Plus on September 2nd",
     "topic_summary": "",
     "article_count": 1,
@@ -382,7 +684,7 @@
     "latest_published_at": "2026-08-14",
     "is_top": false,
     "representative_article": {
-      "article_id": 4,
+      "article_id": 6,
       "title": "‘The Mandalorian and Grogu’ Confirmed to Hit Disney Plus on September 2nd",
       "title_ko": "",
       "source_name": "Star Wars News Net",
@@ -401,7 +703,7 @@
     },
     "articles": [
       {
-        "article_id": 4,
+        "article_id": 6,
         "title": "‘The Mandalorian and Grogu’ Confirmed to Hit Disney Plus on September 2nd",
         "title_ko": "",
         "source_name": "Star Wars News Net",
@@ -421,8 +723,8 @@
     ]
   },
   {
-    "topic_id": 8,
-    "topic_title": "‘Ahsoka’ Season 2 Costumes Reference ‘The Clone Wars’, Tease Anakin’s Return",
+    "topic_id": 12,
+    "topic_title": "'Ahsoka' Season 2 Costumes Reference 'The Clone Wars'",
     "topic_summary": "",
     "article_count": 1,
     "sources": [
@@ -434,38 +736,38 @@
     "latest_published_at": "2026-08-14",
     "is_top": false,
     "representative_article": {
-      "article_id": 5,
-      "title": "‘Ahsoka’ Season 2 Costumes Reference ‘The Clone Wars’, Tease Anakin’s Return",
+      "title": "'Ahsoka' Season 2 Costumes Reference 'The Clone Wars'",
       "title_ko": "",
-      "source_name": "Star Wars News Net",
+      "url": "https://www.starwarsnewsnet.com/2026/08/ahsoka-season-2-costumes-reference-the-clone-wars-tease-anakins-return.html",
       "source_url": "https://www.starwarsnewsnet.com/2026/08/ahsoka-season-2-costumes-reference-the-clone-wars-tease-anakins-return.html",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/09/STC-FF-001926-scaled.jpg",
+      "source_name": "Star Wars News Net",
       "published_at": "2026-08-14",
-      "summary": "On the show floor of Disney D23 Expo, some props and costumes from the second season of the Disney Plus The post ‘Ahsoka’ Season 2 Costumes Reference ‘The Clone Wars’, Tease Anakin’s Return appeared first on Star Wars News Net .",
+      "summary": "On the show floor of Disney D23 Expo, the second season of Star Wars: Ahsoka has costumes that reference the events of The Clone Wars.",
       "summary_ko": "",
       "category": "드라마",
-      "franchise": "Star Wars",
-      "label": "팬 뉴스/전문 매체",
-      "url": "https://www.starwarsnewsnet.com/2026/08/ahsoka-season-2-costumes-reference-the-clone-wars-tease-anakins-return.html",
+      "franchise": "starwars",
+      "label": "일반 보도",
+      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/09/STC-FF-001926-scaled.jpg",
+      "article_id": 14,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
     },
     "articles": [
       {
-        "article_id": 5,
-        "title": "‘Ahsoka’ Season 2 Costumes Reference ‘The Clone Wars’, Tease Anakin’s Return",
+        "title": "'Ahsoka' Season 2 Costumes Reference 'The Clone Wars'",
         "title_ko": "",
-        "source_name": "Star Wars News Net",
+        "url": "https://www.starwarsnewsnet.com/2026/08/ahsoka-season-2-costumes-reference-the-clone-wars-tease-anakins-return.html",
         "source_url": "https://www.starwarsnewsnet.com/2026/08/ahsoka-season-2-costumes-reference-the-clone-wars-tease-anakins-return.html",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/09/STC-FF-001926-scaled.jpg",
+        "source_name": "Star Wars News Net",
         "published_at": "2026-08-14",
-        "summary": "On the show floor of Disney D23 Expo, some props and costumes from the second season of the Disney Plus The post ‘Ahsoka’ Season 2 Costumes Reference ‘The Clone Wars’, Tease Anakin’s Return appeared first on Star Wars News Net .",
+        "summary": "On the show floor of Disney D23 Expo, the second season of Star Wars: Ahsoka has costumes that reference the events of The Clone Wars.",
         "summary_ko": "",
         "category": "드라마",
-        "franchise": "Star Wars",
-        "label": "팬 뉴스/전문 매체",
-        "url": "https://www.starwarsnewsnet.com/2026/08/ahsoka-season-2-costumes-reference-the-clone-wars-tease-anakins-return.html",
+        "franchise": "starwars",
+        "label": "일반 보도",
+        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/09/STC-FF-001926-scaled.jpg",
+        "article_id": 14,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -473,7 +775,7 @@
     ]
   },
   {
-    "topic_id": 9,
+    "topic_id": 13,
     "topic_title": "'Star Wars/Marvel: Hope Assembles' Comic Crossover Confirmed",
     "topic_summary": "",
     "article_count": 1,
@@ -498,7 +800,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/Star-Wars-Marvel-Hope-Assembles-Cover-1024x678.png",
-      "article_id": 15,
+      "article_id": 16,
       "content_type": "news",
       "event_type": "announcement",
       "main_entity": ""
@@ -517,7 +819,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/Star-Wars-Marvel-Hope-Assembles-Cover-1024x678.png",
-        "article_id": 15,
+        "article_id": 16,
         "content_type": "news",
         "event_type": "announcement",
         "main_entity": ""
@@ -525,7 +827,7 @@
     ]
   },
   {
-    "topic_id": 10,
+    "topic_id": 14,
     "topic_title": "Mace Windu and Anakin Skywalker next to the Star Wars logo.",
     "topic_summary": "",
     "article_count": 1,
@@ -538,7 +840,7 @@
     "latest_published_at": "2026-08-14",
     "is_top": false,
     "representative_article": {
-      "article_id": 44,
+      "article_id": 45,
       "title": "Mace Windu and Anakin Skywalker next to the Star Wars logo.",
       "title_ko": "",
       "source_name": "The Direct",
@@ -557,7 +859,7 @@
     },
     "articles": [
       {
-        "article_id": 44,
+        "article_id": 45,
         "title": "Mace Windu and Anakin Skywalker next to the Star Wars logo.",
         "title_ko": "",
         "source_name": "The Direct",
@@ -577,7 +879,7 @@
     ]
   },
   {
-    "topic_id": 11,
+    "topic_id": 15,
     "topic_title": "Luke Skywalker in The Mandalorian Season 2 Disney+ logo.",
     "topic_summary": "",
     "article_count": 1,
@@ -590,7 +892,7 @@
     "latest_published_at": "2026-08-14",
     "is_top": false,
     "representative_article": {
-      "article_id": 45,
+      "article_id": 46,
       "title": "Luke Skywalker in The Mandalorian Season 2 Disney+ logo.",
       "title_ko": "",
       "source_name": "The Direct",
@@ -609,7 +911,7 @@
     },
     "articles": [
       {
-        "article_id": 45,
+        "article_id": 46,
         "title": "Luke Skywalker in The Mandalorian Season 2 Disney+ logo.",
         "title_ko": "",
         "source_name": "The Direct",
@@ -629,7 +931,7 @@
     ]
   },
   {
-    "topic_id": 12,
+    "topic_id": 16,
     "topic_title": "Ahsoka Tano, Disney Plus",
     "topic_summary": "",
     "article_count": 2,
@@ -642,7 +944,7 @@
     "latest_published_at": "2026-08-14",
     "is_top": false,
     "representative_article": {
-      "article_id": 46,
+      "article_id": 47,
       "title": "Ahsoka Tano, Disney Plus",
       "title_ko": "",
       "source_name": "The Direct",
@@ -661,7 +963,7 @@
     },
     "articles": [
       {
-        "article_id": 46,
+        "article_id": 47,
         "title": "Ahsoka Tano, Disney Plus",
         "title_ko": "",
         "source_name": "The Direct",
@@ -679,7 +981,7 @@
         "main_entity": ""
       },
       {
-        "article_id": 49,
+        "article_id": 50,
         "title": "Ahsoka Tano in live-action",
         "title_ko": "",
         "source_name": "The Direct",
@@ -699,7 +1001,7 @@
     ]
   },
   {
-    "topic_id": 13,
+    "topic_id": 17,
     "topic_title": "Maul in Maul Shadow Lord Disney+ series",
     "topic_summary": "",
     "article_count": 1,
@@ -712,7 +1014,7 @@
     "latest_published_at": "2026-08-14",
     "is_top": false,
     "representative_article": {
-      "article_id": 50,
+      "article_id": 51,
       "title": "Maul in Maul Shadow Lord Disney+ series",
       "title_ko": "",
       "source_name": "The Direct",
@@ -731,7 +1033,7 @@
     },
     "articles": [
       {
-        "article_id": 50,
+        "article_id": 51,
         "title": "Maul in Maul Shadow Lord Disney+ series",
         "title_ko": "",
         "source_name": "The Direct",
@@ -751,7 +1053,59 @@
     ]
   },
   {
-    "topic_id": 14,
+    "topic_id": 18,
+    "topic_title": "Star Wars/Marvel Crossover Must Deliver This 1 Fight",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-14",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 97,
+      "title": "Star Wars/Marvel Crossover Must Deliver This 1 Fight",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-marvel-crossover-hulk-darth-vader",
+      "url": "https://screenrant.com/star-wars-marvel-crossover-hulk-darth-vader",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/08/star-wars-marvel-comics-crossover-hope-assembles-stwars_290ca8e1.jpeg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-14",
+      "summary": "Pit these characters against each other.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 97,
+        "title": "Star Wars/Marvel Crossover Must Deliver This 1 Fight",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-marvel-crossover-hulk-darth-vader",
+        "url": "https://screenrant.com/star-wars-marvel-crossover-hulk-darth-vader",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/08/star-wars-marvel-comics-crossover-hope-assembles-stwars_290ca8e1.jpeg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-14",
+        "summary": "Pit these characters against each other.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 19,
     "topic_title": "Harrison Ford Han Solo, Star Wars Logo.",
     "topic_summary": "",
     "article_count": 1,
@@ -764,7 +1118,7 @@
     "latest_published_at": "2026-08-13",
     "is_top": false,
     "representative_article": {
-      "article_id": 51,
+      "article_id": 52,
       "title": "Harrison Ford Han Solo, Star Wars Logo.",
       "title_ko": "",
       "source_name": "The Direct",
@@ -783,7 +1137,7 @@
     },
     "articles": [
       {
-        "article_id": 51,
+        "article_id": 52,
         "title": "Harrison Ford Han Solo, Star Wars Logo.",
         "title_ko": "",
         "source_name": "The Direct",
@@ -803,7 +1157,59 @@
     ]
   },
   {
-    "topic_id": 15,
+    "topic_id": 20,
+    "topic_title": "Ewan McGregor Confirms He’s Not Officially Done With Star Wars as He Pushes for Return",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-13",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 71,
+      "title": "Ewan McGregor Confirms He’s Not Officially Done With Star Wars as He Pushes for Return",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-return-update",
+      "url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-return-update",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/1_3-jrehnlajn3eqr34izrmg-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-13",
+      "summary": "Ewan McGregor says he is ready for more Obi-Wan Kenobi stories and wants to continue playing the Star Wars icon for years to come.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 71,
+        "title": "Ewan McGregor Confirms He’s Not Officially Done With Star Wars as He Pushes for Return",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-return-update",
+        "url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-return-update",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/1_3-jrehnlajn3eqr34izrmg-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-13",
+        "summary": "Ewan McGregor says he is ready for more Obi-Wan Kenobi stories and wants to continue playing the Star Wars icon for years to come.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 21,
     "topic_title": "Star Wars Darth Vader, Starkiller Base.",
     "topic_summary": "",
     "article_count": 1,
@@ -816,7 +1222,7 @@
     "latest_published_at": "2026-08-12",
     "is_top": false,
     "representative_article": {
-      "article_id": 47,
+      "article_id": 48,
       "title": "Star Wars Darth Vader, Starkiller Base.",
       "title_ko": "",
       "source_name": "The Direct",
@@ -835,7 +1241,7 @@
     },
     "articles": [
       {
-        "article_id": 47,
+        "article_id": 48,
         "title": "Star Wars Darth Vader, Starkiller Base.",
         "title_ko": "",
         "source_name": "The Direct",
@@ -855,7 +1261,7 @@
     ]
   },
   {
-    "topic_id": 16,
+    "topic_id": 22,
     "topic_title": "Star Wars Rise of Skywalker poster, Ryan Gosling",
     "topic_summary": "",
     "article_count": 1,
@@ -868,7 +1274,7 @@
     "latest_published_at": "2026-08-12",
     "is_top": false,
     "representative_article": {
-      "article_id": 52,
+      "article_id": 53,
       "title": "Star Wars Rise of Skywalker poster, Ryan Gosling",
       "title_ko": "",
       "source_name": "The Direct",
@@ -887,7 +1293,7 @@
     },
     "articles": [
       {
-        "article_id": 52,
+        "article_id": 53,
         "title": "Star Wars Rise of Skywalker poster, Ryan Gosling",
         "title_ko": "",
         "source_name": "The Direct",
@@ -907,7 +1313,59 @@
     ]
   },
   {
-    "topic_id": 17,
+    "topic_id": 23,
+    "topic_title": "Disney’s Next Big ‘Star Wars’ Story Could Bring Back One of Its Most Legendary Characters",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-12",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 72,
+      "title": "Disney’s Next Big ‘Star Wars’ Story Could Bring Back One of Its Most Legendary Characters",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/disney-star-wars-bring-back-legendary-characters-obi-wan",
+      "url": "https://collider.com/disney-star-wars-bring-back-legendary-characters-obi-wan",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2022/12/star-wars-a-new-hope-1977-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-12",
+      "summary": "Ewan McGregor is eager to reprise the role of Obi-Wan Kenobi. A second season of his series could be a hit, or he could fit into another production.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 72,
+        "title": "Disney’s Next Big ‘Star Wars’ Story Could Bring Back One of Its Most Legendary Characters",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/disney-star-wars-bring-back-legendary-characters-obi-wan",
+        "url": "https://collider.com/disney-star-wars-bring-back-legendary-characters-obi-wan",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2022/12/star-wars-a-new-hope-1977-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-12",
+        "summary": "Ewan McGregor is eager to reprise the role of Obi-Wan Kenobi. A second season of his series could be a hit, or he could fit into another production.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 24,
     "topic_title": "Star Wars and Marvel Comics Unite in Historic Crossover Event",
     "topic_summary": "",
     "article_count": 1,
@@ -920,7 +1378,7 @@
     "latest_published_at": "2026-08-11",
     "is_top": false,
     "representative_article": {
-      "article_id": 27,
+      "article_id": 28,
       "title": "Star Wars and Marvel Comics Unite in Historic Crossover Event",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -939,7 +1397,7 @@
     },
     "articles": [
       {
-        "article_id": 27,
+        "article_id": 28,
         "title": "Star Wars and Marvel Comics Unite in Historic Crossover Event",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -959,7 +1417,7 @@
     ]
   },
   {
-    "topic_id": 18,
+    "topic_id": 25,
     "topic_title": "Poll: What’s Your Favorite Line from Star Wars: The Mandalorian and Grogu ?",
     "topic_summary": "",
     "article_count": 1,
@@ -972,7 +1430,7 @@
     "latest_published_at": "2026-08-11",
     "is_top": false,
     "representative_article": {
-      "article_id": 28,
+      "article_id": 29,
       "title": "Poll: What’s Your Favorite Line from Star Wars: The Mandalorian and Grogu ?",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -991,7 +1449,7 @@
     },
     "articles": [
       {
-        "article_id": 28,
+        "article_id": 29,
         "title": "Poll: What’s Your Favorite Line from Star Wars: The Mandalorian and Grogu ?",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1011,7 +1469,7 @@
     ]
   },
   {
-    "topic_id": 19,
+    "topic_id": 26,
     "topic_title": "Rey next to the Star Wars logo.",
     "topic_summary": "",
     "article_count": 1,
@@ -1024,7 +1482,7 @@
     "latest_published_at": "2026-08-11",
     "is_top": false,
     "representative_article": {
-      "article_id": 53,
+      "article_id": 54,
       "title": "Rey next to the Star Wars logo.",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1043,7 +1501,7 @@
     },
     "articles": [
       {
-        "article_id": 53,
+        "article_id": 54,
         "title": "Rey next to the Star Wars logo.",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1063,7 +1521,7 @@
     ]
   },
   {
-    "topic_id": 20,
+    "topic_id": 27,
     "topic_title": "Chris Evans as Steve Rogers, Darth Vader.",
     "topic_summary": "",
     "article_count": 1,
@@ -1076,7 +1534,7 @@
     "latest_published_at": "2026-08-11",
     "is_top": false,
     "representative_article": {
-      "article_id": 54,
+      "article_id": 55,
       "title": "Chris Evans as Steve Rogers, Darth Vader.",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1095,7 +1553,7 @@
     },
     "articles": [
       {
-        "article_id": 54,
+        "article_id": 55,
         "title": "Chris Evans as Steve Rogers, Darth Vader.",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1115,7 +1573,7 @@
     ]
   },
   {
-    "topic_id": 21,
+    "topic_id": 28,
     "topic_title": "Ahsoka, Luke Skywalker",
     "topic_summary": "",
     "article_count": 1,
@@ -1128,7 +1586,7 @@
     "latest_published_at": "2026-08-11",
     "is_top": false,
     "representative_article": {
-      "article_id": 55,
+      "article_id": 56,
       "title": "Ahsoka, Luke Skywalker",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1147,7 +1605,7 @@
     },
     "articles": [
       {
-        "article_id": 55,
+        "article_id": 56,
         "title": "Ahsoka, Luke Skywalker",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1167,7 +1625,7 @@
     ]
   },
   {
-    "topic_id": 22,
+    "topic_id": 29,
     "topic_title": "Iron Man, Han Solo",
     "topic_summary": "",
     "article_count": 1,
@@ -1180,7 +1638,7 @@
     "latest_published_at": "2026-08-10",
     "is_top": false,
     "representative_article": {
-      "article_id": 56,
+      "article_id": 57,
       "title": "Iron Man, Han Solo",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1199,7 +1657,7 @@
     },
     "articles": [
       {
-        "article_id": 56,
+        "article_id": 57,
         "title": "Iron Man, Han Solo",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1219,7 +1677,7 @@
     ]
   },
   {
-    "topic_id": 23,
+    "topic_id": 30,
     "topic_title": "John Boyega as Finn, Samuel L.Jackson as Mace Windu.",
     "topic_summary": "",
     "article_count": 1,
@@ -1232,7 +1690,7 @@
     "latest_published_at": "2026-08-10",
     "is_top": false,
     "representative_article": {
-      "article_id": 57,
+      "article_id": 58,
       "title": "John Boyega as Finn, Samuel L.Jackson as Mace Windu.",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1251,7 +1709,7 @@
     },
     "articles": [
       {
-        "article_id": 57,
+        "article_id": 58,
         "title": "John Boyega as Finn, Samuel L.Jackson as Mace Windu.",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1271,7 +1729,7 @@
     ]
   },
   {
-    "topic_id": 24,
+    "topic_id": 31,
     "topic_title": "George Lucas, Disney Star Wars characters",
     "topic_summary": "",
     "article_count": 1,
@@ -1284,7 +1742,7 @@
     "latest_published_at": "2026-08-10",
     "is_top": false,
     "representative_article": {
-      "article_id": 58,
+      "article_id": 59,
       "title": "George Lucas, Disney Star Wars characters",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1303,7 +1761,7 @@
     },
     "articles": [
       {
-        "article_id": 58,
+        "article_id": 59,
         "title": "George Lucas, Disney Star Wars characters",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1323,7 +1781,7 @@
     ]
   },
   {
-    "topic_id": 25,
+    "topic_id": 32,
     "topic_title": "D23 Lucasfilm Pavilion To Display 'Ahsoka' Season 2 Props And Costumes",
     "topic_summary": "",
     "article_count": 1,
@@ -1348,7 +1806,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/D23_2026.jpg",
-      "article_id": 14,
+      "article_id": 15,
       "content_type": "news",
       "event_type": "event",
       "main_entity": ""
@@ -1367,7 +1825,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/08/D23_2026.jpg",
-        "article_id": 14,
+        "article_id": 15,
         "content_type": "news",
         "event_type": "event",
         "main_entity": ""
@@ -1375,7 +1833,7 @@
     ]
   },
   {
-    "topic_id": 26,
+    "topic_id": 33,
     "topic_title": "'Star Wars: Galactic Racer' Promo Goes Under The Hood",
     "topic_summary": "",
     "article_count": 1,
@@ -1400,7 +1858,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Screenshot-2026-06-23-at-16.47.34-1024x602.png",
-      "article_id": 17,
+      "article_id": 18,
       "content_type": "news",
       "event_type": "general",
       "main_entity": "galactic_racer"
@@ -1419,7 +1877,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Screenshot-2026-06-23-at-16.47.34-1024x602.png",
-        "article_id": 17,
+        "article_id": 18,
         "content_type": "news",
         "event_type": "general",
         "main_entity": "galactic_racer"
@@ -1427,7 +1885,7 @@
     ]
   },
   {
-    "topic_id": 27,
+    "topic_id": 34,
     "topic_title": "The Mandalorian, Mandoverse slate logos",
     "topic_summary": "",
     "article_count": 1,
@@ -1440,7 +1898,7 @@
     "latest_published_at": "2026-08-09",
     "is_top": false,
     "representative_article": {
-      "article_id": 59,
+      "article_id": 60,
       "title": "The Mandalorian, Mandoverse slate logos",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1459,7 +1917,7 @@
     },
     "articles": [
       {
-        "article_id": 59,
+        "article_id": 60,
         "title": "The Mandalorian, Mandoverse slate logos",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1479,7 +1937,7 @@
     ]
   },
   {
-    "topic_id": 28,
+    "topic_id": 35,
     "topic_title": "Star Wars Dark Forces Mon Mothma",
     "topic_summary": "",
     "article_count": 1,
@@ -1492,7 +1950,7 @@
     "latest_published_at": "2026-08-09",
     "is_top": false,
     "representative_article": {
-      "article_id": 60,
+      "article_id": 61,
       "title": "Star Wars Dark Forces Mon Mothma",
       "title_ko": "",
       "source_name": "The Direct",
@@ -1511,7 +1969,7 @@
     },
     "articles": [
       {
-        "article_id": 60,
+        "article_id": 61,
         "title": "Star Wars Dark Forces Mon Mothma",
         "title_ko": "",
         "source_name": "The Direct",
@@ -1531,7 +1989,7 @@
     ]
   },
   {
-    "topic_id": 29,
+    "topic_id": 36,
     "topic_title": "Disney CEO Josh D'Amaro Minimizes 'The Mandalorian and Grogu' Box Office Failure, Says Company Is Exploring Free Streaming Services",
     "topic_summary": "",
     "article_count": 1,
@@ -1556,7 +2014,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/01/disney_plus_logo_2019.png",
-      "article_id": 6,
+      "article_id": 7,
       "content_type": "news",
       "event_type": "general",
       "main_entity": "the_mandalorian_and_grogu"
@@ -1575,7 +2033,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2023/01/disney_plus_logo_2019.png",
-        "article_id": 6,
+        "article_id": 7,
         "content_type": "news",
         "event_type": "general",
         "main_entity": "the_mandalorian_and_grogu"
@@ -1583,7 +2041,59 @@
     ]
   },
   {
-    "topic_id": 30,
+    "topic_id": 37,
+    "topic_title": "Disney Makes Rare Admission About The Mandalorian & Grogu’s Franchise-Low Box Office Performance",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-05",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 85,
+      "title": "Disney Makes Rare Admission About The Mandalorian & Grogu’s Franchise-Low Box Office Performance",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/the-mandalorian-grogu-franchise-low-box-office-performance-disney-admission-rare",
+      "url": "https://screenrant.com/the-mandalorian-grogu-franchise-low-box-office-performance-disney-admission-rare",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/mando-and-grogu-in-the-snow-in-mandalorian-grogu.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-05",
+      "summary": "The film wasn't a total failure.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 85,
+        "title": "Disney Makes Rare Admission About The Mandalorian & Grogu’s Franchise-Low Box Office Performance",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/the-mandalorian-grogu-franchise-low-box-office-performance-disney-admission-rare",
+        "url": "https://screenrant.com/the-mandalorian-grogu-franchise-low-box-office-performance-disney-admission-rare",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/mando-and-grogu-in-the-snow-in-mandalorian-grogu.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-05",
+        "summary": "The film wasn't a total failure.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 38,
     "topic_title": "Star Wars: Visions Presents - The Ninth Jedi Trailer Debut - Update",
     "topic_summary": "",
     "article_count": 3,
@@ -1596,7 +2106,7 @@
     "latest_published_at": "2026-08-05",
     "is_top": false,
     "representative_article": {
-      "article_id": 29,
+      "article_id": 30,
       "title": "Star Wars: Visions Presents - The Ninth Jedi Trailer Debut - Update",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1615,7 +2125,7 @@
     },
     "articles": [
       {
-        "article_id": 29,
+        "article_id": 30,
         "title": "Star Wars: Visions Presents - The Ninth Jedi Trailer Debut - Update",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1633,7 +2143,7 @@
         "main_entity": "the_ninth_jedi"
       },
       {
-        "article_id": 32,
+        "article_id": 33,
         "title": "Star Wars: Visions Presents - The Ninth Jedi Character Guide",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1651,7 +2161,7 @@
         "main_entity": "the_ninth_jedi"
       },
       {
-        "article_id": 40,
+        "article_id": 41,
         "title": "Star Wars: Visions Presents - The Ninth Jedi Creators Talk About Heroes and Villains",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1671,7 +2181,7 @@
     ]
   },
   {
-    "topic_id": 31,
+    "topic_id": 39,
     "topic_title": "'Star Wars: Zero Company' - Eleven Playable Worlds Revealed",
     "topic_summary": "",
     "article_count": 1,
@@ -1696,7 +2206,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/03/Zero-Company-Screenshot-2-PC-Gamer.webp",
-      "article_id": 18,
+      "article_id": 19,
       "content_type": "news",
       "event_type": "announcement",
       "main_entity": "zero_company"
@@ -1715,7 +2225,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/03/Zero-Company-Screenshot-2-PC-Gamer.webp",
-        "article_id": 18,
+        "article_id": 19,
         "content_type": "news",
         "event_type": "announcement",
         "main_entity": "zero_company"
@@ -1723,7 +2233,7 @@
     ]
   },
   {
-    "topic_id": 32,
+    "topic_id": 40,
     "topic_title": "Star Wars: A New Hope Is Getting a Welsh Language Dub",
     "topic_summary": "",
     "article_count": 1,
@@ -1736,7 +2246,7 @@
     "latest_published_at": "2026-08-04",
     "is_top": false,
     "representative_article": {
-      "article_id": 30,
+      "article_id": 31,
       "title": "Star Wars: A New Hope Is Getting a Welsh Language Dub",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1755,7 +2265,7 @@
     },
     "articles": [
       {
-        "article_id": 30,
+        "article_id": 31,
         "title": "Star Wars: A New Hope Is Getting a Welsh Language Dub",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1775,7 +2285,163 @@
     ]
   },
   {
-    "topic_id": 33,
+    "topic_id": 41,
+    "topic_title": "Star Wars: The Season Of Rebellion Officially Arrives In 2027",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-04",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 98,
+      "title": "Star Wars: The Season Of Rebellion Officially Arrives In 2027",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-season-of-rebellion-dnd-beyond-announcement",
+      "url": "https://screenrant.com/star-wars-season-of-rebellion-dnd-beyond-announcement",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/luke-skywalker-standing-next-to-a-speeder-on-tatooine-in-a-new-hope.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-04",
+      "summary": "Star Wars is entering an exciting new era in 2027 with the Season of Rebellion.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 98,
+        "title": "Star Wars: The Season Of Rebellion Officially Arrives In 2027",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-season-of-rebellion-dnd-beyond-announcement",
+        "url": "https://screenrant.com/star-wars-season-of-rebellion-dnd-beyond-announcement",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/luke-skywalker-standing-next-to-a-speeder-on-tatooine-in-a-new-hope.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-04",
+        "summary": "Star Wars is entering an exciting new era in 2027 with the Season of Rebellion.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 42,
+    "topic_title": "Star Wars Announces New Mandalorian Sequel, And It Releases In 3 Months",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-03",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 86,
+      "title": "Star Wars Announces New Mandalorian Sequel, And It Releases In 3 Months",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-announces-new-mandalorian-sequel-and-it-releases-in-3-months",
+      "url": "https://screenrant.com/star-wars-announces-new-mandalorian-sequel-and-it-releases-in-3-months",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/star-wars-the-mandalorian-and-grogu_6ere8m.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-03",
+      "summary": "Mando & Grogu's next adventure is coming up!",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 86,
+        "title": "Star Wars Announces New Mandalorian Sequel, And It Releases In 3 Months",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-announces-new-mandalorian-sequel-and-it-releases-in-3-months",
+        "url": "https://screenrant.com/star-wars-announces-new-mandalorian-sequel-and-it-releases-in-3-months",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/star-wars-the-mandalorian-and-grogu_6ere8m.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-03",
+        "summary": "Mando & Grogu's next adventure is coming up!",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 43,
+    "topic_title": "6 Years Later, Star Wars Finally Makes Glup Shitto Official Canon",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-08-02",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 87,
+      "title": "6 Years Later, Star Wars Finally Makes Glup Shitto Official Canon",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-mandalorian-grogu-makes-glup-shitto-canon",
+      "url": "https://screenrant.com/star-wars-mandalorian-grogu-makes-glup-shitto-canon",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/08/screencaps-34.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-08-02",
+      "summary": "Star Wars is embracing fans' memes wholeheartedly, and its latest movie, The Mandalorian and Grogu, puts its best meme front and center.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 87,
+        "title": "6 Years Later, Star Wars Finally Makes Glup Shitto Official Canon",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-mandalorian-grogu-makes-glup-shitto-canon",
+        "url": "https://screenrant.com/star-wars-mandalorian-grogu-makes-glup-shitto-canon",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/08/screencaps-34.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-08-02",
+        "summary": "Star Wars is embracing fans' memes wholeheartedly, and its latest movie, The Mandalorian and Grogu, puts its best meme front and center.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 44,
     "topic_title": "The Secrets of 'Star Wars: Legacy' and What They Mean For the Future of 'Star Wars'",
     "topic_summary": "",
     "article_count": 1,
@@ -1800,7 +2466,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2020/09/Rey-Skywalkers-Lightsaber.png",
-      "article_id": 16,
+      "article_id": 17,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -1819,7 +2485,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2020/09/Rey-Skywalkers-Lightsaber.png",
-        "article_id": 16,
+        "article_id": 17,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -1827,7 +2493,7 @@
     ]
   },
   {
-    "topic_id": 34,
+    "topic_id": 45,
     "topic_title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
     "topic_summary": "",
     "article_count": 1,
@@ -1840,7 +2506,7 @@
     "latest_published_at": "2026-07-31",
     "is_top": false,
     "representative_article": {
-      "article_id": 31,
+      "article_id": 32,
       "title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -1859,7 +2525,7 @@
     },
     "articles": [
       {
-        "article_id": 31,
+        "article_id": 32,
         "title": "Celebrity Guests Confirmed for Star Wars Celebration Los Angeles 2027 - Update",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -1879,7 +2545,111 @@
     ]
   },
   {
-    "topic_id": 35,
+    "topic_id": 46,
+    "topic_title": "10 Perfect Sci-Fi Shows With 5 Seasons or Less",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-31",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 75,
+      "title": "10 Perfect Sci-Fi Shows With 5 Seasons or Less",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/perfect-sci-fi-shows-shorter-than-5-seasons",
+      "url": "https://collider.com/perfect-sci-fi-shows-shorter-than-5-seasons",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/11/diego-luna-as-cassian-andor.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-31",
+      "summary": "Explore great sci-fi shows that masterfully tell their stories in five seasons or fewer, proving that sometimes less is more, from Dark to Andor.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 75,
+        "title": "10 Perfect Sci-Fi Shows With 5 Seasons or Less",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/perfect-sci-fi-shows-shorter-than-5-seasons",
+        "url": "https://collider.com/perfect-sci-fi-shows-shorter-than-5-seasons",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/11/diego-luna-as-cassian-andor.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-31",
+        "summary": "Explore great sci-fi shows that masterfully tell their stories in five seasons or fewer, proving that sometimes less is more, from Dark to Andor.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 47,
+    "topic_title": "10 Years Later, Darth Vader Finally Returns For New Rogue One Series In 4 Months",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-31",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 99,
+      "title": "10 Years Later, Darth Vader Finally Returns For New Rogue One Series In 4 Months",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-rogue-one-darth-vader-new-series",
+      "url": "https://screenrant.com/star-wars-rogue-one-darth-vader-new-series",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/darth-vader-stands-on-a-red-background-in-star-wars-art.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-31",
+      "summary": "Star Wars' next project is a Darth Vader story.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 99,
+        "title": "10 Years Later, Darth Vader Finally Returns For New Rogue One Series In 4 Months",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-rogue-one-darth-vader-new-series",
+        "url": "https://screenrant.com/star-wars-rogue-one-darth-vader-new-series",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/darth-vader-stands-on-a-red-background-in-star-wars-art.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-31",
+        "summary": "Star Wars' next project is a Darth Vader story.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 48,
     "topic_title": "'Star Wars: Galactic Racer' Shows Off 15 Minutes of Gameplay Footage",
     "topic_summary": "",
     "article_count": 1,
@@ -1904,7 +2674,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/02/star-wars-galactic-racer-header-art.jpeg",
-      "article_id": 19,
+      "article_id": 20,
       "content_type": "news",
       "event_type": "general",
       "main_entity": "galactic_racer"
@@ -1923,7 +2693,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/02/star-wars-galactic-racer-header-art.jpeg",
-        "article_id": 19,
+        "article_id": 20,
         "content_type": "news",
         "event_type": "general",
         "main_entity": "galactic_racer"
@@ -1931,7 +2701,59 @@
     ]
   },
   {
-    "topic_id": 36,
+    "topic_id": 49,
+    "topic_title": "‘Star Wars’ Brings Back Carl Weathers 2 Years After His Death",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-30",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 79,
+      "title": "‘Star Wars’ Brings Back Carl Weathers 2 Years After His Death",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/star-wars-carl-weathers-return-mandalorian-and-grogu-prequel-comic",
+      "url": "https://collider.com/star-wars-carl-weathers-return-mandalorian-and-grogu-prequel-comic",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2021/12/Greef-Karga-from-The-Mandalorian.jpeg?w=1200&h=675&fit=crop",
+      "published_at": "2026-07-30",
+      "summary": "Star Wars has officially brought back Carl Weathers’ Greef Karga two years after the actor’s death in a new Mandalorian story.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 79,
+        "title": "‘Star Wars’ Brings Back Carl Weathers 2 Years After His Death",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/star-wars-carl-weathers-return-mandalorian-and-grogu-prequel-comic",
+        "url": "https://collider.com/star-wars-carl-weathers-return-mandalorian-and-grogu-prequel-comic",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2021/12/Greef-Karga-from-The-Mandalorian.jpeg?w=1200&h=675&fit=crop",
+        "published_at": "2026-07-30",
+        "summary": "Star Wars has officially brought back Carl Weathers’ Greef Karga two years after the actor’s death in a new Mandalorian story.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 50,
     "topic_title": "VFX Artists From Several ‘Star Wars’ Productions Vote to Unionize",
     "topic_summary": "",
     "article_count": 1,
@@ -1956,7 +2778,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2021/03/The-Mandalorian-ILM-VFX-Reel-Feature.jpeg",
-      "article_id": 7,
+      "article_id": 8,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -1975,7 +2797,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2021/03/The-Mandalorian-ILM-VFX-Reel-Feature.jpeg",
-        "article_id": 7,
+        "article_id": 8,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -1983,7 +2805,7 @@
     ]
   },
   {
-    "topic_id": 37,
+    "topic_id": 51,
     "topic_title": "'Star Wars: Starfighter' Team Reunites for Marvel, New Luke and Leia Novel, and More",
     "topic_summary": "",
     "article_count": 1,
@@ -2008,7 +2830,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/RyanGosling_ShawnLevy_SDCC.jpg",
-      "article_id": 11,
+      "article_id": 12,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -2027,7 +2849,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/RyanGosling_ShawnLevy_SDCC.jpg",
-        "article_id": 11,
+        "article_id": 12,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -2035,21 +2857,72 @@
     ]
   },
   {
-    "topic_id": 38,
+    "topic_id": 52,
+    "topic_title": "Star Wars Officially Gives Darth Vader An Incredible Redesign",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-27",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 100,
+      "title": "Star Wars Officially Gives Darth Vader An Incredible Redesign",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-darth-vader-mythos-new-look",
+      "url": "https://screenrant.com/star-wars-darth-vader-mythos-new-look",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/04/darth-vader-standing-on-the-bridge-of-a-ship-in-obi-wan-kenobi.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-27",
+      "summary": "Star Wars has unveiled an amazing official Darth Vader redesign.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 100,
+        "title": "Star Wars Officially Gives Darth Vader An Incredible Redesign",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-darth-vader-mythos-new-look",
+        "url": "https://screenrant.com/star-wars-darth-vader-mythos-new-look",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/04/darth-vader-standing-on-the-bridge-of-a-ship-in-obi-wan-kenobi.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-27",
+        "summary": "Star Wars has unveiled an amazing official Darth Vader redesign.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 53,
     "topic_title": "SDCC 2026: All the Hasbro Star Wars Reveals from the San Diego Comic-Con Panel",
     "topic_summary": "",
-    "article_count": 3,
+    "article_count": 2,
     "sources": [
-      "Star Wars News Net",
       "StarWars.com"
     ],
-    "source_count": 2,
+    "source_count": 1,
     "label": "공식 포함",
-    "importance": 310,
+    "importance": 190,
     "latest_published_at": "2026-07-26",
     "is_top": false,
     "representative_article": {
-      "article_id": 36,
+      "article_id": 37,
       "title": "SDCC 2026: All the Hasbro Star Wars Reveals from the San Diego Comic-Con Panel",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -2068,25 +2941,7 @@
     },
     "articles": [
       {
-        "title": "'Star Wars Zero Company' Collector's Edition Revealed at SDCC, First Single From Soundtrack Available Now",
-        "title_ko": "",
-        "url": "https://www.starwarsnewsnet.com/2026/07/star-wars-zero-company-collectors-edition-revealed-at-san-diego-comic-con-first-single-from-soundtrack-available-now.html",
-        "source_url": "https://www.starwarsnewsnet.com/2026/07/star-wars-zero-company-collectors-edition-revealed-at-san-diego-comic-con-first-single-from-soundtrack-available-now.html",
-        "source_name": "Star Wars News Net",
-        "published_at": "2026-07-26",
-        "summary": "Some new details from the upcoming video game Star Wars: Zero Company have been revealed at the San Diego Comic Con.",
-        "summary_ko": "",
-        "category": "게임",
-        "franchise": "starwars",
-        "label": "일반 보도",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/05/Star-Wars-Zero-Company.png",
-        "article_id": 20,
-        "content_type": "news",
-        "event_type": "announcement",
-        "main_entity": "zero_company"
-      },
-      {
-        "article_id": 33,
+        "article_id": 34,
         "title": "SDCC 2026: Star Wars Zero Company Mobilizes at San Diego Comic-Con – Update",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2104,7 +2959,7 @@
         "main_entity": "zero_company"
       },
       {
-        "article_id": 36,
+        "article_id": 37,
         "title": "SDCC 2026: All the Hasbro Star Wars Reveals from the San Diego Comic-Con Panel",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2124,7 +2979,7 @@
     ]
   },
   {
-    "topic_id": 39,
+    "topic_id": 54,
     "topic_title": "SDCC 2026: Meet the Mandalorian and Grogu and Friends at the Lucasfilm Pavilion - Update",
     "topic_summary": "",
     "article_count": 1,
@@ -2137,7 +2992,7 @@
     "latest_published_at": "2026-07-25",
     "is_top": true,
     "representative_article": {
-      "article_id": 34,
+      "article_id": 35,
       "title": "SDCC 2026: Meet the Mandalorian and Grogu and Friends at the Lucasfilm Pavilion - Update",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -2156,7 +3011,7 @@
     },
     "articles": [
       {
-        "article_id": 34,
+        "article_id": 35,
         "title": "SDCC 2026: Meet the Mandalorian and Grogu and Friends at the Lucasfilm Pavilion - Update",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2176,7 +3031,7 @@
     ]
   },
   {
-    "topic_id": 40,
+    "topic_id": 55,
     "topic_title": "SDCC 2026: New Details Revealed for Immersive Star Wars: The Experience Museum Exhibition",
     "topic_summary": "",
     "article_count": 1,
@@ -2189,7 +3044,7 @@
     "latest_published_at": "2026-07-25",
     "is_top": false,
     "representative_article": {
-      "article_id": 35,
+      "article_id": 36,
       "title": "SDCC 2026: New Details Revealed for Immersive Star Wars: The Experience Museum Exhibition",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -2208,7 +3063,7 @@
     },
     "articles": [
       {
-        "article_id": 35,
+        "article_id": 36,
         "title": "SDCC 2026: New Details Revealed for Immersive Star Wars: The Experience Museum Exhibition",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2228,7 +3083,59 @@
     ]
   },
   {
-    "topic_id": 41,
+    "topic_id": 56,
+    "topic_title": "5 Greatest Jedi Killed By Darth Vader",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-25",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 101,
+      "title": "5 Greatest Jedi Killed By Darth Vader",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/5-greatest-jedi-killed-by-darth-vader",
+      "url": "https://screenrant.com/5-greatest-jedi-killed-by-darth-vader",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/darth-vader-is-surrounded-by-droids-in-star-wars-marvel-comics-cover-art-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-25",
+      "summary": "Many of the greatest Jedi met the same tragic fate.",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 101,
+        "title": "5 Greatest Jedi Killed By Darth Vader",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/5-greatest-jedi-killed-by-darth-vader",
+        "url": "https://screenrant.com/5-greatest-jedi-killed-by-darth-vader",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/darth-vader-is-surrounded-by-droids-in-star-wars-marvel-comics-cover-art-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-25",
+        "summary": "Many of the greatest Jedi met the same tragic fate.",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 57,
     "topic_title": "SDCC 2026: All the Books and Comics News from the Lucasfilm Publishing Panel - Update",
     "topic_summary": "",
     "article_count": 1,
@@ -2241,7 +3148,7 @@
     "latest_published_at": "2026-07-24",
     "is_top": false,
     "representative_article": {
-      "article_id": 37,
+      "article_id": 38,
       "title": "SDCC 2026: All the Books and Comics News from the Lucasfilm Publishing Panel - Update",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -2260,7 +3167,7 @@
     },
     "articles": [
       {
-        "article_id": 37,
+        "article_id": 38,
         "title": "SDCC 2026: All the Books and Comics News from the Lucasfilm Publishing Panel - Update",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2280,7 +3187,7 @@
     ]
   },
   {
-    "topic_id": 42,
+    "topic_id": 58,
     "topic_title": "SDCC 2026: Luke Skywalker Trains Leia Organa in Star Wars: Twin Crossroads - Exclusive Interview",
     "topic_summary": "",
     "article_count": 1,
@@ -2293,7 +3200,7 @@
     "latest_published_at": "2026-07-24",
     "is_top": false,
     "representative_article": {
-      "article_id": 38,
+      "article_id": 39,
       "title": "SDCC 2026: Luke Skywalker Trains Leia Organa in Star Wars: Twin Crossroads - Exclusive Interview",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -2312,7 +3219,7 @@
     },
     "articles": [
       {
-        "article_id": 38,
+        "article_id": 39,
         "title": "SDCC 2026: Luke Skywalker Trains Leia Organa in Star Wars: Twin Crossroads - Exclusive Interview",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2332,7 +3239,163 @@
     ]
   },
   {
-    "topic_id": 43,
+    "topic_id": 59,
+    "topic_title": "Star Wars Confirms New 'Rogue One' Spin-Off Project",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-24",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 76,
+      "title": "Star Wars Confirms New 'Rogue One' Spin-Off Project",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/star-wars-confirms-new-rogue-one-spin-off-project",
+      "url": "https://collider.com/star-wars-confirms-new-rogue-one-spin-off-project",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/03/darth-vader-rogue-one.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-24",
+      "summary": "Star Wars is expanding the time of the Galactic Empire set around its more beloved stand alone film.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 76,
+        "title": "Star Wars Confirms New 'Rogue One' Spin-Off Project",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/star-wars-confirms-new-rogue-one-spin-off-project",
+        "url": "https://collider.com/star-wars-confirms-new-rogue-one-spin-off-project",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/03/darth-vader-rogue-one.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-24",
+        "summary": "Star Wars is expanding the time of the Galactic Empire set around its more beloved stand alone film.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 60,
+    "topic_title": "5 Years Later, ‘The Book of Boba Fett’ Is Officially Getting a Sequel Series",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-24",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 80,
+      "title": "5 Years Later, ‘The Book of Boba Fett’ Is Officially Getting a Sequel Series",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/the-book-of-boba-fett-sequel-comic-book-series",
+      "url": "https://collider.com/the-book-of-boba-fett-sequel-comic-book-series",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/the-book-of-boba-fett-temuera-morrison.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-24",
+      "summary": "This weekend at San Diego Comic-Con, Star Wars announced an official sequel series to The Book of Boba Fett coming this August.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 80,
+        "title": "5 Years Later, ‘The Book of Boba Fett’ Is Officially Getting a Sequel Series",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/the-book-of-boba-fett-sequel-comic-book-series",
+        "url": "https://collider.com/the-book-of-boba-fett-sequel-comic-book-series",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/the-book-of-boba-fett-temuera-morrison.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-24",
+        "summary": "This weekend at San Diego Comic-Con, Star Wars announced an official sequel series to The Book of Boba Fett coming this August.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 61,
+    "topic_title": "Disney Officially Confirms the End of 'The Mandalorian'",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-20",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 81,
+      "title": "Disney Officially Confirms the End of 'The Mandalorian'",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/the-mandalorian-ended-disney-star-wars-featurette",
+      "url": "https://collider.com/the-mandalorian-ended-disney-star-wars-featurette",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/star-wars_-the-mandalorian-grogu-1.jpg?w=1200&h=675&fit=crop",
+      "published_at": "2026-07-20",
+      "summary": "A new Star Wars featurette appears to confirm The Mandalorian ended in 2023, casting fresh doubt on Season 4.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 81,
+        "title": "Disney Officially Confirms the End of 'The Mandalorian'",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/the-mandalorian-ended-disney-star-wars-featurette",
+        "url": "https://collider.com/the-mandalorian-ended-disney-star-wars-featurette",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/star-wars_-the-mandalorian-grogu-1.jpg?w=1200&h=675&fit=crop",
+        "published_at": "2026-07-20",
+        "summary": "A new Star Wars featurette appears to confirm The Mandalorian ended in 2023, casting fresh doubt on Season 4.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 62,
     "topic_title": "'Starfighter' Writer Claims Film Captures a Feeling of Accessibility",
     "topic_summary": "",
     "article_count": 1,
@@ -2357,7 +3420,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/09/star-wars-starfighter-ryan-gosling.webp",
-      "article_id": 12,
+      "article_id": 13,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -2376,7 +3439,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2025/09/star-wars-starfighter-ryan-gosling.webp",
-        "article_id": 12,
+        "article_id": 13,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -2384,7 +3447,7 @@
     ]
   },
   {
-    "topic_id": 44,
+    "topic_id": 63,
     "topic_title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
     "topic_summary": "",
     "article_count": 1,
@@ -2397,7 +3460,7 @@
     "latest_published_at": "2026-07-16",
     "is_top": false,
     "representative_article": {
-      "article_id": 39,
+      "article_id": 40,
       "title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
       "title_ko": "",
       "source_name": "StarWars.com",
@@ -2416,7 +3479,7 @@
     },
     "articles": [
       {
-        "article_id": 39,
+        "article_id": 40,
         "title": "Clean Up Dirt, Grime, and Even Sand with New Star Wars Pack from PowerWash Simulator 2",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2436,7 +3499,59 @@
     ]
   },
   {
-    "topic_id": 45,
+    "topic_id": 64,
+    "topic_title": "10 Action Thriller Series That Blow Any Movie Out of the Water",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-16",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 77,
+      "title": "10 Action Thriller Series That Blow Any Movie Out of the Water",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/action-thriller-series-better-than-movies",
+      "url": "https://collider.com/action-thriller-series-better-than-movies",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/05/andor-03.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-16",
+      "summary": "Alias, The Night Agent, Andor, Reacher, 24, and more make up our list of action thriller series that are better than any movie.",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 77,
+        "title": "10 Action Thriller Series That Blow Any Movie Out of the Water",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/action-thriller-series-better-than-movies",
+        "url": "https://collider.com/action-thriller-series-better-than-movies",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/05/andor-03.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-16",
+        "summary": "Alias, The Night Agent, Andor, Reacher, 24, and more make up our list of action thriller series that are better than any movie.",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 65,
     "topic_title": "'The Mandalorian and Grogu' Available to Buy on Digital Next Week, on 4K Ultra HD and Blu-ray in August",
     "topic_summary": "",
     "article_count": 2,
@@ -2462,7 +3577,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
-      "article_id": 8,
+      "article_id": 9,
       "content_type": "news",
       "event_type": "release",
       "main_entity": "the_mandalorian_and_grogu"
@@ -2481,13 +3596,13 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/The-Mandalorian-and-Grogu-steelbook.jpeg",
-        "article_id": 8,
+        "article_id": 9,
         "content_type": "news",
         "event_type": "release",
         "main_entity": "the_mandalorian_and_grogu"
       },
       {
-        "article_id": 22,
+        "article_id": 23,
         "title": "Bring Star Wars: The Mandalorian and Grogu Home",
         "title_ko": "",
         "source_name": "StarWars.com",
@@ -2507,7 +3622,59 @@
     ]
   },
   {
-    "topic_id": 46,
+    "topic_id": 66,
+    "topic_title": "Over 30 Things I Learned From The Art Of Andor Book",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-13",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 88,
+      "title": "Over 30 Things I Learned From The Art Of Andor Book",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/over-30-things-i-learned-from-the-art-of-andor-book",
+      "url": "https://screenrant.com/over-30-things-i-learned-from-the-art-of-andor-book",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/06/diego-luna-as-cassian-andor-looking-over-his-shoulder-in-andor-season-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-13",
+      "summary": "A new book reveals new behind the scenes info about the show.",
+      "summary_ko": "",
+      "category": "도서",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 88,
+        "title": "Over 30 Things I Learned From The Art Of Andor Book",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/over-30-things-i-learned-from-the-art-of-andor-book",
+        "url": "https://screenrant.com/over-30-things-i-learned-from-the-art-of-andor-book",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/06/diego-luna-as-cassian-andor-looking-over-his-shoulder-in-andor-season-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-13",
+        "summary": "A new book reveals new behind the scenes info about the show.",
+        "summary_ko": "",
+        "category": "도서",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 67,
     "topic_title": "'Star Wars: Visions' and 'Maul: Shadow Lord' Among List of Nominees for the 2026 Emmys",
     "topic_summary": "",
     "article_count": 1,
@@ -2532,7 +3699,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Star-Wars-Visions-and-Maul-Emmys-Thumbnail-2.jpg",
-      "article_id": 9,
+      "article_id": 10,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -2551,7 +3718,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/07/Star-Wars-Visions-and-Maul-Emmys-Thumbnail-2.jpg",
-        "article_id": 9,
+        "article_id": 10,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -2559,51 +3726,51 @@
     ]
   },
   {
-    "topic_id": 47,
-    "topic_title": "Amy Adams Says 'Star Wars: Starfighter' Role Is Small",
+    "topic_id": 68,
+    "topic_title": "10 Years Later, Star Wars Doubles Down On Andor’s Darkness With New Rogue One Prequel",
     "topic_summary": "",
     "article_count": 1,
     "sources": [
-      "Star Wars News Net"
+      "ScreenRant"
     ],
     "source_count": 1,
     "label": "일반 보도",
     "importance": 140,
-    "latest_published_at": "2026-06-28",
+    "latest_published_at": "2026-07-07",
     "is_top": false,
     "representative_article": {
-      "title": "Amy Adams Says 'Star Wars: Starfighter' Role Is Small",
+      "article_id": 89,
+      "title": "10 Years Later, Star Wars Doubles Down On Andor’s Darkness With New Rogue One Prequel",
       "title_ko": "",
-      "url": "https://www.starwarsnewsnet.com/2026/06/amy-adams-claims-star-wars-starfighter-role-is-small-yet-important.html",
-      "source_url": "https://www.starwarsnewsnet.com/2026/06/amy-adams-claims-star-wars-starfighter-role-is-small-yet-important.html",
-      "source_name": "Star Wars News Net",
-      "published_at": "2026-06-28",
-      "summary": "Amy Adams can't go into specifics about her Star Wars: Starfighter role aside from confirming that it is a relatively small part.",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/saw-gerrera-andor-darkness-new-rogue-one-prequel-star-wars",
+      "url": "https://screenrant.com/saw-gerrera-andor-darkness-new-rogue-one-prequel-star-wars",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/andor-season-2poster-star-wars.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-07",
+      "summary": "Star Wars' newest Rogue One prequel is all kinds of brutal...",
       "summary_ko": "",
       "category": "기타",
-      "franchise": "starwars",
+      "franchise": "Star Wars",
       "label": "일반 보도",
-      "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Amy-Adams-Star-Wars.jpg",
-      "article_id": 13,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
     },
     "articles": [
       {
-        "title": "Amy Adams Says 'Star Wars: Starfighter' Role Is Small",
+        "article_id": 89,
+        "title": "10 Years Later, Star Wars Doubles Down On Andor’s Darkness With New Rogue One Prequel",
         "title_ko": "",
-        "url": "https://www.starwarsnewsnet.com/2026/06/amy-adams-claims-star-wars-starfighter-role-is-small-yet-important.html",
-        "source_url": "https://www.starwarsnewsnet.com/2026/06/amy-adams-claims-star-wars-starfighter-role-is-small-yet-important.html",
-        "source_name": "Star Wars News Net",
-        "published_at": "2026-06-28",
-        "summary": "Amy Adams can't go into specifics about her Star Wars: Starfighter role aside from confirming that it is a relatively small part.",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/saw-gerrera-andor-darkness-new-rogue-one-prequel-star-wars",
+        "url": "https://screenrant.com/saw-gerrera-andor-darkness-new-rogue-one-prequel-star-wars",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/andor-season-2poster-star-wars.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-07",
+        "summary": "Star Wars' newest Rogue One prequel is all kinds of brutal...",
         "summary_ko": "",
         "category": "기타",
-        "franchise": "starwars",
+        "franchise": "Star Wars",
         "label": "일반 보도",
-        "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/06/Amy-Adams-Star-Wars.jpg",
-        "article_id": 13,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -2611,7 +3778,163 @@
     ]
   },
   {
-    "topic_id": 48,
+    "topic_id": 69,
+    "topic_title": "Star Wars Should Reuse The Original Andor Story For A New Show",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-05",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 90,
+      "title": "Star Wars Should Reuse The Original Andor Story For A New Show",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-original-andor-story-new-show",
+      "url": "https://screenrant.com/star-wars-original-andor-story-new-show",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/2d1ff167-a1cd-4ee1-928a-3b9dd212c55d.jpeg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-05",
+      "summary": "Andor's original story has plenty of promise.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 90,
+        "title": "Star Wars Should Reuse The Original Andor Story For A New Show",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-original-andor-story-new-show",
+        "url": "https://screenrant.com/star-wars-original-andor-story-new-show",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/2d1ff167-a1cd-4ee1-928a-3b9dd212c55d.jpeg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-05",
+        "summary": "Andor's original story has plenty of promise.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 70,
+    "topic_title": "Before Season 2, Star Wars' Most Ambitious Disney+ Series Is the Perfect Weekend Binge",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-07-04",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 66,
+      "title": "Before Season 2, Star Wars' Most Ambitious Disney+ Series Is the Perfect Weekend Binge",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/star-wars-disney-plus-series-ahsoka-streaming-success-season-2-release-date",
+      "url": "https://collider.com/star-wars-disney-plus-series-ahsoka-streaming-success-season-2-release-date",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/04/star-wars-logo.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-07-04",
+      "summary": "The most ambitious Star Wars series to ever hit Disney Plus has become the perfect weekend binge before it returns for Season 2.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 66,
+        "title": "Before Season 2, Star Wars' Most Ambitious Disney+ Series Is the Perfect Weekend Binge",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/star-wars-disney-plus-series-ahsoka-streaming-success-season-2-release-date",
+        "url": "https://collider.com/star-wars-disney-plus-series-ahsoka-streaming-success-season-2-release-date",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/04/star-wars-logo.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-07-04",
+        "summary": "The most ambitious Star Wars series to ever hit Disney Plus has become the perfect weekend binge before it returns for Season 2.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 71,
+    "topic_title": "35 Years Later, Star Wars’ First Sequel Trilogy Is Still Worth Reading",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-06-27",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 67,
+      "title": "35 Years Later, Star Wars’ First Sequel Trilogy Is Still Worth Reading",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/star-wars-thrawn-trilogy-novels-35-years-later-still-worth-reading",
+      "url": "https://collider.com/star-wars-thrawn-trilogy-novels-35-years-later-still-worth-reading",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/04/mcdstwa_wd058-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-06-27",
+      "summary": "Before Palpatine returned, there was Thrawn.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 67,
+        "title": "35 Years Later, Star Wars’ First Sequel Trilogy Is Still Worth Reading",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/star-wars-thrawn-trilogy-novels-35-years-later-still-worth-reading",
+        "url": "https://collider.com/star-wars-thrawn-trilogy-novels-35-years-later-still-worth-reading",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/04/mcdstwa_wd058-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-06-27",
+        "summary": "Before Palpatine returned, there was Thrawn.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 72,
     "topic_title": "Sam Witwer Says 'Star Wars' Creators Need To Take Risks",
     "topic_summary": "",
     "article_count": 1,
@@ -2636,7 +3959,7 @@
       "franchise": "starwars",
       "label": "일반 보도",
       "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/05/Sam-Witwer-Darth-Maul.jpg",
-      "article_id": 10,
+      "article_id": 11,
       "content_type": "news",
       "event_type": "general",
       "main_entity": ""
@@ -2655,7 +3978,7 @@
         "franchise": "starwars",
         "label": "일반 보도",
         "image_url": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/05/Sam-Witwer-Darth-Maul.jpg",
-        "article_id": 10,
+        "article_id": 11,
         "content_type": "news",
         "event_type": "general",
         "main_entity": ""
@@ -2663,7 +3986,597 @@
     ]
   },
   {
-    "topic_id": 49,
+    "topic_id": 73,
+    "topic_title": "'Ahsoka' Star Confirms Season 2 Exit",
+    "topic_summary": "",
+    "article_count": 2,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 160,
+    "latest_published_at": "2026-06-22",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 69,
+      "title": "'Ahsoka' Star Confirms Season 2 Exit",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/ahsoka-season-2-claudia-black-mother-klothow-not-returning",
+      "url": "https://collider.com/ahsoka-season-2-claudia-black-mother-klothow-not-returning",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/ahsoka-season-1-rosario-dawson.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-06-15",
+      "summary": "Claudia Black reveals she will not return as Mother Klothow in Ahsoka Season 2, citing Disney pay issues tied to filming in London.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 68,
+        "title": "'Ahsoka' Season 2 Confirms Major OG Character Return",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/ahsoka-season-2-first-look-image-hayden-christensen-anakin-skywalker",
+        "url": "https://collider.com/ahsoka-season-2-first-look-image-hayden-christensen-anakin-skywalker",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/06/ahsoka-rosario-dawson.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-06-22",
+        "summary": "The first look at Ahsoka Season 2 shows Hayden Christensen returning to his signature role as Anakin Skywalker.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      },
+      {
+        "article_id": 69,
+        "title": "'Ahsoka' Star Confirms Season 2 Exit",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/ahsoka-season-2-claudia-black-mother-klothow-not-returning",
+        "url": "https://collider.com/ahsoka-season-2-claudia-black-mother-klothow-not-returning",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/ahsoka-season-1-rosario-dawson.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-06-15",
+        "summary": "Claudia Black reveals she will not return as Mother Klothow in Ahsoka Season 2, citing Disney pay issues tied to filming in London.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 74,
+    "topic_title": "Ewan McGregor's Most Divisive Sci-Fi Series Returns to Streaming Charts",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-06-01",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 73,
+      "title": "Ewan McGregor's Most Divisive Sci-Fi Series Returns to Streaming Charts",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-sci-fi-spin-off-series-streaming-success-disney-plus-june-2026",
+      "url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-sci-fi-spin-off-series-streaming-success-disney-plus-june-2026",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/1_3-jrehnlajn3eqr34izrmg-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-06-01",
+      "summary": "Obi-Wan Kenobi, the Star Wars series starring Ewan McGregor, has experienced a streaming resurgence, 2 years after its release.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 73,
+        "title": "Ewan McGregor's Most Divisive Sci-Fi Series Returns to Streaming Charts",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-sci-fi-spin-off-series-streaming-success-disney-plus-june-2026",
+        "url": "https://collider.com/obi-wan-kenobi-ewan-mcgregor-star-wars-sci-fi-spin-off-series-streaming-success-disney-plus-june-2026",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/1_3-jrehnlajn3eqr34izrmg-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-06-01",
+        "summary": "Obi-Wan Kenobi, the Star Wars series starring Ewan McGregor, has experienced a streaming resurgence, 2 years after its release.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 75,
+    "topic_title": "Star Wars Finally Fixes Its Biggest Disney+ Problem With Its Next Spin-off Series",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-05-27",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 70,
+      "title": "Star Wars Finally Fixes Its Biggest Disney+ Problem With Its Next Spin-off Series",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/star-wars-ahsoka-season-2-fixes-disney-problem-spin-off",
+      "url": "https://collider.com/star-wars-ahsoka-season-2-fixes-disney-problem-spin-off",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2024/01/ahsoka-collider-use-1.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-05-27",
+      "summary": "Judge this franchise not by the size of its budget.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 70,
+        "title": "Star Wars Finally Fixes Its Biggest Disney+ Problem With Its Next Spin-off Series",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/star-wars-ahsoka-season-2-fixes-disney-problem-spin-off",
+        "url": "https://collider.com/star-wars-ahsoka-season-2-fixes-disney-problem-spin-off",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2024/01/ahsoka-collider-use-1.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-05-27",
+        "summary": "Judge this franchise not by the size of its budget.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 76,
+    "topic_title": "Star Wars' Past 12 Months Restored My Faith In The Franchise",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-05-10",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 91,
+      "title": "Star Wars' Past 12 Months Restored My Faith In The Franchise",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-andor-maul-restore-faith",
+      "url": "https://screenrant.com/star-wars-andor-maul-restore-faith",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/maul-wielding-his-lightsaber-in-star-wars-maul-shadow-lord.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-05-10",
+      "summary": "Just in time for the franchise's upcoming release.",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 91,
+        "title": "Star Wars' Past 12 Months Restored My Faith In The Franchise",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-andor-maul-restore-faith",
+        "url": "https://screenrant.com/star-wars-andor-maul-restore-faith",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/maul-wielding-his-lightsaber-in-star-wars-maul-shadow-lord.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-05-10",
+        "summary": "Just in time for the franchise's upcoming release.",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 77,
+    "topic_title": "Star Wars' Rey Replacement Is Officially Rebuilding The Jedi Order",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-05-08",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 92,
+      "title": "Star Wars' Rey Replacement Is Officially Rebuilding The Jedi Order",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-lah-kara-rey-replacement-new-jedi-order",
+      "url": "https://screenrant.com/star-wars-lah-kara-rey-replacement-new-jedi-order",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/daisy-ridley-as-rey-in-the-rise-of-skywalker.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-05-08",
+      "summary": "Who will rebuild the Jedi Order first?",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 92,
+        "title": "Star Wars' Rey Replacement Is Officially Rebuilding The Jedi Order",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-lah-kara-rey-replacement-new-jedi-order",
+        "url": "https://screenrant.com/star-wars-lah-kara-rey-replacement-new-jedi-order",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/daisy-ridley-as-rey-in-the-rise-of-skywalker.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-05-08",
+        "summary": "Who will rebuild the Jedi Order first?",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 78,
+    "topic_title": "Star Wars’ $90M Hit Series Is Still An Elite Sci-Fi Weekend Binge",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "Collider"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-05-07",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 74,
+      "title": "Star Wars’ $90M Hit Series Is Still An Elite Sci-Fi Weekend Binge",
+      "title_ko": "",
+      "source_name": "Collider",
+      "source_url": "https://collider.com/star-wars-obi-wan-kenobi-series-weekend-binge-darth-vader-peak",
+      "url": "https://collider.com/star-wars-obi-wan-kenobi-series-weekend-binge-darth-vader-peak",
+      "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/obi-wan-kenobi-darth-vader-episode-3-feature-brightened.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-05-07",
+      "summary": "Sorry Rogue One hallway scene — the most ruthless Darth Vader scene is actually in ‘Kenobi’, and you can binge the series all in one weekend.",
+      "summary_ko": "",
+      "category": "드라마",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 74,
+        "title": "Star Wars’ $90M Hit Series Is Still An Elite Sci-Fi Weekend Binge",
+        "title_ko": "",
+        "source_name": "Collider",
+        "source_url": "https://collider.com/star-wars-obi-wan-kenobi-series-weekend-binge-darth-vader-peak",
+        "url": "https://collider.com/star-wars-obi-wan-kenobi-series-weekend-binge-darth-vader-peak",
+        "image_url": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/obi-wan-kenobi-darth-vader-episode-3-feature-brightened.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-05-07",
+        "summary": "Sorry Rogue One hallway scene — the most ruthless Darth Vader scene is actually in ‘Kenobi’, and you can binge the series all in one weekend.",
+        "summary_ko": "",
+        "category": "드라마",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 79,
+    "topic_title": "Star Wars Promised a New Movie Era. None of It Happened.",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-01-19",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 93,
+      "title": "Star Wars Promised a New Movie Era. None of It Happened.",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-movies-announced-celebration-2023-never-happened",
+      "url": "https://screenrant.com/star-wars-movies-announced-celebration-2023-never-happened",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/01/star-wars-celebration-2023-movie-directors.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-01-19",
+      "summary": "Star Wars Celebration 2023 unveiled three major films. Years later, none survived intact. What went wrong behind the scenes?",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 93,
+        "title": "Star Wars Promised a New Movie Era. None of It Happened.",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-movies-announced-celebration-2023-never-happened",
+        "url": "https://screenrant.com/star-wars-movies-announced-celebration-2023-never-happened",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/01/star-wars-celebration-2023-movie-directors.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-01-19",
+        "summary": "Star Wars Celebration 2023 unveiled three major films. Years later, none survived intact. What went wrong behind the scenes?",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 80,
+    "topic_title": "Daisy Ridley's Rey Movie Doesn't Look To Be A Priority For Star Wars Anymore",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2026-01-16",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 94,
+      "title": "Daisy Ridley's Rey Movie Doesn't Look To Be A Priority For Star Wars Anymore",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-rey-movie-daisy-ridley-not-priority",
+      "url": "https://screenrant.com/star-wars-rey-movie-daisy-ridley-not-priority",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/12/daisy-ridley-as-rey-feeling-a-lot-of-emotions-in-star-wars-rise-of-the-skywalker.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2026-01-16",
+      "summary": "Will it even happen?",
+      "summary_ko": "",
+      "category": "영화",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 94,
+        "title": "Daisy Ridley's Rey Movie Doesn't Look To Be A Priority For Star Wars Anymore",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-rey-movie-daisy-ridley-not-priority",
+        "url": "https://screenrant.com/star-wars-rey-movie-daisy-ridley-not-priority",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/12/daisy-ridley-as-rey-feeling-a-lot-of-emotions-in-star-wars-rise-of-the-skywalker.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2026-01-16",
+        "summary": "Will it even happen?",
+        "summary_ko": "",
+        "category": "영화",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 81,
+    "topic_title": "Rey's Star Wars Return Just Quietly Suffered Another Setback",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2025-11-04",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 95,
+      "title": "Rey's Star Wars Return Just Quietly Suffered Another Setback",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-rey-return-setback-daisy-ridley-filming-schedule",
+      "url": "https://screenrant.com/star-wars-rey-return-setback-daisy-ridley-filming-schedule",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/11/daisy-ridley-as-rey-with-injuries-in-star-wars-the-rise-of-skywalker.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2025-11-04",
+      "summary": "Will it ever happen?",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 95,
+        "title": "Rey's Star Wars Return Just Quietly Suffered Another Setback",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-rey-return-setback-daisy-ridley-filming-schedule",
+        "url": "https://screenrant.com/star-wars-rey-return-setback-daisy-ridley-filming-schedule",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/11/daisy-ridley-as-rey-with-injuries-in-star-wars-the-rise-of-skywalker.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2025-11-04",
+        "summary": "Will it ever happen?",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 82,
+    "topic_title": "The Ultimate Star Wars Viewing Order: How to Watch the Galaxy Far, Far Away",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2025-10-10",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 82,
+      "title": "The Ultimate Star Wars Viewing Order: How to Watch the Galaxy Far, Far Away",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-movies-and-series-viewing-guide",
+      "url": "https://screenrant.com/star-wars-movies-and-series-viewing-guide",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/10/star-wars-watch-order3.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2025-10-10",
+      "summary": "Discover the ultimate viewing order for Star Wars...",
+      "summary_ko": "",
+      "category": "기타",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 82,
+        "title": "The Ultimate Star Wars Viewing Order: How to Watch the Galaxy Far, Far Away",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-movies-and-series-viewing-guide",
+        "url": "https://screenrant.com/star-wars-movies-and-series-viewing-guide",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/10/star-wars-watch-order3.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2025-10-10",
+        "summary": "Discover the ultimate viewing order for Star Wars...",
+        "summary_ko": "",
+        "category": "기타",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 83,
+    "topic_title": "Rey's New Jedi Order: 6 Shocking Theories That Will Change Star Wars Forever",
+    "topic_summary": "",
+    "article_count": 1,
+    "sources": [
+      "ScreenRant"
+    ],
+    "source_count": 1,
+    "label": "일반 보도",
+    "importance": 140,
+    "latest_published_at": "2025-09-18",
+    "is_top": false,
+    "representative_article": {
+      "article_id": 96,
+      "title": "Rey's New Jedi Order: 6 Shocking Theories That Will Change Star Wars Forever",
+      "title_ko": "",
+      "source_name": "ScreenRant",
+      "source_url": "https://screenrant.com/star-wars-new-jedi-order-theories",
+      "url": "https://screenrant.com/star-wars-new-jedi-order-theories",
+      "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/09/daisy-ridley-as-rey-in-star-wars-the-rise-of-skywalker.jpg?w=1600&h=900&fit=crop",
+      "published_at": "2025-09-18",
+      "summary": "A bold new era dawns for the Jedi, but what secrets will Rey uncover?",
+      "summary_ko": "",
+      "category": "게임",
+      "franchise": "Star Wars",
+      "label": "일반 보도",
+      "content_type": "news",
+      "event_type": "general",
+      "main_entity": ""
+    },
+    "articles": [
+      {
+        "article_id": 96,
+        "title": "Rey's New Jedi Order: 6 Shocking Theories That Will Change Star Wars Forever",
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": "https://screenrant.com/star-wars-new-jedi-order-theories",
+        "url": "https://screenrant.com/star-wars-new-jedi-order-theories",
+        "image_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/09/daisy-ridley-as-rey-in-star-wars-the-rise-of-skywalker.jpg?w=1600&h=900&fit=crop",
+        "published_at": "2025-09-18",
+        "summary": "A bold new era dawns for the Jedi, but what secrets will Rey uncover?",
+        "summary_ko": "",
+        "category": "게임",
+        "franchise": "Star Wars",
+        "label": "일반 보도",
+        "content_type": "news",
+        "event_type": "general",
+        "main_entity": ""
+      }
+    ]
+  },
+  {
+    "topic_id": 84,
     "topic_title": "Marvel Movies 2025 Release Dates",
     "topic_summary": "",
     "article_count": 2,
@@ -2676,7 +4589,7 @@
     "latest_published_at": "2025-01-28",
     "is_top": false,
     "representative_article": {
-      "article_id": 41,
+      "article_id": 42,
       "title": "Marvel Movies 2025 Release Dates",
       "title_ko": "",
       "source_name": "The Direct",
@@ -2695,7 +4608,7 @@
     },
     "articles": [
       {
-        "article_id": 41,
+        "article_id": 42,
         "title": "Marvel Movies 2025 Release Dates",
         "title_ko": "",
         "source_name": "The Direct",
@@ -2713,7 +4626,7 @@
         "main_entity": ""
       },
       {
-        "article_id": 42,
+        "article_id": 43,
         "title": "Marvel TV Shows 2025 Release Dates",
         "title_ko": "",
         "source_name": "The Direct",
@@ -2733,7 +4646,7 @@
     ]
   },
   {
-    "topic_id": 50,
+    "topic_id": 85,
     "topic_title": "Marvel Movie Watch Order",
     "topic_summary": "",
     "article_count": 1,
@@ -2746,7 +4659,7 @@
     "latest_published_at": "2023-02-28",
     "is_top": false,
     "representative_article": {
-      "article_id": 43,
+      "article_id": 44,
       "title": "Marvel Movie Watch Order",
       "title_ko": "",
       "source_name": "The Direct",
@@ -2765,7 +4678,7 @@
     },
     "articles": [
       {
-        "article_id": 43,
+        "article_id": 44,
         "title": "Marvel Movie Watch Order",
         "title_ko": "",
         "source_name": "The Direct",

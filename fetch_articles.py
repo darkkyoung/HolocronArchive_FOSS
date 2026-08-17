@@ -19,8 +19,14 @@ SWNN_HOME_URL = "https://www.starwarsnewsnet.com/"
 SWNN_PAGE_URL = "https://www.starwarsnewsnet.com/page/{page_number}/"
 THEDIRECT_STARWARS_URL = "https://thedirect.com/StarWars/"
 THEDIRECT_STARWARS_PAGE_URL = "https://thedirect.com/StarWars/?page={page_number}"
-COLLIDER_LUCASFILM_URL = "https://collider.com/tag/lucasfilm/"
-COLLIDER_LUCASFILM_PAGE_URL = "https://collider.com/tag/lucasfilm/{page_number}/"
+COLLIDER_STARWARS_URL = "https://collider.com/tag/star-wars/"
+COLLIDER_STARWARS_PAGE_URL = "https://collider.com/tag/star-wars/{page_number}/"
+SCREENRANT_STARWARS_URL = "https://screenrant.com/tag/star-wars/"
+SCREENRANT_STARWARS_PAGE_URL = "https://screenrant.com/tag/star-wars/{page_number}/"
+SCREENRANT_SEARCH_URL = "https://screenrant.com/search/?q=star+wars"
+SCREENRANT_SEED_URLS = [
+    "https://screenrant.com/ahsoka-season-2-trailer-release-date/",
+]
 
 AUTO_EXCLUDED_FILE = os.path.join(DATA_DIR, "auto_excluded_articles.json")
 ARTICLE_OVERRIDES_FILE = os.path.join(DATA_DIR, "article_overrides.json")
@@ -355,6 +361,45 @@ def is_collider_starwars_related(title, summary=""):
 
     return any(keyword in text for keyword in starwars_keywords)
 
+def is_screenrant_starwars_related(title, summary=""):
+    """
+    ScreenRant에는 Star Wars 외 영화/TV 글이 섞일 수 있으므로,
+    Star Wars 관련 키워드가 있는 기사만 통과시킨다.
+    """
+    text = f"{title} {summary}".lower()
+
+    starwars_keywords = [
+        "star wars",
+        "lucasfilm",
+        "mandalorian",
+        "grogu",
+        "ahsoka",
+        "andor",
+        "jedi",
+        "sith",
+        "skywalker",
+        "rey",
+        "finn",
+        "poe",
+        "kylo",
+        "ben solo",
+        "darth",
+        "clone wars",
+        "bad batch",
+        "obi-wan",
+        "kenobi",
+        "boba fett",
+        "maul",
+        "palpatine",
+        "vader",
+        "yoda",
+        "kathleen kennedy",
+        "daisy ridley",
+        "ryan gosling",
+    ]
+
+    return any(keyword in text for keyword in starwars_keywords)
+
 def normalize_url(url):
     """
     중복 제거용 URL 정규화 함수.
@@ -477,7 +522,21 @@ def add_auto_excluded_article(
         "category": category or guess_category(title),
         "franchise": franchise,
         "label": "자동 제외",
-        "exclude_reason": reason
+        "exclude_reason": reason,
+        "underrated": "essay_column",
+        "overlooked": "essay_column",
+        "forgotten": "essay_column",
+        "of the decade": "essay_column",
+        "still holds up": "essay_column",
+        "aged perfectly": "essay_column",
+        "aged poorly": "essay_column",
+        "rewatch": "essay_column",
+        "perfect binge": "essay_column",
+        "best weekend binge": "essay_column",
+        "perfect thriller": "essay_column",
+        "ranked from worst to best": "ranking_list",
+        "from worst to best": "ranking_list",
+        "every star wars": "list_article",
     })
 
 
@@ -1396,7 +1455,10 @@ def fetch_collider_article_metadata(url):
             url,
             timeout=10,
             headers={
-                "User-Agent": "Mozilla/5.0"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Connection": "keep-alive",
             }
         )
         response.raise_for_status()
@@ -1462,12 +1524,14 @@ def fetch_collider_article_metadata(url):
 
 def get_collider_article_candidates_from_page(page_number=1):
     """
-    Collider Lucasfilm 태그 페이지에서 기사 URL과 제목 후보를 수집한다.
+    Collider Star Wars 태그 페이지에서 기사 URL 후보를 수집한다.
+    목록 페이지의 텍스트/이미지 alt는 신뢰하지 않고,
+    실제 제목은 개별 기사 페이지의 og:title에서 다시 가져온다.
     """
     if page_number == 1:
-        page_url = COLLIDER_LUCASFILM_URL
+        page_url = COLLIDER_STARWARS_URL
     else:
-        page_url = COLLIDER_LUCASFILM_PAGE_URL.format(page_number=page_number)
+        page_url = COLLIDER_STARWARS_PAGE_URL.format(page_number=page_number)
 
     print(f"Collider 후보 페이지 수집 중: {page_url}")
 
@@ -1476,7 +1540,10 @@ def get_collider_article_candidates_from_page(page_number=1):
             page_url,
             timeout=10,
             headers={
-                "User-Agent": "Mozilla/5.0"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Connection": "keep-alive",
             }
         )
         response.raise_for_status()
@@ -1505,26 +1572,12 @@ def get_collider_article_candidates_from_page(page_number=1):
 
         seen_urls.add(href)
 
-        title_candidate = clean_collider_title(
-            a_tag.get_text(" ", strip=True)
-        )
-
-        if not title_candidate:
-            img_tag = a_tag.find("img")
-            if img_tag and img_tag.get("alt"):
-                title_candidate = clean_collider_title(
-                    img_tag.get("alt", "")
-                )
-
-        if len(title_candidate) < 10:
-            continue
-
         candidates.append({
             "url": href,
-            "title_candidate": title_candidate
+            "title_candidate": ""
         })
 
-    print(f"Collider page/{page_number} 후보 수: {len(candidates)}")
+    print(f"Collider page/{page_number} 후보 URL 수: {len(candidates)}")
 
     return candidates
 
@@ -1535,10 +1588,11 @@ def fetch_collider_article_from_page(url, title_candidate=""):
     """
     metadata = fetch_collider_article_metadata(url)
 
-    title = clean_collider_title(title_candidate)
+    title = metadata.get("title", "")
 
     if not title:
-        title = metadata.get("title", "")
+        print(f"Collider 제목 메타데이터 없음 제외: {url}")
+        return None
 
     if not title:
         return None
@@ -1595,7 +1649,7 @@ def fetch_collider_article_from_page(url, title_candidate=""):
     }
 
 
-def fetch_collider_articles_incremental(existing_urls, limit=20, max_pages=2):
+def fetch_collider_articles_incremental(existing_urls, limit=20, max_pages=1):
     """
     Collider 빠른 갱신.
     기존 URL은 건너뛰고, 새 후보만 상세 수집한다.
@@ -1679,7 +1733,7 @@ def fetch_collider_articles_incremental(existing_urls, limit=20, max_pages=2):
     return new_articles
 
 
-def fetch_collider_articles(limit=20, max_pages=2):
+def fetch_collider_articles(limit=20, max_pages=1):
     """
     Collider 전체 수집.
     fetched_articles.json을 새로 만들 때 사용한다.
@@ -1736,6 +1790,430 @@ def fetch_collider_articles(limit=20, max_pages=2):
             break
 
     print(f"Collider 수집 기사 수: {len(articles)}")
+
+    return articles
+
+def parse_screenrant_date(date_text):
+    """
+    ScreenRant 날짜 문자열을 YYYY-MM-DD로 변환한다.
+    """
+    if not date_text:
+        return ""
+
+    date_text = date_text.strip()
+
+    if "AGO" in date_text.upper():
+        return datetime.now().strftime("%Y-%m-%d")
+
+    for date_format in ["%B %d, %Y", "%b %d, %Y"]:
+        try:
+            dt = datetime.strptime(date_text, date_format)
+            return dt.strftime("%Y-%m-%d")
+        except Exception:
+            pass
+
+    return ""
+
+
+def clean_screenrant_title(title):
+    """
+    ScreenRant 제목에서 사이트명/불필요한 공백을 제거한다.
+    """
+    if not title:
+        return ""
+
+    title = re.sub(r"\s+", " ", title).strip()
+    title = title.replace(" - ScreenRant", "").strip()
+    title = title.replace(" | ScreenRant", "").strip()
+
+    return title
+
+
+def is_screenrant_article_url(url):
+    """
+    ScreenRant 실제 기사 URL인지 검사한다.
+    tag/category/author/static 페이지는 제외한다.
+    """
+    if not url:
+        return False
+
+    if url.startswith("/"):
+        url = "https://screenrant.com" + url
+
+    if not url.startswith("https://screenrant.com/"):
+        return False
+
+    excluded_parts = [
+        "/tag/",
+        "/tags/",
+        "/category/",
+        "/author/",
+        "/page/",
+        "/search/",
+        "/news/",
+        "/reviews/",
+        "/features/",
+        "/about",
+        "/contact",
+        "/privacy",
+        "/sitemap",
+        "#",
+    ]
+
+    if any(part in url for part in excluded_parts):
+        return False
+
+    path = url.replace("https://screenrant.com/", "").strip("/")
+
+    if not path:
+        return False
+
+    if "/" in path:
+        return False
+
+    if len(path) < 8:
+        return False
+
+    return True
+
+
+def fetch_screenrant_article_metadata(url):
+    """
+    ScreenRant 개별 기사 페이지에서 제목/이미지/요약/날짜를 수집한다.
+    """
+    metadata = {
+        "title": "",
+        "published_at": "",
+        "image_url": "",
+        "summary": "",
+    }
+
+    if not url:
+        return metadata
+
+    try:
+        response = requests.get(
+            url,
+            timeout=10,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Connection": "keep-alive",
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"ScreenRant 기사 페이지 수집 실패: {url} / {e}")
+        return metadata
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    og_title = soup.find("meta", property="og:title")
+    if og_title and og_title.get("content"):
+        metadata["title"] = clean_screenrant_title(
+            og_title.get("content").strip()
+        )
+
+    if not metadata["title"]:
+        h1 = soup.find("h1")
+        if h1:
+            metadata["title"] = clean_screenrant_title(
+                h1.get_text(" ", strip=True)
+            )
+
+    og_description = soup.find("meta", property="og:description")
+    if og_description and og_description.get("content"):
+        metadata["summary"] = og_description.get("content").strip()
+
+    og_image = soup.find("meta", property="og:image")
+    if og_image and og_image.get("content"):
+        metadata["image_url"] = og_image.get("content").strip()
+
+    if not metadata["image_url"]:
+        twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
+        if twitter_image and twitter_image.get("content"):
+            metadata["image_url"] = twitter_image.get("content").strip()
+
+    published_meta = soup.find("meta", property="article:published_time")
+    if published_meta and published_meta.get("content"):
+        metadata["published_at"] = published_meta.get("content")[:10]
+
+    if not metadata["published_at"]:
+        time_tag = soup.find("time")
+        if time_tag:
+            if time_tag.get("datetime"):
+                metadata["published_at"] = time_tag.get("datetime")[:10]
+            else:
+                metadata["published_at"] = parse_screenrant_date(
+                    time_tag.get_text(" ", strip=True)
+                )
+
+    if not metadata["published_at"]:
+        page_text = soup.get_text(" ", strip=True)
+
+        date_match = re.search(
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}",
+            page_text
+        )
+
+        if date_match:
+            metadata["published_at"] = parse_screenrant_date(date_match.group(0))
+
+    return metadata
+
+
+def get_screenrant_article_candidates_from_page(page_number=1):
+    """
+    ScreenRant Star Wars 태그/검색 페이지에서 기사 URL 후보를 수집한다.
+    목록 페이지의 텍스트/이미지 alt는 신뢰하지 않고,
+    실제 제목은 개별 기사 페이지에서 다시 가져온다.
+    """
+    if page_number == 1:
+        page_urls = [
+            SCREENRANT_STARWARS_URL,
+            SCREENRANT_SEARCH_URL,
+        ]
+    else:
+        page_urls = [
+            SCREENRANT_STARWARS_PAGE_URL.format(page_number=page_number)
+        ]
+
+    candidates = []
+    seen_urls = set()
+
+    for page_url in page_urls:
+        print(f"ScreenRant 후보 페이지 수집 중: {page_url}")
+
+        try:
+            response = requests.get(
+                page_url,
+                timeout=10,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                    "Accept-Language": "en-US,en;q=0.9",
+                    "Connection": "keep-alive",
+                }
+            )
+            response.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            print(f"ScreenRant 페이지 수집 실패: {page_url} / {e}")
+            continue
+
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        page_candidate_count = 0
+
+        for a_tag in soup.find_all("a", href=True):
+            href = a_tag.get("href", "").strip()
+
+            if href.startswith("/"):
+                href = "https://screenrant.com" + href
+
+            href = normalize_url(href)
+
+            if not is_screenrant_article_url(href):
+                continue
+
+            if href in seen_urls:
+                continue
+
+            seen_urls.add(href)
+
+            candidates.append({
+                "url": href,
+                "title_candidate": ""
+            })
+
+            page_candidate_count += 1
+
+        print(f"ScreenRant 후보 URL 수: {page_candidate_count} / {page_url}")
+
+    if page_number == 1:
+        seed_added_count = 0
+
+        for seed_url in SCREENRANT_SEED_URLS:
+            normalized_seed_url = normalize_url(seed_url)
+
+            if not normalized_seed_url:
+                continue
+
+            if normalized_seed_url in seen_urls:
+                continue
+
+            if not is_screenrant_article_url(normalized_seed_url):
+                continue
+
+            seen_urls.add(normalized_seed_url)
+
+            candidates.append({
+                "url": normalized_seed_url,
+                "title_candidate": ""
+            })
+
+            seed_added_count += 1
+
+        print(f"ScreenRant 직접 후보 URL 추가 수: {seed_added_count}")
+
+    print(f"ScreenRant page/{page_number} 전체 후보 URL 수: {len(candidates)}")
+
+    return candidates
+
+
+def fetch_screenrant_article_from_page(url, title_candidate=""):
+    """
+    ScreenRant 개별 기사 페이지에서 기사 정보를 수집한다.
+    """
+    metadata = fetch_screenrant_article_metadata(url)
+
+    title = metadata.get("title", "")
+
+    if not title:
+        print(f"ScreenRant 제목 메타데이터 없음 제외: {url}")
+        return None
+
+    summary = metadata.get("summary", "")
+
+    if not is_screenrant_starwars_related(title, summary):
+        print(f"ScreenRant Star Wars 관련성 부족 제외: {title}")
+
+        add_auto_excluded_article(
+            title=title,
+            url=url,
+            source_name="ScreenRant",
+            published_at=metadata.get("published_at", ""),
+            summary=summary,
+            image_url=metadata.get("image_url", ""),
+            category=guess_category(title),
+            franchise="Star Wars"
+        )
+
+        return None
+
+    if is_excluded_article(title, "ScreenRant") and not is_restored_auto_excluded_article(url):
+        print(f"ScreenRant 제외됨: {title}")
+
+        add_auto_excluded_article(
+            title=title,
+            url=url,
+            source_name="ScreenRant",
+            published_at=metadata.get("published_at", ""),
+            summary=summary,
+            image_url=metadata.get("image_url", ""),
+            category=guess_category(title),
+            franchise="Star Wars"
+        )
+
+        return None
+
+    return {
+        "article_id": 0,
+        "title": title,
+        "title_ko": "",
+        "source_name": "ScreenRant",
+        "source_url": url,
+        "url": url,
+        "image_url": metadata.get("image_url", ""),
+        "published_at": metadata.get("published_at", ""),
+        "summary": summary,
+        "summary_ko": "",
+        "category": guess_category(title),
+        "franchise": "Star Wars",
+        "label": guess_label(title, "ScreenRant")
+    }
+
+
+def fetch_screenrant_articles_incremental(existing_urls, limit=20, max_pages=1):
+    """
+    ScreenRant 빠른 갱신.
+    기존 URL은 건너뛰고, 새 후보만 상세 수집한다.
+    """
+    print("ScreenRant 빠른 갱신 시작")
+
+    new_articles = []
+    seen_candidate_urls = set()
+
+    for page_number in range(1, max_pages + 1):
+        candidates = get_screenrant_article_candidates_from_page(page_number)
+
+        page_new_count = 0
+        page_existing_count = 0
+
+        for candidate in candidates:
+            url = normalize_url(candidate.get("url", ""))
+
+            if not url:
+                continue
+
+            if url in existing_urls:
+                page_existing_count += 1
+                continue
+
+            if url in seen_candidate_urls:
+                continue
+
+            seen_candidate_urls.add(url)
+
+            article = fetch_screenrant_article_from_page(url=url)
+
+            if article:
+                new_articles.append(article)
+                page_new_count += 1
+
+            if len(new_articles) >= limit:
+                break
+
+        print(
+            f"ScreenRant page/{page_number} 신규 {page_new_count}개, "
+            f"기존 {page_existing_count}개"
+        )
+
+        if len(new_articles) >= limit:
+            break
+
+        if page_new_count == 0 and page_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
+            print("ScreenRant 기존 기사 중심으로 판단되어 이전 페이지 탐색 중단")
+            break
+
+    print(f"ScreenRant 빠른 갱신 신규 기사 수: {len(new_articles)}")
+
+    return new_articles
+
+
+def fetch_screenrant_articles(limit=20, max_pages=1):
+    """
+    ScreenRant 전체 수집.
+    fetched_articles.json을 새로 만들 때 사용한다.
+    """
+    print("ScreenRant 기사 수집 시작")
+
+    articles = []
+    seen_urls = set()
+
+    for page_number in range(1, max_pages + 1):
+        candidates = get_screenrant_article_candidates_from_page(page_number)
+
+        for candidate in candidates:
+            if len(articles) >= limit:
+                break
+
+            url = normalize_url(candidate.get("url", ""))
+
+            if not url or url in seen_urls:
+                continue
+
+            seen_urls.add(url)
+
+            article = fetch_screenrant_article_from_page(url=url)
+
+            if article:
+                articles.append(article)
+
+        if len(articles) >= limit:
+            break
+
+    print(f"ScreenRant 수집 기사 수: {len(articles)}")
 
     return articles
 
@@ -2245,7 +2723,19 @@ def incremental_update():
     new_collider_articles = fetch_collider_articles_incremental(
         existing_urls=existing_urls,
         limit=20,
-        max_pages=2
+        max_pages=1
+    )
+
+    # Collider에서 새로 추가된 URL도 ScreenRant 중복 판단에 반영
+    for article in new_collider_articles:
+        url = normalize_url(article.get("source_url") or article.get("url"))
+        if url:
+            existing_urls.add(url)
+
+    new_screenrant_articles = fetch_screenrant_articles_incremental(
+        existing_urls=existing_urls,
+        limit=20,
+        max_pages=1
     )
 
     all_articles = (
@@ -2254,6 +2744,7 @@ def incremental_update():
         + new_official_articles
         + new_thedirect_articles
         + new_collider_articles
+        + new_screenrant_articles
     )
 
     all_articles = deduplicate_articles(all_articles)
@@ -2270,6 +2761,7 @@ def incremental_update():
     print(f"신규 StarWars.com 기사 수: {len(new_official_articles)}")
     print(f"신규 The Direct 기사 수: {len(new_thedirect_articles)}")
     print(f"신규 Collider 기사 수: {len(new_collider_articles)}")
+    print(f"신규 ScreenRant 기사 수: {len(new_screenrant_articles)}")
     print(f"갱신 후 전체 기사 수: {len(all_articles)}")
 
     save_articles(all_articles)
@@ -2299,10 +2791,14 @@ def main():
     print(f"The Direct 수집 기사 수: {len(thedirect_articles)}")
 
     print("Collider 기사 수집 시작")
-    collider_articles = fetch_collider_articles(limit=20, max_pages=2)
+    collider_articles = fetch_collider_articles(limit=20, max_pages=1)
     print(f"Collider 수집 기사 수: {len(collider_articles)}")
 
-    for article in swnn_rss_articles + swnn_page_articles + official_articles + thedirect_articles + collider_articles:
+    print("ScreenRant 기사 수집 시작")
+    screenrant_articles = fetch_screenrant_articles(limit=20, max_pages=1)
+    print(f"ScreenRant 수집 기사 수: {len(screenrant_articles)}")
+
+    for article in swnn_rss_articles + swnn_page_articles + official_articles + thedirect_articles + collider_articles + screenrant_articles:
         url = article.get("source_url") or article.get("url")
         normalized_url = normalize_url(url)
 
