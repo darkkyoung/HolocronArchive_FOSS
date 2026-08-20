@@ -4,6 +4,7 @@ import re
 import sys
 from datetime import datetime
 from email.utils import parsedate_to_datetime
+from xml.etree import ElementTree as ET
 
 import feedparser
 import requests
@@ -24,6 +25,8 @@ COLLIDER_STARWARS_PAGE_URL = "https://collider.com/tag/star-wars/{page_number}/"
 SCREENRANT_STARWARS_URL = "https://screenrant.com/tag/star-wars/"
 SCREENRANT_STARWARS_PAGE_URL = "https://screenrant.com/tag/star-wars/{page_number}/"
 SCREENRANT_SEARCH_URL = "https://screenrant.com/search/?q=star+wars"
+SCREENRANT_GOOGLE_NEWS_SITEMAP_URL = "https://screenrant.com/post_google_news.xml"
+
 SCREENRANT_SEED_URLS = [
     "https://screenrant.com/ahsoka-season-2-trailer-release-date/",
 ]
@@ -330,75 +333,19 @@ def is_excluded_article(title, source_name=""):
     """
     return bool(get_exclusion_reason(title))
 
-def is_collider_starwars_related(title, summary=""):
+def is_collider_starwars_related(title, summary="", url=""):
     """
-    Collider의 Lucasfilm 태그에는 Star Wars 외 글도 섞일 수 있으므로,
-    Star Wars 관련 키워드가 있는 기사만 통과시킨다.
+    Collider는 종합 엔터테인먼트 사이트이므로,
+    Star Wars 명시 문구가 있는 기사만 통과시킨다.
     """
-    text = f"{title} {summary}".lower()
+    return contains_explicit_star_wars_keyword(title, summary, url)
 
-    starwars_keywords = [
-        "star wars",
-        "lucasfilm",
-        "mandalorian",
-        "grogu",
-        "ahsoka",
-        "andor",
-        "jedi",
-        "sith",
-        "skywalker",
-        "rey",
-        "finn",
-        "poe",
-        "kylo",
-        "ben solo",
-        "darth",
-        "taika waititi",
-        "shawn levy",
-        "daisy ridley",
-        "kathleen kennedy",
-    ]
-
-    return any(keyword in text for keyword in starwars_keywords)
-
-def is_screenrant_starwars_related(title, summary=""):
+def is_screenrant_starwars_related(title, summary="", url=""):
     """
-    ScreenRant에는 Star Wars 외 영화/TV 글이 섞일 수 있으므로,
-    Star Wars 관련 키워드가 있는 기사만 통과시킨다.
+    ScreenRant는 종합 엔터테인먼트 사이트이므로,
+    Star Wars 명시 문구가 있는 기사만 통과시킨다.
     """
-    text = f"{title} {summary}".lower()
-
-    starwars_keywords = [
-        "star wars",
-        "lucasfilm",
-        "mandalorian",
-        "grogu",
-        "ahsoka",
-        "andor",
-        "jedi",
-        "sith",
-        "skywalker",
-        "rey",
-        "finn",
-        "poe",
-        "kylo",
-        "ben solo",
-        "darth",
-        "clone wars",
-        "bad batch",
-        "obi-wan",
-        "kenobi",
-        "boba fett",
-        "maul",
-        "palpatine",
-        "vader",
-        "yoda",
-        "kathleen kennedy",
-        "daisy ridley",
-        "ryan gosling",
-    ]
-
-    return any(keyword in text for keyword in starwars_keywords)
+    return contains_explicit_star_wars_keyword(title, summary, url)
 
 def normalize_url(url):
     """
@@ -421,6 +368,25 @@ def normalize_url(url):
     url = url.rstrip("/")
 
     return url
+
+
+def contains_explicit_star_wars_keyword(title, summary="", url=""):
+    """
+    Collider / ScreenRant처럼 종합 엔터테인먼트 사이트에서는
+    Star Wars라는 명시 문구가 있는 기사만 통과시킨다.
+
+    배우명, 캐릭터명, 감독명만으로 판단하면
+    Ryan Reynolds의 Rey처럼 오탐이 발생할 수 있다.
+    """
+    text = f"{title} {summary} {url}".lower()
+
+    explicit_keywords = [
+        "star wars",
+        "star-wars",
+        "starwars",
+    ]
+
+    return any(keyword in text for keyword in explicit_keywords)
 
 
 def load_article_overrides_for_fetch():
@@ -1600,7 +1566,7 @@ def fetch_collider_article_from_page(url, title_candidate=""):
     summary = metadata.get("summary", "")
 
     # Collider는 Lucasfilm 태그 기반이므로 Star Wars 관련성 필터를 반드시 적용
-    if not is_collider_starwars_related(title, summary):
+    if not is_collider_starwars_related(title, summary, url):
         print(f"Collider Star Wars 관련성 부족 제외: {title}")
 
         add_auto_excluded_article(
@@ -1963,24 +1929,161 @@ def fetch_screenrant_article_metadata(url):
     return metadata
 
 
+def get_screenrant_candidates_from_google_news_sitemap(limit=40):
+    """
+    ScreenRant Google News sitemap에서 Star Wars 관련 최신 기사 후보를 수집한다.
+    검색 페이지 HTML보다 최신 기사 후보를 안정적으로 잡기 위한 보조 수집 함수.
+    """
+    print(f"ScreenRant Google News sitemap 수집 중: {SCREENRANT_GOOGLE_NEWS_SITEMAP_URL}")
+
+    candidates = []
+
+    try:
+        response = requests.get(
+            SCREENRANT_GOOGLE_NEWS_SITEMAP_URL,
+            timeout=10,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+                "Accept": "application/xml,text/xml,application/rss+xml,text/html;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Connection": "keep-alive",
+            }
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"ScreenRant Google News sitemap 수집 실패: {e}")
+        return candidates
+
+    try:
+        root = ET.fromstring(response.content)
+    except Exception as e:
+        print(f"ScreenRant Google News sitemap 파싱 실패: {e}")
+        return candidates
+
+    namespaces = {
+        "sitemap": "http://www.sitemaps.org/schemas/sitemap/0.9",
+        "news": "http://www.google.com/schemas/sitemap-news/0.9",
+    }
+
+    for url_node in root.findall("sitemap:url", namespaces):
+        if len(candidates) >= limit:
+            break
+
+        loc_node = url_node.find("sitemap:loc", namespaces)
+        title_node = url_node.find("news:news/news:title", namespaces)
+        date_node = url_node.find("news:news/news:publication_date", namespaces)
+
+        if loc_node is None or not loc_node.text:
+            continue
+
+        url = normalize_url(loc_node.text.strip())
+
+        if not is_screenrant_article_url(url):
+            continue
+
+        title = ""
+        if title_node is not None and title_node.text:
+            title = clean_screenrant_title(title_node.text.strip())
+
+        published_at = ""
+        if date_node is not None and date_node.text:
+            published_at = date_node.text[:10]
+
+        # 제목이나 URL slug 기준으로 Star Wars 관련 기사만 후보에 넣는다.
+        if not is_screenrant_starwars_related(title, "", url):
+            continue
+
+        candidates.append({
+            "url": url,
+            "title_candidate": title,
+            "published_at_candidate": published_at,
+        })
+
+    print(f"ScreenRant Google News sitemap 후보 수: {len(candidates)}")
+
+    return candidates
+
+
 def get_screenrant_article_candidates_from_page(page_number=1):
     """
-    ScreenRant Star Wars 태그/검색 페이지에서 기사 URL 후보를 수집한다.
+    ScreenRant Star Wars 후보 URL을 수집한다.
+    우선순위:
+    1. 직접 지정한 중요 URL
+    2. Google News sitemap
+    3. 검색 페이지
+    4. 태그 페이지
+
     목록 페이지의 텍스트/이미지 alt는 신뢰하지 않고,
     실제 제목은 개별 기사 페이지에서 다시 가져온다.
     """
+    candidates = []
+    seen_urls = set()
+
+    # 1. 직접 후보 URL을 맨 앞에 추가
+    if page_number == 1:
+        seed_added_count = 0
+
+        for seed_url in SCREENRANT_SEED_URLS:
+            normalized_seed_url = normalize_url(seed_url)
+
+            if not normalized_seed_url:
+                continue
+
+            if normalized_seed_url in seen_urls:
+                continue
+
+            if not is_screenrant_article_url(normalized_seed_url):
+                continue
+
+            seen_urls.add(normalized_seed_url)
+
+            candidates.append({
+                "url": normalized_seed_url,
+                "title_candidate": "",
+                "source_hint": "seed",
+            })
+
+            seed_added_count += 1
+
+        print(f"ScreenRant 직접 후보 URL 우선 추가 수: {seed_added_count}")
+
+        # 2. Google News sitemap 후보 추가
+        sitemap_candidates = get_screenrant_candidates_from_google_news_sitemap(limit=60)
+
+        sitemap_added_count = 0
+
+        for candidate in sitemap_candidates:
+            url = normalize_url(candidate.get("url", ""))
+
+            if not url:
+                continue
+
+            if url in seen_urls:
+                continue
+
+            seen_urls.add(url)
+
+            candidates.append({
+                "url": url,
+                "title_candidate": candidate.get("title_candidate", ""),
+                "published_at_candidate": candidate.get("published_at_candidate", ""),
+                "source_hint": "google_news_sitemap",
+            })
+
+            sitemap_added_count += 1
+
+        print(f"ScreenRant Google News sitemap 후보 추가 수: {sitemap_added_count}")
+
+    # 3. 검색/태그 페이지 후보 추가
     if page_number == 1:
         page_urls = [
-            SCREENRANT_STARWARS_URL,
             SCREENRANT_SEARCH_URL,
+            SCREENRANT_STARWARS_URL,
         ]
     else:
         page_urls = [
             SCREENRANT_STARWARS_PAGE_URL.format(page_number=page_number)
         ]
-
-    candidates = []
-    seen_urls = set()
 
     for page_url in page_urls:
         print(f"ScreenRant 후보 페이지 수집 중: {page_url}")
@@ -2023,38 +2126,13 @@ def get_screenrant_article_candidates_from_page(page_number=1):
 
             candidates.append({
                 "url": href,
-                "title_candidate": ""
+                "title_candidate": "",
+                "source_hint": "page",
             })
 
             page_candidate_count += 1
 
         print(f"ScreenRant 후보 URL 수: {page_candidate_count} / {page_url}")
-
-    if page_number == 1:
-        seed_added_count = 0
-
-        for seed_url in SCREENRANT_SEED_URLS:
-            normalized_seed_url = normalize_url(seed_url)
-
-            if not normalized_seed_url:
-                continue
-
-            if normalized_seed_url in seen_urls:
-                continue
-
-            if not is_screenrant_article_url(normalized_seed_url):
-                continue
-
-            seen_urls.add(normalized_seed_url)
-
-            candidates.append({
-                "url": normalized_seed_url,
-                "title_candidate": ""
-            })
-
-            seed_added_count += 1
-
-        print(f"ScreenRant 직접 후보 URL 추가 수: {seed_added_count}")
 
     print(f"ScreenRant page/{page_number} 전체 후보 URL 수: {len(candidates)}")
 
@@ -2070,12 +2148,15 @@ def fetch_screenrant_article_from_page(url, title_candidate=""):
     title = metadata.get("title", "")
 
     if not title:
+        title = clean_screenrant_title(title_candidate)
+
+    if not title:
         print(f"ScreenRant 제목 메타데이터 없음 제외: {url}")
         return None
 
     summary = metadata.get("summary", "")
 
-    if not is_screenrant_starwars_related(title, summary):
+    if not is_screenrant_starwars_related(title, summary, url):
         print(f"ScreenRant Star Wars 관련성 부족 제외: {title}")
 
         add_auto_excluded_article(
@@ -2734,7 +2815,7 @@ def incremental_update():
 
     new_screenrant_articles = fetch_screenrant_articles_incremental(
         existing_urls=existing_urls,
-        limit=20,
+        limit=40,
         max_pages=1
     )
 
@@ -2795,7 +2876,7 @@ def main():
     print(f"Collider 수집 기사 수: {len(collider_articles)}")
 
     print("ScreenRant 기사 수집 시작")
-    screenrant_articles = fetch_screenrant_articles(limit=20, max_pages=1)
+    screenrant_articles = fetch_screenrant_articles(limit=40, max_pages=1)
     print(f"ScreenRant 수집 기사 수: {len(screenrant_articles)}")
 
     for article in swnn_rss_articles + swnn_page_articles + official_articles + thedirect_articles + collider_articles + screenrant_articles:
