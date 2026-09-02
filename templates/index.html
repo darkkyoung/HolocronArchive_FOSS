@@ -85,77 +85,19 @@
                         </a>
                     </nav>
 
-                    <h2 class="section-title">최신 소식</h2>
+                    <div class="news-toolbar">
+                        <h2 class="section-title">최신 소식</h2>
 
-                    {% if topics and not keyword and not selected_category %}
-                        <section class="top-topics-section">
-                            <div class="section-heading-row">
-                                <h3>🔥 주목할 핵심 이슈 TOP 3</h3>
-                                <span>복수 출처와 관련 기사 수를 기준으로 선정한 주요 이슈입니다</span>
-                            </div>
+                        <label class="mobile-search-button" for="mobile-search-toggle">
+                            🔍 검색
+                        </label>
+                    </div>
 
-                            <div class="topic-grid">
-                                {% for topic in topics %}
-                                    {% if topic.is_top %}
-                                        <article class="topic-card card">
-                                            {% if topic.representative_article %}
-                                                {% set rep = topic.representative_article %}
-
-                                                {% if rep.image_url %}
-                                                    <img class="topic-image" src="{{ rep.image_url }}" alt="{{ rep.title }}">
-                                                {% endif %}
-                                            {% endif %}
-
-                                            <div class="topic-body">
-                                                <div class="topic-card-header">
-                                                    <span class="topic-label-gold">{{ topic.label }}</span>
-                                                    <span class="topic-source-count">출처 {{ topic.source_count }}개</span>
-                                                </div>
-
-                                                <h4>{{ topic.topic_title }}</h4>
-
-                                                <div class="meta">
-                                                    관련 기사 {{ topic.article_count }}개
-                                                    {% if topic.latest_published_at %}
-                                                        · 최신일 {{ topic.latest_published_at }}
-                                                    {% endif %}
-                                                </div>
-
-                                                {% if admin_mode and ai_enabled and topic.topic_summary %}
-                                                    <p class="topic-summary-ko">
-                                                        <strong>AI 요약 실험:</strong>
-                                                        {{ topic.topic_summary }}
-                                                    </p>
-                                                {% endif %}
-
-                                                <div class="topic-sources">
-                                                    {% for source in topic.sources %}
-                                                        <span>{{ source }}</span>
-                                                    {% endfor %}
-                                                </div>
-
-                                                {% if topic.representative_article %}
-                                                    {% set rep = topic.representative_article %}
-
-                                                    <div class="topic-representative">
-                                                        <span>대표 기사</span>
-                                                        <strong>{{ rep.source_name }}</strong>
-                                                        {% if rep.published_at %}
-                                                            <em>{{ rep.published_at }}</em>
-                                                        {% endif %}
-                                                    </div>
-
-                                                    <a class="topic-main-link" href="{{ rep.source_url }}" target="_blank">
-                                                        {{ rep.title }}
-                                                    </a>
-                                                {% endif %}
-                                            </div>
-                                        </article>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </section>
-                    {% endif %}
+                    <input
+                        class="mobile-search-state"
+                        type="checkbox"
+                        id="mobile-search-toggle"
+                    >
 
                     <form method="GET" action="{{ url_for('index') }}" class="search-panel">
                         <input type="hidden" name="franchise" value="{{ selected_franchise }}">
@@ -179,6 +121,54 @@
 
                         <button type="submit">검색</button>
                     </form>
+
+                    {% if topics and not keyword and not selected_category %}
+                        <section class="top-topics-section">
+                            <div class="section-heading-row">
+                                <h3>🔥 주목할 핵심 이슈 TOP 3</h3>
+                                <span>복수 출처와 관련 기사 수를 기준으로 선정한 주요 이슈입니다</span>
+                            </div>
+
+                            <div class="topic-grid">
+                                {% for topic in topics %}
+                                    {% if topic.is_top %}
+                                        <article class="topic-card card top-compact-card">
+                                            {% if topic.representative_article %}
+                                                {% set rep = topic.representative_article %}
+
+                                                {% if rep.image_url %}
+                                                    <a class="card-image-link" href="{{ rep.source_url }}" target="_blank">
+                                                        <img class="topic-image" src="{{ rep.image_url }}" alt="{{ rep.title }}">
+                                                    </a>
+                                                {% endif %}
+                                            {% endif %}
+
+                                            <div class="topic-body">
+                                                {% if topic.representative_article %}
+                                                    {% set rep = topic.representative_article %}
+                                                    <h4>
+                                                        <a class="card-title-link" href="{{ rep.source_url }}" target="_blank">
+                                                            {{ topic.topic_title }}
+                                                        </a>
+                                                    </h4>
+                                                {% else %}
+                                                    <h4>{{ topic.topic_title }}</h4>
+                                                {% endif %}
+
+                                                <div class="compact-meta-line">
+                                                    <span>관련 기사 {{ topic.article_count }}개</span>
+                                                    <span>출처 {{ topic.source_count }}개</span>
+                                                    {% if topic.latest_published_at %}
+                                                        <span>최신일 {{ topic.latest_published_at }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+                    {% endif %}
 
                     {% if topics and topics|length > 0 %}
                         <section class="all-topics-section">
@@ -370,7 +360,9 @@
                                             {% endif %}
                                         {% endif %}
 
-                                        <span class="badge">{{ topic.label }}</span>
+                                        {% if admin_mode %}
+                                            <span class="badge">{{ topic.label }}</span>
+                                        {% endif %}
 
                                         {% if topic.representative_article %}
                                             {% set rep = topic.representative_article %}
@@ -383,13 +375,6 @@
                                             <h4>{{ topic.topic_title }}</h4>
                                         {% endif %}
 
-                                        <div class="meta">
-                                            관련 기사 {{ topic.article_count }}개 · 출처 {{ topic.source_count }}개
-                                            {% if topic.latest_published_at %}
-                                                · {{ topic.latest_published_at }}
-                                            {% endif %}
-                                        </div>
-
                                         {% if admin_mode and ai_enabled and topic.topic_summary %}
                                             <p class="topic-summary-ko">
                                                 <strong>AI 요약 실험:</strong>
@@ -397,19 +382,24 @@
                                             </p>
                                         {% endif %}
 
-                                        <div class="topic-sources">
-                                            {% for source in topic.sources %}
-                                                <span>{{ source }}</span>
-                                            {% endfor %}
-                                        </div>
+                                        {% if admin_mode %}
+                                            <div class="topic-sources">
+                                                {% for source in topic.sources %}
+                                                    <span>{{ source }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
 
                                         {% if topic.articles %}
                                             <details class="related-articles">
-                                                {% if topic.articles|length == 1 %}
-                                                    <summary>기사 링크 보기 ▲</summary>
-                                                {% else %}
-                                                    <summary>관련 기사 {{ topic.articles|length }}개 보기 ▲</summary>
-                                                {% endif %}
+                                                <summary class="card-meta-toggle">
+                                                    <span>
+                                                        관련 기사 {{ topic.article_count }}개 · 출처 {{ topic.source_count }}개
+                                                        {% if topic.latest_published_at %}
+                                                            · 최신일 {{ topic.latest_published_at }}
+                                                        {% endif %}
+                                                    </span>
+                                                </summary>
 
                                                 <div class="related-article-list">
                                                     {% for article in topic.articles %}

@@ -962,6 +962,9 @@ def fetch_swnn_article_from_page(url, image_candidate=""):
     return None
 
 def fetch_swnn_articles_from_pages(max_pages=3, limit=20):
+    if not SWNN_ENABLED:
+        print("SWNN 웹페이지 수집은 현재 비활성화되어 있습니다.")
+        return []
     """
     SWNN 웹페이지 수집은 현재 403 차단이 발생하므로 비활성화한다.
     SWNN은 RSS feed 기반으로만 수집한다.
@@ -1208,6 +1211,9 @@ def deduplicate_articles(articles):
 
 
 def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, max_pages=3):
+    if not SWNN_ENABLED:
+        print("SWNN 빠른 갱신은 현재 비활성화되어 있습니다.")
+        return []
     """
     SWNN 빠른 갱신.
     SWNN은 웹페이지/개별 기사/WordPress API 접근 시 403이 발생하므로
