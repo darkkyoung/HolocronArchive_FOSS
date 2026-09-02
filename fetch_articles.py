@@ -196,6 +196,62 @@ def is_probable_article_image(image_url):
     return False
 
 
+def extract_image_from_img_tag(img_tag, base_url=""):
+    """
+    img 태그에서 실제 대표 이미지 후보를 추출한다.
+    WordPress/lazy-load 환경에서는 src가 placeholder이고
+    data-src, data-lazy-src, data-orig-file, srcset 쪽에 실제 이미지가 있을 수 있다.
+    """
+    if not img_tag:
+        return ""
+
+    image_candidates = []
+
+    image_attrs = [
+        "data-src",
+        "data-lazy-src",
+        "data-original",
+        "data-orig-file",
+        "data-medium-file",
+        "data-large-file",
+        "data-full-url",
+        "src",
+    ]
+
+    for attr in image_attrs:
+        value = img_tag.get(attr)
+        if value:
+            image_candidates.append(value.strip())
+
+    srcset_attrs = [
+        "data-srcset",
+        "data-lazy-srcset",
+        "srcset",
+    ]
+
+    for attr in srcset_attrs:
+        srcset = img_tag.get(attr)
+        if not srcset:
+            continue
+
+        # srcset은 보통 "url 300w, url 768w, url 1024w" 형태
+        # 가장 큰 이미지를 쓰기 위해 마지막 후보를 우선 사용한다.
+        parts = [part.strip() for part in srcset.split(",") if part.strip()]
+
+        for part in reversed(parts):
+            image_url = part.split(" ")[0].strip()
+            if image_url:
+                image_candidates.append(image_url)
+
+    for candidate in image_candidates:
+        image_url = clean_image_url(candidate, base_url)
+
+        if is_probable_article_image(image_url):
+            return image_url
+
+    return ""
+
+
 def extract_image_from_soup(soup, base_url=""):
     """
     기사 HTML에서 대표 이미지 후보를 여러 방식으로 추출한다.
@@ -281,21 +337,9 @@ def extract_image_from_soup(soup, base_url=""):
 
     for container in containers:
         for img in container.find_all("img"):
-            image_url = (
-                img.get("src")
-                or img.get("data-src")
-                or img.get("data-lazy-src")
-                or img.get("data-original")
-                or ""
-            )
+            image_url = extract_image_from_img_tag(img, base_url)
 
-            if not image_url and img.get("srcset"):
-                srcset_first = img.get("srcset").split(",")[0].strip()
-                image_url = srcset_first.split(" ")[0].strip()
-
-            image_url = clean_image_url(image_url, base_url)
-
-            if is_probable_article_image(image_url):
+            if image_url:
                 return image_url
 
     return ""
@@ -542,6 +586,69 @@ def normalize_url(url):
     url = url.rstrip("/")
 
     return url
+
+def fetch_swnn_image_from_wp_api(url):
+    """
+    Star Wars News Net은 WordPress 기반이므로,
+    HTML에서 대표 이미지를 못 찾았을 때 WordPress REST API의 featured media를 확인한다.
+    """
+    if not url or "starwarsnewsnet.com" not in url:
+        return ""
+
+    normalized_url = normalize_url(url)
+    slug = normalized_url.split("/")[-1].replace(".html", "").strip()
+
+    if not slug:
+        return ""
+
+    api_url = f"https://www.starwarsnewsnet.com/wp-json/wp/v2/posts?slug={slug}&_embed=1"
+
+    try:
+        response = requests.get(
+            api_url,
+            timeout=10,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                "Accept": "application/json,text/plain,*/*",
+            }
+        )
+        response.raise_for_status()
+        data = response.json()
+    except Exception as e:
+        print(f"SWNN WordPress 이미지 API 실패: {url} / {e}")
+        return ""
+
+    if not isinstance(data, list) or not data:
+        return ""
+
+    post = data[0]
+    embedded = post.get("_embedded", {})
+    media_list = embedded.get("wp:featuredmedia", [])
+
+    for media in media_list:
+        if not isinstance(media, dict):
+            continue
+
+        image_url = clean_image_url(media.get("source_url", ""), url)
+
+        if is_probable_article_image(image_url):
+            return image_url
+
+        media_details = media.get("media_details", {})
+        sizes = media_details.get("sizes", {})
+
+        for size_name in ["large", "medium_large", "full", "medium", "thumbnail"]:
+            size_data = sizes.get(size_name, {})
+
+            if not isinstance(size_data, dict):
+                continue
+
+            image_url = clean_image_url(size_data.get("source_url", ""), url)
+
+            if is_probable_article_image(image_url):
+                return image_url
+
+    return ""
 
 
 def contains_explicit_star_wars_keyword(title, summary="", url=""):
@@ -876,15 +983,37 @@ def get_swnn_article_candidates_from_page(page_number=1):
                     img_tag.get("alt", "")
                 )
 
+        image_candidate = ""
+
+        candidate_containers = []
+
+        article_container = a_tag.find_parent("article")
+        if article_container:
+            candidate_containers.append(article_container)
+
+        # article 태그가 없는 경우를 대비해 현재 a 태그도 확인
+        candidate_containers.append(a_tag)
+
+        for container in candidate_containers:
+            if image_candidate:
+                break
+
+            for img_tag in container.find_all("img"):
+                image_candidate = extract_image_from_img_tag(img_tag, page_url)
+
+                if image_candidate:
+                    break
+
         candidates.append({
             "url": normalized_url,
-            "title_candidate": title_candidate
+            "title_candidate": title_candidate,
+            "image_candidate": image_candidate
         })
 
     return candidates
 
 
-def fetch_swnn_article_from_page(url):
+def fetch_swnn_article_from_page(url, image_candidate=""):
     """
     SWNN 개별 기사 페이지에서 기사 정보를 수집한다.
     """
@@ -958,6 +1087,12 @@ def fetch_swnn_article_from_page(url):
 
     image_url = fetch_image_from_article_page(url)
 
+    if not image_url:
+        image_url = fetch_swnn_image_from_wp_api(url)
+
+    if not image_url:
+        image_url = image_candidate
+
     return {
         "title": title,
         "title_ko": "",
@@ -976,29 +1111,44 @@ def fetch_swnn_article_from_page(url):
 def fetch_swnn_articles_from_pages(max_pages=3, limit=20):
     """
     SWNN 메인/이전 페이지에서 기사들을 수집한다.
+    목록 페이지에서 URL, 제목 후보, 이미지 후보를 함께 가져와
+    개별 기사 페이지에서 이미지를 못 찾는 경우 보조로 사용한다.
     """
     print("Star Wars News Net 웹페이지 기사 수집 시작")
 
-    article_urls = []
+    article_candidates = []
+    seen_urls = set()
 
     for page_number in range(1, max_pages + 1):
-        links = get_swnn_article_links_from_page(page_number)
+        candidates = get_swnn_article_candidates_from_page(page_number)
 
-        for link in links:
-            normalized_link = normalize_url(link)
+        for candidate in candidates:
+            normalized_url = normalize_url(candidate.get("url", ""))
 
-            if normalized_link not in article_urls:
-                article_urls.append(normalized_link)
+            if not normalized_url:
+                continue
 
-    print(f"SWNN 웹페이지에서 발견한 후보 기사 수: {len(article_urls)}")
+            if normalized_url in seen_urls:
+                continue
+
+            seen_urls.add(normalized_url)
+            article_candidates.append(candidate)
+
+    print(f"SWNN 웹페이지에서 발견한 후보 기사 수: {len(article_candidates)}")
 
     articles = []
 
-    for url in article_urls:
+    for candidate in article_candidates:
         if len(articles) >= limit:
             break
 
-        article = fetch_swnn_article_from_page(url)
+        url = candidate.get("url", "")
+        image_candidate = candidate.get("image_candidate", "")
+
+        article = fetch_swnn_article_from_page(
+            url=url,
+            image_candidate=image_candidate
+        )
 
         if article:
             articles.append(article)
@@ -1006,6 +1156,7 @@ def fetch_swnn_articles_from_pages(max_pages=3, limit=20):
     print(f"SWNN 웹페이지 수집 기사 수: {len(articles)}")
 
     return articles
+
 
 def fetch_swnn_articles(limit=20):
     feed = feedparser.parse(SWNN_FEED_URL)
@@ -1039,6 +1190,9 @@ def fetch_swnn_articles(limit=20):
 
         if not image_url:
             image_url = fetch_image_from_article_page(url)
+
+        if not image_url:
+            image_url = fetch_swnn_image_from_wp_api(url)
 
         article = {
             "article_id": idx,
@@ -1400,7 +1554,10 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
 
             continue
 
-        article = fetch_swnn_article_from_page(url)
+        article = fetch_swnn_article_from_page(
+            url=url,
+            image_candidate=candidate.get("image_candidate", "")
+        )
 
         if article:
             new_articles.append(article)
