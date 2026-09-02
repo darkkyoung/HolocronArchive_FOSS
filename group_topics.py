@@ -525,9 +525,10 @@ def choose_representative_article(articles):
 
     우선순위:
     1. 관리자가 수동 지정한 대표 기사
-    2. 발행일이 가장 빠른 기사
-    3. 이미지가 있는 기사
-    4. 첫 번째 기사
+    2. 이미지가 있는 StarWars.com 공식 기사
+    3. 이미지가 있는 기사 중 최신 기사
+    4. 발행일이 가장 빠른 기사
+    5. 첫 번째 기사
     """
     if not articles:
         return {}
@@ -542,11 +543,7 @@ def choose_representative_article(articles):
 
     article_url_set = set(article_urls)
 
-    # representative_article_urls 구조:
-    # {
-    #   "대표기사URL": true
-    # }
-    # 또는 나중에 topic_key 기반으로 확장 가능
+    # 1. 관리자가 수동 지정한 대표 기사 우선
     for representative_url in representative_map.keys():
         normalized_representative_url = normalize_url(representative_url)
 
@@ -559,6 +556,34 @@ def choose_representative_article(articles):
                 if article_url == normalized_representative_url:
                     return article
 
+    # 2. 이미지가 있는 StarWars.com 공식 기사 우선
+    official_image_articles = [
+        article for article in articles
+        if article.get("source_name") == "StarWars.com"
+        and article.get("image_url")
+    ]
+
+    if official_image_articles:
+        official_image_articles.sort(
+            key=lambda article: article.get("published_at", ""),
+            reverse=True
+        )
+        return official_image_articles[0]
+
+    # 3. 이미지가 있는 기사 중 최신 기사
+    image_articles = [
+        article for article in articles
+        if article.get("image_url")
+    ]
+
+    if image_articles:
+        image_articles.sort(
+            key=lambda article: article.get("published_at", ""),
+            reverse=True
+        )
+        return image_articles[0]
+
+    # 4. 이미지가 전혀 없으면 발행일이 가장 빠른 기사
     dated_articles = [
         article for article in articles
         if article.get("published_at")
@@ -569,14 +594,6 @@ def choose_representative_article(articles):
             key=lambda article: article.get("published_at", "")
         )
         return dated_articles[0]
-
-    image_articles = [
-        article for article in articles
-        if article.get("image_url")
-    ]
-
-    if image_articles:
-        return image_articles[0]
 
     return articles[0]
 

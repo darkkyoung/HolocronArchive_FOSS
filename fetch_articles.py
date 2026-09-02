@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as ET
+from urllib.parse import urljoin
 
 import feedparser
 import requests
@@ -127,10 +128,183 @@ def extract_image_url(entry):
 
     return ""
 
+
+def clean_image_url(image_url, base_url=""):
+    """
+    이미지 URL 후보를 정리한다.
+    상대 경로는 절대 경로로 변환하고, 빈 값은 제거한다.
+    """
+    if not image_url:
+        return ""
+
+    image_url = image_url.strip()
+
+    if not image_url:
+        return ""
+
+    if image_url.startswith("//"):
+        image_url = "https:" + image_url
+
+    if base_url and image_url.startswith("/"):
+        image_url = urljoin(base_url, image_url)
+
+    return image_url
+
+
+def is_probable_article_image(image_url):
+    """
+    로고/아이콘/아바타 같은 이미지를 대표 이미지로 잘못 잡지 않기 위한 필터.
+    """
+    if not image_url:
+        return False
+
+    image_lower = image_url.lower()
+
+    bad_keywords = [
+        "logo",
+        "icon",
+        "avatar",
+        "profile",
+        "placeholder",
+        "default",
+        "sprite",
+        "favicon",
+        "author",
+        "comment",
+        "tracking",
+        "pixel",
+    ]
+
+    if any(keyword in image_lower for keyword in bad_keywords):
+        return False
+
+    image_extensions = [
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".webp",
+        ".avif",
+    ]
+
+    if any(ext in image_lower for ext in image_extensions):
+        return True
+
+    # CDN 이미지 중 확장자가 URL에 안 보이는 경우도 있어서 완전히 막지는 않는다.
+    if "image" in image_lower or "images" in image_lower or "cdn" in image_lower:
+        return True
+
+    return False
+
+
+def extract_image_from_soup(soup, base_url=""):
+    """
+    기사 HTML에서 대표 이미지 후보를 여러 방식으로 추출한다.
+    우선순위:
+    1. og:image
+    2. twitter:image
+    3. itemprop=image
+    4. link rel=image_src
+    5. JSON-LD image
+    6. article/main 내부 첫 이미지
+    7. 페이지 전체 첫 이미지
+    """
+    meta_candidates = [
+        ("meta", {"property": "og:image"}, "content"),
+        ("meta", {"property": "og:image:secure_url"}, "content"),
+        ("meta", {"name": "twitter:image"}, "content"),
+        ("meta", {"name": "twitter:image:src"}, "content"),
+        ("meta", {"itemprop": "image"}, "content"),
+        ("link", {"rel": "image_src"}, "href"),
+    ]
+
+    for tag_name, attrs, value_attr in meta_candidates:
+        tag = soup.find(tag_name, attrs=attrs)
+
+        if tag and tag.get(value_attr):
+            image_url = clean_image_url(tag.get(value_attr), base_url)
+
+            if is_probable_article_image(image_url):
+                return image_url
+
+    # JSON-LD 안의 image 후보 확인
+    for script in soup.find_all("script", type="application/ld+json"):
+        try:
+            raw_text = script.string or script.get_text(strip=True)
+
+            if not raw_text:
+                continue
+
+            data = json.loads(raw_text)
+
+            json_items = data if isinstance(data, list) else [data]
+
+            for item in json_items:
+                if not isinstance(item, dict):
+                    continue
+
+                image_data = item.get("image", "")
+
+                image_url = ""
+
+                if isinstance(image_data, str):
+                    image_url = image_data
+                elif isinstance(image_data, list) and image_data:
+                    first_image = image_data[0]
+
+                    if isinstance(first_image, str):
+                        image_url = first_image
+                    elif isinstance(first_image, dict):
+                        image_url = first_image.get("url", "")
+                elif isinstance(image_data, dict):
+                    image_url = image_data.get("url", "")
+
+                image_url = clean_image_url(image_url, base_url)
+
+                if is_probable_article_image(image_url):
+                    return image_url
+
+        except Exception:
+            continue
+
+    # article/main 내부 이미지 우선
+    containers = []
+
+    article_tag = soup.find("article")
+    if article_tag:
+        containers.append(article_tag)
+
+    main_tag = soup.find("main")
+    if main_tag:
+        containers.append(main_tag)
+
+    containers.append(soup)
+
+    for container in containers:
+        for img in container.find_all("img"):
+            image_url = (
+                img.get("src")
+                or img.get("data-src")
+                or img.get("data-lazy-src")
+                or img.get("data-original")
+                or ""
+            )
+
+            if not image_url and img.get("srcset"):
+                srcset_first = img.get("srcset").split(",")[0].strip()
+                image_url = srcset_first.split(" ")[0].strip()
+
+            image_url = clean_image_url(image_url, base_url)
+
+            if is_probable_article_image(image_url):
+                return image_url
+
+    return ""
+
+
 def fetch_image_from_article_page(url):
     """
-    RSS에 이미지가 없을 경우, 기사 페이지의 og:image 메타태그에서 대표 이미지를 가져온다.
-    기사 본문 전체를 저장하지 않고 대표 이미지 URL만 추출한다.
+    RSS나 목록 페이지에 이미지가 없을 경우,
+    기사 페이지에서 대표 이미지 URL을 최대한 찾아온다.
     """
     if not url:
         return ""
@@ -140,25 +314,25 @@ def fetch_image_from_article_page(url):
             url,
             timeout=10,
             headers={
-                "User-Agent": "Mozilla/5.0"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Connection": "keep-alive",
             }
         )
         response.raise_for_status()
-
-        soup = BeautifulSoup(response.text, "html.parser")
-
-        og_image = soup.find("meta", property="og:image")
-        if og_image and og_image.get("content"):
-            return og_image.get("content")
-
-        twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
-        if twitter_image and twitter_image.get("content"):
-            return twitter_image.get("content")
-
+    except requests.exceptions.RequestException as e:
+        print(f"대표 이미지 페이지 요청 실패: {url} / {e}")
         return ""
 
-    except requests.exceptions.RequestException:
-        return ""
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    image_url = extract_image_from_soup(soup, url)
+
+    if not image_url:
+        print(f"대표 이미지 없음: {url}")
+
+    return image_url
 
 def fetch_starwars_article_metadata(url):
     """
@@ -1300,6 +1474,9 @@ def fetch_thedirect_article_metadata(url):
         if twitter_image and twitter_image.get("content"):
             metadata["image_url"] = twitter_image.get("content").strip()
 
+    if not metadata["image_url"]:
+        metadata["image_url"] = extract_image_from_soup(soup, url)
+
     published_meta = soup.find("meta", property="article:published_time")
     if published_meta and published_meta.get("content"):
         metadata["published_at"] = published_meta.get("content")[:10]
@@ -1459,6 +1636,9 @@ def fetch_collider_article_metadata(url):
         twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
         if twitter_image and twitter_image.get("content"):
             metadata["image_url"] = twitter_image.get("content").strip()
+
+    if not metadata["image_url"]:
+        metadata["image_url"] = extract_image_from_soup(soup, url)
 
     published_meta = soup.find("meta", property="article:published_time")
     if published_meta and published_meta.get("content"):
@@ -1900,6 +2080,9 @@ def fetch_screenrant_article_metadata(url):
         twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
         if twitter_image and twitter_image.get("content"):
             metadata["image_url"] = twitter_image.get("content").strip()
+
+    if not metadata["image_url"]:
+        metadata["image_url"] = extract_image_from_soup(soup, url)
 
     published_meta = soup.find("meta", property="article:published_time")
     if published_meta and published_meta.get("content"):
