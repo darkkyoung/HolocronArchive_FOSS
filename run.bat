@@ -18,7 +18,8 @@ echo Holocron Archive 실행 준비
 echo ============================================================
 echo.
 
-echo [1/4] Python 가상환경 확인 중...
+echo [1/5] Python 실행 환경 확인 중...
+
 if exist "%VENV_PYTHON%" (
     echo 기존 가상환경을 사용합니다: %VENV_DIR%
 ) else (
@@ -53,8 +54,9 @@ if exist "%VENV_PYTHON%" (
         exit /b 1
     )
 
-    echo 가상환경이 없어 새로 생성합니다: %VENV_DIR%
+    echo 가상환경이 없습니다. 새로 생성합니다: %VENV_DIR%
     !BOOTSTRAP_PYTHON! -m venv "%VENV_DIR%"
+
     if errorlevel 1 (
         echo.
         echo [오류] 가상환경 생성에 실패했습니다.
@@ -71,7 +73,8 @@ if not exist "%VENV_PYTHON%" (
 )
 
 echo.
-echo [2/4] pip 준비 중...
+echo [2/5] 패키지 설치 준비 중...
+
 "%VENV_PYTHON%" -m pip --version >nul 2>&1
 if errorlevel 1 (
     "%VENV_PYTHON%" -m ensurepip --upgrade
@@ -93,7 +96,8 @@ if errorlevel 1 (
 )
 
 echo.
-echo [3/4] 프로젝트 패키지 설치 중...
+echo [3/5] 프로젝트 패키지 설치 중...
+
 if not exist "requirements.txt" (
     echo.
     echo [오류] requirements.txt를 찾을 수 없습니다.
@@ -111,7 +115,50 @@ if errorlevel 1 (
 )
 
 echo.
-echo [4/4] Flask 웹서버 실행 중...
+echo [4/5] 최신 기사 데이터 수집 및 토픽 생성 중...
+
+if not exist "data" (
+    mkdir "data"
+)
+
+if not exist "fetch_articles.py" (
+    echo.
+    echo [오류] fetch_articles.py를 찾을 수 없습니다.
+    pause
+    exit /b 1
+)
+
+if not exist "group_topics.py" (
+    echo.
+    echo [오류] group_topics.py를 찾을 수 없습니다.
+    pause
+    exit /b 1
+)
+
+echo 최신 기사를 수집합니다.
+"%VENV_PYTHON%" "fetch_articles.py"
+
+if errorlevel 1 (
+    echo.
+    echo [오류] 기사 수집에 실패했습니다.
+    pause
+    exit /b 1
+)
+
+echo.
+echo 수집한 기사 기준으로 토픽을 재생성합니다.
+"%VENV_PYTHON%" "group_topics.py"
+
+if errorlevel 1 (
+    echo.
+    echo [오류] 토픽 생성에 실패했습니다.
+    pause
+    exit /b 1
+)
+
+echo.
+echo [5/5] Flask 웹서비스 실행 중...
+
 if not exist "app.py" (
     echo.
     echo [오류] app.py를 찾을 수 없습니다.
@@ -124,6 +171,8 @@ echo 접속 주소: http://127.0.0.1:5000/
 echo 종료하려면 Ctrl+C를 누르세요.
 echo ============================================================
 echo.
+
+set "AI_ENABLED=false"
 
 start "" "http://127.0.0.1:5000"
 "%VENV_PYTHON%" "app.py"
