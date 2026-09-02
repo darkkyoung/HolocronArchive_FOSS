@@ -173,6 +173,7 @@ echo ============================================================
 echo.
 
 set "AI_ENABLED=false"
+set "SWNN_ENABLED=false"
 
 start "" "http://127.0.0.1:5000"
 "%VENV_PYTHON%" "app.py"

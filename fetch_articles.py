@@ -1,3 +1,4 @@
+import html
 import json
 import os
 import re
@@ -19,6 +20,7 @@ SWNN_FEED_URL = "https://www.starwarsnewsnet.com/feed/"
 STARWARS_NEWS_URL = "https://www.starwars.com/news"
 SWNN_HOME_URL = "https://www.starwarsnewsnet.com/"
 SWNN_PAGE_URL = "https://www.starwarsnewsnet.com/page/{page_number}/"
+SWNN_ENABLED = os.environ.get("SWNN_ENABLED", "false").lower() == "true"
 THEDIRECT_STARWARS_URL = "https://thedirect.com/StarWars/"
 THEDIRECT_STARWARS_PAGE_URL = "https://thedirect.com/StarWars/?page={page_number}"
 COLLIDER_STARWARS_URL = "https://collider.com/tag/star-wars/"
@@ -97,34 +99,48 @@ def clean_summary(entry):
 def extract_image_url(entry):
     """
     RSS entry에서 대표 이미지 URL을 추출한다.
-    사이트마다 RSS 이미지 제공 방식이 다를 수 있으므로 여러 후보를 순서대로 확인한다.
+    media 태그뿐 아니라 summary/content HTML 안의 이미지도 확인한다.
     """
     # 1. media_content 확인
     media_content = entry.get("media_content", [])
     if media_content:
-        image_url = media_content[0].get("url", "")
-        if image_url:
+        image_url = clean_image_url(media_content[0].get("url", ""), entry.get("link", ""))
+        if is_probable_article_image(image_url):
             return image_url
 
     # 2. media_thumbnail 확인
     media_thumbnail = entry.get("media_thumbnail", [])
     if media_thumbnail:
-        image_url = media_thumbnail[0].get("url", "")
-        if image_url:
+        image_url = clean_image_url(media_thumbnail[0].get("url", ""), entry.get("link", ""))
+        if is_probable_article_image(image_url):
             return image_url
 
     # 3. links 중 image 타입 확인
     for link in entry.get("links", []):
         if link.get("type", "").startswith("image"):
-            return link.get("href", "")
+            image_url = clean_image_url(link.get("href", ""), entry.get("link", ""))
+            if is_probable_article_image(image_url):
+                return image_url
 
-    # 4. summary HTML 안의 첫 번째 img 태그 확인
-    summary = entry.get("summary", "")
-    if summary:
-        soup = BeautifulSoup(summary, "html.parser")
-        img = soup.find("img")
-        if img and img.get("src"):
-            return img.get("src")
+    # 4. summary / description / content HTML 내부 확인
+    html_candidates = [
+        entry.get("summary", ""),
+        entry.get("description", ""),
+    ]
+
+    for content_item in entry.get("content", []):
+        if isinstance(content_item, dict):
+            html_candidates.append(content_item.get("value", ""))
+
+    for html_text in html_candidates:
+        if not html_text:
+            continue
+
+        soup = BeautifulSoup(html_text, "html.parser")
+        image_url = extract_image_from_soup(soup, entry.get("link", ""))
+
+        if image_url:
+            return image_url
 
     return ""
 
@@ -132,14 +148,20 @@ def extract_image_url(entry):
 def clean_image_url(image_url, base_url=""):
     """
     이미지 URL 후보를 정리한다.
-    상대 경로는 절대 경로로 변환하고, 빈 값은 제거한다.
+    상대 경로는 절대 경로로 변환하고, HTML escape도 정리한다.
     """
     if not image_url:
         return ""
 
-    image_url = image_url.strip()
+    image_url = str(image_url).strip()
+    image_url = html.unescape(image_url)
+    image_url = image_url.replace("\\/", "/")
+    image_url = image_url.strip("'\" ")
 
     if not image_url:
+        return ""
+
+    if image_url.startswith("data:"):
         return ""
 
     if image_url.startswith("//"):
@@ -173,6 +195,9 @@ def is_probable_article_image(image_url):
         "comment",
         "tracking",
         "pixel",
+        "blank",
+        "transparent",
+        "loading",
     ]
 
     if any(keyword in image_lower for keyword in bad_keywords):
@@ -189,11 +214,54 @@ def is_probable_article_image(image_url):
     if any(ext in image_lower for ext in image_extensions):
         return True
 
-    # CDN 이미지 중 확장자가 URL에 안 보이는 경우도 있어서 완전히 막지는 않는다.
+    if "wp-content/uploads" in image_lower:
+        return True
+
     if "image" in image_lower or "images" in image_lower or "cdn" in image_lower:
         return True
 
     return False
+
+
+def extract_image_from_srcset(srcset, base_url=""):
+    """
+    srcset 문자열에서 가장 큰 이미지 후보를 추출한다.
+    """
+    if not srcset:
+        return ""
+
+    parts = [part.strip() for part in srcset.split(",") if part.strip()]
+
+    for part in reversed(parts):
+        image_url = part.split(" ")[0].strip()
+        image_url = clean_image_url(image_url, base_url)
+
+        if is_probable_article_image(image_url):
+            return image_url
+
+    return ""
+
+
+def extract_image_from_style(style_text, base_url=""):
+    """
+    style 속성의 background-image: url(...)에서 이미지 URL을 추출한다.
+    """
+    if not style_text:
+        return ""
+
+    matches = re.findall(
+        r"url\((['\"]?)(.*?)\1\)",
+        style_text,
+        flags=re.IGNORECASE
+    )
+
+    for _, raw_url in matches:
+        image_url = clean_image_url(raw_url, base_url)
+
+        if is_probable_article_image(image_url):
+            return image_url
+
+    return ""
 
 
 def extract_image_from_img_tag(img_tag, base_url=""):
@@ -204,8 +272,6 @@ def extract_image_from_img_tag(img_tag, base_url=""):
     """
     if not img_tag:
         return ""
-
-    image_candidates = []
 
     image_attrs = [
         "data-src",
@@ -219,9 +285,10 @@ def extract_image_from_img_tag(img_tag, base_url=""):
     ]
 
     for attr in image_attrs:
-        value = img_tag.get(attr)
-        if value:
-            image_candidates.append(value.strip())
+        image_url = clean_image_url(img_tag.get(attr, ""), base_url)
+
+        if is_probable_article_image(image_url):
+            return image_url
 
     srcset_attrs = [
         "data-srcset",
@@ -230,21 +297,153 @@ def extract_image_from_img_tag(img_tag, base_url=""):
     ]
 
     for attr in srcset_attrs:
-        srcset = img_tag.get(attr)
-        if not srcset:
+        image_url = extract_image_from_srcset(img_tag.get(attr, ""), base_url)
+
+        if image_url:
+            return image_url
+
+    return ""
+
+
+def extract_image_from_any_tag(tag, base_url=""):
+    """
+    img 태그뿐 아니라 일반 태그의 style/data 속성에서도 이미지 URL을 찾는다.
+    SWNN 목록 카드처럼 background-image를 쓰는 경우를 처리하기 위한 함수.
+    """
+    if not tag:
+        return ""
+
+    if tag.name == "img":
+        image_url = extract_image_from_img_tag(tag, base_url)
+
+        if image_url:
+            return image_url
+
+    # style="background-image: url(...)" 처리
+    image_url = extract_image_from_style(tag.get("style", ""), base_url)
+    if image_url:
+        return image_url
+
+    # lazy background 계열 속성 처리
+    image_attrs = [
+        "data-bg",
+        "data-bg-url",
+        "data-background",
+        "data-background-image",
+        "data-img",
+        "data-img-url",
+        "data-image",
+        "data-image-url",
+        "data-src",
+        "data-lazy-src",
+        "poster",
+        "content",
+        "href",
+    ]
+
+    for attr in image_attrs:
+        image_url = clean_image_url(tag.get(attr, ""), base_url)
+
+        if is_probable_article_image(image_url):
+            return image_url
+
+    srcset_attrs = [
+        "data-bgset",
+        "data-srcset",
+        "data-lazy-srcset",
+        "srcset",
+    ]
+
+    for attr in srcset_attrs:
+        image_url = extract_image_from_srcset(tag.get(attr, ""), base_url)
+
+        if image_url:
+            return image_url
+
+    return ""
+
+
+def extract_image_from_json_data(data, base_url=""):
+    """
+    JSON-LD 데이터에서 image / thumbnailUrl / ImageObject URL을 재귀적으로 찾는다.
+    WordPress Yoast SEO의 @graph 구조까지 대응한다.
+    """
+    if isinstance(data, str):
+        image_url = clean_image_url(data, base_url)
+
+        if is_probable_article_image(image_url):
+            return image_url
+
+        return ""
+
+    if isinstance(data, list):
+        for item in data:
+            image_url = extract_image_from_json_data(item, base_url)
+
+            if image_url:
+                return image_url
+
+        return ""
+
+    if not isinstance(data, dict):
+        return ""
+
+    preferred_keys = [
+        "image",
+        "thumbnail",
+        "thumbnailUrl",
+        "contentUrl",
+        "url",
+    ]
+
+    for key in preferred_keys:
+        if key not in data:
             continue
 
-        # srcset은 보통 "url 300w, url 768w, url 1024w" 형태
-        # 가장 큰 이미지를 쓰기 위해 마지막 후보를 우선 사용한다.
-        parts = [part.strip() for part in srcset.split(",") if part.strip()]
+        image_url = extract_image_from_json_data(data.get(key), base_url)
 
-        for part in reversed(parts):
-            image_url = part.split(" ")[0].strip()
-            if image_url:
-                image_candidates.append(image_url)
+        if image_url:
+            return image_url
 
-    for candidate in image_candidates:
-        image_url = clean_image_url(candidate, base_url)
+    if "@graph" in data:
+        image_url = extract_image_from_json_data(data.get("@graph"), base_url)
+
+        if image_url:
+            return image_url
+
+    for value in data.values():
+        image_url = extract_image_from_json_data(value, base_url)
+
+        if image_url:
+            return image_url
+
+    return ""
+
+
+def extract_image_from_raw_html(raw_html, base_url=""):
+    """
+    최후 fallback.
+    HTML 원문 안에서 wp-content/uploads 이미지 URL을 직접 찾는다.
+    """
+    if not raw_html:
+        return ""
+
+    raw_html = html.unescape(raw_html)
+    raw_html = raw_html.replace("\\/", "/")
+
+    image_urls = re.findall(
+        r"https?://[^\"'\s\)<>]+(?:\.jpg|\.jpeg|\.png|\.webp|\.avif)(?:\?[^\"'\s\)<>]*)?",
+        raw_html,
+        flags=re.IGNORECASE
+    )
+
+    # SWNN은 WordPress 업로드 이미지가 가장 안전하다.
+    image_urls.sort(
+        key=lambda url: 0 if "wp-content/uploads" in url.lower() else 1
+    )
+
+    for raw_url in image_urls:
+        image_url = clean_image_url(raw_url, base_url)
 
         if is_probable_article_image(image_url):
             return image_url
@@ -255,20 +454,14 @@ def extract_image_from_img_tag(img_tag, base_url=""):
 def extract_image_from_soup(soup, base_url=""):
     """
     기사 HTML에서 대표 이미지 후보를 여러 방식으로 추출한다.
-    우선순위:
-    1. og:image
-    2. twitter:image
-    3. itemprop=image
-    4. link rel=image_src
-    5. JSON-LD image
-    6. article/main 내부 첫 이미지
-    7. 페이지 전체 첫 이미지
     """
     meta_candidates = [
         ("meta", {"property": "og:image"}, "content"),
+        ("meta", {"property": "og:image:url"}, "content"),
         ("meta", {"property": "og:image:secure_url"}, "content"),
         ("meta", {"name": "twitter:image"}, "content"),
         ("meta", {"name": "twitter:image:src"}, "content"),
+        ("meta", {"name": "thumbnail"}, "content"),
         ("meta", {"itemprop": "image"}, "content"),
         ("link", {"rel": "image_src"}, "href"),
     ]
@@ -282,7 +475,7 @@ def extract_image_from_soup(soup, base_url=""):
             if is_probable_article_image(image_url):
                 return image_url
 
-    # JSON-LD 안의 image 후보 확인
+    # JSON-LD 확인
     for script in soup.find_all("script", type="application/ld+json"):
         try:
             raw_text = script.string or script.get_text(strip=True)
@@ -291,38 +484,15 @@ def extract_image_from_soup(soup, base_url=""):
                 continue
 
             data = json.loads(raw_text)
+            image_url = extract_image_from_json_data(data, base_url)
 
-            json_items = data if isinstance(data, list) else [data]
-
-            for item in json_items:
-                if not isinstance(item, dict):
-                    continue
-
-                image_data = item.get("image", "")
-
-                image_url = ""
-
-                if isinstance(image_data, str):
-                    image_url = image_data
-                elif isinstance(image_data, list) and image_data:
-                    first_image = image_data[0]
-
-                    if isinstance(first_image, str):
-                        image_url = first_image
-                    elif isinstance(first_image, dict):
-                        image_url = first_image.get("url", "")
-                elif isinstance(image_data, dict):
-                    image_url = image_data.get("url", "")
-
-                image_url = clean_image_url(image_url, base_url)
-
-                if is_probable_article_image(image_url):
-                    return image_url
+            if image_url:
+                return image_url
 
         except Exception:
             continue
 
-    # article/main 내부 이미지 우선
+    # article/main 내부 우선 확인
     containers = []
 
     article_tag = soup.find("article")
@@ -336,13 +506,14 @@ def extract_image_from_soup(soup, base_url=""):
     containers.append(soup)
 
     for container in containers:
-        for img in container.find_all("img"):
-            image_url = extract_image_from_img_tag(img, base_url)
+        for tag in container.find_all(True):
+            image_url = extract_image_from_any_tag(tag, base_url)
 
             if image_url:
                 return image_url
 
-    return ""
+    # 최후 fallback: HTML 원문 정규식 탐색
+    return extract_image_from_raw_html(str(soup), base_url)
 
 
 def fetch_image_from_article_page(url):
@@ -372,6 +543,9 @@ def fetch_image_from_article_page(url):
     soup = BeautifulSoup(response.text, "html.parser")
 
     image_url = extract_image_from_soup(soup, url)
+
+    if not image_url:
+        image_url = extract_image_from_raw_html(response.text, url)
 
     if not image_url:
         print(f"대표 이미지 없음: {url}")
@@ -536,6 +710,21 @@ def get_exclusion_reason(title):
         "proof": "theory",
         "most powerful": "ranking_list",
         "timeline explained": "analysis",
+
+        "underrated": "essay_column",
+        "overlooked": "essay_column",
+        "forgotten": "essay_column",
+        "of the decade": "essay_column",
+        "still holds up": "essay_column",
+        "aged perfectly": "essay_column",
+        "aged poorly": "essay_column",
+        "rewatch": "essay_column",
+        "perfect binge": "essay_column",
+        "best weekend binge": "essay_column",
+        "perfect thriller": "essay_column",
+        "ranked from worst to best": "ranking_list",
+        "from worst to best": "ranking_list",
+        "every star wars": "list_article",
     }
 
     for keyword, reason in exclusion_rules.items():
@@ -586,69 +775,6 @@ def normalize_url(url):
     url = url.rstrip("/")
 
     return url
-
-def fetch_swnn_image_from_wp_api(url):
-    """
-    Star Wars News Net은 WordPress 기반이므로,
-    HTML에서 대표 이미지를 못 찾았을 때 WordPress REST API의 featured media를 확인한다.
-    """
-    if not url or "starwarsnewsnet.com" not in url:
-        return ""
-
-    normalized_url = normalize_url(url)
-    slug = normalized_url.split("/")[-1].replace(".html", "").strip()
-
-    if not slug:
-        return ""
-
-    api_url = f"https://www.starwarsnewsnet.com/wp-json/wp/v2/posts?slug={slug}&_embed=1"
-
-    try:
-        response = requests.get(
-            api_url,
-            timeout=10,
-            headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-                "Accept": "application/json,text/plain,*/*",
-            }
-        )
-        response.raise_for_status()
-        data = response.json()
-    except Exception as e:
-        print(f"SWNN WordPress 이미지 API 실패: {url} / {e}")
-        return ""
-
-    if not isinstance(data, list) or not data:
-        return ""
-
-    post = data[0]
-    embedded = post.get("_embedded", {})
-    media_list = embedded.get("wp:featuredmedia", [])
-
-    for media in media_list:
-        if not isinstance(media, dict):
-            continue
-
-        image_url = clean_image_url(media.get("source_url", ""), url)
-
-        if is_probable_article_image(image_url):
-            return image_url
-
-        media_details = media.get("media_details", {})
-        sizes = media_details.get("sizes", {})
-
-        for size_name in ["large", "medium_large", "full", "medium", "thumbnail"]:
-            size_data = sizes.get(size_name, {})
-
-            if not isinstance(size_data, dict):
-                continue
-
-            image_url = clean_image_url(size_data.get("source_url", ""), url)
-
-            if is_probable_article_image(image_url):
-                return image_url
-
-    return ""
 
 
 def contains_explicit_star_wars_keyword(title, summary="", url=""):
@@ -770,20 +896,6 @@ def add_auto_excluded_article(
         "franchise": franchise,
         "label": "자동 제외",
         "exclude_reason": reason,
-        "underrated": "essay_column",
-        "overlooked": "essay_column",
-        "forgotten": "essay_column",
-        "of the decade": "essay_column",
-        "still holds up": "essay_column",
-        "aged perfectly": "essay_column",
-        "aged poorly": "essay_column",
-        "rewatch": "essay_column",
-        "perfect binge": "essay_column",
-        "best weekend binge": "essay_column",
-        "perfect thriller": "essay_column",
-        "ranked from worst to best": "ranking_list",
-        "from worst to best": "ranking_list",
-        "every star wars": "list_article",
     })
 
 
@@ -828,70 +940,6 @@ def save_auto_excluded_articles(new_excluded_articles):
     print(f"자동 제외 기사 수: {len(unique_articles)}")
 
 
-def get_swnn_article_links_from_page(page_number=1):
-    """
-    Star Wars News Net 웹페이지에서 기사 링크를 수집한다.
-    RSS에 나오지 않는 이전 기사까지 가져오기 위한 함수.
-    """
-    if page_number == 1:
-        page_url = SWNN_HOME_URL
-    else:
-        page_url = SWNN_PAGE_URL.format(page_number=page_number)
-
-    print(f"SWNN 페이지 수집 중: {page_url}")
-
-    try:
-        response = requests.get(
-            page_url,
-            headers={
-                "User-Agent": "Mozilla/5.0"
-            },
-            timeout=10
-        )
-        response.raise_for_status()
-    except Exception as e:
-        print(f"SWNN 페이지 수집 실패: {page_url} / {e}")
-        return []
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    links = []
-
-    for a_tag in soup.find_all("a", href=True):
-        href = a_tag.get("href", "").strip()
-
-        if not href.startswith("https://www.starwarsnewsnet.com/"):
-            continue
-
-        # 카테고리, 태그, 페이지, 댓글 링크 등 제외
-        excluded_url_parts = [
-            "/category/",
-            "/tag/",
-            "/author/",
-            "/page/",
-            "#comments",
-            "/feed/",
-            "/about",
-            "/contact",
-            "/privacy",
-        ]
-
-        if any(part in href for part in excluded_url_parts):
-            continue
-
-        # 실제 기사 URL은 보통 날짜 경로를 포함함
-        # 예: /2026/07/...
-        if not re.search(r"/20\d{2}/\d{2}/", href):
-            continue
-
-        normalized_href = normalize_url(href)
-
-        if normalized_href not in links:
-            links.append(normalized_href)
-
-    return links
-
-
 def clean_swnn_candidate_title(title):
     """
     SWNN 목록 페이지에서 가져온 제목 후보를 정리한다.
@@ -906,266 +954,47 @@ def clean_swnn_candidate_title(title):
     return title
 
 
-def get_swnn_article_candidates_from_page(page_number=1):
-    """
-    SWNN 웹페이지에서 기사 URL과 제목 후보를 함께 수집한다.
-    빠른 갱신에서 제외 대상 글을 상세 페이지 접속 전에 거르기 위한 함수.
-    """
-    if page_number == 1:
-        page_url = SWNN_HOME_URL
-    else:
-        page_url = SWNN_PAGE_URL.format(page_number=page_number)
-
-    print(f"SWNN 후보 페이지 수집 중: {page_url}")
-
-    try:
-        response = requests.get(
-            page_url,
-            headers={
-                "User-Agent": "Mozilla/5.0"
-            },
-            timeout=10
-        )
-        response.raise_for_status()
-    except Exception as e:
-        print(f"SWNN 후보 페이지 수집 실패: {page_url} / {e}")
-        return []
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    candidates = []
-    seen_urls = set()
-
-    for a_tag in soup.find_all("a", href=True):
-        href = a_tag.get("href", "").strip()
-
-        if not href.startswith("https://www.starwarsnewsnet.com/"):
-            continue
-
-        excluded_url_parts = [
-            "/category/",
-            "/tag/",
-            "/author/",
-            "/page/",
-            "#comments",
-            "/feed/",
-            "/about",
-            "/contact",
-            "/privacy",
-        ]
-
-        if any(part in href for part in excluded_url_parts):
-            continue
-
-        # 실제 기사 URL은 보통 날짜 경로를 포함함
-        if not re.search(r"/20\d{2}/\d{2}/", href):
-            continue
-
-        normalized_url = normalize_url(href)
-
-        if not normalized_url:
-            continue
-
-        if normalized_url in seen_urls:
-            continue
-
-        seen_urls.add(normalized_url)
-
-        title_candidate = clean_swnn_candidate_title(
-            a_tag.get_text(" ", strip=True)
-        )
-
-        # a 태그 텍스트가 비어 있으면 이미지 alt도 후보로 확인
-        if not title_candidate:
-            img_tag = a_tag.find("img")
-            if img_tag and img_tag.get("alt"):
-                title_candidate = clean_swnn_candidate_title(
-                    img_tag.get("alt", "")
-                )
-
-        image_candidate = ""
-
-        candidate_containers = []
-
-        article_container = a_tag.find_parent("article")
-        if article_container:
-            candidate_containers.append(article_container)
-
-        # article 태그가 없는 경우를 대비해 현재 a 태그도 확인
-        candidate_containers.append(a_tag)
-
-        for container in candidate_containers:
-            if image_candidate:
-                break
-
-            for img_tag in container.find_all("img"):
-                image_candidate = extract_image_from_img_tag(img_tag, page_url)
-
-                if image_candidate:
-                    break
-
-        candidates.append({
-            "url": normalized_url,
-            "title_candidate": title_candidate,
-            "image_candidate": image_candidate
-        })
-
-    return candidates
-
-
 def fetch_swnn_article_from_page(url, image_candidate=""):
     """
-    SWNN 개별 기사 페이지에서 기사 정보를 수집한다.
+    SWNN 개별 기사 페이지는 현재 requests 접근 시 403이 발생하므로 사용하지 않는다.
+    SWNN은 RSS 기반으로만 수집한다.
     """
-    try:
-        response = requests.get(
-            url,
-            headers={
-                "User-Agent": "Mozilla/5.0"
-            },
-            timeout=10
-        )
-        response.raise_for_status()
-    except Exception as e:
-        print(f"SWNN 기사 페이지 수집 실패: {url} / {e}")
-        return None
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    title = ""
-
-    og_title = soup.find("meta", property="og:title")
-    if og_title and og_title.get("content"):
-        title = og_title.get("content").strip()
-
-    if not title:
-        h1 = soup.find("h1")
-        if h1:
-            title = h1.get_text(strip=True)
-
-    if not title:
-        return None
-
-    # 사이트명 같은 불필요한 꼬리 제거
-    title = title.replace(" - Star Wars News Net", "").strip()
-
-    if is_excluded_article(title, "Star Wars News Net") and not is_restored_auto_excluded_article(url):
-        print(f"제외됨: {title}")
-
-        add_auto_excluded_article(
-            title=title,
-            url=url,
-            source_name="Star Wars News Net",
-            published_at="",
-            summary="",
-            image_url="",
-            category=guess_category(title),
-            franchise="Star Wars"
-        )
-
-        return None
-
-    published_at = ""
-
-    article_time = soup.find("time")
-    if article_time:
-        if article_time.get("datetime"):
-            published_at = article_time.get("datetime")[:10]
-        else:
-            published_at = article_time.get_text(strip=True)
-
-    if not published_at:
-        published_meta = soup.find("meta", property="article:published_time")
-        if published_meta and published_meta.get("content"):
-            published_at = published_meta.get("content")[:10]
-
-    summary = ""
-
-    og_description = soup.find("meta", property="og:description")
-    if og_description and og_description.get("content"):
-        summary = og_description.get("content").strip()
-
-    image_url = fetch_image_from_article_page(url)
-
-    if not image_url:
-        image_url = fetch_swnn_image_from_wp_api(url)
-
-    if not image_url:
-        image_url = image_candidate
-
-    return {
-        "title": title,
-        "title_ko": "",
-        "url": url,
-        "source_url": url,
-        "source_name": "Star Wars News Net",
-        "published_at": published_at,
-        "summary": summary,
-        "summary_ko": "",
-        "category": guess_category(title),
-        "franchise": "starwars",
-        "label": "일반 보도",
-        "image_url": image_url,
-    }
+    return None
 
 def fetch_swnn_articles_from_pages(max_pages=3, limit=20):
     """
-    SWNN 메인/이전 페이지에서 기사들을 수집한다.
-    목록 페이지에서 URL, 제목 후보, 이미지 후보를 함께 가져와
-    개별 기사 페이지에서 이미지를 못 찾는 경우 보조로 사용한다.
+    SWNN 웹페이지 수집은 현재 403 차단이 발생하므로 비활성화한다.
+    SWNN은 RSS feed 기반으로만 수집한다.
     """
-    print("Star Wars News Net 웹페이지 기사 수집 시작")
-
-    article_candidates = []
-    seen_urls = set()
-
-    for page_number in range(1, max_pages + 1):
-        candidates = get_swnn_article_candidates_from_page(page_number)
-
-        for candidate in candidates:
-            normalized_url = normalize_url(candidate.get("url", ""))
-
-            if not normalized_url:
-                continue
-
-            if normalized_url in seen_urls:
-                continue
-
-            seen_urls.add(normalized_url)
-            article_candidates.append(candidate)
-
-    print(f"SWNN 웹페이지에서 발견한 후보 기사 수: {len(article_candidates)}")
-
-    articles = []
-
-    for candidate in article_candidates:
-        if len(articles) >= limit:
-            break
-
-        url = candidate.get("url", "")
-        image_candidate = candidate.get("image_candidate", "")
-
-        article = fetch_swnn_article_from_page(
-            url=url,
-            image_candidate=image_candidate
-        )
-
-        if article:
-            articles.append(article)
-
-    print(f"SWNN 웹페이지 수집 기사 수: {len(articles)}")
-
-    return articles
+    print("SWNN 웹페이지 수집은 403 차단으로 건너뜁니다.")
+    return []
 
 
 def fetch_swnn_articles(limit=20):
-    feed = feedparser.parse(SWNN_FEED_URL)
+    if not SWNN_ENABLED:
+        print("SWNN RSS 수집은 현재 비활성화되어 있습니다.")
+        return []
+    """
+    Star Wars News Net RSS 기사 수집.
+    SWNN은 기사 페이지와 WordPress API 접근 시 403이 발생하므로
+    RSS feed 안에 포함된 정보만 사용한다.
+    """
+    feed = feedparser.parse(
+        SWNN_FEED_URL,
+        request_headers={
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8",
+        }
+    )
 
     articles = []
 
     for idx, entry in enumerate(feed.entries[:limit], start=1):
         title = entry.get("title", "").strip()
-        url = entry.get("link", "").strip()
+        url = normalize_url(entry.get("link", "").strip())
+
+        if not title or not url:
+            continue
 
         if is_excluded_article(title, "Star Wars News Net") and not is_restored_auto_excluded_article(url):
             print(f"제외됨: {title}")
@@ -1183,16 +1012,7 @@ def fetch_swnn_articles(limit=20):
 
             continue
 
-        if not title or not url:
-            continue
-
         image_url = extract_image_url(entry)
-
-        if not image_url:
-            image_url = fetch_image_from_article_page(url)
-
-        if not image_url:
-            image_url = fetch_swnn_image_from_wp_api(url)
 
         article = {
             "article_id": idx,
@@ -1200,6 +1020,7 @@ def fetch_swnn_articles(limit=20):
             "title_ko": "",
             "source_name": "Star Wars News Net",
             "source_url": url,
+            "url": url,
             "image_url": image_url,
             "published_at": format_date(entry),
             "summary": clean_summary(entry),
@@ -1389,23 +1210,19 @@ def deduplicate_articles(articles):
 def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, max_pages=3):
     """
     SWNN 빠른 갱신.
-    기존에 수집한 URL은 건너뛰고, 새 URL만 상세 수집한다.
-
-    최적화:
-    - RSS나 목록 페이지에서 기존 기사 URL이 연속으로 많이 나오면
-      더 오래된 기사라고 판단하고 탐색을 중단한다.
-    - SWNN 목록 페이지에서 제목 후보를 먼저 확인해
-      Review / Character Spotlight / Recap 등은 상세 페이지 접속 전에 제외한다.
+    SWNN은 웹페이지/개별 기사/WordPress API 접근 시 403이 발생하므로
+    RSS feed에서 새 URL만 확인한다.
     """
     print("Star Wars News Net 빠른 갱신 시작")
 
     new_articles = []
-    seen_candidate_urls = set()
-
-    # 1. RSS에서 새 기사 확인
-    feed = feedparser.parse(SWNN_FEED_URL)
-
-    consecutive_existing_count = 0
+    feed = feedparser.parse(
+        SWNN_FEED_URL,
+        request_headers={
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8",
+        }
+    )
 
     for entry in feed.entries[:rss_limit]:
         title = entry.get("title", "").strip()
@@ -1415,29 +1232,23 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
             continue
 
         if url in existing_urls:
-            consecutive_existing_count += 1
-
-            if consecutive_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
-                print("SWNN RSS 기존 기사 연속 발견으로 RSS 탐색 중단")
-                break
-
             continue
 
-        consecutive_existing_count = 0
-
-        if url in seen_candidate_urls:
-            continue
-
-        seen_candidate_urls.add(url)
-
-        if is_excluded_article(title, "Star Wars News Net"):
+        if is_excluded_article(title, "Star Wars News Net") and not is_restored_auto_excluded_article(url):
             print(f"제외됨: {title}")
+
+            add_auto_excluded_article(
+                title=title,
+                url=url,
+                source_name="Star Wars News Net",
+                published_at=format_date(entry),
+                summary=clean_summary(entry),
+                image_url=extract_image_url(entry),
+                category=guess_category(title),
+                franchise="Star Wars"
+            )
+
             continue
-
-        image_url = extract_image_url(entry)
-
-        if not image_url:
-            image_url = fetch_image_from_article_page(url)
 
         article = {
             "article_id": 0,
@@ -1446,7 +1257,7 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
             "source_name": "Star Wars News Net",
             "source_url": url,
             "url": url,
-            "image_url": image_url,
+            "image_url": extract_image_url(entry),
             "published_at": format_date(entry),
             "summary": clean_summary(entry),
             "summary_ko": "",
@@ -1457,113 +1268,10 @@ def fetch_swnn_articles_incremental(existing_urls, rss_limit=20, page_limit=20, 
 
         new_articles.append(article)
 
-    # 2. SWNN 웹페이지에서 새 기사 확인
-    article_candidates = []
-    should_stop_page_scan = False
-    prefiltered_excluded_count = 0
-
-    for page_number in range(1, max_pages + 1):
-        if should_stop_page_scan:
+        if len(new_articles) >= rss_limit:
             break
-
-        candidates = get_swnn_article_candidates_from_page(page_number)
-
-        page_new_count = 0
-        page_existing_count = 0
-        page_prefiltered_excluded_count = 0
-
-        for candidate in candidates:
-            normalized_link = normalize_url(candidate.get("url", ""))
-            title_candidate = candidate.get("title_candidate", "")
-
-            if not normalized_link:
-                continue
-
-            if normalized_link in existing_urls:
-                page_existing_count += 1
-                continue
-
-            if normalized_link in seen_candidate_urls:
-                continue
-
-            # 목록 페이지 제목만으로 제외 가능하면 상세 페이지 접속 전에 제외
-            if (
-                title_candidate
-                and is_excluded_article(title_candidate, "Star Wars News Net")
-                and not is_restored_auto_excluded_article(normalized_link)
-            ):
-                print(f"사전 제외됨: {title_candidate}")
-
-                add_auto_excluded_article(
-                    title=title_candidate,
-                    url=normalized_link,
-                    source_name="Star Wars News Net",
-                    published_at="",
-                    summary="",
-                    image_url="",
-                    category=guess_category(title_candidate),
-                    franchise="Star Wars"
-                )
-
-                page_prefiltered_excluded_count += 1
-                prefiltered_excluded_count += 1
-                seen_candidate_urls.add(normalized_link)
-                continue
-
-            seen_candidate_urls.add(normalized_link)
-            article_candidates.append(candidate)
-            page_new_count += 1
-
-        print(
-            f"SWNN page/{page_number} 신규 후보 {page_new_count}개, "
-            f"기존 기사 {page_existing_count}개, "
-            f"사전 제외 {page_prefiltered_excluded_count}개"
-        )
-
-        if page_new_count == 0 and page_existing_count >= FAST_UPDATE_EXISTING_STOP_COUNT:
-            print("SWNN 웹페이지 기존 기사 중심으로 판단되어 이전 페이지 탐색 중단")
-            should_stop_page_scan = True
-
-    print(f"SWNN 웹페이지 신규 후보 기사 수: {len(article_candidates)}")
-    print(f"SWNN 웹페이지 사전 제외 기사 수: {prefiltered_excluded_count}")
-
-    for candidate in article_candidates:
-        if len(new_articles) >= page_limit:
-            break
-
-        url = candidate.get("url", "")
-        title_candidate = candidate.get("title_candidate", "")
-
-        if (
-            title_candidate
-            and is_excluded_article(title_candidate, "Star Wars News Net")
-            and not is_restored_auto_excluded_article(url)
-        ):
-            print(f"사전 제외됨: {title_candidate}")
-
-            add_auto_excluded_article(
-                title=title_candidate,
-                url=url,
-                source_name="Star Wars News Net",
-                published_at="",
-                summary="",
-                image_url="",
-                category=guess_category(title_candidate),
-                franchise="Star Wars"
-            )
-
-            continue
-
-        article = fetch_swnn_article_from_page(
-            url=url,
-            image_candidate=candidate.get("image_candidate", "")
-        )
-
-        if article:
-            new_articles.append(article)
 
     print(f"SWNN 빠른 갱신 신규 기사 수: {len(new_articles)}")
-
     return new_articles
     
 
